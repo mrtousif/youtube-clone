@@ -1,0 +1,58 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+
+jobs:
+    ci:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [16.x]
+
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+
+            - name: Detect Secrets
+              uses: trufflesecurity/trufflehog@v3.6.7
+              with:
+                path: ./
+                base: ${{ github.event.repository.default_branch }}
+                head: HEAD
+
+            - uses: pnpm/action-setup@v2.2.2
+              with:
+                  version: 7
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'pnpm'
+
+            - name: Extract out parent branch
+              shell: bash
+              run: echo "##[set-output name=parent_branch;]$(git show-branch -a | grep '\*' | grep -v `git rev-parse --abbrev-ref HEAD` | head -n1 | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/[\^~].*//')"
+              id: extract_parent_branch
+
+            - name: Install dependencies
+              run: pnpm install
+
+            - name: Lint, test and build (push)
+              if: ${{ github.event_name == 'push' }}
+              run: pnpm turbo run build --since=${{ steps.extract_parent_branch.outputs.parent_branch }}
+
+            - name: Lint, test and build (pull request)
+              if: ${{ github.event_name == 'pull_request' }}
+              run: pnpm turbo run build --filter=[HEAD^1]
+
+            - name: Danger
+              run: pnpm danger ci
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

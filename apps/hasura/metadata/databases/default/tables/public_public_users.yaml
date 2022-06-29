@@ -1,0 +1,3 @@
+table:
+  name: public_users
+  schema: public

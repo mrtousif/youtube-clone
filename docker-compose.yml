@@ -1,0 +1,99 @@
+version: "3"
+
+volumes:
+    postgres_data:
+        driver: local
+
+services:
+    postgres:
+        image: postgis/postgis:14-3.2-alpine
+        restart: unless-stopped
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+            - ./init:/docker-entrypoint-initdb.d
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_DB: ${POSTGRES_DB}
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    pgweb:
+        image: sosedoff/pgweb:latest
+        restart: unless-stopped
+        ports:
+            - "8081:8081"
+        environment:
+            - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
+        depends_on:
+            - postgres
+        # labels:
+        #     - "traefik.enable=true"
+        #     - "traefik.http.routers.pgweb-app.entrypoints=https"
+        #     - "traefik.http.routers.pgweb-app.rule=Host(`pgweb.${DOMAINNAME}`)"
+        #     - "traefik.http.routers.pgweb-app.tls=true"
+        #     - "traefik.http.services.pgweb-app.loadbalancer.server.port=8081"
+        #     - "traefik.docker.network=stonehenge-network"
+        networks:
+            - default
+            # - stonehenge-network
+
+    graphql-engine:
+        container_name: hasura
+        image: hasura/graphql-engine:v2.9.0-beta.1
+        restart: unless-stopped
+        ports:
+            - "8082:8080"
+        depends_on:
+            - postgres
+        environment:
+            ## postgres database to store Hasura metadata
+            HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/hasura_metadata
+            HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+            ## enable the console served by server
+            HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+            ## enable debugging mode. It is recommended to disable this in production
+            HASURA_GRAPHQL_DEV_MODE: "true"
+            HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+            ## uncomment next line to set an admin secret
+            # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+        # labels:
+        #     - "traefik.enable=true"
+        #     - "traefik.http.routers.hasura-app.entrypoints=https"
+        #     - "traefik.http.routers.hasura-app.rule=Host(`hasura.${DOMAINNAME}`)"
+        #     - "traefik.http.routers.hasura-app.tls=true"
+        #     - "traefik.http.services.hasura-app.loadbalancer.server.port=8080"
+        #     - "traefik.docker.network=stonehenge-network"
+        networks:
+            - default
+            # - stonehenge-network
+        
+    redis:
+        image: redis:7-alpine
+        hostname: redis
+        restart: unless-stopped
+        ports:
+            - "6379:6379"
+    
+    redis-commander:
+        container_name: redis-commander
+        hostname: redis-commander
+        image: ghcr.io/joeferner/redis-commander:latest
+        restart: unless-stopped
+        environment:
+            - REDIS_HOSTS=local:redis:6379
+        ports:
+            - "8083:8081"
+        depends_on:
+            - redis
+    maildev:
+        image: maildev/maildev
+        ports:
+            - "1080:1080"
+            - "1025:1025"
+
+
+# networks:
+#     # Network from druidfi/stonehenge
+#     stonehenge-network:
+#         external: true

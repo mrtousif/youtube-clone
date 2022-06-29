@@ -1,0 +1,38 @@
+{
+    "name": "turborepo-reddit-clone",
+    "version": "0.0.0",
+    "private": true,
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "build": "turbo run build",
+        "dev": "turbo run dev --parallel",
+        "lint": "turbo run lint",
+        "graph": "turbo run build --graph",
+        "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+        "prepare": "husky install",
+        "compose:up": "docker-compose --env-file ./.env.dev up",
+        "compose:down": "docker-compose --env-file ./.env.dev down --remove-orphans"
+    },
+    "devDependencies": {
+        "@babel/plugin-transform-flow-strip-types": "^7.17.12",
+        "@commitlint/cli": "^16.3.0",
+        "@commitlint/config-conventional": "^16.2.4",
+        "danger": "^11.0.7",
+        "danger-plugin-code-coverage": "^1.1.9",
+        "danger-plugin-complete-pr": "^1.0.1",
+        "danger-plugin-coverage": "^1.6.2",
+        "danger-plugin-node-dependencies": "^0.0.2",
+        "eslint-config-custom": "workspace:*",
+        "husky": "^7.0.4",
+        "prettier": "^2.7.1",
+        "turbo": "latest"
+    },
+    "engines": {
+        "npm": ">=7.0.0",
+        "node": ">=14.0.0"
+    },
+    "packageManager": "pnpm@6.2.5"
+}

@@ -1,0 +1,57 @@
+{
+    "name": "vite-react-mui",
+    "version": "0.0.1",
+    "description": "React, Material-UI, Typescript Starter Template with Vite",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mrtousif/vite-react-mui.git"
+    },
+    "keywords": [
+        "vite",
+        "react",
+        "starter",
+        "template"
+    ],
+    "author": "Tousif",
+    "license": "MIT",
+    "homepage": "https://github.com/mrtousif/vite-react-mui",
+    "scripts": {
+        "dev": "vite --host",
+        "build": "tsc && vite build",
+        "test": "jest",
+        "serve": "vite preview",
+        "format": "prettier --write --ignore-unknown .",
+        "lint": "eslint src/**/*.ts",
+        "analyze": "source-map-explorer 'dist/assets/*.js'"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.5.0",
+        "@emotion/styled": "^11.3.0",
+        "@mui/icons-material": "^5.0.5",
+        "@mui/material": "^5.0.6",
+        "@sentry/react": "^6.16.1",
+        "graphql": "^16.0.1",
+        "history": "^5.2.0",
+        "notistack": "^2.0.3",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-error-boundary": "^3.1.4",
+        "react-location": "^3.2.8",
+        "urql": "^2.0.5",
+        "ui": "workspace:*"
+    },
+    "devDependencies": {
+        "eslint-config-custom": "workspace:*",
+        "@types/node": "^16.11.6",
+        "@types/react": "^17.0.34",
+        "@types/react-dom": "^17.0.11",
+        "@typescript-eslint/eslint-plugin": "^5.3.0",
+        "@typescript-eslint/parser": "^5.3.0",
+        "@vitejs/plugin-react": "^1.0.7",
+        "eslint": "^8.2.0",
+        "tsconfig": "workspace:*",
+        "typescript": "^4.4.4",
+        "vite": "^2.6.13",
+        "vite-tsconfig-paths": "^3.3.17"
+    }
+}
