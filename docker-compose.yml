@@ -91,6 +91,12 @@ services:
         ports:
             - "1080:1080"
             - "1025:1025"
+    
+    nats: 
+        image: nats:alpine
+        ports:
+            - "4222:4222"
+            - "8222:8222"
 
 
 # networks:
