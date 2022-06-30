@@ -28,7 +28,6 @@
         "eslint-config-custom": "workspace:*",
         "husky": "^7.0.4",
         "prettier": "^2.7.1",
-        "remark-preset-lint-recommended": "^6.1.2",
         "turbo": "latest"
     },
     "engines": {

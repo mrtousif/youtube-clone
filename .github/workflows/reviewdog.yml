@@ -47,9 +47,3 @@ jobs:
           pattern: "*.sh" # Optional.
           exclude: "./.git/*" # Optional.
           check_all_files_with_shebangs: "false" # Optional.
-
-      - name: remark-lint
-        uses: reviewdog/action-remark-lint@v5
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
