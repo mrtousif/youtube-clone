@@ -38,9 +38,18 @@ jobs:
           echo '${{ steps.lint-sql.outputs.sqlfluff-results }}' | jq -r '.'
           echo '${{ steps.lint-sql.outputs.sqlfluff-results-rdjson }}' | jq -r '.'
 
-      - name: textlint-github-pr-review
-        uses: tsuyoshicho/action-textlint@v3
+      - name: shellcheck
+        uses: reviewdog/action-shellcheck@v1
         with:
-            github_token: ${{ secrets.github_token }}
-            reporter: github-pr-review
-            textlint_flags: "docs/**"
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review # Change reporter.
+          path: "." # Optional.
+          pattern: "*.sh" # Optional.
+          exclude: "./.git/*" # Optional.
+          check_all_files_with_shebangs: "false" # Optional.
+
+      - name: remark-lint
+        uses: reviewdog/action-remark-lint@v5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
