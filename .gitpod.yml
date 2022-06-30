@@ -25,6 +25,8 @@ ports:
     onOpen: ignore
   - port: 6379
     onOpen: ignore
+  - port: 4222
+    onOpen: ignore
   - port: 1025
     onOpen: ignore
   - port: 1080
