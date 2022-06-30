@@ -97,8 +97,8 @@ services:
         ports:
             - "4222:4222"
             - "8222:8222"
-        networks:
-            - nats
+        # networks:
+        #     - nats
     nats-ui:
         image: piotrpersona/nats-streaming-ui:latest
         ports:
@@ -109,8 +109,8 @@ services:
             STAN_URL: http://nats:4222
             STAN_MONITOR_URL: http://nats:8222
             STAN_CLUSTER: test-cluster
-        networks:
-            - nats
+        # networks:
+        #     - nats
 # networks:
 #     # Network from druidfi/stonehenge
 #     stonehenge-network:
