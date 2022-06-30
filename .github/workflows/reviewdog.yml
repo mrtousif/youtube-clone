@@ -37,3 +37,10 @@ jobs:
         run: |
           echo '${{ steps.lint-sql.outputs.sqlfluff-results }}' | jq -r '.'
           echo '${{ steps.lint-sql.outputs.sqlfluff-results-rdjson }}' | jq -r '.'
+
+      - name: textlint-github-pr-review
+        uses: tsuyoshicho/action-textlint@v3
+        with:
+            github_token: ${{ secrets.github_token }}
+            reporter: github-pr-review
+            textlint_flags: "docs/**"
