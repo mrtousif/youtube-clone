@@ -1,0 +1,49 @@
+name: Reviewdog
+on:
+  pull_request:
+      
+jobs:
+  test-check:
+    name: runner / sqlfluff (github-check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+    
+      - name: misspell
+        uses: reviewdog/action-misspell@v1
+        with:
+            github_token: ${{ secrets.github_token }}
+            locale: "US"
+            reporter: github-pr-review
+
+      - name: hadolint
+        uses: reviewdog/action-hadolint@v1
+        with:
+            reporter: github-pr-review
+
+
+      - uses: yu-iskw/action-sqlfluff@v3
+        id: lint-sql
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          sqlfluff_version: "0.13.0"
+          sqlfluff_command: "fix" # Or "lint"
+        #   config: "${{ github.workspace }}/.sqlfluff"
+        #   paths: '${{ github.workspace }}/models'
+
+      - name: 'Show outputs (Optional)'
+        shell: bash
+        run: |
+          echo '${{ steps.lint-sql.outputs.sqlfluff-results }}' | jq -r '.'
+          echo '${{ steps.lint-sql.outputs.sqlfluff-results-rdjson }}' | jq -r '.'
+
+      - name: shellcheck
+        uses: reviewdog/action-shellcheck@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review # Change reporter.
+          path: "." # Optional.
+          pattern: "*.sh" # Optional.
+          exclude: "./.git/*" # Optional.
+          check_all_files_with_shebangs: "false" # Optional.

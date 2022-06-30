@@ -1,0 +1,21 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  composeUp:
+    cmds:
+      - docker-compose --env-file ./.env.dev up
+
+  composeDown:
+    cmds:
+      - docker-compose --env-file ./.env.dev down --remove-orphans
+

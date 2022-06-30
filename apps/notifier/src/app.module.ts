@@ -1,10 +1,12 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module } from "@nestjs/common";
+import { EnvalidModule } from "nestjs-envalid";
+import { validators } from "./config";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+    imports: [EnvalidModule.forRoot({ validators })],
+    controllers: [AppController],
+    providers: [AppService],
 })
 export class AppModule {}

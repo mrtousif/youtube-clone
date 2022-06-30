@@ -67,14 +67,14 @@ services:
         networks:
             - default
             # - stonehenge-network
-        
+
     redis:
         image: redis:7-alpine
         hostname: redis
         restart: unless-stopped
         ports:
             - "6379:6379"
-    
+
     redis-commander:
         container_name: redis-commander
         hostname: redis-commander
@@ -91,27 +91,26 @@ services:
         ports:
             - "1080:1080"
             - "1025:1025"
-    
-    nats: 
+
+    nats:
         image: nats:alpine
         ports:
             - "4222:4222"
             - "8222:8222"
-        networks:
-            - default
-    nats-ui: 
+        # networks:
+        #     - nats
+    nats-ui:
         image: piotrpersona/nats-streaming-ui:latest
         ports:
             - "8282:8282"
         depends_on:
             - nats
-        environment: 
+        environment:
             STAN_URL: http://nats:4222
             STAN_MONITOR_URL: http://nats:8222
             STAN_CLUSTER: test-cluster
-        networks:
-            - default
-
+        # networks:
+        #     - nats
 # networks:
 #     # Network from druidfi/stonehenge
 #     stonehenge-network:
