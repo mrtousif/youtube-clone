@@ -50,7 +50,7 @@
         "@nestjs/cli": "^8.0.0",
         "@nestjs/schematics": "^8.0.0",
         "@nestjs/testing": "^8.0.0",
-        "@types/jest": "27.5.2",
+        "@types/jest": "27.0.2",
         "@types/node": "^16.0.0",
         "@types/supertest": "^2.0.11",
         "eslint": "^8.0.1",
