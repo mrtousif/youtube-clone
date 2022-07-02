@@ -16,7 +16,7 @@
     "license": "MIT",
     "homepage": "https://github.com/mrtousif/vite-react-mui",
     "scripts": {
-        "dev": "vite --host",
+        "dev": "vite --open",
         "build": "tsc && vite build",
         "test": "jest",
         "serve": "vite preview",
