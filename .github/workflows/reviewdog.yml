@@ -15,6 +15,8 @@ jobs:
             github_token: ${{ secrets.github_token }}
             locale: "US"
             reporter: github-pr-review
+            exclude: |
+              *-lock.yaml
 
       - name: hadolint
         uses: reviewdog/action-hadolint@v1
