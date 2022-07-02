@@ -70,7 +70,7 @@ importers:
       ts-loader: 9.3.1
       ts-node: 10.8.1
       tsconfig: workspace:*
-      tsconfig-paths: 3.14.1
+      tsconfig-paths: 4.0.0
       typescript: 4.7.4
       zod: 3.17.3
     dependencies:
@@ -114,7 +114,7 @@ importers:
       ts-loader: 9.3.1_typescript@4.7.4
       ts-node: 10.8.1_eff44b0165567fe5f2c2cc6c8fd30ef7
       tsconfig: link:../../packages/tsconfig
-      tsconfig-paths: 3.14.1
+      tsconfig-paths: 4.0.0
       typescript: 4.7.4
 
   apps/frontend:
@@ -204,7 +204,7 @@ importers:
       ts-loader: 9.3.1
       ts-node: 10.8.1
       tsconfig: workspace:*
-      tsconfig-paths: 3.14.1
+      tsconfig-paths: 4.0.0
       typescript: 4.7.4
     dependencies:
       '@nestjs/common': 8.4.7_e7ea248743279784063e3708d703abc5
@@ -236,7 +236,7 @@ importers:
       ts-loader: 9.3.1_typescript@4.7.4
       ts-node: 10.8.1_eff44b0165567fe5f2c2cc6c8fd30ef7
       tsconfig: link:../../packages/tsconfig
-      tsconfig-paths: 3.14.1
+      tsconfig-paths: 4.0.0
       typescript: 4.7.4
 
   packages/eslint-custom-config:
