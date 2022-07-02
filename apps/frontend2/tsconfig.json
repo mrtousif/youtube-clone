@@ -10,6 +10,8 @@
       "vite-plugin-pwa/client"
     ],
     "paths": {
+      "utils/*": ["./utils/*"],
+      "components/*": ["./components/*"],
       "@/*": ["./*"]
     }
   },
