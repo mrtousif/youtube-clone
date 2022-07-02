@@ -8,19 +8,19 @@ module.exports = {
     // semicolon at the end of the line
     semi: true,
     // use single quotes
-    singleQuote: false,
+    singleQuote: true,
     // object's key is quoted only when necessary
-    quoteProps: "as-needed",
+    quoteProps: 'as-needed',
     // use double quotes instead of single quotes in jsx
     jsxSingleQuote: false,
     // comma at the end
-    trailingComma: "es5",
+    trailingComma: 'es5',
     // spaces are required at the beginning and end of the braces
     bracketSpacing: true,
     // end tag of jsx need to wrap
     jsxBracketSameLine: false,
     // brackets are required for arrow function parameter, even when there is only one parameter
-    arrowParens: "always",
+    arrowParens: 'always',
     // format the entire contents of the file
     rangeStart: 0,
     rangeEnd: Infinity,
@@ -29,13 +29,24 @@ module.exports = {
     // No need to automatically insert @prettier at the beginning of the file
     insertPragma: false,
     // use default break criteria
-    proseWrap: "preserve",
+    proseWrap: 'preserve',
     // decide whether to break the html according to the display style
-    htmlWhitespaceSensitivity: "css",
+    htmlWhitespaceSensitivity: 'css',
     // vue files script and style tags indentation
     vueIndentScriptAndStyle: false,
     // lf for newline
-    endOfLine: "lf",
+    endOfLine: 'lf',
     // formats quoted code embedded
-    embeddedLanguageFormatting: "auto",
+    embeddedLanguageFormatting: 'auto',
+
+    importOrder: [
+        '^(^react$|@react|react|^@nest$)',
+        '^@mui/(.*)$',
+        '<THIRD_PARTY_MODULES>',
+        '^@/(.*)$',
+        '^[./]',
+    ],
+    importOrderGroupNamespaceSpecifiers: true,
+    importOrderSeparation: true,
+    importOrderSortSpecifiers: true,
 };

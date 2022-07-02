@@ -1,0 +1,18 @@
+{
+  "extends": "tsconfig/nextjs.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "types": [
+      "vite/client",
+      "vite-plugin-pwa/client"
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["./src"],
+  // "references": [{ "path": "./tsconfig.node.json" }]
+}
