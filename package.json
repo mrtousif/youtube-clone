@@ -26,7 +26,7 @@
         "danger-plugin-coverage": "1.6.2",
         "danger-plugin-node-dependencies": "0.0.2",
         "eslint-config-custom": "workspace:*",
-        "husky": "7.0.4",
+        "husky": "8.0.1",
         "prettier": "2.7.1",
         "turbo": "latest"
     },
