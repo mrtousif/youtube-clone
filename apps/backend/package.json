@@ -51,7 +51,7 @@
         "@nestjs/schematics": "8.0.11",
         "@nestjs/testing": "8.4.7",
         "@types/jest": "28.1.4",
-        "@types/node": "16.11.42",
+        "@types/node": "16.11.43",
         "@types/supertest": "2.0.12",
         "eslint": "8.19.0",
         "eslint-config-custom": "workspace:*",
