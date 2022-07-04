@@ -11,10 +11,10 @@ services:
         volumes:
             - postgres_data:/var/lib/postgresql/data
             - ./init:/docker-entrypoint-initdb.d
-        command:
-            - postgresql
-            - -c
-            - wal_level=logical
+        # command:
+        #     - postgresql
+        #     - -c
+        #     - wal_level=logical
         ports:
             - "5432:5432"
         environment:
