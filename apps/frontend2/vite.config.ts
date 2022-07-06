@@ -1,4 +1,4 @@
-// import * as path from 'path';
+/// <reference types="vitest" />
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
@@ -14,6 +14,9 @@ export default defineConfig({
         tsconfigPaths(),
         checker({
             typescript: true,
+            // eslint: {
+            //     lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
+            // },
         }),
         VitePWA({
             registerType: 'autoUpdate',
@@ -28,9 +31,11 @@ export default defineConfig({
             // },
         }),
     ],
-    // resolve: {
-    //     alias: {
-    //         '@': path.resolve(__dirname, './src'),
-    //     },
-    // },
+    test: {
+        globals: true,
+        environment: 'jsdom',
+        coverage: {
+            reporter: ['text', 'json', 'html'],
+        },
+    },
 });
