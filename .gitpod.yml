@@ -11,6 +11,7 @@ tasks:
       docker-compose --env-file ./.env.dev pull
       pnpm install
       pnpm run build
+      eval "$(starship init bash)"
 
   - name: Start up infra
     command: |

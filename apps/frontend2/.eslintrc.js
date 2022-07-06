@@ -1,10 +1,10 @@
 module.exports = {
     root: true,
     extends: ['custom'],
-    // "env": {
-    //   "browser": true,
-    //   "es2021": true
-    // },
+    env: {
+        browser: true,
+        es2021: true,
+    },
     // "parserOptions": {
     //   "ecmaFeatures": {
     //     "jsx": true

@@ -8,9 +8,11 @@
         "@typescript-eslint/parser": "^5.9.0",
         "eslint-config-alloy": "^4.4.0",
         "eslint-config-prettier": "^8.3.0",
+        "eslint-define-config": "^1.5.1",
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-react": "^7.28.0",
-        "eslint-plugin-react-hooks": "^4.6.0"
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-sonarjs": "^0.13.0"
     },
     "publishConfig": {
         "access": "public"

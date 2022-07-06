@@ -1,5 +1,8 @@
 version: '3'
 
+env:
+  ENV: dev
+
 dotenv: ['.env', '.env.{{.ENV}}']
 
 tasks:
