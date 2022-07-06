@@ -265,17 +265,21 @@ importers:
       '@typescript-eslint/parser': ^5.9.0
       eslint-config-alloy: ^4.4.0
       eslint-config-prettier: ^8.3.0
+      eslint-define-config: ^1.5.1
       eslint-plugin-prettier: ^4.0.0
       eslint-plugin-react: ^7.28.0
       eslint-plugin-react-hooks: ^4.6.0
+      eslint-plugin-sonarjs: ^0.13.0
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.30.0_kblatlwciu47kzahor4dimwgju
       '@typescript-eslint/parser': 5.30.0
       eslint-config-alloy: 4.6.0
       eslint-config-prettier: 8.5.0
+      eslint-define-config: 1.5.1
       eslint-plugin-prettier: 4.1.0_ttcikbw5yztdadzhevg6ml5cuy
       eslint-plugin-react: 7.30.1
       eslint-plugin-react-hooks: 4.6.0
+      eslint-plugin-sonarjs: 0.13.0
 
   packages/tsconfig:
     specifiers: {}
@@ -6823,6 +6827,11 @@ packages:
       eslint: '>=7.0.0'
     dev: false
 
+  /eslint-define-config/1.5.1:
+    resolution: {integrity: sha512-6gxrmN7aKGffaO8dCtMMKyo3IxbWymMQ248p4lf8GbaFRcLsqOXHFdUhhM0Hcy1NudvnpwHcfbDf7Nh9pIm1TA==}
+    engines: {node: '>= 14.6.0', npm: '>= 6.0.0', pnpm: '>= 7.0.0'}
+    dev: false
+
   /eslint-plugin-prettier/4.1.0_ttcikbw5yztdadzhevg6ml5cuy:
     resolution: {integrity: sha512-A3AXIEfTnq3D5qDFjWJdQ9c4BLhw/TqhSR+6+SVaoPJBAWciFEuJiNQh275OnjRrAi7yssZzuWBRw66VG2g6UA==}
     engines: {node: '>=12.0.0'}
@@ -6865,6 +6874,13 @@ packages:
       resolve: 2.0.0-next.4
       semver: 6.3.0
       string.prototype.matchall: 4.0.7
+    dev: false
+
+  /eslint-plugin-sonarjs/0.13.0:
+    resolution: {integrity: sha512-t3m7ta0EspzDxSOZh3cEOJIJVZgN/TlJYaBGnQlK6W/PZNbWep8q4RQskkJkA7/zwNpX0BaoEOSUUrqaADVoqA==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      eslint: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
     dev: false
 
   /eslint-scope/5.1.1:

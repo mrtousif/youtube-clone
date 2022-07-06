@@ -74,9 +74,7 @@ export class ItemService {
         incrementSellerCoins: cost - 1,
       };
 
-      const result = await this.sdk.purchaseItem(preArgs);
-
-      return result;
+      return await this.sdk.purchaseItem(preArgs);
     } catch (e) {
       console.log(e);
       throw e;

@@ -6,19 +6,20 @@ import { UserJwtClaims } from './auth.service';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(configService: ConfigService) {
-    super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: false,
-      secretOrKey: configService.get<string>('DEV_JWT_SECRET'),
-    });
-  }
+    constructor(configService: ConfigService) {
+        super({
+            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+            ignoreExpiration: false,
+            secretOrKey: configService.get<string>('DEV_JWT_SECRET'),
+        });
+    }
 
-  async validate(payload: UserJwtClaims) {
-    return {
-      userId: parseInt(
-        payload['https://hasura.io/jwt/claims']['x-hasura-user-id'],
-      ),
-    };
-  }
+    async validate(payload: UserJwtClaims) {
+        return {
+            userId: Number.parseInt(
+                payload['https://hasura.io/jwt/claims']['x-hasura-user-id'],
+                10
+            ),
+        };
+    }
 }
