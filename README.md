@@ -1,2 +1,2 @@
-# Reddit clone
+# Best tech stack
 
