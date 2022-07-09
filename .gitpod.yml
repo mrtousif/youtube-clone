@@ -34,8 +34,8 @@ ports:
     onOpen: ignore
   - port: 1080
     onOpen: open-browser
-  - port: 8081-8090
-    onOpen: open-browser
+  - port: 8000-9000
+    onOpen: ignore
   - port: 3000-4000
     onOpen: open-browser
 
