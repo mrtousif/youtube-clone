@@ -50,7 +50,7 @@ services:
         networks:
             - default
 
-    graphql-engine:
+    hasura:
         container_name: hasura
         image: hasura/graphql-engine:v2.9.0-beta.1
         restart: unless-stopped
@@ -73,7 +73,7 @@ services:
             - default
             
     keycloak:
-        image: jboss/keycloak:18.0.2
+        image: bitnami/keycloak:18.0.2
         container_name: keycloak
         environment:
             DB_VENDOR: POSTGRES
