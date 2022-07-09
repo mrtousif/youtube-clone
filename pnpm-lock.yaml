@@ -59,6 +59,7 @@ importers:
       '@types/supertest': 2.0.12
       argon2: 0.28.5
       dotenv: 16.0.1
+      envalid: 7.3.1
       eslint: 8.19.0
       eslint-config-custom: workspace:*
       got: 12.1.0
@@ -67,6 +68,8 @@ importers:
       jest: 28.1.2
       mercurius: 9.8.0
       nats: 2.7.1
+      nestjs-cls: ^2.1.1
+      nestjs-envalid: 1.2.1
       passport-jwt: 4.0.0
       reflect-metadata: 0.1.13
       rimraf: 3.0.2
@@ -96,11 +99,14 @@ importers:
       '@types/cron': 2.0.0
       argon2: 0.28.5
       dotenv: 16.0.1
+      envalid: 7.3.1
       got: 12.1.0
       graphql: 16.5.0
       graphql-request: 4.3.0_graphql@16.5.0
       mercurius: 9.8.0
       nats: 2.7.1
+      nestjs-cls: 2.1.1_7tsmhnugyerf5okgqzer2mfqme
+      nestjs-envalid: 1.2.1_q5wjt7gfvk5rkuahokkhmuyn4i
       passport-jwt: 4.0.0
       reflect-metadata: 0.1.13
       rimraf: 3.0.2
@@ -10373,6 +10379,16 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
+  /nestjs-cls/2.1.1_7tsmhnugyerf5okgqzer2mfqme:
+    resolution: {integrity: sha512-nA6jaeroqgOXcqbDQZS/8zVPCtlXM0qZYmG5b30lfrGX2k6tbn4IsAWbXQE8WOvmvpXEYqz7ye0ei8GucImcWQ==}
+    peerDependencies:
+      '@nestjs/common': '> 7.0.0 < 9'
+      '@nestjs/core': '> 7.0.0 < 9'
+    dependencies:
+      '@nestjs/common': 8.4.7_47vcjb2de6lyibr6g4enoa5lyu
+      '@nestjs/core': 8.4.7_g7av3gvncewo44y4rurz3mgav4
+    dev: false
+
   /nestjs-envalid/1.2.1_q5wjt7gfvk5rkuahokkhmuyn4i:
     resolution: {integrity: sha512-naXLVbkG5R1V5ze7BmD7Ak0rBDRSbyaWMLTBC+nQ26DHlWe9uFEp8Q/3hyjaq9MWZOzGDQjR6JuJNYP18wpWYw==}
     engines: {node: '>=8.12'}
@@ -10382,7 +10398,7 @@ packages:
       envalid: 7.x.x
     dependencies:
       '@nestjs/common': 8.4.7_47vcjb2de6lyibr6g4enoa5lyu
-      '@nestjs/core': 8.4.7_i3f5zm642k3dmniju5nf7aptmy
+      '@nestjs/core': 8.4.7_g7av3gvncewo44y4rurz3mgav4
       envalid: 7.3.1
     dev: false
 

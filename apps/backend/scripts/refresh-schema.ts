@@ -1,32 +1,31 @@
-import got from "got";
-import { config } from "dotenv";
-import * as z from "zod";
+import got, { Got } from 'got';
+import { cleanEnv, str } from 'envalid';
 
-config();
+const env = cleanEnv(process.env, {
+    HASURA_GRAPHQL_ADMIN_SECRET: str(),
+    HASURA_GRAPHQL_API_ENDPOINT: str(),
+});
 
-const hasuraSchema = z
-    .object({
-        HASURA_HOST_PORT: z.string().min(1),
-        HASURA_GRAPHQL_ADMIN_SECRET: z.string().min(1),
-    })
-    .passthrough();
+export class Hasura {
+    public got: Got;
+    constructor() {
+        this.got = got.extend({
+            prefixUrl: env.HASURA_GRAPHQL_API_ENDPOINT,
+            headers: {
+                'Content-Type': 'application/json',
+                'x-hasura-admin-secret': env.HASURA_GRAPHQL_ADMIN_SECRET,
+            },
+        });
+    }
 
-const hasuraConfig = hasuraSchema.parse(process.env);
+    async refreshSchema() {
+        const jsonBody = {
+            type: 'reload_remote_schema',
+            args: {
+                name: 'nestjs',
+            },
+        };
 
-const body = {
-    type: "reload_remote_schema",
-    args: {
-        name: "nestjs",
-    },
-};
-
-got.post(`http://localhost:${hasuraConfig.HASURA_HOST_PORT}/v1/query`, {
-    method: "post",
-    json: body,
-    headers: {
-        "Content-Type": "application/json",
-        "x-hasura-admin-secret": hasuraConfig.HASURA_GRAPHQL_ADMIN_SECRET,
-    },
-})
-    .json()
-    .then((json) => console.log(json));
+        return await this.got.post('query', { json: jsonBody }).json();
+    }
+}
