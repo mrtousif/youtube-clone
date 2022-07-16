@@ -1,5 +1,4 @@
 -- migrate:up
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE OR REPLACE FUNCTION update_at_timestamp()
 RETURNS TRIGGER AS $$
@@ -16,7 +15,7 @@ $$ language 'plpgsql';
 
 CREATE TABLE users (
   id uuid DEFAULT uuid_generate_v4(),
-  email varchar UNIQUE NOT NULL,
+  email CITEXT UNIQUE NOT NULL,
   phone varchar,
   name varchar NOT NULL,
   channel_name varchar,
@@ -80,7 +79,8 @@ CREATE TABLE play_lists (
   video_id uuid NOT NULL,
   created_at timestamptz DEFAULT now(),
   CONSTRAINT play_lists_id_pk PRIMARY KEY (id),
-  CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id)
+  CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id),
+  CONSTRAINT play_list_names_id_fk FOREIGN KEY (play_list_names_id) REFERENCES play_list_names(id)
 );
 
 CREATE TYPE reaction_types AS ENUM (
@@ -122,19 +122,16 @@ EXECUTE PROCEDURE update_at_timestamp();
 
 -- migrate:down
 
-DROP TABLE users;
 DROP INDEX videos_user_id_idx;
-DROP TABLE videos;
-DROP TABLE channels;
 DROP TABLE play_list_names;
 DROP TABLE play_lists;
 DROP TABLE feelings;
 DROP TABLE channel_subscriptions;
+DROP TABLE videos;
+DROP TABLE channels;
+DROP TABLE users;
 
-DROP TYPE reactions;
+DROP TYPE reaction_types;
 DROP TYPE category_types;
-
-DROP trigger set_updated_at on users;
-DROP trigger set_updated_at on videos;
 
 DROP FUNCTION update_at_timestamp;

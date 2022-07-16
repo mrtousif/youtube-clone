@@ -14,3 +14,7 @@ tasks:
   migrateDown:
     cmds:
       - dbmate down
+
+  prismaPull:
+    cmds: 
+      - pnpm prisma db pull
