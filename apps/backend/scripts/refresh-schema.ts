@@ -1,9 +1,9 @@
 import got, { Got } from 'got';
-import { cleanEnv, str } from 'envalid';
+import { cleanEnv, str, url } from 'envalid';
 
 const env = cleanEnv(process.env, {
     HASURA_GRAPHQL_ADMIN_SECRET: str(),
-    HASURA_GRAPHQL_API_ENDPOINT: str(),
+    HASURA_GRAPHQL_API_ENDPOINT: url(),
 });
 
 export class Hasura {
