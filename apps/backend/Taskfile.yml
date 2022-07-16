@@ -1,7 +1,7 @@
 version: '3'
 
 env:
-  ENV: dev
+  ENV: development
 
 dotenv: ['.env', '.env.{{.ENV}}']
 
@@ -9,3 +9,4 @@ tasks:
   migrate:
     cmds:
       - dbmate up
+      - hasura metadata reload
