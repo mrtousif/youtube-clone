@@ -6,7 +6,11 @@ env:
 dotenv: ['.env', '.env.{{.ENV}}']
 
 tasks:
-  migrate:
+  migrateUp:
     cmds:
       - dbmate up
       - hasura metadata reload
+
+  migrateDown:
+    cmds:
+      - dbmate down

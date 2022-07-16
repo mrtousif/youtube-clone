@@ -228,11 +228,13 @@ importers:
       '@types/node': ^15.3.1
       '@types/react': 18.0.9
       '@types/react-dom': 18.0.4
+      eslint-config-custom: workspace:*
       keycloakify: ^5.4.7
       node-sass: ^7.0.1
       react: 18.1.0
       react-dom: 18.1.0
       react-scripts: 5.0.0
+      tsconfig: workspace:*
       tss-react: ^3.7.0
       typescript: ^4.7.3
     dependencies:
@@ -245,8 +247,10 @@ importers:
       '@types/node': 15.14.9
       '@types/react': 18.0.9
       '@types/react-dom': 18.0.4
+      eslint-config-custom: link:../../packages/eslint-custom-config
       node-sass: 7.0.1
       react-scripts: 5.0.0_ucgkuirgrbd3awlzgbvjayio5m
+      tsconfig: link:../../packages/tsconfig
       typescript: 4.7.4
 
   apps/notifier:
@@ -340,7 +344,7 @@ importers:
   packages/ui:
     specifiers:
       '@types/react': 18.0.14
-      '@types/react-dom': 18.0.5
+      '@types/react-dom': 18.0.6
       eslint: 8.19.0
       eslint-config-custom: workspace:*
       react: 17.0.2
@@ -348,7 +352,7 @@ importers:
       typescript: 4.7.4
     devDependencies:
       '@types/react': 18.0.14
-      '@types/react-dom': 18.0.5
+      '@types/react-dom': 18.0.6
       eslint: 8.19.0
       eslint-config-custom: link:../eslint-custom-config
       react: 17.0.2
@@ -5118,12 +5122,6 @@ packages:
 
   /@types/react-dom/18.0.4:
     resolution: {integrity: sha512-FgTtbqPOCI3dzZPZoC2T/sx3L34qxy99ITWn4eoSA95qPyXDMH0ALoAqUp49ITniiJFsXUVBtalh/KffMpg21Q==}
-    dependencies:
-      '@types/react': 18.0.14
-    dev: true
-
-  /@types/react-dom/18.0.5:
-    resolution: {integrity: sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA==}
     dependencies:
       '@types/react': 18.0.14
     dev: true
