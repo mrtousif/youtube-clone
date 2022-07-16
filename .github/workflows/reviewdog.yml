@@ -17,6 +17,7 @@ jobs:
             reporter: github-pr-review
             exclude: |
               *-lock.yaml
+              messages_*.properties
 
       - name: hadolint
         uses: reviewdog/action-hadolint@v1

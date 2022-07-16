@@ -15,17 +15,10 @@ module.exports = defineConfig({
             },
         },
     ],
-    plugins: ['prettier', 'react-hooks', 'sonarjs'],
+    plugins: ['prettier', 'sonarjs'],
     rules: {
         '@typescript-eslint/explicit-member-accessibility': 'off',
         '@next/next/no-html-link-for-pages': 'off',
         'react/react-in-jsx-scope': 'off',
-        'react-hooks/rules-of-hooks': 'error',
-        'react-hooks/exhaustive-deps': 'warn',
-    },
-    settings: {
-        react: {
-            version: 'detect',
-        },
     },
 });

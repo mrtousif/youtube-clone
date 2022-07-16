@@ -6,21 +6,37 @@ volumes:
 
 services:
     postgres:
-        image: postgis/postgis:14-3.2-alpine
+        image: supabase/postgres:14.1.0.34
         restart: unless-stopped
         volumes:
             - postgres_data:/var/lib/postgresql/data
             - ./init:/docker-entrypoint-initdb.d
-        # command:
-        #     - postgresql
-        #     - -c
-        #     - wal_level=logical
+        command:
+        - postgres
+        - -c
+        - wal_level=logical
         ports:
             - "5432:5432"
         environment:
             POSTGRES_DB: ${POSTGRES_DB}
             POSTGRES_USER: ${POSTGRES_USER}
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    realtime:
+        image: supabase/realtime:latest
+        ports:
+            - "8000:4000"
+        environment:
+            DB_HOST: postgres
+            DB_NAME: ${POSTGRES_DB}
+            DB_USER: ${POSTGRES_USER}
+            DB_PASSWORD: ${POSTGRES_PASSWORD}
+            DB_PORT: 5432
+            PORT: 4000
+            JWT_SECRET: SOMETHING_SUPER_SECRET
+            SECURE_CHANNELS: 'false'
+        depends_on:
+            - postgres
 
     pgweb:
         image: sosedoff/pgweb:latest
@@ -31,18 +47,10 @@ services:
             - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
         depends_on:
             - postgres
-        # labels:
-        #     - "traefik.enable=true"
-        #     - "traefik.http.routers.pgweb-app.entrypoints=https"
-        #     - "traefik.http.routers.pgweb-app.rule=Host(`pgweb.${DOMAINNAME}`)"
-        #     - "traefik.http.routers.pgweb-app.tls=true"
-        #     - "traefik.http.services.pgweb-app.loadbalancer.server.port=8081"
-        #     - "traefik.docker.network=stonehenge-network"
         networks:
             - default
-            # - stonehenge-network
 
-    graphql-engine:
+    hasura:
         container_name: hasura
         image: hasura/graphql-engine:v2.9.0-beta.1
         restart: unless-stopped
@@ -61,16 +69,26 @@ services:
             HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
             ## uncomment next line to set an admin secret
             # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
-        # labels:
-        #     - "traefik.enable=true"
-        #     - "traefik.http.routers.hasura-app.entrypoints=https"
-        #     - "traefik.http.routers.hasura-app.rule=Host(`hasura.${DOMAINNAME}`)"
-        #     - "traefik.http.routers.hasura-app.tls=true"
-        #     - "traefik.http.services.hasura-app.loadbalancer.server.port=8080"
-        #     - "traefik.docker.network=stonehenge-network"
         networks:
             - default
-            # - stonehenge-network
+            
+    keycloak:
+        image: bitnami/keycloak:18.0.2
+        container_name: keycloak
+        environment:
+            DB_VENDOR: POSTGRES
+            DB_ADDR: postgres
+            DB_DATABASE: keycloak_db
+            DB_USER: keycloak
+            DB_PASSWORD: password
+            KEYCLOAK_USER: admin
+            KEYCLOAK_PASSWORD: password
+            PROXY_ADDRESS_FORWARDING: "true"
+        ports:
+            - 8083:8080
+        depends_on:
+            - postgres
+
 
     redis:
         image: redis:7-alpine
@@ -87,7 +105,7 @@ services:
         environment:
             - REDIS_HOSTS=local:redis:6379
         ports:
-            - "8083:8081"
+            - "8084:8081"
         depends_on:
             - redis
     maildev:
@@ -107,7 +125,7 @@ services:
     nats-ui:
         image: piotrpersona/nats-streaming-ui:latest
         ports:
-            - "8282:8282"
+            - "8085:8282"
         depends_on:
             - nats
         environment:
