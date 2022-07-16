@@ -6,15 +6,15 @@ volumes:
 
 services:
     postgres:
-        image: supabase/postgres:14.1.0.34
+        image: postgis/postgis:14-3.2-alpine
         restart: unless-stopped
         volumes:
             - postgres_data:/var/lib/postgresql/data
             - ./init:/docker-entrypoint-initdb.d
-        command:
-        - postgres
-        - -c
-        - wal_level=logical
+        # command:
+        # - postgres
+        # - -c
+        # - wal_level=logical
         ports:
             - "5432:5432"
         environment:
