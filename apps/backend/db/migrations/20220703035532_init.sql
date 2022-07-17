@@ -19,7 +19,7 @@ CREATE TABLE users (
   phone varchar,
   name varchar NOT NULL,
   channel_name varchar,
-  created_at timestamptz DEFAULT now(),
+  created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz,
   CONSTRAINT users_id_pk PRIMARY KEY (id)
 );
@@ -29,7 +29,7 @@ CREATE TABLE channels (
   name varchar UNIQUE NOT NULL,
   description text,
   user_id uuid,
-  created_at timestamptz DEFAULT now(),
+  created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT channels_id_pk PRIMARY KEY (id),
   CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id)
 );
@@ -54,7 +54,7 @@ CREATE TABLE videos (
   stream_url varchar UNIQUE NOT NULL,
   user_id uuid NOT NULL,
   channel_id uuid NOT NULL,
-  created_at timestamptz DEFAULT now(),
+  created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz,
   CONSTRAINT videos_id_pk PRIMARY KEY (id),
   CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id),
@@ -68,7 +68,7 @@ CREATE TABLE play_list_names (
   name varchar NOT NULL,
   user_id uuid NOT NULL,
   video_count bigint DEFAULT 0,
-  created_at timestamptz DEFAULT now(),
+  created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT play_list_names_id_pk PRIMARY KEY (id),
   CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id)
 );
@@ -77,7 +77,7 @@ CREATE TABLE play_lists (
   id uuid DEFAULT uuid_generate_v4(),
   play_list_names_id bigint NOT NULL,
   video_id uuid NOT NULL,
-  created_at timestamptz DEFAULT now(),
+  created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT play_lists_id_pk PRIMARY KEY (id),
   CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id),
   CONSTRAINT play_list_names_id_fk FOREIGN KEY (play_list_names_id) REFERENCES play_list_names(id)
@@ -92,7 +92,7 @@ CREATE TABLE feelings (
   user_id uuid NOT NULL,
   video_id uuid NOT NULL,
   reaction reaction_types,
-  created_at timestamptz DEFAULT now(),
+  created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT feelings_composite_pk PRIMARY KEY (user_id, video_id),
   CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id),
   CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id)
@@ -101,7 +101,7 @@ CREATE TABLE feelings (
 CREATE TABLE channel_subscriptions (
   subscriber_id uuid NOT NULL,
   channel_id uuid NOT NULL,
-  created_at timestamptz DEFAULT now(),
+  created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT channel_subscriptions_composite_pk PRIMARY KEY (subscriber_id, channel_id),
   CONSTRAINT subscriber_id_fk FOREIGN KEY (subscriber_id) REFERENCES users(id),
   CONSTRAINT channel_id_fk FOREIGN KEY (channel_id) REFERENCES channels(id)

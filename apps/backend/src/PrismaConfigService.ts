@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { Inject } from '@nestjs/common';
 import { PrismaOptionsFactory, PrismaServiceOptions } from 'nestjs-prisma';
 // import { ENVALID, EnvalidModule } from 'nestjs-envalid';
 // import { Config } from './config';
