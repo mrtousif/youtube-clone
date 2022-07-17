@@ -5,6 +5,9 @@ export const validators = makeValidators({
     PORT: num({ default: 3000 }),
     NESTJS_EVENT_WEBHOOK_SHARED_SECRET: str(),
     HASURA_GRAPHQL_API_ENDPOINT: str(),
+    S3_REGION: str(),
+    S3_ENDPOINT: str(),
+    S3_BUCKET: str(),
 });
 
 export type Config = Static<typeof validators>;
