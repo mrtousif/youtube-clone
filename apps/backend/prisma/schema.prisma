@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,4 +5,109 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model channel_subscriptions {
+  subscriber_id String    @db.Uuid
+  channel_id    String    @db.Uuid
+  created_at    DateTime? @default(now()) @db.Timestamptz(6)
+  channels      channels  @relation(fields: [channel_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "channel_id_fk")
+  users         users     @relation(fields: [subscriber_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subscriber_id_fk")
+
+  @@id([subscriber_id, channel_id], map: "channel_subscriptions_composite_pk")
+}
+
+model channels {
+  id                    String                  @id(map: "channels_id_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name                  String                  @unique @db.VarChar
+  description           String?
+  user_id               String?                 @db.Uuid
+  created_at            DateTime?               @default(now()) @db.Timestamptz(6)
+  users                 users?                  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
+  channel_subscriptions channel_subscriptions[]
+  videos                videos[]
+}
+
+model feelings {
+  user_id    String          @db.Uuid
+  video_id   String          @db.Uuid
+  reaction   reaction_types?
+  created_at DateTime?       @default(now()) @db.Timestamptz(6)
+  users      users           @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
+  videos     videos          @relation(fields: [video_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "videos_id_fk")
+
+  @@id([user_id, video_id], map: "feelings_composite_pk")
+}
+
+model play_list_names {
+  id          BigInt       @id(map: "play_list_names_id_pk") @default(autoincrement())
+  name        String       @db.VarChar
+  user_id     String       @db.Uuid
+  video_count BigInt?      @default(0)
+  created_at  DateTime?    @default(now()) @db.Timestamptz(6)
+  users       users        @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
+  play_lists  play_lists[]
+}
+
+model play_lists {
+  id                 String          @id(map: "play_lists_id_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  play_list_names_id BigInt
+  video_id           String          @db.Uuid
+  created_at         DateTime?       @default(now()) @db.Timestamptz(6)
+  play_list_names    play_list_names @relation(fields: [play_list_names_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "play_list_names_id_fk")
+  videos             videos          @relation(fields: [video_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "videos_id_fk")
+}
+
+model schema_migrations {
+  version String @id @db.VarChar(255)
+}
+
+model users {
+  id                    String                  @id(map: "users_id_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  email                 String                  @unique @db.Citext
+  phone                 String?                 @db.VarChar
+  name                  String                  @db.VarChar
+  channel_name          String?                 @db.VarChar
+  created_at            DateTime?               @default(now()) @db.Timestamptz(6)
+  updated_at            DateTime?               @db.Timestamptz(6)
+  channel_subscriptions channel_subscriptions[]
+  channels              channels[]
+  feelings              feelings[]
+  play_list_names       play_list_names[]
+  videos                videos[]
+}
+
+model videos {
+  id          String          @id(map: "videos_id_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  title       String?         @db.VarChar
+  description String?
+  category    category_types? @default(UNCATEGORISED)
+  views       Int?            @default(0)
+  thumbnail   String          @unique @db.VarChar
+  stream_url  String          @unique @db.VarChar
+  user_id     String          @db.Uuid
+  channel_id  String          @db.Uuid
+  created_at  DateTime?       @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime?       @db.Timestamptz(6)
+  channels    channels        @relation(fields: [channel_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "channels_id_fk")
+  users       users           @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
+  feelings    feelings[]
+  play_lists  play_lists[]
+
+  @@index([user_id])
+}
+
+enum category_types {
+  UNCATEGORISED
+  GAMING
+  EDUCATION
+  DOCUMENTARY
+  MUSIC
+  NEWS
+  MOVIES
+}
+
+enum reaction_types {
+  LIKED
+  DISLIKED
 }
