@@ -12,7 +12,7 @@
         "lint": "turbo run lint --parallel",
         "test:ci": "turbo run test:ci",
         "graph": "turbo run build --graph",
-        "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+        "format": "prettier --write \"**/*.{js,ts,tsx,md,prisma}\"",
         "prepare": "husky install",
         "compose:up": "docker-compose --env-file ./.env.dev up",
         "compose:down": "docker-compose --env-file ./.env.dev down --remove-orphans"
@@ -32,10 +32,11 @@
         "husky": "8.0.1",
         "lint-staged": "13.0.3",
         "prettier": "2.7.1",
+        "prettier-plugin-prisma": "^4.1.0",
         "turbo": "latest"
     },
     "lint-staged": {
-        "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+        "src/**/*.{js,jsx,ts,tsx,json,css,scss,md,prisma}": [
             "prettier --write"
         ],
         "src/**/*.{js,jsx,ts,tsx,json}": [
