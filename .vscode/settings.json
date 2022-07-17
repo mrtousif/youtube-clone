@@ -8,5 +8,8 @@
     "eslint.validate": ["javascript", "javascriptreact", "vue", "typescript", "typescriptreact"],
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
-    }
+    },
+    "[prisma]": {
+        "editor.defaultFormatter": "Prisma.prisma"
+    },
 }

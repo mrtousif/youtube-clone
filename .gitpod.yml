@@ -11,7 +11,6 @@ tasks:
       docker-compose --env-file ./.env.dev pull
       pnpm install
       pnpm run build
-      eval "$(starship init bash)"
 
   - name: Start up infra
     command: |
@@ -33,7 +32,7 @@ ports:
   - port: 1025
     onOpen: ignore
   - port: 1080
-    onOpen: open-browser
+    onOpen: ignore
   - port: 8000-9000
     onOpen: ignore
   - port: 3000-4000

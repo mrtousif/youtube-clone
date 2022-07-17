@@ -18,6 +18,7 @@ importers:
       husky: 8.0.1
       lint-staged: 13.0.3
       prettier: 2.7.1
+      prettier-plugin-prisma: ^4.1.0
       turbo: latest
     devDependencies:
       '@babel/plugin-transform-flow-strip-types': 7.18.6
@@ -34,6 +35,7 @@ importers:
       husky: 8.0.1
       lint-staged: 13.0.3
       prettier: 2.7.1
+      prettier-plugin-prisma: 4.1.0_prettier@2.7.1
       turbo: 1.3.1
 
   apps/backend:
@@ -233,6 +235,7 @@ importers:
       react: 18.1.0
       react-dom: 18.1.0
       react-scripts: 5.0.0
+      tsconfig: workspace:*
       tss-react: ^3.7.0
       typescript: ^4.7.3
     dependencies:
@@ -247,6 +250,7 @@ importers:
       '@types/react-dom': 18.0.4
       node-sass: 7.0.1
       react-scripts: 5.0.0_ucgkuirgrbd3awlzgbvjayio5m
+      tsconfig: link:../../packages/tsconfig
       typescript: 4.7.4
 
   apps/notifier:
@@ -340,7 +344,7 @@ importers:
   packages/ui:
     specifiers:
       '@types/react': 18.0.14
-      '@types/react-dom': 18.0.5
+      '@types/react-dom': 18.0.6
       eslint: 8.19.0
       eslint-config-custom: workspace:*
       react: 17.0.2
@@ -348,7 +352,7 @@ importers:
       typescript: 4.7.4
     devDependencies:
       '@types/react': 18.0.14
-      '@types/react-dom': 18.0.5
+      '@types/react-dom': 18.0.6
       eslint: 8.19.0
       eslint-config-custom: link:../eslint-custom-config
       react: 17.0.2
@@ -4500,6 +4504,10 @@ packages:
     resolution: {integrity: sha512-u/rG4lDHALolWBLr3yebZ+N2qImp3SDMcu7bHNJuRDaYvYEXy/MqfNRNEgd9GoPsXL3gofYf0VzJf2AmCG3YVw==}
     requiresBuild: true
 
+  /@prisma/prisma-fmt-wasm/4.1.0-12.09f9659a3d73d5ed2aac8298e2856b8be910cd66:
+    resolution: {integrity: sha512-92cZ5P1IcJex6aIxFptU3HNv8g53b/eP0AhqmVGCiyzcTbwCQcbCMUycDuEoHjIuIR0o7XXdHIrXnbiQQMhEGg==}
+    dev: true
+
   /@rollup/plugin-babel/5.3.1_fb3qe53zzddvqjqqltveoanfhe:
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
     engines: {node: '>= 10.0.0'}
@@ -5118,12 +5126,6 @@ packages:
 
   /@types/react-dom/18.0.4:
     resolution: {integrity: sha512-FgTtbqPOCI3dzZPZoC2T/sx3L34qxy99ITWn4eoSA95qPyXDMH0ALoAqUp49ITniiJFsXUVBtalh/KffMpg21Q==}
-    dependencies:
-      '@types/react': 18.0.14
-    dev: true
-
-  /@types/react-dom/18.0.5:
-    resolution: {integrity: sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA==}
     dependencies:
       '@types/react': 18.0.14
     dev: true
@@ -15338,6 +15340,16 @@ packages:
     dependencies:
       fast-diff: 1.2.0
     dev: false
+
+  /prettier-plugin-prisma/4.1.0_prettier@2.7.1:
+    resolution: {integrity: sha512-bGh1pEzEjSVky3T1uznlZlWgPzyJykEbkg8iFjsBKWMMrkEDRT+5iDJD0CSFjR3bI6r9KkQQJcRvUa5oUR6hwA==}
+    engines: {node: '>=12', npm: '>=7'}
+    peerDependencies:
+      prettier: '>=2'
+    dependencies:
+      '@prisma/prisma-fmt-wasm': 4.1.0-12.09f9659a3d73d5ed2aac8298e2856b8be910cd66
+      prettier: 2.7.1
+    dev: true
 
   /prettier/2.7.1:
     resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
