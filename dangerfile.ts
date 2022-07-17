@@ -3,7 +3,7 @@ import coverage from "danger-plugin-coverage";
 // import { warnDependencies } from "danger-plugin-node-dependencies";
 import * as completePr from "danger-plugin-complete-pr";
 
-schedule(coverage());
+// schedule(coverage());
 // warnDependencies();
 
 // const modifiedMD = danger.git.modified_files.join("- ");
@@ -30,6 +30,6 @@ if (packageChanged && !lockfileChanged) {
 //         "Please assign someone to merge this PR, and optionally include people who should review."
 //     );
 // }
-completePr.checkAssignees();
-completePr.checkDescription(10);
-completePr.checkTitle(/^[[A-Za-z]+-\d+]/);
+// completePr.checkAssignees();
+// completePr.checkDescription(10);
+// completePr.checkTitle(/^[[A-Za-z]+-\d+]/);

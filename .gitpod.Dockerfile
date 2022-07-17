@@ -1,4 +1,4 @@
-FROM gitpod/workspace-postgres
+FROM gitpod/workspace-full
 
 RUN npm i --location=global pnpm @nestjs/cli dotenv-cli hasura-cli tsx serve fkill-cli
 
