@@ -4,14 +4,15 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 image:
-  file: .gitpod.Dockerfile
+  file: gitpod/workspace-full
 
 tasks:
   - init: |
+      npm i --location=global @nestjs/cli dotenv-cli hasura-cli
+      brew install dbmate go-task/tap/go-task
       docker-compose --env-file ./.env.dev pull
       pnpm install
       pnpm run build
-      eval "$(starship init bash)"
 
   - name: Start up infra
     command: |
