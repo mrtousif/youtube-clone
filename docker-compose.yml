@@ -113,4 +113,3 @@ services:
 networks:
   default:
     name: "monorepo-network"
-    external: true
