@@ -7,7 +7,10 @@ async function bootstrap() {
     const app = await NestFactory.create<NestFastifyApplication>(
         AppModule,
         new FastifyAdapter({
-            logger: true,
+            logger: {
+                prettyPrint: process.env.NODE_ENV === 'development',
+            },
+            trustProxy: true,
         })
     );
     const prismaService: PrismaService = app.get(PrismaService);
