@@ -18,3 +18,11 @@ tasks:
   prismaPull:
     cmds: 
       - pnpm prisma db pull
+      
+  composeUp:
+    cmds:
+      - docker-compose --env-file ./.env.development up
+
+  composeDown:
+    cmds:
+      - docker-compose --env-file ./.env.development down --remove-orphans

@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, Logger } from '@nestjs/common';
 import { S3Client, AbortMultipartUploadCommand } from '@aws-sdk/client-s3';
 import { ENVALID } from 'nestjs-envalid';
 import { Config } from '../config';
@@ -6,6 +6,7 @@ import { Config } from '../config';
 @Injectable()
 export class FileStorageService {
     private S3: S3Client;
+    private readonly logger = new Logger(FileStorageService.name);
 
     constructor(@Inject(ENVALID) private readonly env: Config) {
         this.S3 = new S3Client({
@@ -22,10 +23,12 @@ export class FileStorageService {
             UploadId: uploadId,
         };
         const command = new AbortMultipartUploadCommand(params);
+        this.logger.log('Uploading', params);
         return this.S3.send(command);
     }
 
     destroy() {
+        this.logger.log('Closing S3 client');
         return this.S3.destroy();
     }
 }

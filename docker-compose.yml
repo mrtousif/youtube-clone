@@ -47,31 +47,6 @@ services:
             - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
         depends_on:
             - postgres
-        networks:
-            - default
-
-    hasura:
-        container_name: hasura
-        image: hasura/graphql-engine:v2.9.0-beta.1
-        restart: unless-stopped
-        ports:
-            - "8082:8080"
-        depends_on:
-            - postgres
-        environment:
-            ## postgres database to store Hasura metadata
-            HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/hasura_metadata
-            HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-            ## enable the console served by server
-            HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
-            ## enable debugging mode. It is recommended to disable this in production
-            HASURA_GRAPHQL_DEV_MODE: "true"
-            HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
-            ## uncomment next line to set an admin secret
-            # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
-        networks:
-            - default
-            
     keycloak:
         image: bitnami/keycloak:18.0.2
         container_name: keycloak
@@ -134,7 +109,8 @@ services:
             STAN_CLUSTER: test-cluster
         # networks:
         #     - nats
-# networks:
-#     # Network from druidfi/stonehenge
-#     stonehenge-network:
-#         external: true
+
+networks:
+  default:
+    name: "monorepo-network"
+    external: true

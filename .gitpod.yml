@@ -8,7 +8,7 @@ image:
 
 tasks:
   - init: |
-      docker-compose --env-file ./.env.dev pull
+      docker-compose -f docker-compose.yml -f apps/backend/docker-compose.yml --env-file .env.dev pull
       pnpm install
       pnpm run build
 
