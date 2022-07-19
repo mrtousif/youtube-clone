@@ -1,0 +1,82 @@
+table:
+  name: users
+  schema: public
+array_relationships:
+  - name: channel_subscriptions
+    using:
+      foreign_key_constraint_on:
+        column: subscriber_id
+        table:
+          name: channel_subscriptions
+          schema: public
+  - name: channels
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: channels
+          schema: public
+  - name: feelings
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: feelings
+          schema: public
+  - name: play_list_names
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: play_list_names
+          schema: public
+  - name: videos
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: videos
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - channel_name
+        - email
+        - name
+        - phone
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - channel_name
+        - created_at
+        - email
+        - name
+        - phone
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      limit: 1
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - channel_name
+        - email
+        - name
+        - phone
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      check:
+        id:
+          _eq: X-Hasura-User-Id
+delete_permissions:
+  - role: user
+    permission:
+      backend_only: false
+      filter:
+        id:
+          _eq: X-Hasura-User-Id

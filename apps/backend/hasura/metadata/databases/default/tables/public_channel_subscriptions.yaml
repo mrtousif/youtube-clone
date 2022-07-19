@@ -1,0 +1,10 @@
+table:
+  name: channel_subscriptions
+  schema: public
+object_relationships:
+  - name: channel
+    using:
+      foreign_key_constraint_on: channel_id
+  - name: user
+    using:
+      foreign_key_constraint_on: subscriber_id

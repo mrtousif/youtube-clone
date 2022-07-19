@@ -1,0 +1,10 @@
+table:
+  name: play_lists
+  schema: public
+object_relationships:
+  - name: play_list_name
+    using:
+      foreign_key_constraint_on: play_list_names_id
+  - name: video
+    using:
+      foreign_key_constraint_on: video_id

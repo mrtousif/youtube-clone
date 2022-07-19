@@ -1,0 +1,15 @@
+table:
+  name: play_list_names
+  schema: public
+object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+array_relationships:
+  - name: play_lists
+    using:
+      foreign_key_constraint_on:
+        column: play_list_names_id
+        table:
+          name: play_lists
+          schema: public
