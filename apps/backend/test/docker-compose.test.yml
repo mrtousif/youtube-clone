@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+    database:
+        container_name: "postgres-be"
+        image: postgres:14-alpine
+        command: postgres -c fsync=off -c synchronous_commit=off -c full_page_writes=off -c random_page_cost=1.0
+        environment:
+            POSTGRES_DB: ${POSTGRES_DB}
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        ports:
+            - "54321:5432"
+        tmpfs: /var/lib/postgresql/data
+
+networks:
+    default:
+        name: "be-network"

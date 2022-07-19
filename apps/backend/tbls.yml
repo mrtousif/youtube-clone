@@ -1,0 +1,5 @@
+dsn: postgres://postgres:postgres_pass@localhost:5432/my_app_db?sslmode=disable
+
+# Path to generate document
+# Default is `dbdoc`
+docPath: docs/schema
