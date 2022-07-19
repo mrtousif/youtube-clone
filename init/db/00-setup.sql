@@ -57,7 +57,10 @@ as $$
 	)::text
 $$;
 
-CREATE EXTENSION IF NOT EXISTS citext;
+
+/*
+    CREATE DB AND USER
+*/
 
 CREATE USER hasura WITH PASSWORD 'postgres';
 CREATE DATABASE hasura_metadata;
