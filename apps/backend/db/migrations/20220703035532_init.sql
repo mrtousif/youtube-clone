@@ -20,7 +20,7 @@ CREATE TABLE users (
   email CITEXT UNIQUE NOT NULL,
   phone varchar,
   name varchar NOT NULL,
-  channel_name varchar,
+  channel_name varchar NOT NULL UNIQUE,
   description text,
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz,
