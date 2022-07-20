@@ -2,19 +2,19 @@ table:
   name: users
   schema: public
 array_relationships:
-  - name: channel_subscriptions
+  - name: subscribers
     using:
       foreign_key_constraint_on:
         column: subscriber_id
         table:
           name: channel_subscriptions
           schema: public
-  - name: channels
+  - name: subscribed_channels
     using:
       foreign_key_constraint_on:
-        column: user_id
+        column: channel_id
         table:
-          name: channels
+          name: channel_subscriptions
           schema: public
   - name: feelings
     using:
@@ -33,26 +33,26 @@ array_relationships:
   - name: videos
     using:
       foreign_key_constraint_on:
-        column: user_id
+        column: channel_id
         table:
           name: videos
           schema: public
-insert_permissions:
-  - role: user
-    permission:
-      check: {}
-      columns:
-        - channel_name
-        - email
-        - name
-        - phone
+  - name: watch_histories
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: watch_history
+          schema: public
 select_permissions:
   - role: user
     permission:
       columns:
         - channel_name
         - created_at
+        - description
         - email
+        - id
         - name
         - phone
       filter:
@@ -64,19 +64,10 @@ update_permissions:
     permission:
       columns:
         - channel_name
-        - email
+        - description
         - name
         - phone
       filter:
         id:
           _eq: X-Hasura-User-Id
-      check:
-        id:
-          _eq: X-Hasura-User-Id
-delete_permissions:
-  - role: user
-    permission:
-      backend_only: false
-      filter:
-        id:
-          _eq: X-Hasura-User-Id
+      check: null

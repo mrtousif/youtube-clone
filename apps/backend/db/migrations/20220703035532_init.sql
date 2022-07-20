@@ -48,7 +48,7 @@ CREATE TABLE videos (
   thumbnail varchar UNIQUE NOT NULL,
   stream_url varchar UNIQUE NOT NULL,
   channel_id uuid NOT NULL,
-  duration float constraint duration_nonnegative check (duration > 0)
+  duration float constraint duration_nonnegative check (duration > 0),
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz,
   CONSTRAINT videos_id_pk PRIMARY KEY (id),
@@ -130,6 +130,7 @@ DROP TABLE play_lists;
 DROP TABLE play_list_names;
 DROP TABLE feelings;
 DROP TABLE channel_subscriptions;
+DROP TABLE watch_history;
 DROP TABLE videos;
 DROP TABLE users;
 

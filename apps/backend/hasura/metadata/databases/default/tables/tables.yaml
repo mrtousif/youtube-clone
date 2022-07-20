@@ -1,7 +1,7 @@
 - "!include public_channel_subscriptions.yaml"
-- "!include public_channels.yaml"
 - "!include public_feelings.yaml"
 - "!include public_play_list_names.yaml"
 - "!include public_play_lists.yaml"
 - "!include public_users.yaml"
 - "!include public_videos.yaml"
+- "!include public_watch_history.yaml"
