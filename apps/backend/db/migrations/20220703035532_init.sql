@@ -1,5 +1,5 @@
 -- migrate:up
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
 CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
 
 CREATE OR REPLACE FUNCTION update_at_timestamp()
@@ -16,7 +16,7 @@ $$ language 'plpgsql';
 
 
 CREATE TABLE users (
-  id uuid DEFAULT uuid_generate_v4(),
+  id uuid DEFAULT gen_random_uuid(),
   email CITEXT UNIQUE NOT NULL,
   phone varchar,
   name varchar NOT NULL,
@@ -40,7 +40,7 @@ CREATE TYPE category_types AS ENUM (
 );
 
 CREATE TABLE videos (
-  id uuid DEFAULT uuid_generate_v4(),
+  id uuid DEFAULT gen_random_uuid(),
   title varchar,
   description text,
   category category_types DEFAULT 'UNCATEGORISED',
@@ -77,7 +77,7 @@ CREATE TABLE play_list_names (
 );
 
 CREATE TABLE play_lists (
-  id uuid DEFAULT uuid_generate_v4(),
+  id uuid DEFAULT gen_random_uuid(),
   play_list_names_id bigint NOT NULL,
   video_id uuid NOT NULL,
   created_at timestamptz NOT NULL DEFAULT now(),

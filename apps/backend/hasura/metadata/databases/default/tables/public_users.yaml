@@ -2,20 +2,6 @@ table:
   name: users
   schema: public
 array_relationships:
-  - name: subscribers
-    using:
-      foreign_key_constraint_on:
-        column: subscriber_id
-        table:
-          name: channel_subscriptions
-          schema: public
-  - name: subscribed_channels
-    using:
-      foreign_key_constraint_on:
-        column: channel_id
-        table:
-          name: channel_subscriptions
-          schema: public
   - name: feelings
     using:
       foreign_key_constraint_on:
@@ -29,6 +15,20 @@ array_relationships:
         column: user_id
         table:
           name: play_list_names
+          schema: public
+  - name: subscribed_channels
+    using:
+      foreign_key_constraint_on:
+        column: channel_id
+        table:
+          name: channel_subscriptions
+          schema: public
+  - name: subscribers
+    using:
+      foreign_key_constraint_on:
+        column: subscriber_id
+        table:
+          name: channel_subscriptions
           schema: public
   - name: videos
     using:

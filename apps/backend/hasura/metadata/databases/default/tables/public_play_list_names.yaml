@@ -16,7 +16,14 @@ array_relationships:
 insert_permissions:
   - role: user
     permission:
-      check: {}
+      check:
+        _exists:
+          _table:
+            name: users
+            schema: public
+          _where:
+            id:
+              _eq: X-Hasura-User-Id
       set:
         user_id: x-hasura-User-Id
       columns:
@@ -29,3 +36,10 @@ select_permissions:
         - name
         - video_count
       filter: {}
+delete_permissions:
+  - role: user
+    permission:
+      backend_only: false
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
