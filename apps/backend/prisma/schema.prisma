@@ -8,34 +8,23 @@ datasource db {
 }
 
 model ChannelSubscriptions {
-  subscriberId String    @map("subscriber_id") @db.Uuid
-  channelId    String    @map("channel_id") @db.Uuid
-  createdAt    DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
-  channels     Channels  @relation(fields: [channelId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "channel_id_fk")
-  users        Users     @relation(fields: [subscriberId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subscriber_id_fk")
+  subscriberId String   @map("subscriber_id") @db.Uuid
+  channelId    String   @map("channel_id") @db.Uuid
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  channels     Users    @relation("subscribed_channels", fields: [channelId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "channel_id_fk")
+  subscribers  Users    @relation(fields: [subscriberId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subscriber_id_fk")
 
   @@id([subscriberId, channelId], map: "channel_subscriptions_composite_pk")
   @@map("channel_subscriptions")
 }
 
-model Channels {
-  id                    String                 @id(map: "channels_id_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  name                  String                 @unique @db.VarChar
-  description           String?
-  userId                String?                @map("user_id") @db.Uuid
-  createdAt             DateTime?              @default(now()) @map("created_at") @db.Timestamptz(6)
-  users                 Users?                 @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
-  channelSubscriptions  ChannelSubscriptions[]
-  videos                Videos[]
-}
-
 model Feelings {
-  userId    String          @map("user_id") @db.Uuid
-  videoId   String          @map("video_id") @db.Uuid
-  reaction  reaction_types?
-  createdAt DateTime?       @default(now()) @map("created_at") @db.Timestamptz(6)
-  users     Users           @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
-  videos    Videos          @relation(fields: [videoId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "videos_id_fk")
+  userId    String         @map("user_id") @db.Uuid
+  videoId   String         @map("video_id") @db.Uuid
+  reaction  reaction_types
+  createdAt DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
+  users     Users          @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
+  videos    Videos         @relation(fields: [videoId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "videos_id_fk")
 
   @@id([userId, videoId], map: "feelings_composite_pk")
 }
@@ -45,7 +34,7 @@ model PlayListNames {
   name       String      @db.VarChar
   userId     String      @map("user_id") @db.Uuid
   videoCount BigInt?     @default(0) @map("video_count")
-  createdAt  DateTime?   @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt  DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
   users      Users       @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
   playLists  PlayLists[]
 
@@ -53,12 +42,12 @@ model PlayListNames {
 }
 
 model PlayLists {
-  id              String          @id(map: "play_lists_id_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  playListNamesId BigInt          @map("play_list_names_id")
-  videoId         String          @map("video_id") @db.Uuid
-  createdAt       DateTime?       @default(now()) @map("created_at") @db.Timestamptz(6)
-  playListNames   PlayListNames   @relation(fields: [playListNamesId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "play_list_names_id_fk")
-  videos          Videos          @relation(fields: [videoId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "videos_id_fk")
+  id              String        @id(map: "play_lists_id_pk") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  playListNamesId BigInt        @map("play_list_names_id")
+  videoId         String        @map("video_id") @db.Uuid
+  createdAt       DateTime      @default(now()) @map("created_at") @db.Timestamptz(6)
+  playListNames   PlayListNames @relation(fields: [playListNamesId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "play_list_names_id_fk")
+  videos          Videos        @relation(fields: [videoId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "videos_id_fk")
 
   @@map("play_lists")
 }
@@ -70,38 +59,50 @@ model SchemaMigrations {
 }
 
 model Users {
-  id                    String                 @id(map: "users_id_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  email                 String                 @unique @db.Citext
-  phone                 String?                @db.VarChar
-  name                  String                 @db.VarChar
-  channelName           String?                @map("channel_name") @db.VarChar
-  createdAt             DateTime?              @default(now()) @map("created_at") @db.Timestamptz(6)
-  updatedAt             DateTime?              @map("updated_at") @db.Timestamptz(6)
-  channelSubscriptions  ChannelSubscriptions[]
-  channels              Channels[]
-  feelings              Feelings[]
-  playListNames         PlayListNames[]
-  videos                Videos[]
+  id                   String                 @id(map: "users_id_pk") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email                String                 @unique @db.Citext
+  phone                String?                @db.VarChar
+  name                 String                 @db.VarChar
+  channelName          String                 @unique @map("channel_name") @db.VarChar
+  description          String?
+  createdAt            DateTime               @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt            DateTime?              @map("updated_at") @db.Timestamptz(6)
+  channelSubscriptions ChannelSubscriptions[] @relation("subscribed_channels")
+  feelings             Feelings[]
+  playListNames        PlayListNames[]
+  videos               Videos[]
+  watchHistory         watchHistory[]
+  ChannelSubscriptions ChannelSubscriptions[]
 }
 
 model Videos {
-  id          String          @id(map: "videos_id_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id          String          @id(map: "videos_id_pk") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   title       String?         @db.VarChar
   description String?
   category    category_types? @default(UNCATEGORISED)
   views       Int?            @default(0)
   thumbnail   String          @unique @db.VarChar
   streamUrl   String          @unique @map("stream_url") @db.VarChar
-  userId      String          @map("user_id") @db.Uuid
   channelId   String          @map("channel_id") @db.Uuid
-  createdAt   DateTime?       @default(now()) @map("created_at") @db.Timestamptz(6)
+  duration    Float?
+  createdAt   DateTime        @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt   DateTime?       @map("updated_at") @db.Timestamptz(6)
-  channels    Channels        @relation(fields: [channelId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "channels_id_fk")
-  users       Users           @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
+  channels    Users           @relation(fields: [channelId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "channels_id_fk")
   feelings    Feelings[]
-  play_lists  PlayLists[]
+  playLists   PlayLists[]
 
-  @@index([userId])
+  @@index([channelId], map: "videos_channel_id_idx")
+}
+
+model watchHistory {
+  videoId        String    @db.Uuid
+  userId         String    @db.Uuid
+  lastWatchtedAt DateTime? @db.Time(6)
+  createdAt      DateTime  @default(now()) @db.Timestamptz(6)
+  users          Users     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
+
+  @@id([videoId, userId], map: "watch_history_cs_pk")
+  @@map("watch_history")
 }
 
 enum category_types {

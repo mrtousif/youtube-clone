@@ -49,13 +49,14 @@ CREATE TABLE videos (
   stream_url varchar UNIQUE NOT NULL,
   channel_id uuid NOT NULL,
   duration float constraint duration_nonnegative check (duration > 0),
+  is_private boolean DEFAULT FALSE,
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz,
   CONSTRAINT videos_id_pk PRIMARY KEY (id),
   CONSTRAINT channels_id_fk FOREIGN KEY (channel_id) REFERENCES users(id)
 );
 
-CREATE INDEX videos_user_id_idx ON videos (channel_id);
+CREATE INDEX videos_channel_id_idx ON videos (channel_id);
 
 CREATE TABLE watch_history (
   video_id uuid,
@@ -63,7 +64,8 @@ CREATE TABLE watch_history (
   last_watchted_at TIME,
   created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT watch_history_cs_pk PRIMARY KEY (video_id, user_id),
-  CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id)
+  CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id),
+  CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id)
 );
 
 CREATE TABLE play_list_names (
@@ -94,7 +96,7 @@ CREATE TYPE reaction_types AS ENUM (
 CREATE TABLE feelings (
   user_id uuid NOT NULL,
   video_id uuid NOT NULL,
-  reaction reaction_types,
+  reaction reaction_types NOT NULL,
   created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT feelings_composite_pk PRIMARY KEY (user_id, video_id),
   CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id),
@@ -125,7 +127,6 @@ EXECUTE PROCEDURE update_at_timestamp();
 
 -- migrate:down
 
-DROP INDEX videos_user_id_idx;
 DROP TABLE play_lists;
 DROP TABLE play_list_names;
 DROP TABLE feelings;

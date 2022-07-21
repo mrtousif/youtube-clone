@@ -28,6 +28,7 @@ insert_permissions:
         channel_id: x-hasura-User-Id
       columns:
         - description
+        - is_private
         - title
 select_permissions:
   - role: user
@@ -39,9 +40,11 @@ select_permissions:
         - description
         - duration
         - id
+        - is_private
         - stream_url
         - thumbnail
         - title
+        - updated_at
         - views
       filter: {}
 update_permissions:
@@ -49,6 +52,7 @@ update_permissions:
     permission:
       columns:
         - description
+        - is_private
         - title
       filter:
         channel_id:
