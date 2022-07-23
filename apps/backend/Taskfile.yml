@@ -17,6 +17,10 @@ tasks:
     cmds:
       - hasura --project ./hasura --skip-update-check {{.CLI_ARGS}}
 
+  migrateUp:
+    cmds:
+      - dbmate up
+
   migrateDown:
     cmds:
       - dbmate down

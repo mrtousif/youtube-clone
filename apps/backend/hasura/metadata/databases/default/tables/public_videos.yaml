@@ -20,10 +20,24 @@ array_relationships:
         table:
           name: play_lists
           schema: public
+  - name: watch_histories
+    using:
+      foreign_key_constraint_on:
+        column: video_id
+        table:
+          name: watch_history
+          schema: public
 insert_permissions:
   - role: user
     permission:
-      check: {}
+      check:
+        _exists:
+          _table:
+            name: users
+            schema: public
+          _where:
+            id:
+              _eq: X-Hasura-User-Id
       set:
         channel_id: x-hasura-User-Id
       columns:
@@ -34,18 +48,20 @@ select_permissions:
   - role: user
     permission:
       columns:
-        - category
-        - channel_id
-        - created_at
-        - description
-        - duration
-        - id
         - is_private
         - stream_url
         - thumbnail
         - title
+        - duration
+        - dislikes_count
+        - likes_count
+        - views_count
+        - description
+        - created_at
         - updated_at
-        - views
+        - category
+        - channel_id
+        - id
       filter: {}
 update_permissions:
   - role: user

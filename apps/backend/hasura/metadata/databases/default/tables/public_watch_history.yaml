@@ -8,6 +8,22 @@ object_relationships:
   - name: video
     using:
       foreign_key_constraint_on: video_id
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        _exists:
+          _table:
+            name: users
+            schema: public
+          _where:
+            id:
+              _eq: X-Hasura-User-Id
+      columns:
+        - video_id
+        - user_id
+        - last_watchted_at
+        - created_at
 select_permissions:
   - role: user
     permission:

@@ -8,7 +8,7 @@ BEGIN
         SET subscriber_count = subscriber_count - 1
         WHERE  users.id = OLD.channel_id;
 
-    ELSE
+    ELSEIF (TG_OP = 'INSERT') THEN
         UPDATE users 
         SET subscriber_count = subscriber_count + 1
         WHERE  users.id = NEW.channel_id;
@@ -20,7 +20,7 @@ $$ language 'plpgsql';
 
 
 CREATE TRIGGER update_subscriber_count
-AFTER INSERT OR UPDATE OR DELETE ON channel_subscriptions
+AFTER INSERT OR DELETE ON channel_subscriptions
     FOR EACH ROW EXECUTE FUNCTION update_subscriber_count();
 
 
