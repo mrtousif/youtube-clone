@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "@aws-sdk/client-s3": "^3.131.0",
+        "@fastify/under-pressure": "^7.0.0",
         "@golevelup/nestjs-graphql-request": "0.1.11",
         "@golevelup/nestjs-hasura": "2.0.3",
         "@nestjs/common": "8.4.7",
