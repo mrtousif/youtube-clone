@@ -22,6 +22,7 @@ CREATE TABLE users (
   name varchar NOT NULL,
   channel_name varchar NOT NULL UNIQUE,
   description text,
+  subscriber_count int DEFAULT 0 constraint count_nonnegative check (subscriber_count >= 0),
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz,
   CONSTRAINT users_id_pk PRIMARY KEY (id)
@@ -44,7 +45,9 @@ CREATE TABLE videos (
   title varchar,
   description text,
   category category_types DEFAULT 'UNCATEGORISED',
-  views int DEFAULT 0,
+  views_count int DEFAULT 0 constraint views_nonnegative check (views_count >= 0),
+  likes_count int DEFAULT 0 constraint likes_nonnegative check (likes_count >= 0),
+  dislikes_count int DEFAULT 0 constraint dislikes_nonnegative check (dislikes_count >= 0),
   thumbnail varchar UNIQUE NOT NULL,
   stream_url varchar UNIQUE NOT NULL,
   channel_id uuid NOT NULL,
