@@ -248,7 +248,7 @@ importers:
       node-sass: ^7.0.1
       react: 18.1.0
       react-dom: 18.1.0
-      react-scripts: 5.0.0
+      react-scripts: 5.0.1
       tsconfig: workspace:*
       tss-react: ^3.7.0
       typescript: ^4.7.3
@@ -263,7 +263,7 @@ importers:
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.4
       node-sass: 7.0.1
-      react-scripts: 5.0.0_ucgkuirgrbd3awlzgbvjayio5m
+      react-scripts: 5.0.1_ucgkuirgrbd3awlzgbvjayio5m
       tsconfig: link:../../packages/tsconfig
       typescript: 4.7.4
 
@@ -10399,7 +10399,7 @@ packages:
     peerDependencies:
       eslint: ^7.5.0 || ^8.0.0
     dependencies:
-      '@typescript-eslint/utils': 5.30.0_4x5o4skxv6sl53vpwefgt23khm
+      '@typescript-eslint/utils': 5.30.6_4x5o4skxv6sl53vpwefgt23khm
       eslint: 8.19.0
     transitivePeerDependencies:
       - supports-color
@@ -17163,8 +17163,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-scripts/5.0.0_ucgkuirgrbd3awlzgbvjayio5m:
-    resolution: {integrity: sha512-3i0L2CyIlROz7mxETEdfif6Sfhh9Lfpzi10CtcGs1emDQStmZfWjJbAIMtRD0opVUjQuFWqHZyRZ9PPzKCFxWg==}
+  /react-scripts/5.0.1_ucgkuirgrbd3awlzgbvjayio5m:
+    resolution: {integrity: sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     peerDependencies:
