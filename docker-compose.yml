@@ -56,8 +56,8 @@ services:
             DB_DATABASE: keycloak_db
             DB_USER: keycloak
             DB_PASSWORD: password
-            KEYCLOAK_USER: admin
-            KEYCLOAK_PASSWORD: password
+            KEYCLOAK_ADMIN: admin
+            KEYCLOAK_ADMIN_PASSWORD: password123
             PROXY_ADDRESS_FORWARDING: "true"
         ports:
             - 8083:8080
