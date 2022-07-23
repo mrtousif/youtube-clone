@@ -1,6 +1,7 @@
 import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { PrismaService, PrismaClientExceptionFilter } from 'nestjs-prisma';
+import { ClsMiddleware } from 'nestjs-cls';
 // import underPressure from "@fastify/under-pressure";
 import { AppModule } from './app.module';
 
@@ -20,6 +21,11 @@ async function bootstrap() {
     //     maxRssBytes: 100000000,
     //     maxEventLoopUtilization:0.98
     // });
+    app.use(
+        new ClsMiddleware({
+            useEnterWith: true,
+        }).use
+    );
 
     const prismaService: PrismaService = app.get(PrismaService);
     prismaService.enableShutdownHooks(app);
