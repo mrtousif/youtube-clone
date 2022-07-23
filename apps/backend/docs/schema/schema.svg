@@ -214,7 +214,7 @@
 <title>public.play_lists:play_list_names_id&#45;&gt;public.play_list_names:id</title>
 <path fill="none" stroke="#000000" d="M1139.6861,-1120.4223C1176.2384,-1111.6036 1142.8405,-1050.4694 1129.5,-1004 1104.7618,-917.8284 1047.2382,-919.1716 1022.5,-833 1011.0334,-793.0578 980.9444,-739.5 1022.5,-739.5"/>
 <polygon fill="#000000" stroke="#000000" points="1139.4445,-1120.4478 1129.0265,-1117.025 1134.4722,-1120.9739 1129.5,-1121.5 1129.5,-1121.5 1129.5,-1121.5 1134.4722,-1120.9739 1129.9735,-1125.975 1139.4445,-1120.4478 1139.4445,-1120.4478"/>
-<text text-anchor="start" x="968.1035" y="-1105.5" font-family="Arial" font-size="10.00" fill="#000000">FOREIGN KEY (play_list_names_id) REFERENCES play_list_names(id)</text>
+<text text-anchor="start" x="913.3225" y="-1105.5" font-family="Arial" font-size="10.00" fill="#000000">FOREIGN KEY (play_list_names_id) REFERENCES play_list_names(id) ON DELETE CASCADE</text>
 </g>
 <!-- public.feelings -->
 <g id="node7" class="node">

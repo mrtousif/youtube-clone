@@ -88,12 +88,12 @@ CREATE TABLE play_lists (
   created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT play_lists_id_pk PRIMARY KEY (id),
   CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id),
-  CONSTRAINT play_list_names_id_fk FOREIGN KEY (play_list_names_id) REFERENCES play_list_names(id)
+  CONSTRAINT play_list_names_id_fk FOREIGN KEY (play_list_names_id) REFERENCES play_list_names(id) ON DELETE CASCADE
 );
 
 CREATE TYPE reaction_types AS ENUM (
-  'LIKED',
-  'DISLIKED'
+  'LIKE',
+  'DISLIKE'
 );
 
 CREATE TABLE feelings (
