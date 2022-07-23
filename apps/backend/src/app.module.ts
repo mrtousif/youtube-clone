@@ -31,7 +31,6 @@ import { FileStorageService } from './file-storage/file-storage.service';
         EnvalidModule.forRoot({ validators }),
         ClsModule.register({
             global: true,
-            middleware: { mount: true },
         }),
         PrismaModule.forRootAsync({
             isGlobal: true,
