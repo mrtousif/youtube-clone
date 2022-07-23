@@ -20,11 +20,11 @@
         "test:cov": "jest --coverage",
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
         "test:e2e": "jest --config ./test/jest-e2e.json",
-        "hasura": "hasura --project ./hasura --envfile ../.env.development --skip-update-check"
+        "hasura": "hasura --project ./hasura --envfile ../.env.development --skip-update-check",
+        "generate": "pnpm graphql-codegen"
     },
     "dependencies": {
         "@aws-sdk/client-s3": "^3.131.0",
-        "@fastify/under-pressure": "^7.0.0",
         "@golevelup/nestjs-graphql-request": "0.1.11",
         "@golevelup/nestjs-hasura": "2.0.3",
         "@nestjs/common": "8.4.7",
@@ -60,6 +60,11 @@
         "zod": "3.17.3"
     },
     "devDependencies": {
+        "@graphql-codegen/cli": "2.6.4",
+        "@graphql-codegen/introspection": "^2.1.0",
+        "@graphql-codegen/typescript": "^2.1.2",
+        "@graphql-codegen/typescript-graphql-request": "^4.1.2",
+        "@graphql-codegen/typescript-operations": "^2.1.2",
         "@nestjs/cli": "8.2.8",
         "@nestjs/schematics": "8.0.11",
         "@nestjs/testing": "8.4.7",

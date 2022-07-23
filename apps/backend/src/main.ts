@@ -1,7 +1,7 @@
 import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { PrismaService, PrismaClientExceptionFilter } from 'nestjs-prisma';
-import underPressure from "@fastify/under-pressure";
+// import underPressure from "@fastify/under-pressure";
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -14,12 +14,12 @@ async function bootstrap() {
             trustProxy: true,
         })
     );
-    app.register(underPressure, {
-        maxEventLoopDelay: 1000,
-        maxHeapUsedBytes: 100000000,
-        maxRssBytes: 100000000,
-        maxEventLoopUtilization:0.98
-    });
+    // app.register(underPressure, {
+    //     maxEventLoopDelay: 1000,
+    //     maxHeapUsedBytes: 100000000,
+    //     maxRssBytes: 100000000,
+    //     maxEventLoopUtilization:0.98
+    // });
 
     const prismaService: PrismaService = app.get(PrismaService);
     prismaService.enableShutdownHooks(app);
@@ -28,6 +28,5 @@ async function bootstrap() {
     app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
 
     await app.listen(process.env.API_PORT);
-    console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();
