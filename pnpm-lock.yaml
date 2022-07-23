@@ -192,7 +192,7 @@ importers:
       tsconfig: workspace:*
       typescript: 4.7.4
       urql: 2.2.2
-      vite: 2.9.13
+      vite: 2.9.14
       vite-plugin-checker: 0.4.9
       vite-plugin-pwa: 0.12.2
       vite-tsconfig-paths: 3.5.0
@@ -231,10 +231,10 @@ importers:
       optionator: 0.9.1
       tsconfig: link:../../packages/tsconfig
       typescript: 4.7.4
-      vite: 2.9.13
-      vite-plugin-checker: 0.4.9_vite@2.9.13
-      vite-plugin-pwa: 0.12.2_vite@2.9.13
-      vite-tsconfig-paths: 3.5.0_vite@2.9.13
+      vite: 2.9.14
+      vite-plugin-checker: 0.4.9_vite@2.9.14
+      vite-plugin-pwa: 0.12.2_vite@2.9.14
+      vite-tsconfig-paths: 3.5.0_vite@2.9.14
       vitest: 0.17.0_c8@7.11.3+jsdom@20.0.0
       workbox-window: 6.5.3
 
@@ -19830,7 +19830,7 @@ packages:
       vfile-message: 2.0.4
     dev: false
 
-  /vite-plugin-checker/0.4.9_vite@2.9.13:
+  /vite-plugin-checker/0.4.9_vite@2.9.14:
     resolution: {integrity: sha512-Oii9mTum8bqZovWejcR739kCqST32oG6LdB/XMdwcLVzmcjq0gf1iVDIedVzJJ7t6GLQAYgjNwvB0fuMiT3tlg==}
     hasBin: true
     peerDependencies:
@@ -19847,14 +19847,14 @@ packages:
       npm-run-path: 4.0.1
       strip-ansi: 6.0.1
       tiny-invariant: 1.2.0
-      vite: 2.9.13
+      vite: 2.9.14
       vscode-languageclient: 7.0.0
       vscode-languageserver: 7.0.0
       vscode-languageserver-textdocument: 1.0.5
       vscode-uri: 3.0.3
     dev: true
 
-  /vite-plugin-pwa/0.12.2_vite@2.9.13:
+  /vite-plugin-pwa/0.12.2_vite@2.9.14:
     resolution: {integrity: sha512-XK2oi1YZkoc1J8fyerNYxyh/yfb+INdrdOW/mOOD5DBLq7jVPxHQuncIhqiREbGOMlY/xMe9CSE7QZ9xIAEf7A==}
     peerDependencies:
       vite: ^2.0.0 || ^3.0.0-0
@@ -19863,7 +19863,7 @@ packages:
       fast-glob: 3.2.11
       pretty-bytes: 6.0.0
       rollup: 2.75.7
-      vite: 2.9.13
+      vite: 2.9.14
       workbox-build: 6.5.3
       workbox-window: 6.5.3
     transitivePeerDependencies:
@@ -19871,7 +19871,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-tsconfig-paths/3.5.0_vite@2.9.13:
+  /vite-tsconfig-paths/3.5.0_vite@2.9.14:
     resolution: {integrity: sha512-NKIubr7gXgh/3uniQaOytSg+aKWPrjquP6anAy+zCWEn6h9fB8z2/qdlfQrTgZWaXJ2pHVlllrSdRZltHn9P4g==}
     peerDependencies:
       vite: '>2.0.0-0'
@@ -19880,13 +19880,13 @@ packages:
       globrex: 0.1.2
       recrawl-sync: 2.2.2
       tsconfig-paths: 4.0.0
-      vite: 2.9.13
+      vite: 2.9.14
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/2.9.13:
-    resolution: {integrity: sha512-AsOBAaT0AD7Mhe8DuK+/kE4aWYFMx/i0ZNi98hJclxb4e0OhQcZYUrvLjIaQ8e59Ui7txcvKMiJC1yftqpQoDw==}
+  /vite/2.9.14:
+    resolution: {integrity: sha512-P/UCjSpSMcE54r4mPak55hWAZPlyfS369svib/gpmz8/01L822lMPOJ/RYW6tLCe1RPvMvOsJ17erf55bKp4Hw==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
@@ -19941,7 +19941,7 @@ packages:
       local-pkg: 0.4.1
       tinypool: 0.2.2
       tinyspy: 0.3.3
-      vite: 2.9.13
+      vite: 2.9.14
     transitivePeerDependencies:
       - less
       - sass
