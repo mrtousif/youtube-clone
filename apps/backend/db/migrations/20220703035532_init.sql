@@ -42,7 +42,7 @@ CREATE TYPE category_types AS ENUM (
 
 CREATE TABLE videos (
   id uuid DEFAULT gen_random_uuid(),
-  title varchar,
+  title varchar NOT NULL constraint title_length check (char_length(title) <= 100),
   description text,
   category category_types DEFAULT 'UNCATEGORISED',
   views_count int DEFAULT 0 constraint views_nonnegative check (views_count >= 0),

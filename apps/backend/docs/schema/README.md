@@ -5,9 +5,9 @@
 | Name | Columns | Comment | Type |
 | ---- | ------- | ------- | ---- |
 | [public.schema_migrations](public.schema_migrations.md) | 1 |  | BASE TABLE |
-| [public.users](public.users.md) | 7 |  | BASE TABLE |
-| [public.channels](public.channels.md) | 5 |  | BASE TABLE |
-| [public.videos](public.videos.md) | 11 |  | BASE TABLE |
+| [public.users](public.users.md) | 9 | Users table is channels table. The user_id and channel_id is synonyms. A user cannot have multiple channels | BASE TABLE |
+| [public.videos](public.videos.md) | 14 |  | BASE TABLE |
+| [public.watch_history](public.watch_history.md) | 4 |  | BASE TABLE |
 | [public.play_list_names](public.play_list_names.md) | 5 |  | BASE TABLE |
 | [public.play_lists](public.play_lists.md) | 4 |  | BASE TABLE |
 | [public.feelings](public.feelings.md) | 4 |  | BASE TABLE |
@@ -17,13 +17,20 @@
 
 | Name | ReturnType | Arguments | Type |
 | ---- | ------- | ------- | ---- |
-| public.uuid_ns_dns | uuid |  | FUNCTION |
+| extensions.uuid_nil | uuid |  | FUNCTION |
+| extensions.uuid_ns_dns | uuid |  | FUNCTION |
+| extensions.uuid_ns_url | uuid |  | FUNCTION |
+| extensions.uuid_ns_oid | uuid |  | FUNCTION |
+| extensions.uuid_ns_x500 | uuid |  | FUNCTION |
+| extensions.uuid_generate_v1 | uuid |  | FUNCTION |
+| extensions.uuid_generate_v1mc | uuid |  | FUNCTION |
+| extensions.uuid_generate_v3 | uuid | namespace uuid, name text | FUNCTION |
+| extensions.uuid_generate_v4 | uuid |  | FUNCTION |
+| extensions.uuid_generate_v5 | uuid | namespace uuid, name text | FUNCTION |
 | auth.uid | uuid |  | FUNCTION |
 | auth.role | text |  | FUNCTION |
 | auth.email | text |  | FUNCTION |
-| public.uuid_ns_url | uuid |  | FUNCTION |
-| public.uuid_ns_oid | uuid |  | FUNCTION |
-| public.uuid_ns_x500 | uuid |  | FUNCTION |
+| public.citext_pattern_le | bool | citext, citext | FUNCTION |
 | public.citextin | citext | cstring | FUNCTION |
 | public.citextout | cstring | citext | FUNCTION |
 | public.citextrecv | citext | internal | FUNCTION |
@@ -52,9 +59,9 @@
 | public.texticregexeq | bool | citext, text | FUNCTION |
 | public.texticregexne | bool | citext, text | FUNCTION |
 | public.regexp_match | _text | citext, citext | FUNCTION |
-| public.uuid_nil | uuid |  | FUNCTION |
 | public.regexp_match | _text | citext, citext, text | FUNCTION |
 | public.regexp_matches | _text | citext, citext | FUNCTION |
+| public.citext_pattern_gt | bool | citext, citext | FUNCTION |
 | public.regexp_matches | _text | citext, citext, text | FUNCTION |
 | public.regexp_replace | text | citext, citext, text | FUNCTION |
 | public.regexp_replace | text | citext, citext, text, text | FUNCTION |
@@ -67,17 +74,11 @@
 | public.split_part | text | citext, citext, integer | FUNCTION |
 | public.translate | text | citext, citext, text | FUNCTION |
 | public.citext_pattern_lt | bool | citext, citext | FUNCTION |
-| public.citext_pattern_le | bool | citext, citext | FUNCTION |
-| public.citext_pattern_gt | bool | citext, citext | FUNCTION |
 | public.citext_pattern_ge | bool | citext, citext | FUNCTION |
 | public.citext_pattern_cmp | int4 | citext, citext | FUNCTION |
 | public.citext_hash_extended | int8 | citext, bigint | FUNCTION |
-| public.uuid_generate_v1 | uuid |  | FUNCTION |
-| public.uuid_generate_v1mc | uuid |  | FUNCTION |
-| public.uuid_generate_v3 | uuid | namespace uuid, name text | FUNCTION |
-| public.uuid_generate_v4 | uuid |  | FUNCTION |
-| public.uuid_generate_v5 | uuid | namespace uuid, name text | FUNCTION |
 | public.update_at_timestamp | trigger |  | FUNCTION |
+| public.update_subscriber_count | trigger |  | FUNCTION |
 
 ## Relations
 

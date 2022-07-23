@@ -6,7 +6,7 @@
 
 | Name | Type | Default | Nullable | Children | Parents | Comment |
 | ---- | ---- | ------- | -------- | -------- | ------- | ------- |
-| id | uuid | uuid_generate_v4() | false |  |  |  |
+| id | uuid | gen_random_uuid() | false |  |  |  |
 | play_list_names_id | bigint |  | false |  | [public.play_list_names](public.play_list_names.md) |  |
 | video_id | uuid |  | false |  | [public.videos](public.videos.md) |  |
 | created_at | timestamp with time zone | now() | false |  |  |  |

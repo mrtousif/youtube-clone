@@ -1,4 +1,4 @@
-# public.feelings
+# public.watch_history
 
 ## Description
 
@@ -6,9 +6,9 @@
 
 | Name | Type | Default | Nullable | Children | Parents | Comment |
 | ---- | ---- | ------- | -------- | -------- | ------- | ------- |
-| user_id | uuid |  | false |  | [public.users](public.users.md) |  |
 | video_id | uuid |  | false |  | [public.videos](public.videos.md) |  |
-| reaction | reaction_types |  | false |  |  |  |
+| user_id | uuid |  | false |  | [public.users](public.users.md) |  |
+| last_watchted_at | time without time zone |  | true |  |  |  |
 | created_at | timestamp with time zone | now() | false |  |  |  |
 
 ## Constraints
@@ -17,17 +17,17 @@
 | ---- | ---- | ---------- |
 | users_id_fk | FOREIGN KEY | FOREIGN KEY (user_id) REFERENCES users(id) |
 | videos_id_fk | FOREIGN KEY | FOREIGN KEY (video_id) REFERENCES videos(id) |
-| feelings_composite_pk | PRIMARY KEY | PRIMARY KEY (user_id, video_id) |
+| watch_history_cs_pk | PRIMARY KEY | PRIMARY KEY (video_id, user_id) |
 
 ## Indexes
 
 | Name | Definition |
 | ---- | ---------- |
-| feelings_composite_pk | CREATE UNIQUE INDEX feelings_composite_pk ON public.feelings USING btree (user_id, video_id) |
+| watch_history_cs_pk | CREATE UNIQUE INDEX watch_history_cs_pk ON public.watch_history USING btree (video_id, user_id) |
 
 ## Relations
 
-![er](public.feelings.svg)
+![er](public.watch_history.svg)
 
 ---
 
