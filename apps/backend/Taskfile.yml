@@ -6,10 +6,20 @@ env:
 dotenv: ['.env', '.env.{{.ENV}}']
 
 tasks:
+  startUp:
+    deps: [composeUp]
+    cmds:
+      - dbmate up
+      - pnpm hasura metadata apply
+      - pnpm prisma:generate
+
+  hasura:
+    cmds:
+      - hasura --project ./hasura --skip-update-check {{.CLI_ARGS}}
+
   migrateUp:
     cmds:
       - dbmate up
-      - hasura metadata reload
 
   migrateDown:
     cmds:
@@ -18,3 +28,11 @@ tasks:
   prismaPull:
     cmds: 
       - pnpm prisma db pull
+      
+  composeUp:
+    cmds:
+      - docker-compose --env-file ./.env.development up -d
+
+  composeDown:
+    cmds:
+      - docker-compose --env-file ./.env.development down --remove-orphans

@@ -1,0 +1,83 @@
+table:
+  name: videos
+  schema: public
+object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: channel_id
+array_relationships:
+  - name: feelings
+    using:
+      foreign_key_constraint_on:
+        column: video_id
+        table:
+          name: feelings
+          schema: public
+  - name: play_lists
+    using:
+      foreign_key_constraint_on:
+        column: video_id
+        table:
+          name: play_lists
+          schema: public
+  - name: watch_histories
+    using:
+      foreign_key_constraint_on:
+        column: video_id
+        table:
+          name: watch_history
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        _exists:
+          _table:
+            name: users
+            schema: public
+          _where:
+            id:
+              _eq: X-Hasura-User-Id
+      set:
+        channel_id: x-hasura-User-Id
+      columns:
+        - description
+        - is_private
+        - title
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - is_private
+        - stream_url
+        - thumbnail
+        - title
+        - duration
+        - dislikes_count
+        - likes_count
+        - views_count
+        - description
+        - created_at
+        - updated_at
+        - category
+        - channel_id
+        - id
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - description
+        - is_private
+        - title
+      filter:
+        channel_id:
+          _eq: X-Hasura-User-Id
+      check: {}
+delete_permissions:
+  - role: user
+    permission:
+      backend_only: false
+      filter:
+        channel_id:
+          _eq: X-Hasura-User-Id

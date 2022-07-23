@@ -19,6 +19,7 @@ import { ClsModule } from 'nestjs-cls';
 import { EnvalidModule, EnvalidModuleConfig } from 'nestjs-envalid';
 import { validators, Config } from './config';
 import { PrismaConfigService } from './PrismaConfigService';
+import { FileStorageService } from './file-storage/file-storage.service';
 
 @Module({
     imports: [
@@ -78,6 +79,6 @@ import { PrismaConfigService } from './PrismaConfigService';
         }),
     ],
     controllers: [AppController],
-    providers: [AppService],
+    providers: [AppService, FileStorageService],
 })
 export class AppModule {}

@@ -2,44 +2,72 @@ table:
   name: users
   schema: public
 array_relationships:
-  - name: items
+  - name: feelings
     using:
       foreign_key_constraint_on:
         column: user_id
         table:
-          name: items
+          name: feelings
           schema: public
-  - name: purchases
+  - name: play_list_names
     using:
       foreign_key_constraint_on:
         column: user_id
         table:
-          name: purchases
+          name: play_list_names
+          schema: public
+  - name: subscribed_channels
+    using:
+      foreign_key_constraint_on:
+        column: channel_id
+        table:
+          name: channel_subscriptions
+          schema: public
+  - name: subscribers
+    using:
+      foreign_key_constraint_on:
+        column: subscriber_id
+        table:
+          name: channel_subscriptions
+          schema: public
+  - name: videos
+    using:
+      foreign_key_constraint_on:
+        column: channel_id
+        table:
+          name: videos
+          schema: public
+  - name: watch_histories
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: watch_history
           schema: public
 select_permissions:
-  - permission:
+  - role: user
+    permission:
       columns:
-        - coins
+        - channel_name
         - created_at
-        - display_name
+        - description
         - email
         - id
-        - updated_at
+        - name
+        - phone
       filter:
         id:
           _eq: X-Hasura-User-Id
-    role: user
-event_triggers:
-  - name: user-created
-    definition:
-      enable_manual: false
-      insert:
-        columns: '*'
-    retry_conf:
-      num_retries: 3
-      interval_sec: 30
-      timeout_sec: 100
-    webhook_from_env: NESTJS_EVENT_WEBHOOK_ENDPOINT
-    headers:
-      - name: nestjs-event-webhook
-        value_from_env: NESTJS_EVENT_WEBHOOK_SHARED_SECRET
+      limit: 1
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - channel_name
+        - description
+        - name
+        - phone
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      check: null
