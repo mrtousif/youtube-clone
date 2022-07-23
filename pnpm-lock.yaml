@@ -193,7 +193,7 @@ importers:
       typescript: 4.7.4
       urql: 2.2.2
       vite: 2.9.13
-      vite-plugin-checker: 0.4.7
+      vite-plugin-checker: 0.4.9
       vite-plugin-pwa: 0.12.2
       vite-tsconfig-paths: 3.5.0
       vitest: ^0.17.0
@@ -232,7 +232,7 @@ importers:
       tsconfig: link:../../packages/tsconfig
       typescript: 4.7.4
       vite: 2.9.13
-      vite-plugin-checker: 0.4.7_vite@2.9.13
+      vite-plugin-checker: 0.4.9_vite@2.9.13
       vite-plugin-pwa: 0.12.2_vite@2.9.13
       vite-tsconfig-paths: 3.5.0_vite@2.9.13
       vitest: 0.17.0_c8@7.11.3+jsdom@20.0.0
@@ -19827,11 +19827,11 @@ packages:
       vfile-message: 2.0.4
     dev: false
 
-  /vite-plugin-checker/0.4.7_vite@2.9.13:
-    resolution: {integrity: sha512-cpuyopyDWyZO777Q0MM5dO2jmC9UKXQL4PfpxXYIjQ7uQWYGNMEw/hRP3oc/CUTiajB6Ndl1y3Fu93rOboahJA==}
+  /vite-plugin-checker/0.4.9_vite@2.9.13:
+    resolution: {integrity: sha512-Oii9mTum8bqZovWejcR739kCqST32oG6LdB/XMdwcLVzmcjq0gf1iVDIedVzJJ7t6GLQAYgjNwvB0fuMiT3tlg==}
     hasBin: true
     peerDependencies:
-      vite: '>=2'
+      vite: ^2.0.0 || ^3.0.0-0
     dependencies:
       '@babel/code-frame': 7.18.6
       ansi-escapes: 4.3.2
