@@ -27,5 +27,6 @@ tasks:
 
   dockerVolume:
     cmds:
+      - echo "Removing Docker volumes"
       - docker volume rm $(docker volume ls -q)
 
