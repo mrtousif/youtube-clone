@@ -4,7 +4,7 @@ importers:
 
   .:
     specifiers:
-      '@babel/plugin-transform-flow-strip-types': 7.18.6
+      '@babel/plugin-transform-flow-strip-types': 7.18.9
       '@commitlint/cli': 17.0.3
       '@commitlint/config-conventional': 17.0.3
       '@trivago/prettier-plugin-sort-imports': 3.2.0
@@ -21,7 +21,7 @@ importers:
       prettier-plugin-prisma: ^4.1.0
       turbo: latest
     devDependencies:
-      '@babel/plugin-transform-flow-strip-types': 7.18.6
+      '@babel/plugin-transform-flow-strip-types': 7.18.9
       '@commitlint/cli': 17.0.3
       '@commitlint/config-conventional': 17.0.3
       '@trivago/prettier-plugin-sort-imports': 3.2.0_prettier@2.7.1
@@ -1711,6 +1711,11 @@ packages:
     resolution: {integrity: sha512-gvZnm1YAAxh13eJdkb9EWHBnF3eAub3XTLCZEehHT2kWxiKVRL64+ae5Y6Ivne0mVHmMYKT+xWgZO+gQhuLUBg==}
     engines: {node: '>=6.9.0'}
 
+  /@babel/helper-plugin-utils/7.18.9:
+    resolution: {integrity: sha512-aBXPT3bmtLryXaoJLyYPXPlSD4p1ld9aYeR+sJNOZjJJGiOpb+fKfh3NkcCu7J54nUJwCERPBExCCpyCOHnu/w==}
+    engines: {node: '>=6.9.0'}
+    dev: true
+
   /@babel/helper-remap-async-to-generator/7.18.6_@babel+core@7.18.6:
     resolution: {integrity: sha512-z5wbmV55TveUPZlCLZvxWHtrjuJd+8inFhk7DG0WW87/oJuGDcjDiu7HIvGcpf5464L6xKCg3vNkmlVVz9hwyQ==}
     engines: {node: '>=6.9.0'}
@@ -2109,7 +2114,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/helper-plugin-utils': 7.18.6
+      '@babel/helper-plugin-utils': 7.18.9
     dev: true
 
   /@babel/plugin-syntax-flow/7.18.6_@babel+core@7.18.6:
@@ -2119,7 +2124,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.6
-      '@babel/helper-plugin-utils': 7.18.6
+      '@babel/helper-plugin-utils': 7.18.9
     dev: true
 
   /@babel/plugin-syntax-import-assertions/7.18.6_@babel+core@7.18.6:
@@ -2368,16 +2373,6 @@ packages:
       '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
-  /@babel/plugin-transform-flow-strip-types/7.18.6:
-    resolution: {integrity: sha512-wE0xtA7csz+hw4fKPwxmu5jnzAsXPIO57XnRwzXP3T19jWh1BODnPGoG9xKYwvAwusP7iUktHayRFbMPGtODaQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/helper-plugin-utils': 7.18.6
-      '@babel/plugin-syntax-flow': 7.18.6
-    dev: true
-
   /@babel/plugin-transform-flow-strip-types/7.18.6_@babel+core@7.18.6:
     resolution: {integrity: sha512-wE0xtA7csz+hw4fKPwxmu5jnzAsXPIO57XnRwzXP3T19jWh1BODnPGoG9xKYwvAwusP7iUktHayRFbMPGtODaQ==}
     engines: {node: '>=6.9.0'}
@@ -2387,6 +2382,16 @@ packages:
       '@babel/core': 7.18.6
       '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-flow': 7.18.6_@babel+core@7.18.6
+    dev: true
+
+  /@babel/plugin-transform-flow-strip-types/7.18.9:
+    resolution: {integrity: sha512-+G6rp2zRuOAInY5wcggsx4+QVao1qPM0osC9fTUVlAV3zOrzTCnrMAFVnR6+a3T8wz1wFIH7KhYMcMB3u1n80A==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/helper-plugin-utils': 7.18.9
+      '@babel/plugin-syntax-flow': 7.18.6
     dev: true
 
   /@babel/plugin-transform-for-of/7.18.6_@babel+core@7.18.6:
