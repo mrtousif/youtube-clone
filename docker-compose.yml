@@ -48,7 +48,7 @@ services:
         depends_on:
             - postgres
     keycloak:
-        image: bitnami/keycloak:18.0.2
+        image: bitnami/keycloak:19.0.1
         container_name: keycloak
         environment:
             DB_VENDOR: POSTGRES
