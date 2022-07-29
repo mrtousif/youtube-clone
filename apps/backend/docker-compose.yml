@@ -3,7 +3,7 @@ version: "3"
 services:
     hasura:
         container_name: hasura
-        image: hasura/graphql-engine:v2.9.0-beta.2
+        image: hasura/graphql-engine:v2.10.0-beta.1
         restart: unless-stopped
         ports:
             - "${HASURA_HOST_PORT}:8080"
@@ -20,7 +20,7 @@ services:
             ## enable debugging mode. It is recommended to disable this in production
             HASURA_GRAPHQL_DEV_MODE: "true"
             HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
-            HASURA_GRAPHQL_JWT_SECRET: '{"type":"HS256", "key": "${DEV_JWT_SECRET}"}'
+            HASURA_GRAPHQL_JWT_SECRET: '{"type":"HS384", "key": "${DEV_JWT_SECRET}"}'
             HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
             HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous
             HASURA_GRAPHQL_ENABLE_REMOTE_SCHEMA_PERMISSIONS: 'true'

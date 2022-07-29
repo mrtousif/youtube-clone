@@ -15,7 +15,6 @@ tasks:
   - name: Start up infra
     command: |
       docker network create nats
-      docker-compose --env-file ./.env.dev up
 
 # - name: Start up applications
 #   command: |

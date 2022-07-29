@@ -18,10 +18,13 @@
         "compose:down": "docker-compose --env-file ./.env.dev down --remove-orphans"
     },
     "devDependencies": {
+        "@auto-it/all-contributors": "^10.37.2",
+        "@auto-it/docker": "^10.37.2",
         "@babel/plugin-transform-flow-strip-types": "7.18.9",
         "@commitlint/cli": "17.0.3",
         "@commitlint/config-conventional": "17.0.3",
         "@trivago/prettier-plugin-sort-imports": "3.2.0",
+        "auto": "^10.37.2",
         "danger": "11.0.7",
         "danger-plugin-code-coverage": "1.1.9",
         "danger-plugin-complete-pr": "1.0.1",

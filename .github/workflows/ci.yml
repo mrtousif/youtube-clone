@@ -26,6 +26,9 @@ jobs:
                 base: ${{ github.event.repository.default_branch }}
                 head: HEAD
 
+            - name: Install Task
+              uses: arduino/setup-task@v1
+
             - uses: pnpm/action-setup@v2.2.2
               with:
                   version: 7

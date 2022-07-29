@@ -25,3 +25,8 @@ tasks:
     cmds:
       - docker-compose --env-file ./.env.dev down --remove-orphans
 
+  dockerVolume:
+    cmds:
+      - echo "Removing Docker volumes"
+      - docker volume rm $(docker volume ls -q)
+
