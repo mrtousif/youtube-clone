@@ -88,7 +88,7 @@ importers:
       nats: 2.7.1
       nestjs-cls: ^2.1.1
       nestjs-envalid: 1.2.1
-      nestjs-prisma: ^0.16.0
+      nestjs-prisma: ^0.17.0
       passport: ^0.6.0
       passport-jwt: 4.0.0
       pino-pretty: ^8.1.0
@@ -134,7 +134,7 @@ importers:
       nats: 2.7.1
       nestjs-cls: 2.1.1_7tsmhnugyerf5okgqzer2mfqme
       nestjs-envalid: 1.2.1_q5wjt7gfvk5rkuahokkhmuyn4i
-      nestjs-prisma: 0.16.0_wewnxmv36imidizfogtcqkiusy
+      nestjs-prisma: 0.17.0_wewnxmv36imidizfogtcqkiusy
       passport: 0.6.0
       passport-jwt: 4.0.0
       prisma-redis-middleware: 4.0.6
@@ -254,6 +254,8 @@ importers:
       '@types/node': ^15.3.1
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.4
+      eslint: 8.19.0
+      eslint-config-custom: workspace:*
       keycloakify: ^5.4.7
       node-sass: ^7.0.1
       react: 18.1.0
@@ -272,6 +274,8 @@ importers:
       '@types/node': 15.14.9
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.4
+      eslint: 8.19.0
+      eslint-config-custom: link:../../packages/eslint-custom-config
       node-sass: 7.0.1
       react-scripts: 5.0.1_ucgkuirgrbd3awlzgbvjayio5m
       tsconfig: link:../../packages/tsconfig
@@ -428,23 +432,6 @@ packages:
       source-map: 0.7.3
     dev: true
 
-  /@angular-devkit/core/13.3.6:
-    resolution: {integrity: sha512-ZmD586B+RnM2CG5+jbXh2NVfIydTc/yKSjppYDDOv4I530YBm6vpfZMwClpiNk6XLbMv7KqX4Tlr4wfxlPYYbA==}
-    engines: {node: ^12.20.0 || ^14.15.0 || >=16.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
-    peerDependencies:
-      chokidar: ^3.5.2
-    peerDependenciesMeta:
-      chokidar:
-        optional: true
-    dependencies:
-      ajv: 8.9.0
-      ajv-formats: 2.1.1
-      fast-json-stable-stringify: 2.1.0
-      magic-string: 0.25.7
-      rxjs: 6.6.7
-      source-map: 0.7.3
-    dev: false
-
   /@angular-devkit/core/13.3.6_chokidar@3.5.3:
     resolution: {integrity: sha512-ZmD586B+RnM2CG5+jbXh2NVfIydTc/yKSjppYDDOv4I530YBm6vpfZMwClpiNk6XLbMv7KqX4Tlr4wfxlPYYbA==}
     engines: {node: ^12.20.0 || ^14.15.0 || >=16.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -520,19 +507,6 @@ packages:
     transitivePeerDependencies:
       - chokidar
     dev: true
-
-  /@angular-devkit/schematics/13.3.6:
-    resolution: {integrity: sha512-yLh5xc92C/FiaAp27coPiKWpSUmwoXF7vMxbJYJTyOXlt0mUITAEAwtrZQNr4yAxW/yvgTdyg7PhXaveQNTUuQ==}
-    engines: {node: ^12.20.0 || ^14.15.0 || >=16.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
-    dependencies:
-      '@angular-devkit/core': 13.3.6
-      jsonc-parser: 3.0.0
-      magic-string: 0.25.7
-      ora: 5.4.1
-      rxjs: 6.6.7
-    transitivePeerDependencies:
-      - chokidar
-    dev: false
 
   /@angular-devkit/schematics/13.3.6_chokidar@3.5.3:
     resolution: {integrity: sha512-yLh5xc92C/FiaAp27coPiKWpSUmwoXF7vMxbJYJTyOXlt0mUITAEAwtrZQNr4yAxW/yvgTdyg7PhXaveQNTUuQ==}
@@ -15570,16 +15544,16 @@ packages:
       envalid: 7.3.1
     dev: false
 
-  /nestjs-prisma/0.16.0_wewnxmv36imidizfogtcqkiusy:
-    resolution: {integrity: sha512-gkXGx3vuwbQpwrsS9BhYKmiJh35oImUd/drca/nXT4zNw9THVcv1wZaWud/Av3SulV2ysowLtvNSrY2NjnMAdg==}
+  /nestjs-prisma/0.17.0_wewnxmv36imidizfogtcqkiusy:
+    resolution: {integrity: sha512-p+kcEE1mJo3LpEG5B3uzmtxY9GgxJD+aT7YzJsEFsj6olQFEXGKQdBoRhF004AKPYUpIAzkHEFn4c4GzJ4v9Bw==}
     peerDependencies:
-      '@nestjs/common': ^7.0.0 || ^8.0.0
-      '@nestjs/platform-express': ^7.0.0 || ^8.0.0
-      '@prisma/client': ^2.0.0 || ^3.0.0
-      prisma: ^2.0.0 || ^3.0.0
+      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0
+      '@nestjs/platform-express': ^7.0.0 || ^8.0.0 || ^9.0.0
+      '@prisma/client': ^2.0.0 || ^3.0.0 || ^4.0.0
+      prisma: ^2.0.0 || ^3.0.0 || ^4.0.0
     dependencies:
-      '@angular-devkit/core': 13.3.6
-      '@angular-devkit/schematics': 13.3.6
+      '@angular-devkit/core': 13.3.8
+      '@angular-devkit/schematics': 13.3.8
       '@nestjs/common': 8.4.7_47vcjb2de6lyibr6g4enoa5lyu
       '@prisma/client': 4.1.0_prisma@4.1.0
       '@schematics/angular': 13.3.8
