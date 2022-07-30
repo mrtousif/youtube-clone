@@ -39,4 +39,4 @@ tasks:
   
   dockerBuild:
     cmds: 
-      - DOCKER_BUILDKIT=1 docker build -f Dockerfile --build-arg SCOPE="backend" --build-arg FOLDER="backend" --build-arg PORT=6000 --tag youtube-clone/backend .
+      - docker build -f Dockerfile --build-arg SCOPE="backend" --build-arg FOLDER="backend" --build-arg PORT=6000 --tag youtube-clone/backend .

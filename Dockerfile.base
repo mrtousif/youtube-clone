@@ -1,0 +1,16 @@
+FROM node:16-slim AS baseImage
+WORKDIR /repo
+ARG PNPM_VERSION=7.6.0
+RUN npm --no-update-notifier --no-fund --global install pnpm@${PNPM_VERSION}
+
+FROM baseImage AS workspace
+# These folders include `package.json` files _only_ to avoid having to re-run pnpm install on every code change. They are pre-filtered via our build orchestrator (gradle)
+COPY apps/ apps/
+COPY packages/ packages/
+
+# Top-level monorepo concerns that are shared across projects
+COPY .npmrc .npmrc
+COPY pnpm-workspace.yaml pnpm-workspace.yaml
+COPY pnpm-lock.yaml pnpm-lock.yaml
+RUN pnpm install -r --frozen-lockfile && \
+	rm -rf ~/.pnpm-store;
