@@ -32,4 +32,4 @@ tasks:
 
   dockerBuildBackend:
     cmds: 
-      - docker build -f Dockerfile.node --build-arg SCOPE="backend" --tag youtube-clone/backend .
+      - docker build -f Dockerfile.node --build-arg SCOPE="backend" --build-arg SCOPE="backend" --build-arg PORT=6000 --tag youtube-clone/backend .

@@ -1,32 +1,29 @@
 FROM node:16-alpine AS baseImage
-WORKDIR /repo
-ARG PNPM_VERSION=7.6.0
-RUN npm --no-update-notifier --no-fund --global install pnpm@${PNPM_VERSION}
+ARG PNPM_VERSION=7.7.0
+RUN npm --no-update-notifier --no-fund --location=global install pnpm@${PNPM_VERSION}
 
 FROM baseImage AS workspace
-# These folders include `package.json` files _only_ to avoid having to re-run pnpm install on every code change. They are pre-filtered via our build orchestrator (gradle)
-COPY apps/ apps/
-COPY packages/ packages/
-
-# Top-level monorepo concerns that are shared across projects
-COPY .npmrc .npmrc
-COPY pnpm-workspace.yaml pnpm-workspace.yaml
-COPY pnpm-lock.yaml pnpm-lock.yaml
-RUN pnpm install -r --prod --frozen-lockfile && \
-	rm -rf ~/.pnpm-store;
-
+WORKDIR /repo
+COPY pnpm-lock.yaml ./
+ENV PRISMA_SKIP_POSTINSTALL_GENERATE=true
+RUN pnpm fetch 
+ADD . ./
+RUN pnpm install -r --offline
+RUN ls -l
 
 FROM workspace as pruned
 ARG SCOPE
 ENV SCOPE=${SCOPE}
 RUN pnpm --filter ${SCOPE} --prod deploy pruned
+RUN ls -l
 
 FROM node:16-alpine
 WORKDIR /app
 ENV NODE_ENV=production
-COPY --from=pruned /app/pruned .
+COPY --from=pruned /repo/pruned .
+RUN ls -l
 USER node
 EXPOSE ${PORT}
 ENV PORT ${PORT}
 
-CMD ["node", "dist/main.js"]
+CMD ["node", "dist/src/main.js"]
