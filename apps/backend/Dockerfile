@@ -1,15 +1,14 @@
 FROM node:16-alpine AS baseImage
 ARG PNPM_VERSION=7.7.0
 RUN npm --no-update-notifier --no-fund --location=global install pnpm@${PNPM_VERSION}
+WORKDIR /repo
 
 FROM baseImage AS workspace
 WORKDIR /repo
 COPY pnpm-lock.yaml ./
-ENV PRISMA_SKIP_POSTINSTALL_GENERATE=true
-RUN pnpm fetch 
-ADD . ./
-RUN pnpm install -r --offline
-RUN ls -l
+RUN pnpm fetch --prod
+COPY . ./
+RUN pnpm install -r --offline --prod
 
 FROM workspace as pruned
 ARG SCOPE

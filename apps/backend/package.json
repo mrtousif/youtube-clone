@@ -13,7 +13,7 @@
         "dev": "dotenv -e .env.development nest start --watch",
         "start:debug": "nest start --debug --watch",
         "start:prod": "node dist/main",
-        "prisma:generate": "dotenv -e .env.development prisma generate",
+        "prisma:generate": "prisma generate",
         "prisma:seed": "dotenv -e .env.development prisma db seed",
         "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
         "test": "jest",
