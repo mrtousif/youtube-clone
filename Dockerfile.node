@@ -1,4 +1,4 @@
-FROM node:16-slim AS baseImage
+FROM node:16-alpine AS baseImage
 WORKDIR /repo
 ARG PNPM_VERSION=7.6.0
 RUN npm --no-update-notifier --no-fund --global install pnpm@${PNPM_VERSION}
@@ -12,5 +12,21 @@ COPY packages/ packages/
 COPY .npmrc .npmrc
 COPY pnpm-workspace.yaml pnpm-workspace.yaml
 COPY pnpm-lock.yaml pnpm-lock.yaml
-RUN pnpm install -r --frozen-lockfile && \
+RUN pnpm install -r --prod --frozen-lockfile && \
 	rm -rf ~/.pnpm-store;
+
+
+FROM workspace as pruned
+ARG SCOPE
+ENV SCOPE=${SCOPE}
+RUN pnpm --filter ${SCOPE} --prod deploy pruned
+
+FROM node:16-alpine
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=pruned /app/pruned .
+USER node
+EXPOSE ${PORT}
+ENV PORT ${PORT}
+
+CMD ["node", "dist/main.js"]

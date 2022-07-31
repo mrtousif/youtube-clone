@@ -30,3 +30,6 @@ tasks:
       - echo "Removing Docker volumes"
       - docker volume rm $(docker volume ls -q)
 
+  dockerBuildBackend:
+    cmds: 
+      - docker build -f Dockerfile.node --build-arg SCOPE="backend" --tag youtube-clone/backend .
