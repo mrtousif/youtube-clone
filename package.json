@@ -36,6 +36,7 @@
         "lint-staged": "13.0.3",
         "prettier": "2.7.1",
         "prettier-plugin-prisma": "^4.1.0",
+        "prisma": "^4.1.0",
         "turbo": "latest"
     },
     "lint-staged": {
@@ -48,7 +49,8 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged"
+            "pre-commit": "lint-staged",
+            "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
         }
     },
     "engines": {
