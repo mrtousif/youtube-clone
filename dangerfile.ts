@@ -1,13 +1,8 @@
-import * as completePr from 'danger-plugin-complete-pr';
 import { danger, fail, schedule, warn } from 'danger';
 import coverage from 'danger-plugin-coverage';
-import { warnDependencies } from 'danger-plugin-node-dependencies';
 
 // schedule(coverage());
-warnDependencies({
-    dependencies: true,
-    devDependencies: false,
-});
+
 
 // const modifiedMD = danger.git.modified_files.join("- ");
 // message("Changed Files in this PR: \n - " + modifiedMD);
