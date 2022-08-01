@@ -207,7 +207,7 @@ importers:
       vite-plugin-pwa: 0.12.3
       vite-tsconfig-paths: 3.5.0
       vitest: ^0.17.0
-      workbox-window: 6.5.3
+      workbox-window: 6.5.4
     dependencies:
       '@emotion/react': 11.9.3_3hx2ussxxho4jajbwrd6gq34qe
       '@emotion/styled': 11.9.3_t4da3hocwt6ljcf3o6em4qwqzm
@@ -246,7 +246,7 @@ importers:
       vite-plugin-pwa: 0.12.3_vite@2.9.14
       vite-tsconfig-paths: 3.5.0_vite@2.9.14
       vitest: 0.17.0_c8@7.11.3+jsdom@20.0.0
-      workbox-window: 6.5.3
+      workbox-window: 6.5.4
 
   apps/keycloak-auth-theme:
     specifiers:
@@ -20510,7 +20510,7 @@ packages:
       rollup: 2.75.7
       vite: 2.9.14
       workbox-build: 6.5.3
-      workbox-window: 6.5.3
+      workbox-window: 6.5.4
     transitivePeerDependencies:
       - '@types/babel__core'
       - supports-color
@@ -21079,6 +21079,10 @@ packages:
     resolution: {integrity: sha512-Bb9ey5n/M9x+l3fBTlLpHt9ASTzgSGj6vxni7pY72ilB/Pb3XtN+cZ9yueboVhD5+9cNQrC9n/E1fSrqWsUz7Q==}
     dev: true
 
+  /workbox-core/6.5.4:
+    resolution: {integrity: sha512-OXYb+m9wZm8GrORlV2vBbE5EC1FKu71GGp0H4rjmxmF4/HLbMCoTFws87M3dFwgpmg0v00K++PImpNQ6J5NQ6Q==}
+    dev: true
+
   /workbox-expiration/6.5.3:
     resolution: {integrity: sha512-jzYopYR1zD04ZMdlbn/R2Ik6ixiXbi15c9iX5H8CTi6RPDz7uhvMLZPKEndZTpfgmUk8mdmT9Vx/AhbuCl5Sqw==}
     dependencies:
@@ -21171,6 +21175,13 @@ packages:
     dependencies:
       '@types/trusted-types': 2.0.2
       workbox-core: 6.5.3
+    dev: true
+
+  /workbox-window/6.5.4:
+    resolution: {integrity: sha512-HnLZJDwYBE+hpG25AQBO8RUWBJRaCsI9ksQJEp3aCOFCaG5kqaToAYXFRAHxzRluM2cQbGzdQF5rjKPWPA1fug==}
+    dependencies:
+      '@types/trusted-types': 2.0.2
+      workbox-core: 6.5.4
     dev: true
 
   /wrap-ansi/3.0.1:
