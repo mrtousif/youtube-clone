@@ -1,6 +1,3 @@
-import * as dotenv from 'dotenv'
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
-
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { ClsMiddleware } from 'nestjs-cls';
