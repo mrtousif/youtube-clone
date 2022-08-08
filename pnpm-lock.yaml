@@ -45,7 +45,7 @@ importers:
       '@aws-sdk/client-s3': ^3.131.0
       '@aws-sdk/s3-request-presigner': ^3.137.0
       '@faker-js/faker': ^7.3.0
-      '@golevelup/nestjs-graphql-request': 0.1.11
+      '@golevelup/nestjs-graphql-request': 0.1.13
       '@golevelup/nestjs-hasura': 2.0.3
       '@graphql-codegen/cli': 2.6.4
       '@graphql-codegen/introspection': ^2.1.0
@@ -106,7 +106,7 @@ importers:
     dependencies:
       '@aws-sdk/client-s3': 3.131.0
       '@aws-sdk/s3-request-presigner': 3.137.0
-      '@golevelup/nestjs-graphql-request': 0.1.11_fza6kdyxj72qfijr7qxztestbi
+      '@golevelup/nestjs-graphql-request': 0.1.13_fza6kdyxj72qfijr7qxztestbi
       '@golevelup/nestjs-hasura': 2.0.3_fza6kdyxj72qfijr7qxztestbi
       '@nestjs/common': 8.4.7_47vcjb2de6lyibr6g4enoa5lyu
       '@nestjs/config': 2.1.0_g7av3gvncewo44y4rurz3mgav4
@@ -3752,12 +3752,12 @@ packages:
       lodash: 4.17.21
     dev: false
 
-  /@golevelup/nestjs-graphql-request/0.1.11_fza6kdyxj72qfijr7qxztestbi:
-    resolution: {integrity: sha512-mFUxVGRAweqCXkMhawmxgMcjxRJzOLiRStOEl63dCyuCElZeK3zyKYKiMaM0h1mcKJZ36IDfj4qScBYN9dKyuw==}
+  /@golevelup/nestjs-graphql-request/0.1.13_fza6kdyxj72qfijr7qxztestbi:
+    resolution: {integrity: sha512-7lNfAdBJdi3UmSUcF0BH2QwaC0a/7kR6YH/tL1/7wNQYu6b7JP8YVF/u+Yj9QqhJTf1BPKjLOG9FAxdsaACOPg==}
     dependencies:
       '@golevelup/nestjs-common': 1.4.4
       '@golevelup/nestjs-discovery': 3.0.0
-      '@golevelup/nestjs-modules': 0.5.0_fza6kdyxj72qfijr7qxztestbi
+      '@golevelup/nestjs-modules': 0.6.1_fza6kdyxj72qfijr7qxztestbi
       graphql: 15.8.0
       graphql-request: 3.7.0_graphql@15.8.0
     transitivePeerDependencies:
@@ -3784,6 +3784,17 @@ packages:
     resolution: {integrity: sha512-6ZGjPtm0KwJ7Txa3Z14IzILi7pfvGrLZHv/q9/4tt7T5ngcCe71wJp32TG0/b3UkJX3/LEm4AtYjcfwiIrfSlg==}
     peerDependencies:
       '@nestjs/common': ^8.x
+      rxjs: ^7.x
+    dependencies:
+      '@nestjs/common': 8.4.7_47vcjb2de6lyibr6g4enoa5lyu
+      lodash: 4.17.21
+      rxjs: 7.5.5
+    dev: false
+
+  /@golevelup/nestjs-modules/0.6.1_fza6kdyxj72qfijr7qxztestbi:
+    resolution: {integrity: sha512-E0STg8In8fhIivnGDJAA70+XLPHzK5bMTkCnif9FbZ8waTYDQ3T/QQL0h73k+CUFeznn1hmuEW14sNaE+8cd7w==}
+    peerDependencies:
+      '@nestjs/common': ^9.x
       rxjs: ^7.x
     dependencies:
       '@nestjs/common': 8.4.7_47vcjb2de6lyibr6g4enoa5lyu
