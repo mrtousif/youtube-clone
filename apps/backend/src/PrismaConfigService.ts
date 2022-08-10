@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaOptionsFactory, PrismaServiceOptions } from 'nestjs-prisma';
-import { ENVALID, EnvalidModule } from 'nestjs-envalid';
-import { Config } from './config';
+import { config } from './config';
 import { createPrismaRedisCache } from "prisma-redis-middleware";
 import Redis from "ioredis";
 
