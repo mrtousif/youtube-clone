@@ -302,7 +302,6 @@ importers:
       eslint-config-custom: workspace:*
       jest: 28.1.3
       nats: 2.7.1
-      nestjs-envalid: 2.0.0
       prettier: 2.7.1
       reflect-metadata: 0.1.13
       rimraf: 3.0.2
@@ -323,7 +322,6 @@ importers:
       '@supabase/realtime-js': 1.7.4
       envalid: 7.3.1
       nats: 2.7.1
-      nestjs-envalid: 2.0.0_o6gixton3d34mz2oqxvey23xde
       reflect-metadata: 0.1.13
       rimraf: 3.0.2
       rxjs: 7.5.6
@@ -15601,19 +15599,6 @@ packages:
     dependencies:
       '@nestjs/common': 9.0.8_j5hagqx4mwzscud4kyjdvubauy
       '@nestjs/core': 9.0.8_t6wygpagnzylhnpg25zual64b4
-    dev: false
-
-  /nestjs-envalid/2.0.0_o6gixton3d34mz2oqxvey23xde:
-    resolution: {integrity: sha512-MWxAKXgqlWOXAJCTPin3G96xw3odwsTVF9RMUY6e2OIQM1nQ4ON1zz/ohkEmEroY3fdJLz1dUX9hmgy97wB/0g==}
-    engines: {node: '>=14.16'}
-    peerDependencies:
-      '@nestjs/common': '>=7 <=8'
-      '@nestjs/core': '>=7 <=8'
-      envalid: 7.x.x
-    dependencies:
-      '@nestjs/common': 9.0.8_j5hagqx4mwzscud4kyjdvubauy
-      '@nestjs/core': 9.0.8_t6wygpagnzylhnpg25zual64b4
-      envalid: 7.3.1
     dev: false
 
   /nestjs-pino/3.1.1_4pgyxucqtnaer2lr24gprogtn4:
