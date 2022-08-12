@@ -13,7 +13,7 @@ const request = http.request(options, (res) => {
     process.exit();
 });
 
-request.on('error', function (err) {
+request.on('error',  (err) => {
     console.error('ERROR', err);
     process.exit(1);
 });

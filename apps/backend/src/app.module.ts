@@ -1,4 +1,4 @@
-import { Inject, Module } from '@nestjs/common';
+import { RequestMethod, Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MercuriusDriver, MercuriusDriverConfig } from '@nestjs/mercurius';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -7,7 +7,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { PrismaModule } from 'nestjs-prisma';
 import { HasuraModule, HasuraModuleConfig } from '@golevelup/nestjs-hasura';
 import { join } from 'path';
-
+import { LoggerModule } from 'nestjs-pino';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -16,8 +16,7 @@ import { ItemModule } from './item/item.module';
 import { EmailModule } from './email/email.module';
 import { ReportingModule } from './reporting/reporting.module';
 import { ClsModule } from 'nestjs-cls';
-import { EnvalidModule, EnvalidModuleConfig } from 'nestjs-envalid';
-import { validators, Config } from './config';
+import { config } from './config';
 import { PrismaConfigService } from './PrismaConfigService';
 import { FileStorageService } from './file-storage/file-storage.service';
 
@@ -28,7 +27,16 @@ import { FileStorageService } from './file-storage/file-storage.service';
         EmailModule,
         ReportingModule,
         AuthModule,
-        EnvalidModule.forRoot({ validators }),
+        LoggerModule.forRoot({
+            pinoHttp: {
+                level: process.env.NODE_ENV !== 'production' ? 'debug' : 'info',
+                transport:
+                  process.env.NODE_ENV !== 'production'
+                    ? { target: 'pino-pretty' }
+                    : undefined,
+              },
+            exclude: [{ method: RequestMethod.ALL, path: 'check' }]
+        }),
         ClsModule.register({
             global: true,
         }),

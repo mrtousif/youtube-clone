@@ -5,6 +5,7 @@
     "eamodio.gitlens",
     "mhutchie.git-graph",
     "streetsidesoftware.code-spell-checker",
-    "IBM.output-colorizer"
+    "ibm.output-colorizer",
+    "ZixuanChen.vitest-explorer"
   ]
 }
