@@ -49,8 +49,6 @@ vscode:
     - IBM.output-colorizer
     - streetsidesoftware.code-spell-checker
 
-    - ZixuanChen.vitest-explorer
-
 github:
   prebuilds:
     # enable for the master/default branch (defaults to true)
