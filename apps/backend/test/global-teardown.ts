@@ -1,7 +1,7 @@
-const { down } = require("docker-compose");
-const { join } = require("path");
+import { down } from "docker-compose";
+import { join } from "path";
 
-module.exports = async () => {
+export default async () => {
     // Check if running CI environment
     if (process.env.CI) {
         await down({
