@@ -9,8 +9,6 @@ services:
             - "${HASURA_HOST_PORT}:8080"
         volumes:
           - ./hasura/metadata:/hasura-metadata
-        depends_on:
-            - postgres
         environment:
             ## postgres database to store Hasura metadata
             HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/hasura_metadata
