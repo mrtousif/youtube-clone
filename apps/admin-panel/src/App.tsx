@@ -17,7 +17,7 @@ import { client } from '@/graphql';
 
 function App() {
     return (
-        <Fragment>
+        
             <Provider value={client}>
                 <CssBaseline />
                 <Notifications />
@@ -29,7 +29,7 @@ function App() {
                     <Pages />
                 </BrowserRouter>
             </Provider>
-        </Fragment>
+      
     );
 }
 
