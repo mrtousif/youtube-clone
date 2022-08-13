@@ -1,0 +1,41 @@
+{
+  "name": "example-ssg",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "404": "cp out/404/index.html out/404.html",
+    "dev": "next dev",
+    "build": "next build && next export",
+    "postbuild": "npm run 404",
+    "server": "next start",
+    "start": "npm run dev",
+    "lint": "next lint",
+    "test": "npm run lint",
+    "serve": "http-server out -p 8080",
+    "downloadLocales": "locize download --project-id=0842ada9-1d1d-4d48-ab27-08f6a132f558 --ver=latest --clean=true --path=./public/locales"
+  },
+  "dependencies": {
+    "@emotion/cache": "11.10.1",
+    "@emotion/react": "11.9.3",
+    "@emotion/styled": "11.9.3",
+    "@mui/icons-material": "5.8.4",
+    "@mui/lab": "5.0.0-alpha.89",
+    "@mui/material": "5.8.7",
+    "@mui/system": "5.8.7",
+    "@mui/utils": "5.8.6",
+    "next": "12.2.3",
+    "next-i18next": "11.3.0",
+    "next-language-detector": "1.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.45",
+    "@types/react": "18.0.16",
+    "eslint-config-next": "12.2.3",
+    "http-server": "14.1.1",
+    "locize-cli": "7.12.3",
+    "tsconfig": "workspace:*",
+    "typescript": "4.7.4",
+    "vitest": "^0.17.0"
+  }
+}
