@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow-callback */
 import * as React from 'react';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';

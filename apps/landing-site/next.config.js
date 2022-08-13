@@ -3,4 +3,6 @@
 module.exports = {
   // i18n,
   trailingSlash: true,
+  
+  reactStrictMode: true,
 }

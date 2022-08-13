@@ -2,7 +2,7 @@
 const { defineConfig } = require('eslint-define-config');
 
 module.exports = defineConfig({
-    extends: ['prettier', 'alloy', 'alloy/typescript', 'alloy/react', 'plugin:sonarjs/recommended'],
+    extends: ['prettier', 'alloy', 'alloy/typescript', 'alloy/react', 'plugin:sonarjs/recommended', "next"],
     ignorePatterns: ['**/migrations/*.ts', '**/generated/*.ts', 'dist/*', '*-env.d.ts'],
     env: {
         jest: true,
@@ -20,5 +20,10 @@ module.exports = defineConfig({
         '@typescript-eslint/explicit-member-accessibility': 'off',
         '@next/next/no-html-link-for-pages': 'off',
         'react/react-in-jsx-scope': 'off',
+    },
+    settings: {
+        react: {
+          version: "detect",
+        },
     },
 });

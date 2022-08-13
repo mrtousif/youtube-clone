@@ -24,14 +24,18 @@
     "@mui/material": "5.8.7",
     "@mui/system": "5.8.7",
     "@mui/utils": "5.8.6",
+    "clsx": "^1.2.1",
     "next": "12.2.3",
     "next-i18next": "11.3.0",
-    "next-language-detector": "1.0.2"
+    "next-language-detector": "1.0.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "17.0.45",
     "@types/react": "18.0.16",
-    "eslint-config-next": "12.2.3",
+    "@types/react-dom": "18.0.6",
+    "eslint-config-custom": "workspace:*",
     "http-server": "14.1.1",
     "locize-cli": "7.12.3",
     "tsconfig": "workspace:*",
