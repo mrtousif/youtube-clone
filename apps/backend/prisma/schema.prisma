@@ -52,6 +52,7 @@ model WatchHistory {
   userId         String    @map("user_id") @db.Uuid
   lastWatchtedAt DateTime? @map("last_watchted_at") @db.Time(6)
   createdAt      DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt      DateTime  @default(now()) @map("updated_at") @db.Timestamptz(6)
   users          Users     @relation("usersTowatch_history", fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
   videos         Videos    @relation("videosTowatch_history", fields: [videoId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "videos_id_fk")
 
@@ -68,6 +69,7 @@ model Feelings {
   videos    Videos         @relation(fields: [videoId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "videos_id_fk")
 
   @@id([userId, videoId], map: "feelings_composite_pk")
+  @@map("feelings")
 }
 
 model Users {
@@ -86,6 +88,8 @@ model Users {
   play_list_names                                                  PlayListNames[]        @relation("play_list_namesTousers")
   videos                                                           Videos[]
   watcHistory                                                      WatchHistory[]         @relation("usersTowatch_history")
+  
+  @@map("users")
 }
 
 model Videos {
@@ -95,7 +99,7 @@ model Videos {
   category      category_types? @default(UNCATEGORISED)
   viewsCount    Int?            @default(0) @map("views_count")
   likesCount    Int?            @default(0) @map("likes_count")
-  dislikesCount Int?            @default(0) @map("dislikesCount")
+  dislikesCount Int?            @default(0) @map("dislikes_count")
   thumbnail     String          @unique @db.VarChar
   streamUrl     String          @unique @map("stream_url") @db.VarChar
   channelId     String          @map("channel_id") @db.Uuid
@@ -109,6 +113,7 @@ model Videos {
   watchHistory  WatchHistory[]  @relation("videosTowatch_history")
 
   @@index([channelId])
+  @@map("videos")
 }
 
 enum category_types {

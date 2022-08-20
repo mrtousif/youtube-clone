@@ -66,6 +66,7 @@ CREATE TABLE watch_history (
   user_id uuid,
   last_watchted_at TIME,
   created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz,
   CONSTRAINT watch_history_cs_pk PRIMARY KEY (video_id, user_id),
   CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id),
   CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id)
@@ -124,6 +125,12 @@ EXECUTE PROCEDURE update_at_timestamp();
 CREATE TRIGGER set_updated_at
 BEFORE
 UPDATE ON videos
+FOR EACH ROW
+EXECUTE PROCEDURE update_at_timestamp();
+
+CREATE TRIGGER set_updated_at
+BEFORE
+UPDATE ON watch_history
 FOR EACH ROW
 EXECUTE PROCEDURE update_at_timestamp();
 

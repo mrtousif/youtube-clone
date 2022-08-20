@@ -20,16 +20,17 @@ async function main() {
                 email: faker.internet.email(),
                 name: faker.name.fullName(),
                 phone: faker.phone.number(),
-                channel_name: faker.unique(faker.random.word),
+                channelName: faker.unique(faker.random.word),
                 description: faker.random.words(5),
             }))
         }
     );
+
     const videos = await prisma.videos.createMany({
         data: videoIds.map(({id, channelId}) => ({
             id,
-            channel_id: channelId,
-            stream_url: faker.internet.url(),
+            channelId,
+            streamUrl: faker.internet.url(),
             thumbnail: faker.random.alphaNumeric(36),
             title: faker.random.words(5),
         }))
@@ -40,12 +41,12 @@ async function main() {
             const reaction: reaction_types = sample(['LIKE', 'DISLIKE'])
 
             return {
-                user_id: channelId,
-                video_id: id,
+                userId: channelId,
+                videoId: id,
                 reaction
             };
         })
-    })
+    });
     
     console.log(users, videos, feelings);
 }
