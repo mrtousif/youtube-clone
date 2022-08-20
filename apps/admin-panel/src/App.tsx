@@ -1,31 +1,34 @@
-// import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import CssBaseline from '@mui/material/CssBaseline';
 import { withErrorHandler } from '@/error-handling';
 import AppErrorBoundaryFallback from '@/error-handling/fallbacks/App';
 import HotKeys from '@/sections/HotKeys';
 import Notifications from '@/sections/Notifications';
 import ServiceWorker from '@/sections/SW';
-import { Admin, Resource,ListGuesser } from 'react-admin';
-import jsonServerProvider from "ra-data-json-server";
-// import buildHasuraProvider from 'ra-data-hasura';
-// import { client } from '@/graphql';
+import { Admin, Resource, ListGuesser, DataProvider } from 'react-admin';
+// import jsonServerProvider from "ra-data-json-server";
+import buildHasuraProvider from 'ra-data-hasura';
+import LinearProgress from '@mui/material/LinearProgress';
+import { client } from '@/graphql';
 
-const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
+// const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
 
 function App() {
-    // const [dataProvider, setDataProvider] = useState(null);
+    const [dataProvider, setDataProvider] = useState<DataProvider | null>(
+        null
+      );
 
-    // useEffect(() => {
-    //     const buildDataProvider = async () => {
-    //     const dataProvider = await buildHasuraProvider({
-    //             client,
-    //         });
-    //     setDataProvider(() => dataProvider);
-    //     };
-    //     buildDataProvider();
-    // }, []);
+    useEffect(() => {
+        const buildDataProvider = async () => {
+        const dataProvider = await buildHasuraProvider({
+                client,
+            });
+        setDataProvider(() => dataProvider);
+        };
+        buildDataProvider();
+    }, []);
 
-    // if (!dataProvider) return <p>Loading...</p>;
+    if (!dataProvider) return <LinearProgress/>;
 
     return (
         <>
