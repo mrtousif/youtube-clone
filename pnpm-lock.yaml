@@ -158,6 +158,7 @@ importers:
       '@types/node': 18.6.5
       '@types/supertest': 2.0.12
       argon2: 0.28.7
+      consola: ^2.15.3
       docker-compose: ^0.23.17
       dotenv: 16.0.1
       envalid: 7.3.1
@@ -170,6 +171,7 @@ importers:
       is-port-reachable: ^4.0.0
       jest: 28.1.3
       lodash: ^4.17.21
+      lodash-decorators: ^6.0.1
       mercurius: 10.1.0
       nats: 2.7.1
       nestjs-cls: ^2.2.0
@@ -212,6 +214,7 @@ importers:
       '@prisma/client': 4.2.1_prisma@4.2.1
       '@types/cron': 2.0.0
       argon2: 0.28.7
+      consola: 2.15.3
       dotenv: 16.0.1
       envalid: 7.3.1
       got: 12.3.1
@@ -219,6 +222,7 @@ importers:
       graphql-request: 4.3.0_graphql@16.5.0
       ioredis: 5.2.2
       lodash: 4.17.21
+      lodash-decorators: 6.0.1_lodash@4.17.21
       mercurius: 10.1.0
       nats: 2.7.1
       nestjs-cls: 2.2.0_cw6o3dkuyuli4a5gq7b223evly
@@ -15316,6 +15320,16 @@ packages:
       - encoding
       - supports-color
     dev: true
+
+  /lodash-decorators/6.0.1_lodash@4.17.21:
+    resolution: {integrity: sha512-1M0YC8G3nFTkejZEk2ehyvryEdcqj6xATH+ybI8j53cLs/bKRsavaE//y7nz/A0vxEFhxYqev7vdWfsuTJ1AtQ==}
+    engines: {node: '>=0.12.0'}
+    peerDependencies:
+      lodash: 4.x
+    dependencies:
+      lodash: 4.17.21
+      tslib: 1.14.1
+    dev: false
 
   /lodash-es/4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}

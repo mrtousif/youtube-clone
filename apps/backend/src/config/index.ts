@@ -1,7 +1,7 @@
 import { str, port, url, cleanEnv } from 'envalid';
 
 export const config = cleanEnv(process.env, {
-    NODE_ENV: str({ choices: ['development', 'test', 'production', 'staging'] }),
+    NODE_ENV: str({ choices: ['development', 'test', 'production', 'staging', 'qa'] }),
     NESTJS_EVENT_WEBHOOK_SHARED_SECRET: str(),
     HASURA_GRAPHQL_API_ENDPOINT: str(),
     S3_REGION: str(),

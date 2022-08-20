@@ -5,15 +5,17 @@ import { sample } from "lodash";
 
 const prisma = new PrismaClient();
 
-const userIds = [...Array(10).keys()].map(()=> randomUUID())
+const userIds = [...Array(10).keys()].map(()=> ({
+    id: randomUUID()
+}))
 const videoIds = [...Array(10).keys()].map((_v, i)=> ({
     id: randomUUID(),
-    channelId: userIds[i]
+    channelId: userIds[i].id
 }))
 
 async function main() {
     const users = await prisma.users.createMany({
-            data: userIds.map((id) => ({
+            data: userIds.map(({ id }) => ({
                 id,
                 email: faker.internet.email(),
                 name: faker.name.fullName(),

@@ -14,7 +14,7 @@ import { AuthModule } from './auth/auth.module';
 import { SdkModule } from './sdk/sdk.module';
 import { ItemModule } from './item/item.module';
 import { EmailModule } from './email/email.module';
-import { ReportingModule } from './reporting/reporting.module';
+// import { ReportingModule } from './reporting/reporting.module';
 import { ClsModule } from 'nestjs-cls';
 import { config } from './config';
 import { PrismaConfigService } from './PrismaConfigService';
@@ -25,7 +25,7 @@ import { FileStorageService } from './file-storage/file-storage.service';
         SdkModule,
         ItemModule,
         EmailModule,
-        ReportingModule,
+        // ReportingModule,
         AuthModule,
         LoggerModule.forRoot({
             pinoHttp: {

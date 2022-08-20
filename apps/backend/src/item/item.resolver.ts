@@ -42,15 +42,10 @@ export class ItemResolver {
     const { userId } = user;
 
     try {
-      const purchaseResult = await this.itemService.purchaseItem({
-        itemId,
-        userId,
-      });
+      const purchaseResult = {};
 
       return {
-        itemId,
-        remainingCoins: purchaseResult.buyer.coins,
-        secret: purchaseResult.purchase.item.secret,
+        itemId
       };
     } catch (e) {
       return {

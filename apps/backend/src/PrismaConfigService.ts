@@ -3,6 +3,7 @@ import { PrismaOptionsFactory, PrismaServiceOptions } from 'nestjs-prisma';
 import { config } from './config';
 import { createPrismaRedisCache } from "prisma-redis-middleware";
 import Redis from "ioredis";
+import consola from "consola";
 
 const redis = new Redis();
 
@@ -14,7 +15,7 @@ export function loggingMiddleware() {
 
         const after = Date.now();
 
-        console.log(`Query ${params.model}.${params.action} took ${after - before}ms`);
+        consola.log(`Query ${params.model}.${params.action} took ${after - before}ms`);
 
         return result;
     };
@@ -30,13 +31,13 @@ const cacheMiddleware = () => createPrismaRedisCache({
     excludeModels: ["Product", "Cart"],
     excludeMethods: ["count", "groupBy"],
     onHit: (key) => {
-      console.log("hit", key);
+      consola.log("hit", key);
     },
     onMiss: (key) => {
-      console.log("miss", key);
+      consola.log("miss", key);
     },
     onError: (key) => {
-      console.log("error", key);
+      consola.error("error", key);
     },
   })
 

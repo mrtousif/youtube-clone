@@ -16,7 +16,7 @@ $$ language 'plpgsql';
 
 
 CREATE TABLE users (
-  id uuid DEFAULT gen_random_uuid(),
+  id uuid,
   email CITEXT UNIQUE NOT NULL,
   phone varchar,
   name varchar NOT NULL,
