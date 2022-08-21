@@ -8,6 +8,7 @@ import { PrismaModule } from 'nestjs-prisma';
 import { HasuraModule, HasuraModuleConfig } from '@golevelup/nestjs-hasura';
 import { join } from 'path';
 import { LoggerModule } from 'nestjs-pino';
+import { PrometheusModule } from "@willsoto/nestjs-prometheus";
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -19,14 +20,17 @@ import { ClsModule } from 'nestjs-cls';
 import { config } from './config';
 import { PrismaConfigService } from './PrismaConfigService';
 import { FileStorageService } from './file-storage/file-storage.service';
+import { HealthController } from './health/health.controller';
+import { HealthModule } from './health/health.module';
 
 @Module({
     imports: [
         SdkModule,
         ItemModule,
         EmailModule,
-        // ReportingModule,
+        HealthModule,
         AuthModule,
+        PrometheusModule.register(),
         LoggerModule.forRoot({
             pinoHttp: {
                 level: process.env.NODE_ENV !== 'production' ? 'debug' : 'info',
