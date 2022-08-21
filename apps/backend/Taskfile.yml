@@ -11,7 +11,8 @@ tasks:
     cmds:
       - dbmate up
       - pnpm hasura metadata apply
-      - pnpm prisma:generate
+      - pnpm prisma:gen
+      - pnpm prisma:seed
 
   hasura:
     cmds:

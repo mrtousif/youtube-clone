@@ -6,15 +6,12 @@ volumes:
 
 services:
     postgres:
-        image: supabase/postgres:14.1.0.34
+        image: postgres:14-alpine
         restart: unless-stopped
         volumes:
             - postgres_data:/var/lib/postgresql/data
             - ./init/db:/docker-entrypoint-initdb.d/
-        command:
-        - postgres
-        - -c
-        - wal_level=logical
+        command: postgres -c wal_level=logical
         ports:
             - "5432:5432"
         environment:
@@ -22,21 +19,21 @@ services:
             POSTGRES_USER: ${POSTGRES_USER}
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
-    realtime:
-        image: supabase/realtime:latest
-        ports:
-            - "8000:4000"
-        environment:
-            DB_HOST: postgres
-            DB_NAME: ${POSTGRES_DB}
-            DB_USER: ${POSTGRES_USER}
-            DB_PASSWORD: ${POSTGRES_PASSWORD}
-            DB_PORT: 5432
-            PORT: 4000
-            JWT_SECRET: SOMETHING_SUPER_SECRET
-            SECURE_CHANNELS: 'false'
-        depends_on:
-            - postgres
+    # realtime:
+    #     image: supabase/realtime:latest
+    #     ports:
+    #         - "8000:4000"
+    #     environment:
+    #         DB_HOST: postgres
+    #         DB_NAME: ${POSTGRES_DB}
+    #         DB_USER: ${POSTGRES_USER}
+    #         DB_PASSWORD: ${POSTGRES_PASSWORD}
+    #         DB_PORT: 5432
+    #         PORT: 4000
+    #         JWT_SECRET: SOMETHING_SUPER_SECRET
+    #         SECURE_CHANNELS: 'false'
+    #     depends_on:
+    #         - postgres
 
     pgweb:
         image: sosedoff/pgweb:latest

@@ -45,6 +45,7 @@ gql`
 
 export interface PurchaseItemArgs {
   itemId: number;
+  item: any,
   userId: number;
 }
 
@@ -53,11 +54,7 @@ export class ItemService {
   constructor(@InjectSdk() private readonly sdk: GqlSdk) {}
 
   async purchaseItem(args: PurchaseItemArgs) {
-    const { itemId, userId } = args;
-
-    const { items_by_pk: item } = await this.sdk.getItem({
-      id: itemId,
-    });
+    const { itemId, item, userId } = args;
 
     if (!item) {
       throw new NotFoundException(`Could not find item with id ${itemId}`);
@@ -66,15 +63,13 @@ export class ItemService {
     const { cost, sellerId } = item;
 
     try {
-      const preArgs = {
+      return {
         buyerId: userId,
         sellerId,
         itemId,
         decrementBuyerCoins: cost * -1,
         incrementSellerCoins: cost - 1,
       };
-
-      return await this.sdk.purchaseItem(preArgs);
     } catch (e) {
       console.log(e);
       throw e;

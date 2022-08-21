@@ -8,25 +8,27 @@ import { PrismaModule } from 'nestjs-prisma';
 import { HasuraModule, HasuraModuleConfig } from '@golevelup/nestjs-hasura';
 import { join } from 'path';
 import { LoggerModule } from 'nestjs-pino';
+import { PrometheusModule } from "@willsoto/nestjs-prometheus";
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { SdkModule } from './sdk/sdk.module';
 import { ItemModule } from './item/item.module';
 import { EmailModule } from './email/email.module';
-import { ReportingModule } from './reporting/reporting.module';
 import { ClsModule } from 'nestjs-cls';
 import { config } from './config';
 import { PrismaConfigService } from './PrismaConfigService';
 import { FileStorageService } from './file-storage/file-storage.service';
+import { HealthModule } from './health/health.module';
 
 @Module({
     imports: [
         SdkModule,
         ItemModule,
         EmailModule,
-        ReportingModule,
+        HealthModule,
         AuthModule,
+        PrometheusModule.register(),
         LoggerModule.forRoot({
             pinoHttp: {
                 level: process.env.NODE_ENV !== 'production' ? 'debug' : 'info',
@@ -56,10 +58,9 @@ import { FileStorageService } from './file-storage/file-storage.service';
         EventEmitterModule.forRoot(),
         ScheduleModule.forRoot(),
         HasuraModule.forRootAsync(HasuraModule, {
-            inject: [ConfigService],
-            useFactory: (config: ConfigService) => {
-                const webhookSecret = config.get<string>('NESTJS_EVENT_WEBHOOK_SHARED_SECRET');
-                const environment = config.get<string>('NODE_ENV');
+            useFactory: () => {
+                const webhookSecret = config.NESTJS_EVENT_WEBHOOK_SHARED_SECRET;
+                const environment = config.NODE_ENV;
 
                 return {
                     webhookConfig: {

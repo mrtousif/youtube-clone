@@ -24,29 +24,48 @@ AFTER INSERT OR DELETE ON channel_subscriptions
     FOR EACH ROW EXECUTE FUNCTION update_subscriber_count();
 
 
--- CREATE OR REPLACE FUNCTION update_video_like_dislike_count()
--- RETURNS TRIGGER AS $$
--- BEGIN
---     IF (TG_OP = 'DELETE') THEN
---         UPDATE videos 
---         SET likes_count = (SELECT COUNT(user_id) FROM feelings WHERE reaction = 'LIKED' AND video_id = OLD.video_id)
---         SET dislikes_count = (SELECT COUNT(user_id) FROM feelings WHERE reaction = 'DISLIKED' AND video_id = OLD.video_id)
---         WHERE  videos.id = OLD.video_id;
+CREATE OR REPLACE FUNCTION update_video_like_dislike_count()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF (TG_OP = 'INSERT') AND (NEW.reaction = 'LIKE') THEN
+        UPDATE videos
+        SET likes_count = likes_count + 1
+        WHERE  videos.id = NEW.video_id;
 
---     ELSE
---         UPDATE videos 
---         SET likes_count = (SELECT COUNT(user_id) FROM feelings WHERE reaction = 'LIKED' AND video_id = NEW.video_id)
---         SET dislikes_count = (SELECT COUNT(user_id) FROM feelings WHERE reaction = 'DISLIKED' AND video_id = NEW.video_id)
---         WHERE  videos.id = NEW.video_id;
---     END IF;
+    ELSEIF (TG_OP = 'INSERT') AND (NEW.reaction = 'DISLIKE') THEN
+        UPDATE videos
+        SET dislikes_count = dislikes_count + 1
+        WHERE  videos.id = NEW.video_id;  
+
+    ELSEIF (TG_OP = 'DELETE') AND (OLD.reaction = 'DISLIKE') THEN
+        UPDATE videos
+        SET dislikes_count = dislikes_count - 1
+        WHERE  videos.id = OLD.video_id;
+
+    ELSEIF (TG_OP = 'DELETE') AND (OLD.reaction = 'LIKE') THEN
+        UPDATE videos
+        SET likes_count = likes_count - 1
+        WHERE  videos.id = OLD.video_id; 
+
+    ELSEIF (TG_OP = 'UPDATE') AND (OLD.reaction = 'LIKE') AND (NEW.reaction = 'DISLIKE') THEN
+        UPDATE videos
+        SET likes_count = likes_count - 1, dislikes_count = dislikes_count + 1
+        WHERE  videos.id = OLD.video_id;
+
+    ELSEIF (TG_OP = 'UPDATE') AND (OLD.reaction = 'DISLIKE') AND (NEW.reaction = 'LIKE') THEN
+        UPDATE videos
+        SET likes_count = likes_count + 1, dislikes_count = dislikes_count - 1
+        WHERE  videos.id = OLD.video_id;
+
+    END IF;
     
---     RETURN NULL;
--- END;
--- $$ language 'plpgsql';
+    RETURN NULL;
+END;
+$$ language 'plpgsql';
 
--- CREATE TRIGGER update_video_like_dislike_count
--- AFTER INSERT OR UPDATE OR DELETE ON feelings
---     FOR EACH ROW EXECUTE FUNCTION update_video_like_dislike_count();
+CREATE TRIGGER update_video_like_dislike_count
+AFTER INSERT OR UPDATE OR DELETE ON feelings
+    FOR EACH ROW EXECUTE FUNCTION update_video_like_dislike_count();
 
 
 -- migrate:down
@@ -54,5 +73,5 @@ AFTER INSERT OR DELETE ON channel_subscriptions
 DROP TRIGGER update_subscriber_count ON channel_subscriptions;
 DROP FUNCTION update_subscriber_count;
 
--- DROP TRIGGER update_video_like_dislike_count ON feelings;
--- DROP FUNCTION update_video_like_dislike_count;
+DROP TRIGGER update_video_like_dislike_count ON feelings;
+DROP FUNCTION update_video_like_dislike_count;

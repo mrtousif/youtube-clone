@@ -65,13 +65,13 @@ export class AuthService {
             };
         }
 
-        const passwordMatch = await argon.verify(foundUser.password_hash, password);
+        // const passwordMatch = await argon.verify(foundUser.password_hash, password);
 
-        if (!passwordMatch) {
-            return {
-                error: "Email and password do not match",
-            };
-        }
+        // if (!passwordMatch) {
+        //     return {
+        //         error: "Email and password do not match",
+        //     };
+        // }
 
         const token = await this.signHasuraToken(foundUser.id);
 
@@ -92,9 +92,7 @@ export class AuthService {
         try {
             const { insert_users_one: user } = await this.sdk.createUser({
                 input: {
-                    email,
-                    password_hash: hashedPassword,
-                    display_name: displayName,
+                    email
                 },
             });
 
@@ -116,7 +114,7 @@ export class AuthService {
         }
     }
 
-    private signHasuraToken(userId: number) {
+    private signHasuraToken(userId: string) {
         const payload: UserJwtClaims = {
             "https://hasura.io/jwt/claims": {
                 "x-hasura-allowed-roles": ["user"],

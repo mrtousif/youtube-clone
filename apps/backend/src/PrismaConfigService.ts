@@ -22,8 +22,8 @@ export function loggingMiddleware() {
 
 const cacheMiddleware = () => createPrismaRedisCache({
     models: [
-      { model: "User", excludeMethods: ["findMany"] },
-      { model: "Video", cacheTime: 180, cacheKey: "article" },
+      { model: "Users" },
+      { model: "Videos", cacheTime: 180 },
     ],
     storage: { type: "redis", options: { client: redis, invalidation: { referencesTTL: 300 }, log: console } },
     cacheTime: 300,
@@ -36,7 +36,7 @@ const cacheMiddleware = () => createPrismaRedisCache({
       console.log("miss", key);
     },
     onError: (key) => {
-      console.log("error", key);
+      console.error("error", key);
     },
   })
 
