@@ -18,14 +18,14 @@
   "dependencies": {
     "@emotion/cache": "11.10.1",
     "@emotion/react": "11.9.3",
-    "@emotion/server": "^11.10.0",
+    "@emotion/server": "11.10.0",
     "@emotion/styled": "11.9.3",
     "@mui/icons-material": "5.8.4",
     "@mui/lab": "5.0.0-alpha.89",
     "@mui/material": "5.8.7",
     "@mui/system": "5.8.7",
     "@mui/utils": "5.8.6",
-    "clsx": "^1.2.1",
+    "clsx": "1.2.1",
     "next": "12.2.3",
     "next-i18next": "11.3.0",
     "next-language-detector": "1.0.2",
@@ -41,6 +41,6 @@
     "locize-cli": "7.12.3",
     "tsconfig": "workspace:*",
     "typescript": "4.7.4",
-    "vitest": "^0.17.0"
+    "vitest": "0.17.1"
   }
 }

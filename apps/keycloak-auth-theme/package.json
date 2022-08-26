@@ -1,0 +1,56 @@
+{
+    "name": "keycloakify-demo-app",
+    "homepage": "https://demo-app.keycloakify.dev",
+    "version": "0.4.3",
+    "description": "A demo project for keycloakify",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/garronej/keycloakify-demo-app.git"
+    },
+    "scripts": {
+        "build": "react-scripts build",
+        "keycloak": "yarn build && build-keycloak-theme",
+        "start": "react-scripts start",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "download-builtin-keycloak-theme": "download-builtin-keycloak-theme 15.0.2"
+    },
+    "keycloakify": {
+        "extraPages": [
+            "my-extra-page-1.ftl",
+            "my-extra-page-2.ftl"
+        ]
+    },
+    "license": "MIT",
+    "keywords": [],
+    "dependencies": {
+        "@emotion/react": "11.10.0",
+        "keycloakify": "5.9.0",
+        "react": "18.1.0",
+        "react-dom": "18.1.0",
+        "tss-react": "3.7.1"
+    },
+    "devDependencies": {
+        "@types/node": "15.14.9",
+        "@types/react": "18.0.17",
+        "@types/react-dom": "18.0.4",
+        "eslint": "8.19.0",
+        "eslint-config-custom": "workspace:*",
+        "node-sass": "7.0.1",
+        "react-scripts": "5.0.1",
+        "tsconfig": "workspace:*",
+        "typescript": "4.8.2"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
