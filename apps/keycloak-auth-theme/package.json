@@ -24,22 +24,22 @@
     "license": "MIT",
     "keywords": [],
     "dependencies": {
-        "@emotion/react": "^11.9.0",
-        "keycloakify": "^5.4.7",
+        "@emotion/react": "11.10.0",
+        "keycloakify": "5.9.0",
         "react": "18.1.0",
         "react-dom": "18.1.0",
-        "tss-react": "^3.7.0"
+        "tss-react": "3.7.1"
     },
     "devDependencies": {
-        "@types/node": "^15.3.1",
+        "@types/node": "15.14.9",
         "@types/react": "18.0.17",
         "@types/react-dom": "18.0.4",
         "eslint": "8.19.0",
         "eslint-config-custom": "workspace:*",
-        "node-sass": "^7.0.1",
+        "node-sass": "7.0.1",
         "react-scripts": "5.0.1",
         "tsconfig": "workspace:*",
-        "typescript": "^4.7.3"
+        "typescript": "4.8.2"
     },
     "browserslist": {
         "production": [
