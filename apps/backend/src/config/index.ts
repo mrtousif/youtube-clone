@@ -4,6 +4,7 @@ export const config = cleanEnv(process.env, {
     NODE_ENV: str({ choices: ['development', 'test', 'production', 'staging', 'qa'] }),
     NESTJS_EVENT_WEBHOOK_SHARED_SECRET: str(),
     HASURA_GRAPHQL_API_ENDPOINT: str(),
+    SENTRY_DSN: url({ default: '' }),
     S3_REGION: str(),
     S3_ENDPOINT: url(),
     S3_BUCKET: str(),
