@@ -1,25 +1,27 @@
-import { RequestMethod, Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { MercuriusDriver, MercuriusDriverConfig } from '@nestjs/mercurius';
+import { join } from 'path';
+import { HasuraModule, HasuraModuleConfig } from '@golevelup/nestjs-hasura';
+import { Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { GraphQLModule } from '@nestjs/graphql';
+import { MercuriusDriver, MercuriusDriverConfig } from '@nestjs/mercurius';
 import { ScheduleModule } from '@nestjs/schedule';
+import { PrometheusModule } from '@willsoto/nestjs-prometheus';
+import { ClsModule } from 'nestjs-cls';
 import { PrismaModule } from 'nestjs-prisma';
-import { HasuraModule, HasuraModuleConfig } from '@golevelup/nestjs-hasura';
-import { join } from 'path';
 import { LoggerModule } from 'nestjs-pino';
-import { PrometheusModule } from "@willsoto/nestjs-prometheus";
+import { createWriteStream } from 'pino-sentry';
+
+import { PrismaConfigService } from './PrismaConfigService';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { SdkModule } from './sdk/sdk.module';
-import { ItemModule } from './item/item.module';
-import { EmailModule } from './email/email.module';
-import { ClsModule } from 'nestjs-cls';
 import { config } from './config';
-import { PrismaConfigService } from './PrismaConfigService';
+import { EmailModule } from './email/email.module';
 import { FileStorageService } from './file-storage/file-storage.service';
 import { HealthModule } from './health/health.module';
+import { ItemModule } from './item/item.module';
+import { SdkModule } from './sdk/sdk.module';
 
 @Module({
     imports: [
@@ -29,15 +31,22 @@ import { HealthModule } from './health/health.module';
         HealthModule,
         AuthModule,
         PrometheusModule.register(),
-        LoggerModule.forRoot({
-            pinoHttp: {
-                level: process.env.NODE_ENV !== 'production' ? 'debug' : 'info',
-                transport:
-                  process.env.NODE_ENV !== 'production'
-                    ? { target: 'pino-pretty' }
-                    : undefined,
-              },
-            exclude: [{ method: RequestMethod.ALL, path: 'check' }]
+        LoggerModule.forRootAsync({
+            useFactory: async () => {
+                const stream = createWriteStream({ 
+                    dsn: config.SENTRY_DSN
+                });
+
+                return {
+                    pinoHttp: {
+                        level: config.isProd ? 'debug' : 'info',
+                        transport:
+                            config.isProd ? { target: 'pino-pretty' } : undefined,
+                        stream,
+                    },
+                    exclude: [{ method: RequestMethod.ALL, path: 'check' }],
+                };
+            },
         }),
         ClsModule.register({
             global: true,
