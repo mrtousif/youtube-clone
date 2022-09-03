@@ -69,7 +69,7 @@ import { SdkModule } from './sdk/sdk.module';
         HasuraModule.forRootAsync(HasuraModule, {
             useFactory: () => {
                 const webhookSecret = config.NESTJS_EVENT_WEBHOOK_SHARED_SECRET;
-                
+
                 return {
                     webhookConfig: {
                         secretFactory: webhookSecret,
@@ -79,7 +79,7 @@ import { SdkModule } from './sdk/sdk.module';
                         config.isDev
                             ? {
                                   metadataVersion: 'v3',
-                                  dirPath: join(process.cwd(), 'hasura/metadata'),
+                                  dirPath: join(process.cwd(), '../hasura/metadata'),
                                   nestEndpointEnvName: 'NESTJS_EVENT_WEBHOOK_ENDPOINT',
                                   secretHeaderEnvName: 'NESTJS_EVENT_WEBHOOK_SHARED_SECRET',
                                   defaultEventRetryConfig: {
