@@ -39,9 +39,9 @@ import { SdkModule } from './sdk/sdk.module';
 
                 return {
                     pinoHttp: {
-                        level: config.isProd ? 'debug' : 'info',
+                        level: !config.isProd ? 'debug' : 'info',
                         transport:
-                            config.isProd ? { target: 'pino-pretty' } : undefined,
+                            config.isDev ? { target: 'pino-pretty' } : undefined,
                         stream,
                     },
                     exclude: [{ method: RequestMethod.ALL, path: 'check' }],
@@ -69,15 +69,14 @@ import { SdkModule } from './sdk/sdk.module';
         HasuraModule.forRootAsync(HasuraModule, {
             useFactory: () => {
                 const webhookSecret = config.NESTJS_EVENT_WEBHOOK_SHARED_SECRET;
-                const environment = config.NODE_ENV;
-
+                
                 return {
                     webhookConfig: {
                         secretFactory: webhookSecret,
                         secretHeader: 'nestjs-event-webhook',
                     },
                     managedMetaDataConfig:
-                        environment === 'development'
+                        config.isDev
                             ? {
                                   metadataVersion: 'v3',
                                   dirPath: join(process.cwd(), 'hasura/metadata'),

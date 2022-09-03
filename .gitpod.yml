@@ -12,10 +12,6 @@ tasks:
       pnpm install
       pnpm run build
 
-  # - name: Start up infra
-  #   command: |
-  #     docker network create nats
-
 # - name: Start up applications
 #   command: |
 #     gp ports await 5432 6379
