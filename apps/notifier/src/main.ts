@@ -6,10 +6,14 @@ async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
     {
-      transport: Transport.NATS,
+      transport: Transport.RMQ,
       options: {
-        servers: ['nats://localhost:4222'],
-      },
+        urls: ['amqp://localhost:5672'],
+        queue: 'notifier_queue',
+        queueOptions: {
+          durable: true
+        }
+      }
     },
   );
 

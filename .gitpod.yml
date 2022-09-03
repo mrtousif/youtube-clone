@@ -12,9 +12,9 @@ tasks:
       pnpm install
       pnpm run build
 
-  - name: Start up infra
-    command: |
-      docker network create nats
+  # - name: Start up infra
+  #   command: |
+  #     docker network create nats
 
 # - name: Start up applications
 #   command: |
@@ -25,7 +25,7 @@ ports:
     onOpen: ignore
   - port: 6379
     onOpen: ignore
-  - port: 4222
+  - port: 5672
     onOpen: ignore
   - port: 1025
     onOpen: ignore

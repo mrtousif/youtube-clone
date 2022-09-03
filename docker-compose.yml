@@ -3,6 +3,8 @@ version: "3"
 volumes:
     postgres_data:
         driver: local
+    rabbitmq_data:
+    rabbitmq_log:
 
 services:
     postgres:
@@ -86,27 +88,24 @@ services:
             - "1080:1080"
             - "1025:1025"
 
-    nats:
-        image: nats:alpine
-        ports:
-            - "4222:4222"
-            - "8222:8222"
-        command: [ "-js", "-m", "8222" ]
-        # networks:
-        #     - nats
-    nats-ui:
-        image: piotrpersona/nats-streaming-ui:latest
-        ports:
-            - "8085:8282"
-        depends_on:
-            - nats
+    rabbitmq:
+        image: rabbitmq:3.9-management
+        hostname: rabbitmq
         environment:
-            STAN_URL: http://nats:4222
-            STAN_MONITOR_URL: http://nats:8222
-            STAN_CLUSTER: test-cluster
-        # networks:
-        #     - nats
+            RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
+            RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+            RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+        ports:
+            - 5672:5672
+            - 15672:15672
+        volumes:
+            - rabbitmq_data:/var/lib/rabbitmq/
+            - rabbitmq_log:/var/log/rabbitmq/
+        networks:
+            - rabbitmq_net
 
 networks:
-  default:
-    name: "monorepo-network"
+    rabbitmq_net:
+        driver: bridge
+    default:
+        name: "monorepo-network"
