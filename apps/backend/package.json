@@ -42,6 +42,7 @@
         "@nestjs/graphql": "10.0.21",
         "@nestjs/jwt": "9.0.0",
         "@nestjs/mercurius": "10.0.21",
+        "@nestjs/microservices": "9.0.8",
         "@nestjs/passport": "9.0.0",
         "@nestjs/platform-fastify": "9.0.8",
         "@nestjs/schedule": "2.1.0",

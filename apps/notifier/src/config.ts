@@ -9,4 +9,5 @@ export const config = cleanEnv(process.env, {
     PORT: port({ devDefault: 3000 }),
     S3_ACCESS_KEY_ID: str(),
     S3_SECRET_ACCESS_KEY: str(),
+    RABBIT_MQ_HOST: str()
 });
