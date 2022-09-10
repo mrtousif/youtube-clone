@@ -1,11 +1,7 @@
-
-
-version: "3"
-
+version: '3.8'
 services:
   apisix:
-    image: "apache/apisix:2.13.2-alpine"
-    restart: unless-stopped
+    image: "apache/apisix:2.10.5-alpine"
     volumes:
       - ./docker_data/apisix_log:/usr/local/apisix/logs
       - ./docker_data/apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
@@ -17,13 +13,25 @@ services:
       - "9443:9443/tcp"
     networks:
       - apisix
+      - backend
+
+  dashboard:
+    image: "apache/apisix-dashboard:2.11-alpine"
+    volumes:
+      - ./docker_data/apisix_dashboard/config.yaml:/usr/local/apisix-dashboard/conf/conf.yaml:ro
+    depends_on:
+      - etcd
+    ports:
+      - "9000:9000/tcp"
+    networks:
+      - apisix
 
   etcd:
     image: bitnami/etcd:3.4.9
     user: root
     restart: unless-stopped
     volumes:
-      - ./docker_data/etcd_data:/etcd_data
+      - ./docker_data/etcd:/etcd_data
     environment:
       ETCD_DATA_DIR: /etcd_data
       ETCD_ENABLE_V2: "true"
@@ -34,7 +42,62 @@ services:
       - "2379:2379/tcp"
     networks:
       - apisix
+  
+  postgres:
+    image: postgres:14-alpine
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - kc_postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    networks:
+      - keycloak
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.1
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: password123
+      KC_PROXY: "passthrough"
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: postgres
+      DB_USER: postgres
+      DB_PASSWORD: password
+      KK_TO_RMQ_URL: rabbitmq
+      KK_TO_RMQ_PORT: 5672
+      KK_TO_RMQ_VHOST: DSrabbitmq
+      KK_TO_RMQ_EXCHANGE: amq.topic
+      KK_TO_RMQ_USERNAME: rabbit
+      KK_TO_RMQ_PASSWORD: rabbit
+      KK_TO_RMQ_USE_TLS: false
+    ports:
+      - 8180:8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    networks:
+      - keycloak
+      - backend
 
 networks:
   apisix:
     driver: bridge
+  keycloak:
+    driver: bridge
+  backend:
+    driver: bridge
+
+volumes:
+    kc_postgres_data:
+        driver: local
