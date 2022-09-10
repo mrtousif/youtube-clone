@@ -26,18 +26,9 @@ const cacheMiddleware = () => createPrismaRedisCache({
       { model: "Videos", cacheTime: 180 },
     ],
     storage: { type: "redis", options: { client: redis, invalidation: { referencesTTL: 300 }, log: console } },
-    cacheTime: 300,
+    cacheTime: 3000,
     excludeModels: ["Product", "Cart"],
     excludeMethods: ["count", "groupBy"],
-    onHit: (key) => {
-      console.log("hit", key);
-    },
-    onMiss: (key) => {
-      console.log("miss", key);
-    },
-    onError: (key) => {
-      console.error("error", key);
-    },
   })
 
 @Injectable()

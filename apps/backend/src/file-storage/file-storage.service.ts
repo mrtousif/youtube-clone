@@ -32,7 +32,7 @@ export class FileStorageService {
             UploadId: uploadId,
         };
         const command = new AbortMultipartUploadCommand(params);
-        this.logger.log('Uploading', params);
+        this.logger.log('Uploading to bucket', params);
         return this.s3Client.send(command);
     }
 
