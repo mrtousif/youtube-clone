@@ -78,7 +78,7 @@
         "zod": "3.18.0"
     },
     "devDependencies": {
-        "@cucumber/cucumber": "8.5.2",
+        "@cucumber/cucumber": "8.5.3",
         "@faker-js/faker": "7.4.0",
         "@graphql-codegen/cli": "2.11.8",
         "@graphql-codegen/introspection": "2.2.1",
