@@ -129,7 +129,7 @@ importers:
     specifiers:
       '@aws-sdk/client-s3': 3.157.0
       '@aws-sdk/s3-request-presigner': 3.157.0
-      '@cucumber/cucumber': 8.5.2
+      '@cucumber/cucumber': 8.5.3
       '@faker-js/faker': 7.4.0
       '@golevelup/nestjs-graphql-request': 0.1.13
       '@golevelup/nestjs-hasura': 3.0.1
@@ -160,8 +160,8 @@ importers:
       '@types/node': 18.6.5
       '@types/supertest': 2.0.12
       '@willsoto/nestjs-prometheus': 4.7.0
-      amqp-connection-manager: ^4.1.6
-      amqplib: ^0.10.3
+      amqp-connection-manager: 4.1.6
+      amqplib: 0.10.3
       argon2: 0.28.7
       docker-compose: 0.23.17
       dotenv: 16.0.1
@@ -248,7 +248,7 @@ importers:
       superjson: 1.9.1
       zod: 3.18.0
     devDependencies:
-      '@cucumber/cucumber': 8.5.2
+      '@cucumber/cucumber': 8.5.3
       '@faker-js/faker': 7.4.0
       '@graphql-codegen/cli': 2.11.8_qju2lanibkazrbjw76jfhecmi4
       '@graphql-codegen/introspection': 2.2.1_graphql@16.5.0
@@ -436,8 +436,8 @@ importers:
       '@types/jest': 28.1.8
       '@types/node': 18.6.5
       '@types/supertest': 2.0.12
-      amqp-connection-manager: ^4.1.6
-      amqplib: ^0.10.3
+      amqp-connection-manager: 4.1.6
+      amqplib: 0.10.3
       envalid: 7.3.1
       eslint: 8.21.0
       eslint-config-custom: workspace:*
@@ -4774,8 +4774,8 @@ packages:
       regexp-match-indices: 1.0.2
     dev: true
 
-  /@cucumber/cucumber/8.5.2:
-    resolution: {integrity: sha512-wwoaPe7IfoDk+fsxsnZasQpXAz3jNgQzbuEys00KLmnRASxhlenJo8cd+kAwecYJrxak5cui74yo4w8C4vE3hw==}
+  /@cucumber/cucumber/8.5.3:
+    resolution: {integrity: sha512-cLyMebI20K57JzOd22DJ3atGYwpxYz0YVCAl/iU9iY04A6uWY/6NoOSl8Vfd73ROjLA6T5ZJpGlfw5VkWJnq4A==}
     engines: {node: 12 || 14 || >=16}
     hasBin: true
     dependencies:
@@ -4785,7 +4785,7 @@ packages:
       '@cucumber/gherkin': 24.0.0
       '@cucumber/gherkin-streams': 5.0.1_jeucq7se2spp4stx7zehj5byta
       '@cucumber/gherkin-utils': 8.0.0
-      '@cucumber/html-formatter': 19.2.0_@cucumber+messages@19.1.2
+      '@cucumber/html-formatter': 20.0.0_@cucumber+messages@19.1.2
       '@cucumber/message-streams': 4.0.1_@cucumber+messages@19.1.2
       '@cucumber/messages': 19.1.2
       '@cucumber/tag-expressions': 4.1.0
@@ -4849,8 +4849,8 @@ packages:
       '@cucumber/messages': 19.1.2
     dev: true
 
-  /@cucumber/html-formatter/19.2.0_@cucumber+messages@19.1.2:
-    resolution: {integrity: sha512-qGms4588jmVF/G3fTbgZvxn6OQw9GaTFV007nZZ9/10M9DfrgRqjFjVxVI9TPV63xOLPicEVoqsKZtcECbdMSA==}
+  /@cucumber/html-formatter/20.0.0_@cucumber+messages@19.1.2:
+    resolution: {integrity: sha512-I6ZzUZ0CkaaPm6QHThoCRmdcuEIV9kJlNjaWvQ3PRkJm0OscQkQ0SXL/j73U30RDPiCAWwtq6ZSeQrgkTnSK+Q==}
     peerDependencies:
       '@cucumber/messages': '>=18'
     dependencies:
@@ -11250,8 +11250,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      JSONStream: 1.3.5
       is-text-path: 1.0.1
+      JSONStream: 1.3.5
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2

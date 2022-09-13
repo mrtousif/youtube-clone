@@ -50,8 +50,8 @@
         "@prisma/client": "4.2.1",
         "@types/cron": "2.0.0",
         "@willsoto/nestjs-prometheus": "4.7.0",
-        "amqp-connection-manager": "^4.1.6",
-        "amqplib": "^0.10.3",
+        "amqp-connection-manager": "4.1.6",
+        "amqplib": "0.10.3",
         "argon2": "0.28.7",
         "dotenv": "16.0.1",
         "envalid": "7.3.1",
@@ -78,7 +78,7 @@
         "zod": "3.18.0"
     },
     "devDependencies": {
-        "@cucumber/cucumber": "8.5.2",
+        "@cucumber/cucumber": "8.5.3",
         "@faker-js/faker": "7.4.0",
         "@graphql-codegen/cli": "2.11.8",
         "@graphql-codegen/introspection": "2.2.1",
