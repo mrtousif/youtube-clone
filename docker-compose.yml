@@ -25,6 +25,8 @@ services:
         container_name: hasura
         image: hasura/graphql-engine:v2.11.0-beta.1
         restart: unless-stopped
+        depends_on:
+            - postgres
         ports:
             - "6080:8080"
         volumes:
