@@ -7,9 +7,8 @@ dotenv: ['.env', '.env.{{.ENV}}']
 
 tasks:
   startUp:
-    deps: [composeUp]
+    deps: [migrateUp]
     cmds:
-      - dbmate up
       - pnpm hasura metadata apply
       - pnpm prisma:gen
       - pnpm prisma:seed
@@ -29,12 +28,4 @@ tasks:
   prismaPull:
     cmds: 
       - pnpm prisma db pull
-      
-  composeUp:
-    cmds:
-      - docker-compose --env-file ./.env.development up -d
-
-  composeDown:
-    cmds:
-      - docker-compose --env-file ./.env.development down --remove-orphans
   
