@@ -42,24 +42,6 @@ services:
       - "2379:2379/tcp"
     networks:
       - apisix
-  
-  postgres:
-    image: postgres:14-alpine
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    volumes:
-      - kc_postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-    ports:
-      - 5432:5432
-    networks:
-      - keycloak
 
   keycloak:
     image: quay.io/keycloak/keycloak:19.0.1
@@ -70,8 +52,8 @@ services:
       KC_PROXY: "passthrough"
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
-      DB_DATABASE: postgres
-      DB_USER: postgres
+      DB_DATABASE: keycloak_db
+      DB_USER: keycloak
       DB_PASSWORD: password
       KK_TO_RMQ_URL: rabbitmq
       KK_TO_RMQ_PORT: 5672
@@ -82,9 +64,6 @@ services:
       KK_TO_RMQ_USE_TLS: false
     ports:
       - 8180:8080
-    depends_on:
-      postgres:
-        condition: service_healthy
 
     networks:
       - keycloak
