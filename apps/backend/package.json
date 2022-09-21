@@ -54,7 +54,6 @@
         "amqplib": "0.10.3",
         "dotenv": "16.0.1",
         "envalid": "7.3.1",
-        "fastify-keycloak-adapter": "^1.6.0",
         "got": "12.3.1",
         "graphql": "16.5.0",
         "graphql-request": "4.3.0",
