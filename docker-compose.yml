@@ -23,10 +23,11 @@ services:
 
     hasura:
         container_name: hasura
-        image: hasura/graphql-engine:v2.11.0-beta.1
+        image: hasura/graphql-engine:v2.12.0-beta.1
         restart: unless-stopped
         depends_on:
             - postgres
+            - keycloak
         ports:
             - "6080:8080"
         volumes:
@@ -75,22 +76,31 @@ services:
             - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
         depends_on:
             - postgres
-    # keycloak:
-    #     image: bitnami/keycloak:18.0.2
-    #     container_name: keycloak
-    #     environment:
-    #         DB_VENDOR: POSTGRES
-    #         DB_ADDR: postgres
-    #         DB_DATABASE: keycloak_db
-    #         DB_USER: keycloak
-    #         DB_PASSWORD: password
-    #         KEYCLOAK_ADMIN: admin
-    #         KEYCLOAK_ADMIN_PASSWORD: password123
-    #         PROXY_ADDRESS_FORWARDING: "true"
-    #     ports:
-    #         - 8083:8080
-    #     depends_on:
-    #         - postgres
+
+    keycloak:
+        image: quay.io/keycloak/keycloak:19.0.2
+        command: start-dev
+        environment:
+            KEYCLOAK_ADMIN: admin
+            KEYCLOAK_ADMIN_PASSWORD: password123
+            KC_PROXY: "passthrough"
+            DB_VENDOR: POSTGRES
+            DB_ADDR: postgres
+            DB_DATABASE: keycloak_db
+            DB_USER: keycloak
+            DB_PASSWORD: password
+            KK_TO_RMQ_URL: rabbitmq
+            KK_TO_RMQ_PORT: 5672
+            KK_TO_RMQ_VHOST: DSrabbitmq
+            KK_TO_RMQ_EXCHANGE: amq.topic
+            KK_TO_RMQ_USERNAME: rabbit
+            KK_TO_RMQ_PASSWORD: rabbit
+            KK_TO_RMQ_USE_TLS: false
+        ports:
+            - 8180:8080
+        depends_on:
+            - postgres
+            - rabbitmq
 
 
     redis:
