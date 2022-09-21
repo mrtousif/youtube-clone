@@ -1,6 +1,6 @@
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
-import { Transport } from '@nestjs/microservices';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { ClsMiddleware } from 'nestjs-cls';
 import { LoggerErrorInterceptor, Logger } from 'nestjs-pino';
 import { PrismaClientExceptionFilter, PrismaService } from 'nestjs-prisma';
@@ -15,13 +15,13 @@ async function bootstrap() {
         }),
         { bufferLogs: true }
     );
-    app.connectMicroservice({
+    app.connectMicroservice<MicroserviceOptions>({
         transport: Transport.RMQ,
         options: {
             urls: [config.RABBIT_MQ_HOST],
             queue: 'backend_queue',
             queueOptions: {
-                durable: true
+                durable: true,
             }
         }
     });
