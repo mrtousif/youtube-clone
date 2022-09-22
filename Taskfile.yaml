@@ -37,3 +37,7 @@ tasks:
   goInsideContainer:
     cmds:
       - docker run --rm -it --entrypoint /bin/sh youtube-clone/backend:latest
+
+  rtsp:
+    cmds:
+      - docker run --rm -it -e RTSP_PROTOCOLS=tcp -p 8554:8554 -p 1935:1935 -p 8888:8888 aler9/rtsp-simple-server

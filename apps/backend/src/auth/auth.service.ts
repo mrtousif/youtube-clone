@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { gql } from "graphql-request";
 import { GqlSdk, InjectSdk } from "../sdk/sdk.module";
-import * as argon from "argon2";
 import { JwtService } from "@nestjs/jwt";
 
 gql`
@@ -52,7 +51,7 @@ export class AuthService {
     ) {}
 
     public async login(args: LoginUserArgs): Promise<LoginOrRegisterUserOutput> {
-        const { email, password } = args;
+        const { email } = args;
         const { users } = await this.sdk.findUserByEmail({
             email,
         });
@@ -65,18 +64,8 @@ export class AuthService {
             };
         }
 
-        // const passwordMatch = await argon.verify(foundUser.password_hash, password);
-
-        // if (!passwordMatch) {
-        //     return {
-        //         error: "Email and password do not match",
-        //     };
-        // }
-
-        const token = await this.signHasuraToken(foundUser.id);
-
         return {
-            token,
+            
         };
     }
 
@@ -87,7 +76,6 @@ export class AuthService {
             displayName = "Apparently, this user prefers to keep an air of mystery about them",
         } = args;
 
-        const hashedPassword = await argon.hash(password);
 
         try {
             const { insert_users_one: user } = await this.sdk.createUser({
@@ -98,10 +86,7 @@ export class AuthService {
 
             const { id } = user;
 
-            const token = await this.signHasuraToken(id);
-
             return {
-                token,
             };
         } catch (e) {
             const error = (e?.message as string)?.includes('unique constraint "users_email_key"')

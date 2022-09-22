@@ -5,6 +5,7 @@ volumes:
         driver: local
     rabbitmq_data:
     rabbitmq_log:
+    zinc_data:
 
 services:
     postgres:
@@ -23,10 +24,11 @@ services:
 
     hasura:
         container_name: hasura
-        image: hasura/graphql-engine:v2.11.0-beta.1
+        image: hasura/graphql-engine:v2.12.0-beta.1
         restart: unless-stopped
         depends_on:
             - postgres
+            - keycloak
         ports:
             - "6080:8080"
         volumes:
@@ -40,7 +42,7 @@ services:
             ## enable debugging mode. It is recommended to disable this in production
             HASURA_GRAPHQL_DEV_MODE: "true"
             HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
-            HASURA_GRAPHQL_JWT_SECRET: '{"type":"HS384", "key": "${DEV_JWT_SECRET}"}'
+            HASURA_GRAPHQL_JWT_SECRET: '{ "type": "RS256", "jwk_url": "http://keycloak:8080/realms/myrealm/protocol/openid-connect/certs" }'
             HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
             HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous
             HASURA_GRAPHQL_ENABLE_REMOTE_SCHEMA_PERMISSIONS: 'true'
@@ -75,22 +77,31 @@ services:
             - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
         depends_on:
             - postgres
+
     keycloak:
-        image: bitnami/keycloak:18.0.2
-        container_name: keycloak
+        image: quay.io/keycloak/keycloak:19.0.2
+        command: start-dev
         environment:
+            KEYCLOAK_ADMIN: admin
+            KEYCLOAK_ADMIN_PASSWORD: password123
+            KC_PROXY: "passthrough"
             DB_VENDOR: POSTGRES
             DB_ADDR: postgres
             DB_DATABASE: keycloak_db
             DB_USER: keycloak
             DB_PASSWORD: password
-            KEYCLOAK_ADMIN: admin
-            KEYCLOAK_ADMIN_PASSWORD: password123
-            PROXY_ADDRESS_FORWARDING: "true"
+            KK_TO_RMQ_URL: rabbitmq
+            KK_TO_RMQ_PORT: 5672
+            KK_TO_RMQ_VHOST: DSrabbitmq
+            KK_TO_RMQ_EXCHANGE: amq.topic
+            KK_TO_RMQ_USERNAME: rabbit
+            KK_TO_RMQ_PASSWORD: rabbit
+            KK_TO_RMQ_USE_TLS: false
         ports:
-            - 8083:8080
+            - 8180:8080
         depends_on:
             - postgres
+            - rabbitmq
 
 
     redis:
@@ -132,6 +143,17 @@ services:
             - rabbitmq_log:/var/log/rabbitmq/
         networks:
             - rabbitmq_net
+
+    zinc:
+        image: public.ecr.aws/h9e2j3o7/zinc:latest
+        volumes:
+            - zinc_data:/data
+        ports:
+            - 4080:4080
+        environment:
+            DATA_PATH: "/data"
+            ZINC_FIRST_ADMIN_USER: admin
+            ZINC_FIRST_ADMIN_PASSWORD: password123
 
 networks:
     rabbitmq_net:

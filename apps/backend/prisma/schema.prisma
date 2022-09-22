@@ -11,8 +11,8 @@ model ChannelSubscriptions {
   subscriberId                                     String   @map("subscriber_id") @db.Uuid
   channelId                                        String   @map("channel_id") @db.Uuid
   createdAt                                        DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
-  users_channel_subscriptions_channel_idTousers    Users    @relation("channel_subscriptions_channel_idTousers", fields: [channelId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "channel_id_fk")
-  users_channel_subscriptions_subscriber_idTousers Users    @relation("channel_subscriptions_subscriber_idTousers", fields: [subscriberId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subscriber_id_fk")
+  users_channel_subscriptions_channel_idTousers    Users    @relation("channel_subscriptions_channel_idTousers", fields: [channelId], references: [id], onDelete: NoAction, map: "channel_id_fk")
+  users_channel_subscriptions_subscriber_idTousers Users    @relation("channel_subscriptions_subscriber_idTousers", fields: [subscriberId], references: [id], onDelete: NoAction, map: "subscriber_id_fk")
 
   @@id([subscriberId, channelId], map: "channel_subscriptions_composite_pk")
   @@map("channel_subscriptions")
@@ -24,7 +24,7 @@ model PlayListNames {
   userId     String      @map("user_id") @db.Uuid
   videoCount BigInt?     @default(0) @map("video_count")
   createdAt  DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
-  users      Users       @relation("play_list_namesTousers", fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
+  users      Users       @relation("play_list_namesTousers", fields: [userId], references: [id], onDelete: NoAction, map: "users_id_fk")
   playLists  PlayLists[]
 
   @@map("play_list_names")
@@ -35,8 +35,8 @@ model PlayLists {
   playListNamesId BigInt        @map("play_list_names_id")
   videoId         String        @map("video_id") @db.Uuid
   createdAt       DateTime      @default(now()) @map("created_at") @db.Timestamptz(6)
-  playListNames   PlayListNames @relation(fields: [playListNamesId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "play_list_names_id_fk")
-  videos          Videos        @relation("play_listsTovideos", fields: [videoId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "videos_id_fk")
+  playListNames   PlayListNames @relation(fields: [playListNamesId], references: [id], onDelete: Cascade, map: "play_list_names_id_fk")
+  videos          Videos        @relation("play_listsTovideos", fields: [videoId], references: [id], onDelete: NoAction, map: "videos_id_fk")
 
   @@map("play_lists")
 }
@@ -52,9 +52,9 @@ model WatchHistory {
   userId         String    @map("user_id") @db.Uuid
   lastWatchtedAt DateTime? @map("last_watchted_at") @db.Time(6)
   createdAt      DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
-  updatedAt      DateTime  @default(now()) @map("updated_at") @db.Timestamptz(6)
-  users          Users     @relation("usersTowatch_history", fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
-  videos         Videos    @relation("videosTowatch_history", fields: [videoId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "videos_id_fk")
+  updatedAt      DateTime? @map("updated_at") @db.Timestamptz(6)
+  users          Users     @relation("usersTowatch_history", fields: [userId], references: [id], onDelete: NoAction, map: "users_id_fk")
+  videos         Videos    @relation("videosTowatch_history", fields: [videoId], references: [id], onDelete: NoAction, map: "videos_id_fk")
 
   @@id([videoId, userId], map: "watch_history_cs_pk")
   @@map("watch_history")
@@ -65,8 +65,8 @@ model Feelings {
   videoId   String         @map("video_id") @db.Uuid
   reaction  reaction_types
   createdAt DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
-  users     Users          @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_id_fk")
-  videos    Videos         @relation(fields: [videoId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "videos_id_fk")
+  users     Users          @relation(fields: [userId], references: [id], onDelete: NoAction, map: "users_id_fk")
+  videos    Videos         @relation(fields: [videoId], references: [id], onDelete: NoAction, map: "videos_id_fk")
 
   @@id([userId, videoId], map: "feelings_composite_pk")
   @@map("feelings")
@@ -88,7 +88,7 @@ model Users {
   play_list_names                                                  PlayListNames[]        @relation("play_list_namesTousers")
   videos                                                           Videos[]
   watcHistory                                                      WatchHistory[]         @relation("usersTowatch_history")
-  
+
   @@map("users")
 }
 
@@ -107,7 +107,7 @@ model Videos {
   isPrivate     Boolean?        @default(false) @map("is_private")
   createdAt     DateTime        @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt     DateTime?       @map("updated_at") @db.Timestamptz(6)
-  users         Users           @relation(fields: [channelId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "channels_id_fk")
+  users         Users           @relation(fields: [channelId], references: [id], onDelete: NoAction, map: "channels_id_fk")
   feelings      Feelings[]
   playLists     PlayLists[]     @relation("play_listsTovideos")
   watchHistory  WatchHistory[]  @relation("videosTowatch_history")

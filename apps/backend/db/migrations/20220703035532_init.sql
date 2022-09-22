@@ -56,7 +56,7 @@ CREATE TABLE videos (
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz,
   CONSTRAINT videos_id_pk PRIMARY KEY (id),
-  CONSTRAINT channels_id_fk FOREIGN KEY (channel_id) REFERENCES users(id)
+  CONSTRAINT channels_id_fk FOREIGN KEY (channel_id) REFERENCES users(id) ON UPDATE CASCADE
 );
 
 CREATE INDEX videos_channel_id_idx ON videos (channel_id);
@@ -68,8 +68,8 @@ CREATE TABLE watch_history (
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz,
   CONSTRAINT watch_history_cs_pk PRIMARY KEY (video_id, user_id),
-  CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id),
-  CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id)
+  CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE,
+  CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id) ON UPDATE CASCADE
 );
 
 CREATE TABLE play_list_names (
@@ -79,7 +79,7 @@ CREATE TABLE play_list_names (
   video_count bigint DEFAULT 0,
   created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT play_list_names_id_pk PRIMARY KEY (id),
-  CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id)
+  CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE
 );
 
 CREATE TABLE play_lists (
@@ -88,8 +88,8 @@ CREATE TABLE play_lists (
   video_id uuid NOT NULL,
   created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT play_lists_id_pk PRIMARY KEY (id),
-  CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id),
-  CONSTRAINT play_list_names_id_fk FOREIGN KEY (play_list_names_id) REFERENCES play_list_names(id) ON DELETE CASCADE
+  CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id) ON UPDATE CASCADE,
+  CONSTRAINT play_list_names_id_fk FOREIGN KEY (play_list_names_id) REFERENCES play_list_names(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TYPE reaction_types AS ENUM (
@@ -103,8 +103,8 @@ CREATE TABLE feelings (
   reaction reaction_types NOT NULL,
   created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT feelings_composite_pk PRIMARY KEY (user_id, video_id),
-  CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id),
-  CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id)
+  CONSTRAINT users_id_fk FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE,
+  CONSTRAINT videos_id_fk FOREIGN KEY (video_id) REFERENCES videos(id) ON UPDATE CASCADE
 );
 
 CREATE TABLE channel_subscriptions (
@@ -112,8 +112,8 @@ CREATE TABLE channel_subscriptions (
   channel_id uuid NOT NULL,
   created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT channel_subscriptions_composite_pk PRIMARY KEY (subscriber_id, channel_id),
-  CONSTRAINT subscriber_id_fk FOREIGN KEY (subscriber_id) REFERENCES users(id),
-  CONSTRAINT channel_id_fk FOREIGN KEY (channel_id) REFERENCES users(id)
+  CONSTRAINT subscriber_id_fk FOREIGN KEY (subscriber_id) REFERENCES users(id) ON UPDATE CASCADE,
+  CONSTRAINT channel_id_fk FOREIGN KEY (channel_id) REFERENCES users(id) ON UPDATE CASCADE
 );
 
 CREATE TRIGGER set_updated_at

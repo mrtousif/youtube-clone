@@ -19,6 +19,6 @@ export class AuthEventsService {
     },
   })
   userCreated(evt: HasuraInsertEvent<Users>) {
-    this.emailService.sendEmail(evt.event.data.new.email, 'Welcome!');
+    this.emailService.sendWelcomeEmail(evt.event.data.new.email, 'Welcome!');
   }
 }
