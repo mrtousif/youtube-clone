@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@auto-it/all-contributors': 10.37.6
-      '@auto-it/docker': 10.37.4
+      '@auto-it/docker': 10.37.6
       '@babel/plugin-transform-flow-strip-types': 7.18.9
       '@commitlint/cli': 17.0.3
       '@commitlint/config-conventional': 17.0.3
@@ -23,7 +23,7 @@ importers:
       turbo: latest
     devDependencies:
       '@auto-it/all-contributors': 10.37.6
-      '@auto-it/docker': 10.37.4
+      '@auto-it/docker': 10.37.6
       '@babel/plugin-transform-flow-strip-types': 7.18.9
       '@commitlint/cli': 17.0.3
       '@commitlint/config-conventional': 17.0.3
@@ -908,15 +908,18 @@ packages:
       - supports-color
     dev: true
 
-  /@auto-it/docker/10.37.4:
-    resolution: {integrity: sha512-Dl7LfYi1O7w0AHa5H4VsHcyV1LbQenE+8YAmTIpWzITkhRee/objT0JXK/wIh5iTGei6Ln+7TmPYC6B30EjMgw==}
+  /@auto-it/docker/10.37.6:
+    resolution: {integrity: sha512-I8X7Tc+24EcDz3D6CjtUV+B7m+b5tdVVWr9aWGj3z2fPphb7bnPvejpVfHXPgAwxmomxHGxdT9pMgzja8vNMgw==}
     dependencies:
-      '@auto-it/core': 10.37.4
+      '@auto-it/core': 10.37.6
       fp-ts: 2.12.1
       io-ts: 2.2.16_fp-ts@2.12.1
       semver: 7.3.7
       tslib: 2.1.0
     transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
       - encoding
       - supports-color
       - typescript

@@ -19,7 +19,7 @@
     },
     "devDependencies": {
         "@auto-it/all-contributors": "10.37.6",
-        "@auto-it/docker": "10.37.4",
+        "@auto-it/docker": "10.37.6",
         "@babel/plugin-transform-flow-strip-types": "7.18.9",
         "@commitlint/cli": "17.0.3",
         "@commitlint/config-conventional": "17.0.3",
