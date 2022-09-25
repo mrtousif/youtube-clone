@@ -45,6 +45,7 @@ importers:
       lint-staged: 13.0.3
       prettier: 2.7.1
       prettier-plugin-prisma: 4.2.0_prettier@2.7.1
+      tsc-alias: 1.7.0
       turbo: 1.5.1
 
   apps/admin-panel:
@@ -127,7 +128,7 @@ importers:
       typescript: 4.7.4
       vite: 2.9.14
       vite-plugin-checker: 0.4.9_vite@2.9.14
-      vite-plugin-pwa: 0.12.3_vite@2.9.14
+      vite-plugin-pwa: 0.12.3_ytzi5swfraj2n2tmn6nztjm3nm
       vite-tsconfig-paths: 3.5.0_vite@2.9.14
       vitest: 0.17.1_c8@7.12.0+jsdom@20.0.0
       workbox-window: 6.5.4
@@ -234,7 +235,7 @@ importers:
       ioredis: 5.2.2
       lodash: 4.17.21
       lodash-decorators: 6.0.1_lodash@4.17.21
-      mercurius: 10.1.0
+      mercurius: 10.1.0_graphql@16.5.0
       nestjs-cls: 2.2.0_cw6o3dkuyuli4a5gq7b223evly
       nestjs-pino: 3.1.1_4pgyxucqtnaer2lr24gprogtn4
       nestjs-prisma: 0.17.0_sgrps7myzlm2vlodf2c2oyrlw4
@@ -354,7 +355,7 @@ importers:
       react-redux: 8.0.2_e42enmjmqb4imi3q3iaq2rrebm
       react-router: 6.3.0_react@18.2.0
       react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
-      react-scripts: 5.0.1_qtbnez4q7bzoc4eqybg3efzzxe
+      react-scripts: 5.0.1_j2z3ikd7t5wgoz2cmshhdgatle
       react-syntax-highlighter: 15.5.0_react@18.2.0
       react-window: 1.8.7_biqbaboplfbrettd7655fr4n2y
       redux: 4.2.0
@@ -7541,7 +7542,7 @@ packages:
       '@nestjs/common': 9.0.8_j5hagqx4mwzscud4kyjdvubauy
       '@nestjs/graphql': 10.0.21_vx6w6lmde7jmi4n6mfpmu7zu4e
       graphql: 16.5.0
-      mercurius: 10.1.0
+      mercurius: 10.1.0_graphql@16.5.0
       tslib: 2.4.0
     dev: false
 
@@ -17393,9 +17394,11 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /mercurius/10.1.0:
+  /mercurius/10.1.0_graphql@16.5.0:
     resolution: {integrity: sha512-7CBxRcxRELyGDz2FernU2dogyJ2b7Vp4JBUx68Pn082xNH97Oel/Mt4yPpn7V2V1bY7MyuxSF+oZLzFlG+5jCw==}
     engines: {node: '>=14.19.3'}
+    peerDependencies:
+      graphql: ^16.0.0
     dependencies:
       '@fastify/error': 3.0.0
       '@fastify/static': 6.5.0
@@ -19988,6 +19991,12 @@ packages:
   /react-dev-utils/12.0.1_pbsuexq2diwhwnmcmhokqx47su:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
     engines: {node: '>=14'}
+    peerDependencies:
+      typescript: '>=2.7'
+      webpack: '>=4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
       '@babel/code-frame': 7.18.6
       address: 1.1.2
@@ -20013,12 +20022,12 @@ packages:
       shell-quote: 1.7.3
       strip-ansi: 6.0.1
       text-table: 0.2.0
+      typescript: 4.7.4
+      webpack: 5.73.0
     transitivePeerDependencies:
       - eslint
       - supports-color
-      - typescript
       - vue-template-compiler
-      - webpack
     dev: false
 
   /react-device-detect/2.2.2_biqbaboplfbrettd7655fr4n2y:
@@ -20274,11 +20283,12 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-scripts/5.0.1_qtbnez4q7bzoc4eqybg3efzzxe:
+  /react-scripts/5.0.1_j2z3ikd7t5wgoz2cmshhdgatle:
     resolution: {integrity: sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     peerDependencies:
+      eslint: '*'
       react: '>= 16'
       typescript: ^3.2.1 || ^4
     peerDependenciesMeta:
@@ -22879,10 +22889,11 @@ packages:
       vscode-uri: 3.0.3
     dev: true
 
-  /vite-plugin-pwa/0.12.3_vite@2.9.14:
+  /vite-plugin-pwa/0.12.3_ytzi5swfraj2n2tmn6nztjm3nm:
     resolution: {integrity: sha512-gmYdIVXpmBuNjzbJFPZFzxWYrX4lHqwMAlOtjmXBbxApiHjx9QPXKQPJjSpeTeosLKvVbNcKSAAhfxMda0QVNQ==}
     peerDependencies:
       vite: ^2.0.0 || ^3.0.0-0
+      workbox-window: ^6.4.0
     dependencies:
       debug: 4.3.4
       fast-glob: 3.2.11
