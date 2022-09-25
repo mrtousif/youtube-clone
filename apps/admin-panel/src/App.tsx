@@ -37,8 +37,8 @@ function App() {
             <HotKeys />
             <ServiceWorker />
             <Admin dataProvider={dataProvider}>
-                <Resource name="posts" list={ListGuesser} />
-                <Resource name="comments" list={ListGuesser} />          
+                <Resource name="users" list={ListGuesser} />
+                <Resource name="videos" list={ListGuesser} />          
             </Admin>
         </>
     );

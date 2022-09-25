@@ -65,6 +65,7 @@ importers:
       '@types/react-dom': 18.0.6
       '@vitejs/plugin-react': 1.3.2
       c8: 7.12.0
+      envsafe: ^2.0.3
       eslint: 8.19.0
       eslint-config-custom: workspace:*
       graphql: 16.5.0
@@ -99,6 +100,7 @@ importers:
       '@mui/material': 5.8.7_4rk2qqmeovj7saoqaaxyyniomy
       '@mui/system': 5.8.7_r3nsvouk6fd3mlgaer2c25nhwa
       '@mui/utils': 5.8.6_react@18.2.0
+      envsafe: 2.0.3
       graphql: 16.5.0
       is-mobile: 3.1.1
       notistack: 2.0.5_iuocwb7tri4dxdikfhq2nwtau4
@@ -12425,6 +12427,11 @@ packages:
     engines: {node: '>=8.12'}
     dependencies:
       tslib: 2.3.1
+    dev: false
+
+  /envsafe/2.0.3:
+    resolution: {integrity: sha512-51lek8h5btjXhXUDW//Pno7HPydM1WQzltOb1/ONRKdwB2QkfAURnN4Qn0cJ5LzGvX2Km1ReR2O3K3Bqq9sBMg==}
+    engines: {node: '>=10'}
     dev: false
 
   /error-ex/1.3.2:
