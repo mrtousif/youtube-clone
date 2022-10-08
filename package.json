@@ -23,7 +23,7 @@
         "@babel/plugin-transform-flow-strip-types": "7.18.9",
         "@commitlint/cli": "17.0.3",
         "@commitlint/config-conventional": "17.0.3",
-        "@faker-js/faker": "^7.5.0",
+        "@faker-js/faker": "7.5.0",
         "@trivago/prettier-plugin-sort-imports": "3.3.0",
         "auto": "10.37.4",
         "danger": "11.1.1",
@@ -33,11 +33,11 @@
         "eslint-config-custom": "workspace:*",
         "https-localhost": "4.7.1",
         "husky": "8.0.1",
-        "is-port-reachable": "3",
+        "is-port-reachable": "3.1.0",
         "lint-staged": "13.0.3",
         "prettier": "2.7.1",
         "prettier-plugin-prisma": "4.2.0",
-        "tsc-alias": "^1.7.0",
+        "tsc-alias": "1.7.0",
         "turbo": "latest"
     },
     "lint-staged": {
