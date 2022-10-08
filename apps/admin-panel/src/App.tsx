@@ -10,6 +10,8 @@ import { Admin, Resource, ListGuesser, DataProvider } from 'react-admin';
 import buildHasuraProvider from 'ra-data-hasura';
 import LinearProgress from '@mui/material/LinearProgress';
 import { client } from '@/graphql';
+import UserList from "components/UserList";
+import VideoList from "@/components/VideoList";
 
 // const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
 
@@ -37,8 +39,8 @@ function App() {
             <HotKeys />
             <ServiceWorker />
             <Admin dataProvider={dataProvider}>
-                <Resource name="posts" list={ListGuesser} />
-                <Resource name="comments" list={ListGuesser} />          
+                <Resource name="users" list={UserList} />
+                <Resource name="videos" list={VideoList} />          
             </Admin>
         </>
     );

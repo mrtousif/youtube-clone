@@ -6,13 +6,14 @@ Keycloak
 curl --request POST \
   --url http://localhost:8180/realms/myrealm/protocol/openid-connect/token \
   --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data username=developer \
+  --data username=tousif101@outlook.com \
   --data password=password123 \
   --data grant_type=password \
   --data client_id=hasura
 
 ```
 
+```sh
 curl  -XPOST 127.0.0.1:9080/apisix/admin/routes -H "X-Api-Key: edd1c9f034335f136f87ad84b625c8f1" -d '{
     "uri":"/*",
     "plugins":{
@@ -35,3 +36,5 @@ curl  -XPOST 127.0.0.1:9080/apisix/admin/routes -H "X-Api-Key: edd1c9f034335f136
         }
     }
 }'
+
+```

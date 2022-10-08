@@ -21,6 +21,10 @@ tasks:
     cmds:
       - docker-compose --env-file ./.env.dev up
 
+  gatewayUp:
+    cmds:
+      - docker-compose -f gateway-compose.yml up
+
   composeDown:
     cmds:
       - docker-compose --env-file ./.env.dev down --remove-orphans
