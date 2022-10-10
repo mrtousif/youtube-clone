@@ -4,6 +4,7 @@ generator client {
 
 generator class_validator {
   provider = "prisma-class-validator-generator"
+  output = "../src/@generated"
 }
 
 datasource db {

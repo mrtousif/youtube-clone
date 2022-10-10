@@ -64,7 +64,7 @@ CREATE INDEX videos_channel_id_idx ON videos (channel_id);
 CREATE TABLE watch_history (
   video_id uuid,
   user_id uuid,
-  last_watchted_at TIME,
+  last_watched_at TIME,
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz,
   CONSTRAINT watch_history_cs_pk PRIMARY KEY (video_id, user_id),
