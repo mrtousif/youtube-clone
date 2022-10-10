@@ -11,7 +11,7 @@ importers:
       '@commitlint/config-conventional': 17.0.3
       '@faker-js/faker': 7.5.0
       '@trivago/prettier-plugin-sort-imports': 3.3.0
-      auto: 10.37.4
+      auto: 10.37.6
       danger: 11.1.1
       danger-plugin-code-coverage: 1.2.0
       danger-plugin-coverage: 1.6.2
@@ -33,7 +33,7 @@ importers:
       '@commitlint/config-conventional': 17.0.3
       '@faker-js/faker': 7.5.0
       '@trivago/prettier-plugin-sort-imports': 3.3.0_prettier@2.7.1
-      auto: 10.37.4
+      auto: 10.37.6
       danger: 11.1.1
       danger-plugin-code-coverage: 1.2.0
       danger-plugin-coverage: 1.6.2
@@ -791,67 +791,9 @@ packages:
       - typescript
     dev: true
 
-  /@auto-it/bot-list/10.37.4:
-    resolution: {integrity: sha512-Lz981mShjY7VqQpG5mAfiR7py5iH8WbEIbd2/XUQu6EQFgljj0jT6XFA180Hz1tFQJ4o2TqtXaj3gBXURhpggQ==}
-    engines: {node: '>=10.x'}
-    dev: true
-
   /@auto-it/bot-list/10.37.6:
     resolution: {integrity: sha512-ltcLZEzXOOWh24qgNE4mPYJR25Dh9mQy2QwyD8uOE01Vy0yu89RGLi0TahUlUNZUSPBjLYUCxNOcp9WHKBJ7Sg==}
     engines: {node: '>=10.x'}
-    dev: true
-
-  /@auto-it/core/10.37.4:
-    resolution: {integrity: sha512-QS1z+PAjXUUKuEzx56ujvhpsgLOIgCdfnj/UyNfbpVoIS+5x7ve/fhoIlkF7A2Ogrvile7EOPT0EIVmDTtzYYg==}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@auto-it/bot-list': 10.37.4
-      '@endemolshinegroup/cosmiconfig-typescript-loader': 3.0.2_cosmiconfig@7.0.0
-      '@octokit/core': 3.6.0
-      '@octokit/plugin-enterprise-compatibility': 1.3.0
-      '@octokit/plugin-retry': 3.0.9
-      '@octokit/plugin-throttling': 3.7.0_@octokit+core@3.6.0
-      '@octokit/rest': 18.12.0
-      await-to-js: 3.0.0
-      chalk: 4.1.2
-      cosmiconfig: 7.0.0
-      deepmerge: 4.2.2
-      dotenv: 8.6.0
-      endent: 2.1.0
-      enquirer: 2.3.6
-      env-ci: 5.5.0
-      fast-glob: 3.2.11
-      fp-ts: 2.12.1
-      fromentries: 1.3.2
-      gitlog: 4.0.4
-      https-proxy-agent: 5.0.1
-      import-cwd: 3.0.0
-      import-from: 3.0.0
-      io-ts: 2.2.16_fp-ts@2.12.1
-      lodash.chunk: 4.2.0
-      log-symbols: 4.1.0
-      node-fetch: 2.6.7
-      parse-author: 2.0.0
-      parse-github-url: 1.0.2
-      pretty-ms: 7.0.1
-      requireg: 0.2.2
-      semver: 7.3.7
-      signale: 1.4.0
-      tapable: 2.2.1
-      terminal-link: 2.1.1
-      tinycolor2: 1.4.2
-      ts-node: 9.1.1
-      tslib: 2.1.0
-      type-fest: 0.21.3
-      typescript-memoize: 1.1.0
-      url-join: 4.0.1
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
     dev: true
 
   /@auto-it/core/10.37.6:
@@ -927,11 +869,11 @@ packages:
       - typescript
     dev: true
 
-  /@auto-it/npm/10.37.4:
-    resolution: {integrity: sha512-nF/fZOZ6agknEiN2q9g+y+TuOsQp2f8EDRJInA0Vs/vfa22FOjIZhjJP/XAxc4ojfj/0OmKoATCQJug5PVwwYg==}
+  /@auto-it/npm/10.37.6:
+    resolution: {integrity: sha512-18CpaX3YfpJ6vwONYEBy9ORiPGplrtQ30pzRtDpKZzHin5wakdOyPd1P5lWeZBmCQCyiszdRteeQsXzFbaSuoQ==}
     dependencies:
-      '@auto-it/core': 10.37.4
-      '@auto-it/package-json-utils': 10.37.4
+      '@auto-it/core': 10.37.6
+      '@auto-it/package-json-utils': 10.37.6
       await-to-js: 3.0.0
       endent: 2.1.0
       env-ci: 5.5.0
@@ -945,43 +887,52 @@ packages:
       url-join: 4.0.1
       user-home: 2.0.0
     transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
       - encoding
       - supports-color
       - typescript
     dev: true
 
-  /@auto-it/package-json-utils/10.37.4:
-    resolution: {integrity: sha512-LLVtEeuAOeDQmhkDEOJyGU9PFdF5i46UcS7vG7BxSLQg2UAhvAolLgD/u6wOTOCDmQnLsBP6hdStSbHjDO8tMg==}
+  /@auto-it/package-json-utils/10.37.6:
+    resolution: {integrity: sha512-rUoEcEnPgHG8X/XkPe3PKFHhXD3AsplXB0Rpr7lJQta5XzDqmWzc/xVL1vMmM4IpXMI5lK7A9OZosWjgJVI7jA==}
     engines: {node: '>=10.x'}
     dependencies:
       parse-author: 2.0.0
       parse-github-url: 1.0.2
     dev: true
 
-  /@auto-it/released/10.37.4:
-    resolution: {integrity: sha512-1l4gRs/Cb3G6wsIwlxfoIp8OBl/WyAF2Lj5OmZ5Tbjfr6Mki6wD9xxa95rrXG47vaY+u+jcqNYX2dwP2ROxOhA==}
+  /@auto-it/released/10.37.6:
+    resolution: {integrity: sha512-988nCdYApyzKwZx6W6lHNHS9aEw9xLFbfDcTWrSKUOChjT8yDcGadDDXVhj3M0uhHojr8jXKbrRATEPyEeTDlg==}
     dependencies:
-      '@auto-it/bot-list': 10.37.4
-      '@auto-it/core': 10.37.4
+      '@auto-it/bot-list': 10.37.6
+      '@auto-it/core': 10.37.6
       deepmerge: 4.2.2
       fp-ts: 2.12.1
       io-ts: 2.2.16_fp-ts@2.12.1
       tslib: 2.1.0
     transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
       - encoding
       - supports-color
       - typescript
     dev: true
 
-  /@auto-it/version-file/10.37.4:
-    resolution: {integrity: sha512-CnYgo6GNgBcMDrkoeeHMG3PRDpYZ84pUZehoqZmXKczGzXEJSulHdedmPvuAW3rEvVAFJhWPRcJ10ByRkIQoBg==}
+  /@auto-it/version-file/10.37.6:
+    resolution: {integrity: sha512-BO7f1bWrUFkhp7RwwmkegBUc/VwJrIlQQaFm7l/cc5IGZ7DL0rPap8UbytSL3aWV9YzoZpqgWNj2KPRGvwguag==}
     dependencies:
-      '@auto-it/core': 10.37.4
+      '@auto-it/core': 10.37.6
       fp-ts: 2.12.1
       io-ts: 2.2.16_fp-ts@2.12.1
       semver: 7.3.7
       tslib: 1.10.0
     transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
       - encoding
       - supports-color
       - typescript
@@ -10046,15 +9997,15 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /auto/10.37.4:
-    resolution: {integrity: sha512-chspNHfy17DFOPwLbT74xU+fD0NXhtLpWnKZjoLjHUKp0+ZNJSM9jrBHq2ExB4EAP3UXlFVDG+BzrkgZoYLzCw==}
+  /auto/10.37.6:
+    resolution: {integrity: sha512-zMLsXz/WPqSlNVlY6g1GlFyhow+x//htR2QwWYSxB4DvAFNggXnK6aRqJ1DrcjhtUAPL2ngw5hHHrCgHvyvAaw==}
     engines: {node: '>=10.x'}
     hasBin: true
     dependencies:
-      '@auto-it/core': 10.37.4
-      '@auto-it/npm': 10.37.4
-      '@auto-it/released': 10.37.4
-      '@auto-it/version-file': 10.37.4
+      '@auto-it/core': 10.37.6
+      '@auto-it/npm': 10.37.6
+      '@auto-it/released': 10.37.6
+      '@auto-it/version-file': 10.37.6
       await-to-js: 3.0.0
       chalk: 4.1.2
       command-line-application: 0.10.1
@@ -10064,6 +10015,9 @@ packages:
       terminal-link: 2.1.1
       tslib: 2.1.0
     transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
       - encoding
       - supports-color
       - typescript
