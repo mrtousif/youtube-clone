@@ -26,7 +26,7 @@
         "@faker-js/faker": "7.5.0",
         "@trivago/prettier-plugin-sort-imports": "3.3.0",
         "auto": "10.37.6",
-        "danger": "11.1.1",
+        "danger": "11.1.4",
         "danger-plugin-code-coverage": "1.2.0",
         "danger-plugin-coverage": "1.6.2",
         "docker-compose": "0.23.17",
