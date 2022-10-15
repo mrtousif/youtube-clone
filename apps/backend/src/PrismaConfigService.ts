@@ -5,7 +5,7 @@ import { config } from './config';
 import { createPrismaRedisCache } from "prisma-redis-middleware";
 import Redis from "ioredis";
 
-const redis = new Redis();
+const redis = new Redis(config.REDIS_URL);
 
 export function loggingMiddleware() {
     return async (params: Prisma.MiddlewareParams, next)  => {

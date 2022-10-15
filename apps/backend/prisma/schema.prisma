@@ -2,11 +2,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator class_validator {
-  provider = "prisma-class-validator-generator"
-  output = "../src/@generated"
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
