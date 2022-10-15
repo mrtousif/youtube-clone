@@ -2,7 +2,7 @@ import { str, port, url, cleanEnv } from 'envalid';
 
 export const config = cleanEnv(process.env, {
     NODE_ENV: str({ choices: ['development', 'test', 'production', 'staging', 'qa'] }),
-    REDIS_URL: str({devDefault: 6379}),
+    REDIS_URL: str({ devDefault: '6379'}),
     NESTJS_EVENT_WEBHOOK_SHARED_SECRET: str(),
     HASURA_GRAPHQL_API_ENDPOINT: str(),
     SENTRY_DSN: url({ default: '' }),
