@@ -2,7 +2,7 @@ version: "3"
 
 services:
     database:
-        container_name: "postgres-be"
+        container_name: "postgres-intg"
         image: postgres:14-alpine
         command: postgres -c fsync=off -c synchronous_commit=off -c full_page_writes=off -c random_page_cost=1.0
         environment:
@@ -10,8 +10,16 @@ services:
             POSTGRES_USER: ${POSTGRES_USER}
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
         ports:
-            - "54321:5432"
+            - "5433:5432"
         tmpfs: /var/lib/postgresql/data
+
+    redis:
+        container_name: redis-intg
+        image: redis:7-alpine
+        hostname: redis-intg
+        restart: unless-stopped
+        ports:
+            - "6380:6379"
 
 networks:
     default:

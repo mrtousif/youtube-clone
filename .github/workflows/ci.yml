@@ -47,15 +47,24 @@ jobs:
             - name: Install dependencies
               run: pnpm install
 
-            - name: Lint, test and build (push)
-              if: ${{ github.event_name == 'push' }}
-              run: pnpm turbo run build --since=${{ steps.extract_parent_branch.outputs.parent_branch }}
-
             - name: Lint, test and build (pull request)
               if: ${{ github.event_name == 'pull_request' }}
               run: pnpm turbo run build --filter=[HEAD^1]
+
+            - name: Test Report
+              uses: dorny/test-reporter@v1
+              if: success()
+              with:
+                name: JEST Tests            
+                path: reports/jest-*.xml    
+                reporter: jest-junit        
 
             - name: Danger
               run: pnpm danger ci
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - uses: EndBug/add-and-commit@v9
+              with:
+                default_author: github_actor
+

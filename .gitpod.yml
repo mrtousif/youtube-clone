@@ -8,7 +8,7 @@ image:
 
 tasks:
   - init: |
-      docker-compose -f docker-compose.yml -f apps/backend/docker-compose.yml --env-file .env.dev pull
+      docker-compose -f docker-compose.yml --env-file .env.dev pull
       pnpm install
       pnpm run build
 
@@ -29,17 +29,15 @@ ports:
 vscode:
   extensions:
     - ms-azuretools.vscode-docker
-    - dbaeumer.vscode-eslint
     - eamodio.gitlens
-    - esbenp.prettier-vscode
-    - zhuangtongfa.material-theme
     - mhutchie.git-graph
-    - rangav.vscode-thunder-client
-    - mikestead.dotenv
     - IBM.output-colorizer
     - streetsidesoftware.code-spell-checker
 
     - ZixuanChen.vitest-explorer
+    - mikestead.dotenv
+    - dbaeumer.vscode-eslint
+    - rangav.vscode-thunder-client
 
 github:
   prebuilds:

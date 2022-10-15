@@ -96,7 +96,7 @@ services:
             KK_TO_RMQ_EXCHANGE: amq.topic
             KK_TO_RMQ_USERNAME: rabbit
             KK_TO_RMQ_PASSWORD: rabbit
-            KK_TO_RMQ_USE_TLS: false
+            KK_TO_RMQ_USE_TLS: 'false'
         ports:
             - 8180:8080
         depends_on:
@@ -158,5 +158,5 @@ services:
 networks:
     rabbitmq_net:
         driver: bridge
-    default:
-        name: "monorepo-network"
+    monorepo-network:
+        driver: bridge
