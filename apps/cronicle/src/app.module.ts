@@ -1,12 +1,13 @@
-import { Module } from "@nestjs/common";
-import { ScheduleModule } from '@nestjs/schedule';
 import { BullModule } from '@nestjs/bull';
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
+import { Module } from '@nestjs/common';
+import { ScheduleModule } from '@nestjs/schedule';
+
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
     imports: [
-        ScheduleModule.forRoot(), 
+        ScheduleModule.forRoot(),
         BullModule.forRoot({
             redis: {
                 host: 'localhost',

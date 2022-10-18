@@ -1,5 +1,4 @@
-
-import { str, port, url, cleanEnv } from 'envalid';
+import { cleanEnv, port, str, url } from 'envalid';
 
 export const config = cleanEnv(process.env, {
     NODE_ENV: str({ choices: ['development', 'test', 'production', 'staging'] }),
@@ -9,5 +8,5 @@ export const config = cleanEnv(process.env, {
     PORT: port({ devDefault: 3000 }),
     S3_ACCESS_KEY_ID: str(),
     S3_SECRET_ACCESS_KEY: str(),
-    RABBIT_MQ_HOST: str()
+    RABBIT_MQ_HOST: str(),
 });
