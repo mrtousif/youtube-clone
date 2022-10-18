@@ -1,7 +1,7 @@
 // @ts-check
-import { defineConfig } from 'eslint-define-config';
+const { defineConfig } = require('eslint-define-config');
 
-export default defineConfig({
+module.exports = defineConfig({
     extends: ['prettier', 'alloy', 'alloy/typescript', 'alloy/react', 'plugin:sonarjs/recommended'],
     ignorePatterns: ['**/migrations/*.ts', '**/generated/*.ts', 'dist/*', '*-env.d.ts'],
     env: {
