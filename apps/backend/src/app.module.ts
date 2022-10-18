@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MercuriusDriver, MercuriusDriverConfig } from '@nestjs/mercurius';
+import { ScheduleModule } from '@nestjs/schedule';
 import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 import { ClsModule } from 'nestjs-cls';
 import { PrismaModule } from 'nestjs-prisma';
@@ -64,6 +65,7 @@ import { SdkModule } from './sdk/sdk.module';
             allowBatchedQueries: true,
         }),
         EventEmitterModule.forRoot(),
+        ScheduleModule.forRoot(),
         HasuraModule.forRootAsync(HasuraModule, {
             useFactory: () => {
                 const webhookSecret = config.NESTJS_EVENT_WEBHOOK_SHARED_SECRET;
