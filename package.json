@@ -24,7 +24,7 @@
         "@commitlint/cli": "17.0.3",
         "@commitlint/config-conventional": "17.0.3",
         "@faker-js/faker": "7.5.0",
-        "@trivago/prettier-plugin-sort-imports": "3.3.0",
+        "@trivago/prettier-plugin-sort-imports": "3.3.1",
         "auto": "10.37.6",
         "danger": "11.1.4",
         "danger-plugin-code-coverage": "1.2.0",
