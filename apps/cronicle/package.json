@@ -1,5 +1,5 @@
 {
-  "name": "notifier",
+  "name": "cronicle",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -25,7 +25,9 @@
     "@nestjs/core": "9.0.8",
     "@nestjs/microservices": "9.0.8",
     "@nestjs/platform-express": "9.0.8",
+    "@nestjs/schedule": "2.1.0",
     "@supabase/realtime-js": "1.7.4",
+    "@types/cron": "2.0.0",
     "amqp-connection-manager": "4.1.6",
     "amqplib": "0.10.3",
     "envalid": "7.3.1",
