@@ -183,6 +183,7 @@ importers:
       jest: 28.1.3
       jest-cucumber: ^3.0.1
       jest-extended: ^3.1.0
+      jest-junit: ^14.0.1
       lodash: 4.17.21
       lodash-decorators: 6.0.1
       mercurius: 10.1.0
@@ -241,7 +242,7 @@ importers:
       ioredis: 5.2.3
       lodash: 4.17.21
       lodash-decorators: 6.0.1_lodash@4.17.21
-      mercurius: 10.1.0
+      mercurius: 10.1.0_graphql@16.5.0
       nestjs-cls: 2.2.0_cw6o3dkuyuli4a5gq7b223evly
       nestjs-pino: 3.1.1_4pgyxucqtnaer2lr24gprogtn4
       nestjs-prisma: 0.17.0_sgrps7myzlm2vlodf2c2oyrlw4
@@ -275,6 +276,7 @@ importers:
       jest: 28.1.3_ubchvo7cxgdavyfa6mg2b5a4oe
       jest-cucumber: 3.0.1_ts-node@10.9.1
       jest-extended: 3.1.0_jest@28.1.3
+      jest-junit: 14.0.1
       pino-pretty: 9.1.0
       prisma: 4.2.1
       source-map-support: 0.5.21
@@ -7661,7 +7663,7 @@ packages:
       '@nestjs/common': 9.0.8_c3ywp5uae7mfm5pv3l6tu7kcju
       '@nestjs/graphql': 10.0.21_reom7a3fegguw7tb4gsrgep3zy
       graphql: 16.5.0
-      mercurius: 10.1.0
+      mercurius: 10.1.0_graphql@16.5.0
       tslib: 2.4.0
     dev: false
 
@@ -11624,8 +11626,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -16929,6 +16931,16 @@ packages:
       - supports-color
     dev: false
 
+  /jest-junit/14.0.1:
+    resolution: {integrity: sha512-h7/wwzPbllgpQhhVcRzRC76/cc89GlazThoV1fDxcALkf26IIlRsu/AcTG64f4nR2WPE3Cbd+i/sVf+NCUHrWQ==}
+    engines: {node: '>=10.12.0'}
+    dependencies:
+      mkdirp: 1.0.4
+      strip-ansi: 6.0.1
+      uuid: 8.3.2
+      xml: 1.0.1
+    dev: true
+
   /jest-leak-detector/26.6.2:
     resolution: {integrity: sha512-i4xlXpsVSMeKvg2cEKdfhh0H39qlJlP5Ex1yQxwF9ubahboQYMgTtz5oML35AVA3B4Eu+YsmwaiKVev9KCvLxg==}
     engines: {node: '>= 10.14.2'}
@@ -18585,9 +18597,11 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /mercurius/10.1.0:
+  /mercurius/10.1.0_graphql@16.5.0:
     resolution: {integrity: sha512-7CBxRcxRELyGDz2FernU2dogyJ2b7Vp4JBUx68Pn082xNH97Oel/Mt4yPpn7V2V1bY7MyuxSF+oZLzFlG+5jCw==}
     engines: {node: '>=14.19.3'}
+    peerDependencies:
+      graphql: ^16.0.0
     dependencies:
       '@fastify/error': 3.0.0
       '@fastify/static': 6.5.0
@@ -25369,6 +25383,10 @@ packages:
   /xml-name-validator/4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
     engines: {node: '>=12'}
+    dev: true
+
+  /xml/1.0.1:
+    resolution: {integrity: sha512-huCv9IH9Tcf95zuYCsQraZtWnJvBtLVE0QHMOs8bWyZAFZNDcYjsPq1nEx8jKA9y+Beo9v+7OBPRisQTjinQMw==}
     dev: true
 
   /xml2js/0.4.23:
