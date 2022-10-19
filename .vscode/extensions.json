@@ -1,11 +1,12 @@
 {
-  "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "eamodio.gitlens",
-    "mhutchie.git-graph",
-    "streetsidesoftware.code-spell-checker",
-    "ibm.output-colorizer",
-    "ZixuanChen.vitest-explorer"
-  ]
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        "streetsidesoftware.code-spell-checker",
+        "ibm.output-colorizer",
+        "zixuanchen.vitest-explorer",
+        "firsttris.vscode-jest-runner"
+    ]
 }

@@ -33,11 +33,10 @@ vscode:
     - mhutchie.git-graph
     - IBM.output-colorizer
     - streetsidesoftware.code-spell-checker
-
-    - ZixuanChen.vitest-explorer
     - mikestead.dotenv
     - dbaeumer.vscode-eslint
     - rangav.vscode-thunder-client
+    - firsttris.vscode-jest-runner
 
 github:
   prebuilds:
