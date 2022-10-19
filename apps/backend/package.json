@@ -19,6 +19,7 @@
         "prisma": "dotenv -e .env.development -- prisma",
         "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
         "test": "dotenv -e .env.test -- jest --coverage",
+        "test:ci": "dotenv -e .env.development -- jest --ci --reporters=default --reporters=jest-junit",
         "test:watch": "jest --watch",
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
         "test:e2e": "jest --config ./test/jest-e2e.json",
@@ -95,6 +96,7 @@
         "jest": "28.1.3",
         "jest-cucumber": "^3.0.1",
         "jest-extended": "^3.1.0",
+        "jest-junit": "^14.0.1",
         "pino-pretty": "9.1.0",
         "prisma": "4.2.1",
         "source-map-support": "0.5.21",
@@ -105,5 +107,14 @@
         "tsconfig": "workspace:*",
         "tsconfig-paths": "4.1.0",
         "typescript": "4.7.4"
+    },
+    "jest-junit": {
+        "outputDirectory": "reports",
+        "outputName": "jest-junit.xml",
+        "ancestorSeparator": " › ",
+        "uniqueOutputName": "false",
+        "suiteNameTemplate": "{filepath}",
+        "classNameTemplate": "{classname}",
+        "titleTemplate": "{title}"
     }
 }
