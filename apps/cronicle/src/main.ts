@@ -5,17 +5,20 @@ import { AppModule } from './app.module';
 import { config } from './config';
 
 async function bootstrap() {
-    const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
+    const app = await NestFactory.create(AppModule);
+
+    app.connectMicroservice<MicroserviceOptions>({
         transport: Transport.RMQ,
         options: {
             urls: [config.RABBIT_MQ_HOST],
-            queue: 'notifier_queue',
+            queue: 'cronicle_queue',
             queueOptions: {
                 durable: true,
             },
         },
     });
 
-    await app.listen();
+    await app.startAllMicroservices();
+    await app.listen(config.PORT);
 }
 bootstrap();

@@ -290,6 +290,7 @@ importers:
 
   apps/cronicle:
     specifiers:
+      '@bull-board/api': ^4.6.0
       '@bull-board/express': ^4.6.0
       '@nestjs/bull': ^0.6.1
       '@nestjs/cli': 9.0.0
@@ -327,6 +328,7 @@ importers:
       tsconfig-paths: 4.1.0
       typescript: 4.7.4
     dependencies:
+      '@bull-board/api': 4.6.0
       '@bull-board/express': 4.6.0
       '@nestjs/bull': 0.6.1_aue5hxduhsr2faaulxeedxh7um
       '@nestjs/common': 9.0.8_j5hagqx4mwzscud4kyjdvubauy
@@ -6944,8 +6946,8 @@ packages:
       '@nestjs/core': ^7.0.0 || ^8.0.0 || ^9.0.0
       reflect-metadata: ^0.1.12
     dependencies:
-      '@nestjs/common': 9.0.8_c3ywp5uae7mfm5pv3l6tu7kcju
-      '@nestjs/core': 9.0.8_oc6a7lc54uvnzk7gsfkpifbdji
+      '@nestjs/common': 9.0.8_j5hagqx4mwzscud4kyjdvubauy
+      '@nestjs/core': 9.0.8_y46a3gxyzfjmwfynwm5lxhdxgm
       cron: 2.0.0
       reflect-metadata: 0.1.13
       uuid: 8.3.2
