@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import languageDetector from './languageDetector'
