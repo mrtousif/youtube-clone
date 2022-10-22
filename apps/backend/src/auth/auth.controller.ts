@@ -1,34 +1,47 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { AuthService, LoginUserArgs, RegisterUserArgs } from './auth.service';
-import { JwtAuthGuard } from './jwt.guard';
+import { Controller, Get, Request, Res, UseGuards } from '@nestjs/common';
+import { Issuer } from 'openid-client';
 
-interface HasuraActionsPayload<Input extends {} = {}, Session extends {} = {}> {
-  action: {
-    name: string;
-  };
-  input: Input;
-  session_variables: Session;
-}
+import { AuthService } from './auth.service';
+import { LoginGuard } from './login.guard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+    constructor(private readonly authService: AuthService) {}
 
-  @Post('/login')
-  async login(
-    @Body() payload: HasuraActionsPayload<{ params: LoginUserArgs }>,
-  ) {
-    const { input } = payload;
+    @UseGuards(LoginGuard)
+    @Get('/login')
+    login() {}
 
-    return this.authService.login(input.params);
-  }
+    @Get('/user')
+    user(@Request() req) {
+        return req.user;
+    }
 
-  @Post('/register')
-  async register(
-    @Body() payload: HasuraActionsPayload<{ params: RegisterUserArgs }>,
-  ) {
-    const { input } = payload;
+    @UseGuards(LoginGuard)
+    @Get('/callback')
+    loginCallback(@Res() res) {
+        res.redirect('/');
+    }
 
-    return this.authService.registerUser(input.params);
-  }
+    @Get('/logout')
+    async logout(@Request() req, @Res() res) {
+        const id_token = req.user ? req.user.id_token : undefined;
+        req.logout();
+        req.session.destroy(async (error: any) => {
+            const TrustIssuer = await Issuer.discover(
+                `${process.env.OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
+            );
+            const end_session_endpoint = TrustIssuer.metadata.end_session_endpoint;
+            if (end_session_endpoint) {
+                res.redirect(
+                    end_session_endpoint +
+                        '?post_logout_redirect_uri=' +
+                        process.env.OAUTH2_CLIENT_REGISTRATION_LOGIN_POST_LOGOUT_REDIRECT_URI +
+                        (id_token ? '&id_token_hint=' + id_token : '')
+                );
+            } else {
+                res.redirect('/');
+            }
+        });
+    }
 }

@@ -33,6 +33,7 @@
     "dependencies": {
         "@aws-sdk/client-s3": "3.157.0",
         "@aws-sdk/s3-request-presigner": "3.157.0",
+        "@fastify/secure-session": "^5.2.0",
         "@golevelup/nestjs-graphql-request": "0.1.13",
         "@golevelup/nestjs-hasura": "3.0.1",
         "@nestjs/common": "9.0.8",
@@ -63,6 +64,7 @@
         "nestjs-cls": "2.2.0",
         "nestjs-pino": "3.1.1",
         "nestjs-prisma": "0.17.0",
+        "openid-client": "^5.2.1",
         "passport": "0.6.0",
         "passport-jwt": "4.0.0",
         "pino-http": "8.2.0",

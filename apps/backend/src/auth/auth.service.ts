@@ -1,7 +1,8 @@
-import { Injectable } from "@nestjs/common";
-import { gql } from "graphql-request";
-import { GqlSdk, InjectSdk } from "../sdk/sdk.module";
-import { JwtService } from "@nestjs/jwt";
+import { Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { gql } from 'graphql-request';
+
+import { GqlSdk, InjectSdk } from '../sdk/sdk.module';
 
 gql`
     mutation createUser($input: users_insert_input!) {
@@ -35,13 +36,13 @@ export interface LoginOrRegisterUserOutput {
 }
 
 export interface HasuraJwtClaims<CustomClaims extends Record<string, string | string[]> = {}> {
-    "https://hasura.io/jwt/claims": {
-        "x-hasura-default-role": string;
-        "x-hasura-allowed-roles": string[];
+    'https://hasura.io/jwt/claims': {
+        'x-hasura-default-role': string;
+        'x-hasura-allowed-roles': string[];
     } & CustomClaims;
 }
 
-export type UserJwtClaims = HasuraJwtClaims<{ "x-hasura-user-id": string }>;
+export type UserJwtClaims = HasuraJwtClaims<{ 'x-hasura-user-id': string }>;
 
 @Injectable()
 export class AuthService {
@@ -64,34 +65,30 @@ export class AuthService {
             };
         }
 
-        return {
-            
-        };
+        return {};
     }
 
     public async registerUser(args: RegisterUserArgs): Promise<LoginOrRegisterUserOutput> {
         const {
             email,
             password,
-            displayName = "Apparently, this user prefers to keep an air of mystery about them",
+            displayName = 'Apparently, this user prefers to keep an air of mystery about them',
         } = args;
-
 
         try {
             const { insert_users_one: user } = await this.sdk.createUser({
                 input: {
-                    email
+                    email,
                 },
             });
 
             const { id } = user;
 
-            return {
-            };
+            return {};
         } catch (e) {
             const error = (e?.message as string)?.includes('unique constraint "users_email_key"')
-                ? "That email address is already registered"
-                : "Something unexpected happened. Please try again later";
+                ? 'That email address is already registered'
+                : 'Something unexpected happened. Please try again later';
 
             return {
                 error,
@@ -101,10 +98,10 @@ export class AuthService {
 
     private signHasuraToken(userId: string) {
         const payload: UserJwtClaims = {
-            "https://hasura.io/jwt/claims": {
-                "x-hasura-allowed-roles": ["user"],
-                "x-hasura-default-role": "user",
-                "x-hasura-user-id": String(userId),
+            'https://hasura.io/jwt/claims': {
+                'x-hasura-allowed-roles': ['user'],
+                'x-hasura-default-role': 'user',
+                'x-hasura-user-id': String(userId),
             },
         };
 
