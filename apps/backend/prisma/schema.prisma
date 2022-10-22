@@ -50,7 +50,7 @@ model SchemaMigrations {
 model WatchHistory {
   videoId        String    @map("video_id") @db.Uuid
   userId         String    @map("user_id") @db.Uuid
-  lastWatchtedAt DateTime? @map("last_watchted_at") @db.Time(6)
+  lastWatchtedAt DateTime? @map("last_watched_at") @db.Time(6)
   createdAt      DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt      DateTime? @map("updated_at") @db.Timestamptz(6)
   users          Users     @relation("usersTowatch_history", fields: [userId], references: [id], onDelete: NoAction, map: "users_id_fk")

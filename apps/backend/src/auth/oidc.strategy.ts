@@ -6,11 +6,11 @@ import { AuthService } from './auth.service';
 
 export const buildOpenIdClient = async () => {
     const TrustIssuer = await Issuer.discover(
-        `${process.env.OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
+        `${process.env.OPENID_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
     );
     return new TrustIssuer.Client({
-        client_id: process.env.OAUTH2_CLIENT_REGISTRATION_LOGIN_CLIENT_ID,
-        client_secret: process.env.OAUTH2_CLIENT_REGISTRATION_LOGIN_CLIENT_SECRET,
+        client_id: process.env.OPENID_CLIENT_REGISTRATION_LOGIN_CLIENT_ID,
+        client_secret: process.env.OPENID_CLIENT_REGISTRATION_LOGIN_CLIENT_SECRET,
     });
 };
 
@@ -21,8 +21,8 @@ export class OidcStrategy extends PassportStrategy(Strategy, 'oidc') {
         super({
             client: client,
             params: {
-                redirect_uri: process.env.OAUTH2_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI,
-                scope: process.env.OAUTH2_CLIENT_REGISTRATION_LOGIN_SCOPE,
+                redirect_uri: process.env.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI,
+                scope: process.env.OPENID_CLIENT_REGISTRATION_LOGIN_SCOPE,
             },
             passReqToCallback: false,
             usePKCE: false,

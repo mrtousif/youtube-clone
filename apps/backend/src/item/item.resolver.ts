@@ -24,7 +24,7 @@ class PurchasedItemResult {
   error?: string;
 }
 
-@UseGuards(GqlJwtAuthGuard)
+// @UseGuards(GqlJwtAuthGuard)
 @Resolver()
 export class ItemResolver {
   constructor(private readonly itemService: ItemService) {}
