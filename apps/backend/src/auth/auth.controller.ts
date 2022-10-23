@@ -1,6 +1,6 @@
 import { Controller, Get, Request, Res, UseGuards } from '@nestjs/common';
 import { Issuer } from 'openid-client';
-
+import type { FastifyReply } from "fastify";
 import { AuthService } from './auth.service';
 import { LoginGuard } from './login.guard';
 
@@ -19,12 +19,12 @@ export class AuthController {
 
     @UseGuards(LoginGuard)
     @Get('/callback')
-    loginCallback(@Res() res) {
+    loginCallback(@Res() res: FastifyReply) {
         res.redirect('/');
     }
 
     @Get('/logout')
-    async logout(@Request() req, @Res() res) {
+    async logout(@Request() req, @Res() res: FastifyReply) {
         const id_token = req.user ? req.user.id_token : undefined;
         req.logout();
         req.session.destroy(async (error: any) => {

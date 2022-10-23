@@ -7,6 +7,7 @@
         "packages/*"
     ],
     "scripts": {
+        "clean": "turbo run clean --parallel",
         "build": "turbo run build",
         "dev": "turbo run dev --parallel",
         "lint": "turbo run lint --parallel",
@@ -37,6 +38,7 @@
         "lint-staged": "13.0.3",
         "prettier": "2.7.1",
         "prettier-plugin-prisma": "4.2.0",
+        "rimraf": "3.0.2",
         "tsc-alias": "1.7.0",
         "turbo": "latest"
     },

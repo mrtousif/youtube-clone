@@ -1,5 +1,5 @@
 import { UnauthorizedException } from '@nestjs/common';
-import { PassportStrategy } from '@nestjs/passport';
+import { PassportStrategy } from './passport/passport.strategy';
 import { Client, Issuer, Strategy, TokenSet, UserinfoResponse } from 'openid-client';
 
 import { AuthService } from './auth.service';

@@ -1,5 +1,5 @@
 import { ExecutionContext, Injectable } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { AuthGuard } from './passport/auth.guard';
 
 @Injectable()
 export class LoginGuard extends AuthGuard('oidc') {

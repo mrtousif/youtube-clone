@@ -6,6 +6,7 @@
     "private": true,
     "license": "UNLICENSED",
     "scripts": {
+        "clean": "rimraf node_modules dist",
         "prebuild": "rimraf dist",
         "build": "nest build",
         "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"prisma/**\"",
@@ -45,7 +46,6 @@
         "@nestjs/jwt": "9.0.0",
         "@nestjs/mercurius": "10.0.21",
         "@nestjs/microservices": "9.0.8",
-        "@nestjs/passport": "github:mrtousif/passport#fastify-passport",
         "@nestjs/platform-fastify": "9.0.8",
         "@nestjs/terminus": "9.1.1",
         "@prisma/client": "4.2.1",
@@ -55,6 +55,7 @@
         "class-validator": "^0.13.2",
         "dotenv": "16.0.1",
         "envalid": "7.3.1",
+        "fastify": "^4.9.2",
         "got": "12.3.1",
         "graphql": "16.5.0",
         "graphql-request": "4.3.0",

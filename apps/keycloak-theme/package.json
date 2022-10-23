@@ -46,6 +46,7 @@
         "yup": "0.32.11"
     },
     "scripts": {
+        "clean": "rimraf node_modules dist",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",

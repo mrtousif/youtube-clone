@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { PassportModule } from '@nestjs/passport';
+import { PassportModule } from './passport/passport.module';
 
 import { EmailModule } from '../email/email.module';
 import { SdkModule } from '../sdk/sdk.module';
