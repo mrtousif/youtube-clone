@@ -14,10 +14,10 @@ export const buildOpenIdClient = async () => {
 };
 
 @Injectable()
-export class OidcStrategy {
+export class OidcService {
     openIdClient: Client;
 
-    constructor(private readonly authService: AuthService, client: Client) {
+    constructor(client: Client) {
         this.openIdClient = client;
     }
 

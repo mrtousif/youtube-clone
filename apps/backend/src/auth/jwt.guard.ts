@@ -1,11 +1,18 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
-import { FastifyRequest } from 'fastify';
 import { GqlExecutionContext } from '@nestjs/graphql';
+import { JwtService } from '@nestjs/jwt';
+import type { FastifyReply, FastifyRequest } from 'fastify';
+import { generators } from 'openid-client';
+
+import { config } from '../config/index';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class JwtGuard implements CanActivate {
-    constructor(private readonly jwtService: JwtService) {}
+    constructor(
+        private readonly jwtService: JwtService,
+        private readonly authService: AuthService
+    ) {}
 
     canActivate(context: ExecutionContext): boolean {
         const request = this.getRequest<FastifyRequest & { user?: Record<string, unknown> }>(
@@ -18,8 +25,17 @@ export class JwtGuard implements CanActivate {
             request.user = user;
             return true;
         } catch (e) {
-            // return false or throw a specific error if desired
-            return false;
+            const response: FastifyReply = context.switchToHttp().getResponse();
+            response.redirect(
+                this.authService.getAuthorizationUrl({
+                    state: generators.state(),
+                    nonce: generators.nonce(),
+                    redirect_uri: config.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI,
+                    scope: config.OPENID_CLIENT_REGISTRATION_LOGIN_SCOPE,
+                })
+            );
+
+            // return false;
         }
     }
 

@@ -1,4 +1,4 @@
-import { Controller, Get, Logger, Request, Res, UseGuards } from '@nestjs/common';
+import { Controller, Get, Logger, Query, Request, Res, UseGuards } from '@nestjs/common';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { Issuer } from 'openid-client';
 
@@ -17,25 +17,15 @@ export class AuthController {
 
     @Get('/user')
     user(@Request() req) {
-        console.log('Touisf123');
-
         console.log(req.user);
         return req.user;
     }
 
     @Get('/callback')
-    loginCallback(
-        @Request() req: FastifyRequest & { query: { state?: string; code?: string } },
-        @Res() res: FastifyReply
-    ) {
-        if (req.query.state && req.query.code) {
-            this.logger.log(req);
-            // const idToken = this.authService.getIdToken(req.url, {
-            //     code: req.query.code,
-            //     state: req.query.state
-            // })
-            // this.logger.log(idToken)
-        }
+    async loginCallback(@Request() req, @Res() res: FastifyReply) {
+        const idToken = await this.authService.getIdToken(req);
+        this.logger.log(idToken);
+
         res.redirect('/');
     }
 

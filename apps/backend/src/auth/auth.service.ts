@@ -1,7 +1,9 @@
-import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
+import { Injectable, Logger,Inject, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { gql } from 'graphql-request';
-// import { Client, Issuer, CallbackParamsType, TokenSet, UserinfoResponse } from 'openid-client';
+import { IncomingMessage } from 'http';
+import { CallbackParamsType, Client, Issuer, TokenSet, UserinfoResponse, AuthorizationParameters } from 'openid-client';
+import {config} from '../config/index';
 import { GqlSdk, InjectSdk } from '../sdk/sdk.module';
 
 gql`
@@ -51,28 +53,31 @@ export class AuthService {
     constructor(
         @InjectSdk() private readonly sdk: GqlSdk,
         private readonly jwtService: JwtService,
-        // private openIdClient: Client
+        @Inject('OIDC') private openIdClient: Client
     ) {}
 
-    // async validate(tokenset: TokenSet): Promise<any> {
-    //     const userinfo: UserinfoResponse = await this.openIdClient.userinfo(tokenset);
+    async getUserInfo(tokenset: TokenSet): Promise<any> {
+        const userinfo: UserinfoResponse = await this.openIdClient.userinfo(tokenset);
 
-    //     try {
-    //         const id_token = tokenset.id_token;
-    //         const access_token = tokenset.access_token;
-    //         const refresh_token = tokenset.refresh_token;
-    //         return {
-    //             id_token,
-    //             access_token,
-    //             refresh_token,
-    //             userinfo,
-    //         };
-    //     } catch (err) {
-    //         throw new UnauthorizedException();
-    //     }
-    // }
+        const id_token = tokenset.id_token;
+        const access_token = tokenset.access_token;
+        const refresh_token = tokenset.refresh_token;
+        return {
+            id_token,
+            access_token,
+            refresh_token,
+            userinfo,
+        };
+    }
 
+    async getIdToken(request: IncomingMessage) {
+        const params = this.openIdClient.callbackParams(request)
+        return await this.openIdClient.callback(config.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI, params);
+    }
 
+     getAuthorizationUrl(params: AuthorizationParameters){
+        return this.openIdClient.authorizationUrl(params)
+    }
 
     // public async login(args: LoginUserArgs): Promise<LoginOrRegisterUserOutput> {
     //     const { email } = args;

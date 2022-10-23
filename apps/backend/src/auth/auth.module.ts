@@ -7,15 +7,13 @@ import { AuthService } from './auth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 
-import { OidcStrategy, buildOpenIdClient } from './oidc.strategy';
+import { OidcService, buildOpenIdClient } from './oidc.strategy';
 
-const OidcStrategyFactory = {
-    provide: 'OidcStrategy',
-    useFactory: async (authService: AuthService) => {
-        const client = await buildOpenIdClient(); // secret sauce! build the dynamic client before injecting it into the strategy for use in the constructor super call.
-        return new OidcStrategy(authService, client);
+const OidcFactory = {
+    provide: 'OIDC',
+    useFactory: async () => {
+        return await buildOpenIdClient(); // secret sauce! build the dynamic client before injecting it into the strategy for use in the constructor super call.
     },
-    inject: [AuthService],
 };
 
 @Module({
@@ -32,7 +30,7 @@ const OidcStrategyFactory = {
         }),
     ],
     controllers: [AuthController],
-    providers: [OidcStrategyFactory, AuthService, AuthEventsService],
+    providers: [OidcFactory, AuthService, AuthEventsService],
     exports: [JwtModule],
 })
 export class AuthModule {}
