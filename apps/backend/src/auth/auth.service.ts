@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { gql } from 'graphql-request';
-
+// import { Client, Issuer, CallbackParamsType, TokenSet, UserinfoResponse } from 'openid-client';
 import { GqlSdk, InjectSdk } from '../sdk/sdk.module';
 
 gql`
@@ -46,10 +46,33 @@ export type UserJwtClaims = HasuraJwtClaims<{ 'x-hasura-user-id': string }>;
 
 @Injectable()
 export class AuthService {
-    // constructor(
-    //     @InjectSdk() private readonly sdk: GqlSdk,
-    //     private readonly jwtService: JwtService
-    // ) {}
+    private readonly logger = new Logger(AuthService.name);
+
+    constructor(
+        @InjectSdk() private readonly sdk: GqlSdk,
+        private readonly jwtService: JwtService,
+        // private openIdClient: Client
+    ) {}
+
+    // async validate(tokenset: TokenSet): Promise<any> {
+    //     const userinfo: UserinfoResponse = await this.openIdClient.userinfo(tokenset);
+
+    //     try {
+    //         const id_token = tokenset.id_token;
+    //         const access_token = tokenset.access_token;
+    //         const refresh_token = tokenset.refresh_token;
+    //         return {
+    //             id_token,
+    //             access_token,
+    //             refresh_token,
+    //             userinfo,
+    //         };
+    //     } catch (err) {
+    //         throw new UnauthorizedException();
+    //     }
+    // }
+
+
 
     // public async login(args: LoginUserArgs): Promise<LoginOrRegisterUserOutput> {
     //     const { email } = args;

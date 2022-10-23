@@ -1,6 +1,5 @@
-import { UnauthorizedException } from '@nestjs/common';
-import { PassportStrategy } from './passport/passport.strategy';
-import { Client, Issuer, Strategy, TokenSet, UserinfoResponse } from 'openid-client';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Client, Issuer, CallbackParamsType, TokenSet, UserinfoResponse } from 'openid-client';
 
 import { AuthService } from './auth.service';
 
@@ -14,25 +13,16 @@ export const buildOpenIdClient = async () => {
     });
 };
 
-export class OidcStrategy extends PassportStrategy(Strategy, 'oidc') {
-    client: Client;
+@Injectable()
+export class OidcStrategy {
+    openIdClient: Client;
 
     constructor(private readonly authService: AuthService, client: Client) {
-        super({
-            client: client,
-            params: {
-                redirect_uri: process.env.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI,
-                scope: process.env.OPENID_CLIENT_REGISTRATION_LOGIN_SCOPE,
-            },
-            passReqToCallback: false,
-            usePKCE: false,
-        });
-
-        this.client = client;
+        this.openIdClient = client;
     }
 
     async validate(tokenset: TokenSet): Promise<any> {
-        const userinfo: UserinfoResponse = await this.client.userinfo(tokenset);
+        const userinfo: UserinfoResponse = await this.openIdClient.userinfo(tokenset);
 
         try {
             const id_token = tokenset.id_token;
@@ -47,5 +37,9 @@ export class OidcStrategy extends PassportStrategy(Strategy, 'oidc') {
         } catch (err) {
             throw new UnauthorizedException();
         }
+    }
+
+    async getIdToken(redirectUri: string, parameters: CallbackParamsType) {
+        return await this.openIdClient.callback(redirectUri, parameters)
     }
 }
