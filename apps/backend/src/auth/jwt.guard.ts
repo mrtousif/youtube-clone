@@ -2,6 +2,7 @@ import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { JwtService } from '@nestjs/jwt';
 import type { FastifyReply, FastifyRequest } from 'fastify';
+import { IncomingMessage } from 'http';
 import { generators } from 'openid-client';
 
 import { config } from '../config/index';
@@ -14,10 +15,11 @@ export class JwtGuard implements CanActivate {
         private readonly authService: AuthService
     ) {}
 
-    canActivate(context: ExecutionContext): boolean {
+    async canActivate(context: ExecutionContext): Promise<boolean> {
         const request = this.getRequest<FastifyRequest & { user?: Record<string, unknown> }>(
             context
         );
+        const sessionKey = 'oidc';
 
         try {
             const token = this.getToken(request);
@@ -25,15 +27,41 @@ export class JwtGuard implements CanActivate {
             request.user = user;
             return true;
         } catch (e) {
+            const session = request.session.get(sessionKey);
             const response: FastifyReply = context.switchToHttp().getResponse();
-            response.redirect(
-                this.authService.getAuthorizationUrl({
+            if (session) {
+                const { state, nonce } = session;
+                const req = request as unknown as IncomingMessage;
+                try {
+                    delete request.session[sessionKey];
+                } catch (err) {}
+
+                const result = await this.authService.callback(req, {
+                    state,
+                    nonce,
+                });
+                response.headers['authorization'] = `Bearer ${result.access_token}`;
+                response.setCookie('access_token', result.access_token);
+                response.setCookie('refresh_token', result.refresh_token);
+                response.setCookie('id_token', result.id_token);
+
+                response.redirect('/');
+            } else {
+                const params = {
                     state: generators.state(),
                     nonce: generators.nonce(),
-                    redirect_uri: config.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI,
-                    scope: config.OPENID_CLIENT_REGISTRATION_LOGIN_SCOPE,
-                })
-            );
+                };
+                request.session.set(sessionKey, params);
+                console.log('params', params);
+
+                response.redirect(
+                    this.authService.getAuthorizationUrl({
+                        ...params,
+                        redirect_uri: config.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI,
+                        scope: 'openid email profile',
+                    })
+                );
+            }
 
             // return false;
         }

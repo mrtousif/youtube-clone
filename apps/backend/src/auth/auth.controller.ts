@@ -21,11 +21,9 @@ export class AuthController {
         return req.user;
     }
 
+    @UseGuards(JwtGuard)
     @Get('/callback')
     async loginCallback(@Request() req, @Res() res: FastifyReply) {
-        const idToken = await this.authService.getIdToken(req);
-        this.logger.log(idToken);
-
         res.redirect('/');
     }
 

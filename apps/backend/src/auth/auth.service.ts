@@ -1,8 +1,9 @@
 import { Injectable, Logger,Inject, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { FastifyRequest } from 'fastify';
 import { gql } from 'graphql-request';
 import { IncomingMessage } from 'http';
-import { CallbackParamsType, Client, Issuer, TokenSet, UserinfoResponse, AuthorizationParameters } from 'openid-client';
+import { CallbackParamsType, Client, Issuer, TokenSet, UserinfoResponse, AuthorizationParameters, OpenIDCallbackChecks } from 'openid-client';
 import {config} from '../config/index';
 import { GqlSdk, InjectSdk } from '../sdk/sdk.module';
 
@@ -48,17 +49,20 @@ export type UserJwtClaims = HasuraJwtClaims<{ 'x-hasura-user-id': string }>;
 
 @Injectable()
 export class AuthService {
+    openIdClient: Client
     private readonly logger = new Logger(AuthService.name);
 
     constructor(
         @InjectSdk() private readonly sdk: GqlSdk,
         private readonly jwtService: JwtService,
-        @Inject('OIDC') private openIdClient: Client
-    ) {}
+        @Inject('OIDC') openIdClient: Client
+    ) {
+        this.openIdClient = openIdClient
+    }
 
     async getUserInfo(tokenset: TokenSet): Promise<any> {
         const userinfo: UserinfoResponse = await this.openIdClient.userinfo(tokenset);
-
+        this.logger.log(userinfo)
         const id_token = tokenset.id_token;
         const access_token = tokenset.access_token;
         const refresh_token = tokenset.refresh_token;
@@ -70,9 +74,9 @@ export class AuthService {
         };
     }
 
-    async getIdToken(request: IncomingMessage) {
+    async callback(request: IncomingMessage, checks: OpenIDCallbackChecks) {
         const params = this.openIdClient.callbackParams(request)
-        return await this.openIdClient.callback(config.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI, params);
+        return await this.openIdClient.callback(config.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI, params, checks);
     }
 
      getAuthorizationUrl(params: AuthorizationParameters){
