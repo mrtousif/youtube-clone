@@ -45,7 +45,7 @@
         "@nestjs/jwt": "9.0.0",
         "@nestjs/mercurius": "10.0.21",
         "@nestjs/microservices": "9.0.8",
-        "@nestjs/passport": "9.0.0",
+        "@nestjs/passport": "github:mrtousif/passport#fastify-passport",
         "@nestjs/platform-fastify": "9.0.8",
         "@nestjs/terminus": "9.1.1",
         "@prisma/client": "4.2.1",
