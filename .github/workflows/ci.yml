@@ -1,9 +1,6 @@
 name: CI
 
 on:
-    push:
-        branches:
-            - main
     pull_request:
 
 jobs:
@@ -43,6 +40,10 @@ jobs:
             - name: Lint, test and build (pull request)
               if: ${{ github.event_name == 'pull_request' }}
               run: pnpm turbo run build --filter=[HEAD^1]
+
+            - name: Test
+              if: ${{ github.event_name == 'pull_request' }}
+              run: pnpm turbo run test:ci --filter=[HEAD^1]
 
             - name: Test Report
               uses: dorny/test-reporter@v1
