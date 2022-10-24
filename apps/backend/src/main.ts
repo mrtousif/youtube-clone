@@ -1,9 +1,13 @@
+import secureSession from '@fastify/secure-session';
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
-import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
+// import fastifyPassport from '@fastify/passport'
+import fastifyCookie from '@fastify/cookie';
 import { ClsMiddleware } from 'nestjs-cls';
-import { LoggerErrorInterceptor, Logger } from 'nestjs-pino';
+import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
 import { PrismaClientExceptionFilter, PrismaService } from 'nestjs-prisma';
+
 import { AppModule } from './app.module';
 import { config } from './config';
 
@@ -22,15 +26,38 @@ async function bootstrap() {
             queue: 'backend_queue',
             queueOptions: {
                 durable: true,
-            }
-        }
+            },
+        },
     });
+    await app.register(fastifyCookie, {
+        secret: 'my-secret', // for cookies signature
+      });
+
+    await app.register(secureSession, {
+        secret: 'averylogphrasebiggerthanthirtytwochars',
+        salt: 'mq9hDxBVDbspDR6n',
+    });
+    // app.register(fastifyPassport.initialize());
+    // app.register(fastifyPassport.secureSession());
 
     app.use(
         new ClsMiddleware({
             useEnterWith: true,
         }).use
     );
+
+
+        // const fastifyInstance = app.getHttpAdapter().getInstance()
+    // fastifyInstance.addHook('onRequest', (request, reply, done) => {
+    //     reply.setHeader = function (key, value) {
+    //       return this.raw.setHeader(key, value)
+    //     }
+    //     reply.end = function () {
+    //       this.raw.end()
+    //     }
+    //     request.res = reply
+    //     done()
+    //   })
 
     const prismaService: PrismaService = app.get(PrismaService);
     prismaService.enableShutdownHooks(app);
@@ -39,7 +66,7 @@ async function bootstrap() {
 
     app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
 
-    if(config.isProduction){
+    if (config.isProduction) {
         app.useLogger(app.get(Logger));
         app.useGlobalInterceptors(new LoggerErrorInterceptor());
     }

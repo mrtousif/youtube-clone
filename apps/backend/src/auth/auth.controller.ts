@@ -1,34 +1,51 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { AuthService, LoginUserArgs, RegisterUserArgs } from './auth.service';
-import { JwtAuthGuard } from './jwt.guard';
+import { Controller, Get, Logger, Query, Request, Res, UseGuards } from '@nestjs/common';
+import type { FastifyReply, FastifyRequest } from 'fastify';
+import { Issuer } from 'openid-client';
 
-interface HasuraActionsPayload<Input extends {} = {}, Session extends {} = {}> {
-  action: {
-    name: string;
-  };
-  input: Input;
-  session_variables: Session;
-}
+import { AuthService } from './auth.service';
+import { JwtGuard } from './jwt.guard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+    private readonly logger = new Logger(AuthController.name);
 
-  @Post('/login')
-  async login(
-    @Body() payload: HasuraActionsPayload<{ params: LoginUserArgs }>,
-  ) {
-    const { input } = payload;
+    constructor(private readonly authService: AuthService) {}
 
-    return this.authService.login(input.params);
-  }
+    @UseGuards(JwtGuard)
+    @Get('/login')
+    login() {}
 
-  @Post('/register')
-  async register(
-    @Body() payload: HasuraActionsPayload<{ params: RegisterUserArgs }>,
-  ) {
-    const { input } = payload;
+    @Get('/user')
+    user(@Request() req) {
+        console.log(req.user);
+        return req.user;
+    }
 
-    return this.authService.registerUser(input.params);
-  }
+    @UseGuards(JwtGuard)
+    @Get('/callback')
+    async loginCallback(@Request() req, @Res() res: FastifyReply) {
+        res.redirect('/');
+    }
+
+    @Get('/logout')
+    async logout(@Request() req, @Res() res: FastifyReply) {
+        const id_token = req.user ? req.user.id_token : undefined;
+        req.logout();
+        req.session.delete();
+
+        const TrustIssuer = await Issuer.discover(
+            `${process.env.OPENID_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
+        );
+        const end_session_endpoint = TrustIssuer.metadata.end_session_endpoint;
+        if (end_session_endpoint) {
+            res.redirect(
+                end_session_endpoint +
+                    '?post_logout_redirect_uri=' +
+                    process.env.OPENID_CLIENT_REGISTRATION_LOGIN_POST_LOGOUT_REDIRECT_URI +
+                    (id_token ? '&id_token_hint=' + id_token : '')
+            );
+        } else {
+            res.redirect('/');
+        }
+    }
 }

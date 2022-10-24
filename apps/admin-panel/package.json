@@ -4,6 +4,7 @@
     "description": "Starter kit for modern web applications",
     "license": "MIT",
     "scripts": {
+        "clean": "rimraf node_modules dist",
         "dev": "vite --open",
         "build": "tsc && vite build",
         "preview": "vite preview",

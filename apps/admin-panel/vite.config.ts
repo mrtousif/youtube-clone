@@ -12,6 +12,15 @@ const viteConfig = ({ mode }) => {
     process.env = {...process.env, ...loadEnv(mode, process.cwd())};
     
     return defineConfig({
+        server: {
+            proxy: {
+                '/auth/*': {
+                    target: 'http://localhost:6000',
+                    changeOrigin: true,
+                    xfwd: true,
+                },
+            }
+        },
         plugins: [
             react(),
             tsconfigPaths(),

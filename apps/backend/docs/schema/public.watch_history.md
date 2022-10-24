@@ -8,7 +8,7 @@
 | ---- | ---- | ------- | -------- | -------- | ------- | ------- |
 | video_id | uuid |  | false |  | [public.videos](public.videos.md) |  |
 | user_id | uuid |  | false |  | [public.users](public.users.md) |  |
-| last_watchted_at | time without time zone |  | true |  |  |  |
+| last_watched_at | time without time zone |  | true |  |  |  |
 | created_at | timestamp with time zone | now() | false |  |  |  |
 
 ## Constraints

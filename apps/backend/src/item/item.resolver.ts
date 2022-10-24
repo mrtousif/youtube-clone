@@ -9,7 +9,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { CurrentUser } from 'src/auth/current-user.decorator';
-import { GqlJwtAuthGuard } from 'src/auth/jwt.guard';
+// import { GqlJwtAuthGuard } from 'src/auth/jwt.guard';
 import { ItemService } from './item.service';
 
 @ObjectType()
@@ -24,7 +24,7 @@ class PurchasedItemResult {
   error?: string;
 }
 
-@UseGuards(GqlJwtAuthGuard)
+// @UseGuards(GqlJwtAuthGuard)
 @Resolver()
 export class ItemResolver {
   constructor(private readonly itemService: ItemService) {}

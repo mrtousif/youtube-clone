@@ -22,14 +22,14 @@ insert_permissions:
       columns:
         - video_id
         - user_id
-        - last_watchted_at
+        - last_watched_at
         - created_at
 select_permissions:
   - role: user
     permission:
       columns:
         - created_at
-        - last_watchted_at
+        - last_watched_at
         - user_id
         - video_id
       filter:
