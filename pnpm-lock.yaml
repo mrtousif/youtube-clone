@@ -159,6 +159,7 @@ importers:
       '@nestjs/event-emitter': 1.3.0
       '@nestjs/graphql': 10.0.21
       '@nestjs/jwt': 9.0.0
+      '@nestjs/mapped-types': '*'
       '@nestjs/mercurius': 10.0.21
       '@nestjs/microservices': 9.0.8
       '@nestjs/platform-fastify': 9.1.5
@@ -228,6 +229,7 @@ importers:
       '@nestjs/event-emitter': 1.3.0_bnr7ep6snzlfkhaoqb7mdwsj4q
       '@nestjs/graphql': 10.0.21_reom7a3fegguw7tb4gsrgep3zy
       '@nestjs/jwt': 9.0.0_@nestjs+common@9.0.8
+      '@nestjs/mapped-types': 1.1.0_k57twc62bqxgmjvbuzdc25z4eu
       '@nestjs/mercurius': 10.0.21_ex6tpavr6lvkegyldv5d6nhuvq
       '@nestjs/microservices': 9.0.8_gnmr53izpheaw63jrh6ipbsbua
       '@nestjs/platform-fastify': 9.1.5_cw6o3dkuyuli4a5gq7b223evly

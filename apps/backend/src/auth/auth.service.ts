@@ -60,18 +60,10 @@ export class AuthService {
         this.openIdClient = openIdClient
     }
 
-    async getUserInfo(tokenset: TokenSet): Promise<any> {
-        const userinfo: UserinfoResponse = await this.openIdClient.userinfo(tokenset);
+    async getUserInfo(accessToken: string): Promise<any> {
+        const userinfo: UserinfoResponse = await this.openIdClient.userinfo(accessToken);
         this.logger.log(userinfo)
-        const id_token = tokenset.id_token;
-        const access_token = tokenset.access_token;
-        const refresh_token = tokenset.refresh_token;
-        return {
-            id_token,
-            access_token,
-            refresh_token,
-            userinfo,
-        };
+        return userinfo;
     }
 
     async callback(request: IncomingMessage, checks: OpenIDCallbackChecks) {

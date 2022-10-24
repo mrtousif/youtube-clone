@@ -1,9 +1,8 @@
-import secureSession from '@fastify/secure-session';
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
-// import fastifyPassport from '@fastify/passport'
 import fastifyCookie from '@fastify/cookie';
+import secureSession from '@fastify/secure-session';
 import { ClsMiddleware } from 'nestjs-cls';
 import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
 import { PrismaClientExceptionFilter, PrismaService } from 'nestjs-prisma';
@@ -30,34 +29,19 @@ async function bootstrap() {
         },
     });
     await app.register(fastifyCookie, {
-        secret: 'my-secret', // for cookies signature
+        secret: config.COOKIE_SECRET, // for cookies signature
       });
 
     await app.register(secureSession, {
-        secret: 'averylogphrasebiggerthanthirtytwochars',
+        secret: config.SESSION_SECRET,
         salt: 'mq9hDxBVDbspDR6n',
     });
-    // app.register(fastifyPassport.initialize());
-    // app.register(fastifyPassport.secureSession());
 
     app.use(
         new ClsMiddleware({
             useEnterWith: true,
         }).use
     );
-
-
-        // const fastifyInstance = app.getHttpAdapter().getInstance()
-    // fastifyInstance.addHook('onRequest', (request, reply, done) => {
-    //     reply.setHeader = function (key, value) {
-    //       return this.raw.setHeader(key, value)
-    //     }
-    //     reply.end = function () {
-    //       this.raw.end()
-    //     }
-    //     request.res = reply
-    //     done()
-    //   })
 
     const prismaService: PrismaService = app.get(PrismaService);
     prismaService.enableShutdownHooks(app);

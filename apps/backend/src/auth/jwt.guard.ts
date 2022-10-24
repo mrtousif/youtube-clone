@@ -1,4 +1,4 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable, Logger } from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { JwtService } from '@nestjs/jwt';
 import type { FastifyReply, FastifyRequest } from 'fastify';
@@ -10,6 +10,8 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class JwtGuard implements CanActivate {
+    private readonly logger = new Logger(JwtGuard.name);
+
     constructor(
         private readonly jwtService: JwtService,
         private readonly authService: AuthService
@@ -23,13 +25,15 @@ export class JwtGuard implements CanActivate {
 
         try {
             const token = this.getToken(request);
+            // const user = await this.authService.getUserInfo(token)
             const user = this.jwtService.verify(token);
             request.user = user;
             return true;
         } catch (e) {
+            this.logger.error(e);
             const session = request.session.get(sessionKey);
             const response: FastifyReply = context.switchToHttp().getResponse();
-            if (session) {
+            if (session.state && session.nonce) {
                 const { state, nonce } = session;
                 const req = request as unknown as IncomingMessage;
                 try {
@@ -41,7 +45,7 @@ export class JwtGuard implements CanActivate {
                     nonce,
                 });
                 response.headers['authorization'] = `Bearer ${result.access_token}`;
-                response.setCookie('access_token', result.access_token);
+                response.setCookie('access_token', `Bearer ${result.access_token}`);
                 response.setCookie('refresh_token', result.refresh_token);
                 response.setCookie('id_token', result.id_token);
 
@@ -52,7 +56,6 @@ export class JwtGuard implements CanActivate {
                     nonce: generators.nonce(),
                 };
                 request.session.set(sessionKey, params);
-                console.log('params', params);
 
                 response.redirect(
                     this.authService.getAuthorizationUrl({
@@ -63,7 +66,7 @@ export class JwtGuard implements CanActivate {
                 );
             }
 
-            // return false;
+            return;
         }
     }
 
@@ -71,8 +74,8 @@ export class JwtGuard implements CanActivate {
         return context.switchToHttp().getRequest();
     }
 
-    protected getToken(request: { headers: Record<string, string | string[]> }): string {
-        const authorization = request.headers['authorization'];
+    protected getToken(request: FastifyRequest): string {
+        const authorization = request.headers['authorization'] || request.cookies['access_token'];
         if (!authorization || Array.isArray(authorization)) {
             throw new Error('Invalid Authorization Header');
         }
