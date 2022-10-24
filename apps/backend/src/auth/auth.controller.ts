@@ -15,9 +15,10 @@ export class AuthController {
     @Get('/login')
     login() {}
 
+    @UseGuards(JwtGuard)
     @Get('/user')
     user(@Request() req) {
-        console.log(req.user);
+        this.logger.log(req.user);
         return req.user;
     }
 
