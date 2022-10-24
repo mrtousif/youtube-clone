@@ -47,6 +47,16 @@ export interface HasuraJwtClaims<CustomClaims extends Record<string, string | st
 
 export type UserJwtClaims = HasuraJwtClaims<{ 'x-hasura-user-id': string }>;
 
+export const buildOpenIdClient = async () => {
+    const TrustIssuer = await Issuer.discover(
+        `${process.env.OPENID_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
+    );
+    return new TrustIssuer.Client({
+        client_id: process.env.OPENID_CLIENT_REGISTRATION_LOGIN_CLIENT_ID,
+        client_secret: process.env.OPENID_CLIENT_REGISTRATION_LOGIN_CLIENT_SECRET,
+    });
+};
+
 @Injectable()
 export class AuthService {
     openIdClient: Client

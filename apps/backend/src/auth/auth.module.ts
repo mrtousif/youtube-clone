@@ -7,8 +7,7 @@ import { EmailModule } from '../email/email.module';
 import { SdkModule } from '../sdk/sdk.module';
 import { AuthController } from './auth.controller';
 import { AuthEventsService } from './auth.events.service';
-import { AuthService } from './auth.service';
-import { OidcService, buildOpenIdClient } from './oidc.strategy';
+import { AuthService, buildOpenIdClient } from './auth.service';
 
 const OidcFactory = {
     provide: 'OIDC',
