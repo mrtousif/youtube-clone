@@ -39,7 +39,7 @@
         "@types/react-dom": "18.0.6",
         "eslint-config-custom": "workspace:*",
         "http-server": "14.1.1",
-        "locize-cli": "7.12.3",
+        "locize-cli": "7.12.7",
         "tsconfig": "workspace:*",
         "typescript": "4.7.4",
         "vitest": "0.17.1"

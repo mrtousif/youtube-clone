@@ -481,7 +481,7 @@ importers:
       clsx: 1.2.1
       eslint-config-custom: workspace:*
       http-server: 14.1.1
-      locize-cli: 7.12.3
+      locize-cli: 7.12.7
       next: 12.2.4
       next-i18next: 11.3.0
       next-language-detector: 1.0.2
@@ -512,7 +512,7 @@ importers:
       '@types/react-dom': 18.0.6
       eslint-config-custom: link:../../packages/eslint-custom-config
       http-server: 14.1.1
-      locize-cli: 7.12.3
+      locize-cli: 7.12.7
       tsconfig: link:../../packages/tsconfig
       typescript: 4.7.4
       vitest: 0.17.1
@@ -11289,8 +11289,8 @@ packages:
     resolution: {integrity: sha512-2/kNscPhpcxrOigMZzbiWF7dz8ilhb/nIHU3EyZiXWXpeq/au8qJ8VhdftMkty3n7Gj6HIGalQG8oiBNB3AJgA==}
     engines: {node: '>=10.6.0'}
 
-  /cacheable-lookup/6.0.4:
-    resolution: {integrity: sha512-mbcDEZCkv2CZF4G01kr8eBd/5agkt9oCqz75tJMSIsquvRZ2sL6Hi5zGVKi/0OSC9oO1GHfJ2AV0ZIOY9vye0A==}
+  /cacheable-lookup/6.1.0:
+    resolution: {integrity: sha512-KJ/Dmo1lDDhmW2XDPMo+9oiy/CeqosPguPCrgcVzKyZrL6pM1gU2GmPY/xo6OQPTUaA/c0kwHuywB4E6nmT9ww==}
     engines: {node: '>=10.6.0'}
     dev: true
 
@@ -12973,7 +12973,7 @@ packages:
   /domutils/1.5.1:
     resolution: {integrity: sha512-gSu5Oi/I+3wDENBsOWBiRK1eoGxcywYSqg3rR960/+EfY0CF4EX1VPkgHOZ3WiS/Jg2DtliF6BhWcHlfpYUcGw==}
     dependencies:
-      dom-serializer: 0.1.1
+      dom-serializer: 0.2.2
       domelementtype: 1.3.1
     dev: true
 
@@ -16708,8 +16708,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /ini/3.0.0:
-    resolution: {integrity: sha512-TxYQaeNW/N8ymDvwAxPyRbhMBtnEwuvaTYpOQkFx1nSeusgezHniEc/l35Vo4iCq/mMiTJbpD7oYxN98hFlfmw==}
+  /ini/3.0.1:
+    resolution: {integrity: sha512-it4HyVAUTKBc6m8e1iXWvXSTdndF7HbdN713+kvLrymxTaU4AUBWrJ4vEooP+V7fexnVD3LKcBshjGGPefSMUQ==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dev: true
 
@@ -19755,14 +19755,14 @@ packages:
     dependencies:
       p-locate: 5.0.0
 
-  /locize-cli/7.12.3:
-    resolution: {integrity: sha512-DHMJJTYt3CqT5Nej4mxQDNpYVDOmuGanl36quDWFesujjkBlzir9sid+7tYfUwVa7tF1F6nF5y3nfHJu2AVAqQ==}
+  /locize-cli/7.12.7:
+    resolution: {integrity: sha512-7TSg+x+pL3TyLDEWRWglLHgpCWfJguurbg5xN1iakVoOraqfWNuoF0LikdrFBBBTMqMUdfwTmne1FKUynmzrIQ==}
     hasBin: true
     dependencies:
       '@js.properties/properties': 0.5.4
       android-string-resource: 2.3.4
       async: 3.2.4
-      cacheable-lookup: 6.0.4
+      cacheable-lookup: 6.1.0
       colors: 1.4.0
       commander: 9.4.0
       csvjson: 5.1.0
@@ -19771,7 +19771,7 @@ packages:
       fluent_conv: 3.1.0
       gettext-converter: 1.2.3
       https-proxy-agent: 5.0.1
-      ini: 3.0.0
+      ini: 3.0.1
       js-yaml: 4.1.0
       laravelphp: 2.0.3
       lodash.clonedeep: 4.5.0
