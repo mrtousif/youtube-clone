@@ -69,7 +69,6 @@
         "nestjs-pino": "3.1.1",
         "nestjs-prisma": "0.17.0",
         "openid-client": "^5.2.1",
-        "passport-jwt": "4.0.0",
         "pino-http": "8.2.0",
         "pino-sentry": "0.13.0",
         "prisma-redis-middleware": "4.2.0",

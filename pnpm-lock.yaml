@@ -196,7 +196,6 @@ importers:
       nestjs-pino: 3.1.1
       nestjs-prisma: 0.17.0
       openid-client: ^5.2.1
-      passport-jwt: 4.0.0
       pino-http: 8.2.0
       pino-pretty: 9.1.0
       pino-sentry: 0.13.0
@@ -254,7 +253,6 @@ importers:
       nestjs-pino: 3.1.1_4pgyxucqtnaer2lr24gprogtn4
       nestjs-prisma: 0.17.0_b4oeclvbgdgcmarx2i3tovp6ta
       openid-client: 5.2.1
-      passport-jwt: 4.0.0
       pino-http: 8.2.0
       pino-sentry: 0.13.0
       prisma-redis-middleware: 4.2.0
@@ -20956,18 +20954,6 @@ packages:
     resolution: {integrity: sha512-XHXfu/yOQRy9vYOtUDVMN60OEJjW013GoObG1o+xwQTpB9eYJX/BjXMsdW13ZDPruFhYYn0AG22w0xgQMwl3Nw==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /passport-jwt/4.0.0:
-    resolution: {integrity: sha512-BwC0n2GP/1hMVjR4QpnvqA61TxenUMlmfNjYNgK0ZAs0HK4SOQkHcSv4L328blNTLtHq7DbmvyNJiH+bn6C5Mg==}
-    dependencies:
-      jsonwebtoken: 8.5.1
-      passport-strategy: 1.0.0
-    dev: false
-
-  /passport-strategy/1.0.0:
-    resolution: {integrity: sha512-CB97UUvDKJde2V0KDWWB3lyf6PC3FaZP7YxZ2G8OAtn9p4HI9j9JLP9qjOGZFvyl8uwNT8qM+hGnz/n16NI7oA==}
-    engines: {node: '>= 0.4.0'}
-    dev: false
 
   /path-case/3.0.4:
     resolution: {integrity: sha512-qO4qCFjXqVTrcbPt/hQfhTQ+VhFsqNKOPtytgNKkKxSoEp3XPUQ8ObFuePylOIok5gjn69ry8XiULxCwot3Wfg==}
