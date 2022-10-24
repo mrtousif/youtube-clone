@@ -33,7 +33,7 @@ export class JwtGuard implements CanActivate {
             this.logger.error(e);
             const session = request.session.get(sessionKey);
             const response: FastifyReply = context.switchToHttp().getResponse();
-            if (session.state && session.nonce) {
+            if (session?.state && session?.nonce) {
                 const { state, nonce } = session;
                 const req = request as unknown as IncomingMessage;
                 try {

@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
+import got from 'got';
 
 import { config } from '../config/index';
 import { EmailModule } from '../email/email.module';
@@ -20,10 +21,20 @@ const OidcFactory = {
     imports: [
         SdkModule,
         EmailModule,
-        JwtModule.register({
-            secret: config.JWT_SECRET,
-            verifyOptions: {
-                algorithms: ['RS256'],
+        JwtModule.registerAsync({
+            useFactory: async () => {
+                const { public_key } = await got
+                    .get(config.OPENID_CLIENT_PROVIDER_OIDC_ISSUER)
+                    .json<{ public_key: string }>();
+
+                const jwtSecret = `-----BEGIN PUBLIC KEY-----\n${public_key}\n-----END PUBLIC KEY-----`;
+
+                return {
+                    secret: jwtSecret,
+                    verifyOptions: {
+                        algorithms: ['RS256'],
+                    },
+                };
             },
         }),
     ],

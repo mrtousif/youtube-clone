@@ -18,7 +18,6 @@ export const config = cleanEnv(process.env, {
     OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI: url(),
     OPENID_CLIENT_REGISTRATION_LOGIN_CLIENT_SECRET: str(),
     OPENID_CLIENT_REGISTRATION_LOGIN_CLIENT_ID: str(),
-    JWT_SECRET: str(),
     COOKIE_SECRET: str(),
     SESSION_SECRET: str()
 });
