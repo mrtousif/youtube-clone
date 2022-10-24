@@ -21,8 +21,7 @@ const client = new JwksClient({
     cache: true, // Default Value
     cacheMaxEntries: 5, // Default value
     cacheMaxAge: 600000, // Defaults to 10m
-    jwksUri:
-        config.OPENID_CLIENT_PROVIDER_JWK_URL,
+    jwksUri: config.OPENID_CLIENT_PROVIDER_JWK_URL,
 });
 
 @Module({

@@ -96,6 +96,10 @@ export class AuthService {
         return this.openIdClient.authorizationUrl(params);
     }
 
+    refreshToken(refreshToekn: string){
+        return this.openIdClient.refresh(refreshToekn)
+    }
+
     /**
      * createUser
      */
