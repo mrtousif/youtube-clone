@@ -1,6 +1,8 @@
 import { Inject, Injectable, Logger, UnauthorizedException } from '@nestjs/common';
+import handleAsync from 'await-to-js';
 import { gql } from 'graphql-request';
 import { IncomingMessage } from 'http';
+import { omit } from 'lodash';
 import { PrismaService } from 'nestjs-prisma';
 import {
     AuthorizationParameters,
@@ -54,6 +56,24 @@ export interface HasuraJwtClaims<CustomClaims extends Record<string, string | st
 
 export type UserJwtClaims = HasuraJwtClaims<{ 'x-hasura-user-id': string }>;
 
+export interface IUserInfo {
+    sub:                            string;
+    email_verified:                 boolean;
+    "https://hasura.io/jwt/claims": HTTPSHasuraIoJwtClaims;
+    name:                           string;
+    preferred_username:             string;
+    given_name:                     string;
+    family_name:                    string;
+    email:                          string;
+}
+
+export interface HTTPSHasuraIoJwtClaims {
+    "x-hasura-default-role":  string;
+    "x-hasura-user-id":       string;
+    "x-hasura-allowed-roles": string[];
+}
+
+
 export const buildOpenIdClient = async () => {
     const TrustIssuer = await Issuer.discover(
         `${process.env.OPENID_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
@@ -77,7 +97,7 @@ export class AuthService {
         this.openIdClient = openIdClient;
     }
 
-    async getUserInfo(accessToken: string): Promise<any> {
+    async getUserInfo(accessToken: string): Promise<UserinfoResponse> {
         const userinfo: UserinfoResponse = await this.openIdClient.userinfo(accessToken);
         this.logger.log(userinfo);
         return userinfo;
@@ -96,16 +116,23 @@ export class AuthService {
         return this.openIdClient.authorizationUrl(params);
     }
 
-    refreshToken(refreshToekn: string){
-        return this.openIdClient.refresh(refreshToekn)
+    refreshToken(refreshToekn: string) {
+        return this.openIdClient.refresh(refreshToekn);
     }
 
     /**
-     * createUser
+     * Create or update a user
      */
-    public createUser(input: CreateUserDto) {
+    public async createOrUpdateUser(input: CreateUserDto) {
         const userData = { ...input, channelName: input.name };
 
-        return this.prisma.users.create({ data: userData });
+        return this.prisma.users.upsert({ where: { id: userData.id }, create: userData, update: omit(userData, 'id') });
+    }
+
+    /**
+     * findUser
+     */
+    public findUser(id: string) {
+        return this.prisma.users.findFirst({where: {id}})
     }
 }

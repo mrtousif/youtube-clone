@@ -1,4 +1,10 @@
-import { CanActivate, ExecutionContext, Injectable, Logger } from '@nestjs/common';
+import {
+    CanActivate,
+    ExecutionContext,
+    Injectable,
+    Logger,
+    UnauthorizedException,
+} from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { JwtService } from '@nestjs/jwt';
 import type { FastifyReply, FastifyRequest } from 'fastify';
@@ -25,7 +31,7 @@ export class JwtGuard implements CanActivate {
 
         try {
             const token = this.getToken(request);
-            // const user = await this.authService.getUserInfo(token)
+
             const user = this.jwtService.verify(token);
             request.user = user;
             return true;
@@ -48,8 +54,15 @@ export class JwtGuard implements CanActivate {
                 response.setCookie('access_token', `Bearer ${result.access_token}`);
                 response.setCookie('refresh_token', result.refresh_token);
                 response.setCookie('id_token', result.id_token);
-
+                const user = await this.authService.getUserInfo(result.access_token);
+                request.user = user;
+                this.authService.createOrUpdateUser({
+                    id: user.sub,
+                    name: user.email,
+                    email: user.name
+                })
                 response.redirect('/');
+                return true;
             } else {
                 const params = {
                     state: generators.state(),
@@ -66,7 +79,7 @@ export class JwtGuard implements CanActivate {
                 );
             }
 
-            return;
+            return false;
         }
     }
 
@@ -77,7 +90,7 @@ export class JwtGuard implements CanActivate {
     protected getToken(request: FastifyRequest): string {
         const authorization = request.headers['authorization'] || request.cookies['access_token'];
         if (!authorization || Array.isArray(authorization)) {
-            throw new Error('Invalid Authorization Header');
+            throw new UnauthorizedException('Invalid Authorization Header');
         }
         const [_, token] = authorization.split(' ');
         return token;
