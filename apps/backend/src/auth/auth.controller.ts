@@ -1,4 +1,5 @@
 import { Controller, Get, Logger, Query, Request, Res, UseGuards } from '@nestjs/common';
+import { Ctx, MessagePattern, Payload, RmqContext } from '@nestjs/microservices';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { Issuer } from 'openid-client';
 
@@ -49,4 +50,12 @@ export class AuthController {
             res.redirect('/');
         }
     }
+
+
+    @MessagePattern('KK.EVENT.#')
+    getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
+        console.log(data)
+        console.log(context.getMessage());
+    }
+
 }

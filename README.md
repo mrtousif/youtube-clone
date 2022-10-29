@@ -20,7 +20,7 @@ curl  -XPOST 127.0.0.1:9080/apisix/admin/routes -H "X-Api-Key: edd1c9f034335f136
         "openid-connect":{
             "bearer_only": false,
             "client_id": "hasura",
-            "client_secret": "0oIPqXn5Viw9hIqAbN6qMEaS6mZfvyxm",
+            "client_secret": "sGDpddl2JcwvrUk7IERmqDA9QTyNqwyN",
             "disable": false,
             "discovery": "https://8180-mrtousif-youtubeclone-6p60rhw8gtr.ws-us67.gitpod.io/realms/myrealm/.well-known/openid-configuration",
             "introspection_endpoint_auth_method": "client_secret_post",
