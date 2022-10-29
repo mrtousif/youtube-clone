@@ -9,6 +9,7 @@ volumes:
 
 services:
     postgres:
+        container_name: postgres
         image: postgres:14-alpine
         restart: unless-stopped
         volumes:
@@ -69,6 +70,7 @@ services:
     #         - postgres
 
     pgweb:
+        container_name: pgweb
         image: sosedoff/pgweb:latest
         restart: unless-stopped
         ports:
@@ -79,7 +81,8 @@ services:
             - postgres
 
     keycloak:
-        image: quay.io/keycloak/keycloak:19.0.2
+        container_name: keycloak
+        image: ghcr.io/mrtousif/keycloak:latest
         command: start-dev
         environment:
             KEYCLOAK_ADMIN: admin
@@ -129,6 +132,7 @@ services:
             - "1025:1025"
 
     rabbitmq:
+        container_name: rabbitmq
         image: rabbitmq:3.9-management
         hostname: rabbitmq
         environment:
