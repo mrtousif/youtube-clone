@@ -9,6 +9,7 @@ volumes:
 
 services:
     postgres:
+        container_name: postgres
         image: postgres:14-alpine
         restart: unless-stopped
         volumes:
@@ -37,6 +38,7 @@ services:
             ## postgres database to store Hasura metadata
             HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/hasura_metadata
             HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+            HASURA_GRAPHQL_LOG_LEVEL: warn
             ## enable the console served by server
             HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
             ## enable debugging mode. It is recommended to disable this in production
@@ -50,7 +52,6 @@ services:
             NESTJS_EVENT_WEBHOOK_ENDPOINT: ${NESTJS_BASE_URL}/hasura/events
             NESTJS_EVENT_WEBHOOK_SHARED_SECRET: ${NESTJS_EVENT_WEBHOOK_SHARED_SECRET}
             HASURA_GRAPHQL_MIGRATIONS_SERVER_TIMEOUT: 30
-            HASURA_GRAPHQL_NO_OF_RETRIES: 10
 
     # realtime:
     #     image: supabase/realtime:latest
@@ -69,6 +70,7 @@ services:
     #         - postgres
 
     pgweb:
+        container_name: pgweb
         image: sosedoff/pgweb:latest
         restart: unless-stopped
         ports:
@@ -79,17 +81,20 @@ services:
             - postgres
 
     keycloak:
-        image: quay.io/keycloak/keycloak:19.0.2
+        container_name: keycloak
+        build:
+            dockerfile: ./keycloak.Dockerfile
         command: start-dev
         environment:
             KEYCLOAK_ADMIN: admin
             KEYCLOAK_ADMIN_PASSWORD: password123
+            KC_DB: postgres
+            KC_DB_URL_DATABASE: keycloak_db
+            KC_DB_PASSWORD: password
+            KC_DB_SCHEMA: public
+            KC_DB_USERNAME: keycloak
+            KC_DB_URL_HOST: postgres
             KC_PROXY: "passthrough"
-            DB_VENDOR: POSTGRES
-            DB_ADDR: postgres
-            DB_DATABASE: keycloak_db
-            DB_USER: keycloak
-            DB_PASSWORD: password
             KK_TO_RMQ_URL: rabbitmq
             KK_TO_RMQ_PORT: 5672
             KK_TO_RMQ_VHOST: DSrabbitmq
@@ -129,6 +134,7 @@ services:
             - "1025:1025"
 
     rabbitmq:
+        container_name: rabbitmq
         image: rabbitmq:3.9-management
         hostname: rabbitmq
         environment:
