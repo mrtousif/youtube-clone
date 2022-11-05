@@ -84,7 +84,7 @@ services:
         container_name: keycloak
         build:
             dockerfile: ./keycloak.Dockerfile
-        command: start-dev
+        command: ["start-dev", "--import-realm"]
         environment:
             KEYCLOAK_ADMIN: admin
             KEYCLOAK_ADMIN_PASSWORD: password123
@@ -107,6 +107,8 @@ services:
         depends_on:
             - postgres
             - rabbitmq
+        volumes:
+            - ./realm-export.json:/opt/keycloak/data/import/realm.json:ro
 
 
     redis:
