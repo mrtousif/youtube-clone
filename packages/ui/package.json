@@ -9,7 +9,7 @@
     },
     "devDependencies": {
         "@types/react": "18.0.25",
-        "@types/react-dom": "18.0.6",
+        "@types/react-dom": "18.0.9",
         "eslint": "8.19.0",
         "eslint-config-custom": "workspace:*",
         "react": "17.0.2",
