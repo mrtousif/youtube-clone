@@ -10,7 +10,7 @@ RUN curl -sL https://github.com/aerogear/keycloak-metrics-spi/releases/download/
 
 RUN /opt/keycloak/bin/kc.sh build
 
-FROM quay.io/keycloak/keycloak:19.0.3
+FROM quay.io/keycloak/keycloak:20.0.0
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 WORKDIR /opt/keycloak
 

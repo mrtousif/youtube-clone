@@ -1,7 +1,7 @@
-import { Controller, Get, Logger, Query, Request, Res, UseGuards } from '@nestjs/common';
+import { Controller, Get, Logger, Query, Request, Response, UseGuards } from '@nestjs/common';
 import { Ctx, MessagePattern, Payload, RmqContext } from '@nestjs/microservices';
 import type { FastifyReply, FastifyRequest } from 'fastify';
-import { Issuer } from 'openid-client';
+import { Issuer, UserinfoResponse } from 'openid-client';
 
 import { AuthService } from './auth.service';
 import { JwtGuard } from './jwt.guard';
@@ -20,17 +20,17 @@ export class AuthController {
     @Get('/user')
     user(@Request() req) {
         this.logger.log(req.user);
-        return req.user;
+        return this.authService.findUser(req.user.sub);
     }
 
     @UseGuards(JwtGuard)
     @Get('/callback')
-    async loginCallback(@Request() req, @Res() res: FastifyReply) {
+    async loginCallback(@Request() req, @Response() res: FastifyReply) {
         res.redirect('/');
     }
 
     @Get('/logout')
-    async logout(@Request() req, @Res() res: FastifyReply) {
+    async logout(@Request() req, @Response() res: FastifyReply) {
         const id_token = req.user ? req.user.id_token : undefined;
         req.logout();
         req.session.delete();
