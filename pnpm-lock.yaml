@@ -475,7 +475,7 @@ importers:
       clsx: 1.2.1
       eslint-config-custom: workspace:*
       http-server: 14.1.1
-      locize-cli: 7.12.7
+      locize-cli: 7.13.1
       next: 12.2.4
       next-i18next: 11.3.0
       next-language-detector: 1.0.2
@@ -506,7 +506,7 @@ importers:
       '@types/react-dom': 18.0.9
       eslint-config-custom: link:../../packages/eslint-custom-config
       http-server: 14.1.1
-      locize-cli: 7.12.7
+      locize-cli: 7.13.1
       tsconfig: link:../../packages/tsconfig
       typescript: 4.8.4
       vitest: 0.17.1
@@ -8637,12 +8637,12 @@ packages:
     dependencies:
       acorn: 8.8.0
 
-  /acorn-jsx/5.3.2_acorn@8.8.0:
+  /acorn-jsx/5.3.2_acorn@8.8.1:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
     dependencies:
-      acorn: 8.8.0
+      acorn: 8.8.1
 
   /acorn-node/1.8.2:
     resolution: {integrity: sha512-8mt+fslDufLYntIoPAaIMUe/lrbrehIiwmR3t2k9LljIzoigEPF27eLk2hy8zSGzmR/ogr7zbRKINMo1u0yh5A==}
@@ -8785,8 +8785,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /android-string-resource/2.3.4:
-    resolution: {integrity: sha512-krpKGkGMtjAmZJiTY4wxdRzf87Tiq2slGm3XGATOZNLKIMUN4nC1ABlpY2AXT5Il8/skYMADWDD16HyKNpl9pw==}
+  /android-string-resource/2.3.8:
+    resolution: {integrity: sha512-s+2bB2n3Cpq95Nm48ojayxtSbCebBevy4uoNAf82xWM21yn7O7x4A59Yj5fjPfNBYrFVNZ58f+IGPHQ0BRwEBA==}
     dependencies:
       rdotjson: 1.0.3
       xml-js: 1.6.11
@@ -10298,11 +10298,6 @@ packages:
   /commander/8.3.0:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
     engines: {node: '>= 12'}
-
-  /commander/9.4.0:
-    resolution: {integrity: sha512-sRPT+umqkz90UA8M1yqYfnHlZA7fF6nSphDtxeywPZ49ysjxDQybzk13CL+mXekDRG92skbcqCLVovuCusNmFw==}
-    engines: {node: ^12.20.0 || >=14}
-    dev: true
 
   /commander/9.4.1:
     resolution: {integrity: sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==}
@@ -13078,8 +13073,8 @@ packages:
     resolution: {integrity: sha512-DQmnRpLj7f6TgN/NYb0MTzJXL+vJF9h3pHy4JhCIs3zwcgez8xmGg3sXHcEO97BrmO2OSvCwMdfdlyl+E9KjOw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
-      acorn: 8.8.0
-      acorn-jsx: 5.3.2_acorn@8.8.0
+      acorn: 8.8.1
+      acorn-jsx: 5.3.2_acorn@8.8.1
       eslint-visitor-keys: 3.3.0
 
   /esprima/4.0.1:
@@ -18042,16 +18037,16 @@ packages:
     dependencies:
       p-locate: 5.0.0
 
-  /locize-cli/7.12.7:
-    resolution: {integrity: sha512-7TSg+x+pL3TyLDEWRWglLHgpCWfJguurbg5xN1iakVoOraqfWNuoF0LikdrFBBBTMqMUdfwTmne1FKUynmzrIQ==}
+  /locize-cli/7.13.1:
+    resolution: {integrity: sha512-vNGPdbaS2DwOiGN/sPfFTCoP4bHq5xZQ2CCjTKxRpznF15BOjNZsRzYMVPKg0em/6zFeibtf3BEeb0uCIILsxg==}
     hasBin: true
     dependencies:
       '@js.properties/properties': 0.5.4
-      android-string-resource: 2.3.4
+      android-string-resource: 2.3.8
       async: 3.2.4
       cacheable-lookup: 6.1.0
       colors: 1.4.0
-      commander: 9.4.0
+      commander: 9.4.1
       csvjson: 5.1.0
       diff: 5.1.0
       flat: 5.0.2
