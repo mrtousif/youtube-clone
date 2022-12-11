@@ -1,5 +1,5 @@
 {
-    "name": "backend",
+    "name": "main_server",
     "version": "0.0.1",
     "description": "",
     "author": "",
@@ -25,8 +25,7 @@
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
         "test:e2e": "jest --config ./test/jest-e2e.json",
         "hasura": "hasura --project ../hasura --envfile ../backend/.env.development --skip-update-check",
-        "generate": "pnpm graphql-codegen",
-        "cucumber": "cucumber-js --require-module ts-node/register --require 'integration/**/*.ts'"
+        "generate": "pnpm graphql-codegen"
     },
     "prisma": {
         "seed": "ts-node prisma/seed.ts"
