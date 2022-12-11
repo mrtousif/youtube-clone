@@ -4,7 +4,7 @@ Keycloak
 
 ```sh
 curl --request POST \
-  --url http://localhost:8180/realms/myrealm/protocol/openid-connect/token \
+  --url http://localhost:8180/realms/development_realm/protocol/openid-connect/token \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data username=tousif101@outlook.com \
   --data password=password123 \
@@ -22,9 +22,9 @@ curl  -XPOST 127.0.0.1:9080/apisix/admin/routes -H "X-Api-Key: edd1c9f034335f136
             "client_id": "hasura",
             "client_secret": "sGDpddl2JcwvrUk7IERmqDA9QTyNqwyN",
             "disable": false,
-            "discovery": "https://8180-mrtousif-youtubeclone-6p60rhw8gtr.ws-us67.gitpod.io/realms/myrealm/.well-known/openid-configuration",
+            "discovery": "https://8180-mrtousif-youtubeclone-6p60rhw8gtr.ws-us67.gitpod.io/realms/development_realm/.well-known/openid-configuration",
             "introspection_endpoint_auth_method": "client_secret_post",
-            "realm": "myrealm",
+            "realm": "development_realm",
             "redirect_uri": "https://9080-mrtousif-youtubeclone-6p60rhw8gtr.ws-us67.gitpod.io/",
             "scope": "openid profile"
         }
