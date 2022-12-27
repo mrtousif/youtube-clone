@@ -10,6 +10,7 @@ import { ClsModule } from 'nestjs-cls';
 import { PrismaModule } from 'nestjs-prisma';
 import { LoggerModule } from 'nestjs-pino';
 import { createWriteStream } from 'pino-sentry';
+import { MailmanModule, MailmanOptions } from '@squareboat/nest-mailman';
 
 import { PrismaConfigService } from './PrismaConfigService';
 import { AppController } from './app.controller';
@@ -64,6 +65,18 @@ import { SdkModule } from './sdk/sdk.module';
             allowBatchedQueries: true,
         }),
         EventEmitterModule.forRoot(),
+        MailmanModule.registerAsync({
+            imports: [ConfigService],
+            useFactory: () => ({
+                host: config.EMAIL_HOST,
+                port: 2525,
+                username: config.EMAIL_USERNAME,
+                password: config.EMAIL_PASSWORD,
+                from: config.EMAIL_SENDER_ID,
+                path: '/project-dir/resources/mails'
+              }),
+            inject: [ConfigService],
+        }),
         HasuraModule.forRootAsync(HasuraModule, {
             useFactory: () => {
                 const webhookSecret = config.NESTJS_EVENT_WEBHOOK_SHARED_SECRET;

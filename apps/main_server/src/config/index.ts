@@ -1,4 +1,4 @@
-import { cleanEnv, port, str, url } from 'envalid';
+import { cleanEnv, email, port, str, url } from 'envalid';
 
 export const config = cleanEnv(process.env, {
     NODE_ENV: str({ choices: ['development', 'test', 'production', 'staging', 'qa'] }),
@@ -20,5 +20,9 @@ export const config = cleanEnv(process.env, {
     OPENID_CLIENT_REGISTRATION_LOGIN_CLIENT_ID: str(),
     OPENID_CLIENT_PROVIDER_JWK_URL: url(),
     COOKIE_SECRET: str(),
-    SESSION_SECRET: str()
+    SESSION_SECRET: str(),
+    EMAIL_HOST: str({ devDefault: 'localhost'}),
+    EMAIL_USERNAME: str(),
+    EMAIL_PASSWORD: str(),
+    EMAIL_SENDER_ID: email({ devDefault: 'admin@localhost.com' })
 });
