@@ -145,7 +145,7 @@ importers:
       '@supabase/realtime-js': 1.7.4
       '@types/bull': ^3.15.9
       '@types/cron': 2.0.0
-      '@types/express': 4.17.14
+      '@types/express': 4.17.15
       '@types/jest': 28.1.8
       '@types/node': 18.6.5
       '@types/supertest': 2.0.12
@@ -191,7 +191,7 @@ importers:
       '@nestjs/testing': 9.0.8_gmbxhmspf37crwmu4m67czabjy
       '@types/bull': 3.15.9
       '@types/cron': 2.0.0
-      '@types/express': 4.17.14
+      '@types/express': 4.17.15
       '@types/jest': 28.1.8
       '@types/node': 18.6.5
       '@types/supertest': 2.0.12
@@ -7933,6 +7933,16 @@ packages:
       '@types/express-serve-static-core': 4.17.31
       '@types/qs': 6.9.7
       '@types/serve-static': 1.15.0
+    dev: false
+
+  /@types/express/4.17.15:
+    resolution: {integrity: sha512-Yv0k4bXGOH+8a+7bELd2PqHQsuiANB+A8a4gnQrkRWzrkKlb6KHaVvyXhqs04sVW/OWlbPyYxRgYlIXLfrufMQ==}
+    dependencies:
+      '@types/body-parser': 1.19.2
+      '@types/express-serve-static-core': 4.17.31
+      '@types/qs': 6.9.7
+      '@types/serve-static': 1.15.0
+    dev: true
 
   /@types/glob/7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
