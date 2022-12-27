@@ -413,7 +413,7 @@ importers:
       nestjs-prisma: 0.19.0
       openid-client: ^5.2.1
       pino-http: 8.2.0
-      pino-pretty: 9.1.0
+      pino-pretty: 9.1.1
       pino-sentry: 0.13.0
       prisma: 4.2.1
       prisma-nestjs-graphql: 17.0.3
@@ -499,7 +499,7 @@ importers:
       jest-cucumber: 3.0.1_ts-node@10.9.1
       jest-extended: 3.1.0_jest@28.1.3
       jest-junit: 14.0.1
-      pino-pretty: 9.1.0
+      pino-pretty: 9.1.1
       prisma: 4.2.1
       prisma-nestjs-graphql: 17.0.3
       source-map-support: 0.5.21
@@ -13444,8 +13444,8 @@ packages:
     resolution: {integrity: sha512-CvdFfHkC95B4bBBk36hcEmvdR2awOdhhVUYH6S/zrVj3477zven/fJMYg7121h4T1xHZC+tetUpubpAhxwI7hQ==}
     engines: {node: ^10.17.0 || ^12.0.0 || >= 13.7.0}
 
-  /fast-copy/2.1.7:
-    resolution: {integrity: sha512-ozrGwyuCTAy7YgFCua8rmqmytECYk/JYAMXcswOcm0qvGoE3tPb7ivBeIHTOK2DiapBhDZgacIhzhQIKU5TCfA==}
+  /fast-copy/3.0.0:
+    resolution: {integrity: sha512-4HzS+9pQ5Yxtv13Lhs1Z1unMXamBdn5nA4bEi1abYpDNSpSp7ODYQ1KPMF6nTatfEzgH6/zPvXKU1zvHiUjWlA==}
     dev: true
 
   /fast-decode-uri-component/1.0.1:
@@ -19686,13 +19686,13 @@ packages:
       process-warning: 2.0.0
     dev: false
 
-  /pino-pretty/9.1.0:
-    resolution: {integrity: sha512-IM6NY9LLo/dVgY7/prJhCh4rAJukafdt0ibxeNOWc2fxKMyTk90SOB9Ao2HfbtShT9QPeP0ePpJktksMhSQMYA==}
+  /pino-pretty/9.1.1:
+    resolution: {integrity: sha512-iJrnjgR4FWQIXZkUF48oNgoRI9BpyMhaEmihonHeCnZ6F50ZHAS4YGfGBT/ZVNsPmd+hzkIPGzjKdY08+/yAXw==}
     hasBin: true
     dependencies:
       colorette: 2.0.19
       dateformat: 4.6.3
-      fast-copy: 2.1.7
+      fast-copy: 3.0.0
       fast-safe-stringify: 2.1.1
       help-me: 4.1.0
       joycon: 3.1.1
