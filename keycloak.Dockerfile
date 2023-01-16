@@ -1,4 +1,4 @@
-FROM quay.io/keycloak/keycloak:20.0.0 as builder
+FROM quay.io/keycloak/keycloak:20.0.3 as builder
 
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
@@ -10,7 +10,7 @@ RUN curl -sL https://github.com/aerogear/keycloak-metrics-spi/releases/download/
 
 RUN /opt/keycloak/bin/kc.sh build
 
-FROM quay.io/keycloak/keycloak:20.0.0
+FROM quay.io/keycloak/keycloak:20.0.3
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 WORKDIR /opt/keycloak
 
