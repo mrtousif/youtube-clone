@@ -3,7 +3,7 @@ version: '3'
 env:
   ENV: development
 
-dotenv: ['.env', '.env.{{.ENV}}']
+dotenv: ['.env.{{.ENV}}']
 
 tasks:
   startUp:

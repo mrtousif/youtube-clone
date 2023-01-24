@@ -24,7 +24,7 @@
         "test:watch": "jest --watch",
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
         "test:e2e": "jest --config ./test/jest-e2e.json",
-        "hasura": "hasura --project ../hasura --envfile ../backend/.env.development --skip-update-check",
+        "hasura": "hasura --project ../hasura --envfile ../main_server/.env.development --skip-update-check",
         "generate": "pnpm graphql-codegen"
     },
     "prisma": {
