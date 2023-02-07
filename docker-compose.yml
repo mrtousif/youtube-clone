@@ -25,7 +25,7 @@ services:
 
     hasura:
         container_name: hasura
-        image: hasura/graphql-engine:v2.16.0
+        image: hasura/graphql-engine:v2.18.0
         restart: unless-stopped
         depends_on:
             - postgres
