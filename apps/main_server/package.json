@@ -64,7 +64,7 @@
         "got": "12.5.3",
         "graphql": "16.6.0",
         "graphql-request": "5.1.0",
-        "ioredis": "5.3.0",
+        "ioredis": "5.2.5",
         "jwks-rsa": "^3.0.1",
         "lodash": "4.17.21",
         "lodash-decorators": "6.0.1",
