@@ -55,7 +55,7 @@
         "amqplib": "0.10.3",
         "await-to-js": "^3.0.0",
         "class-transformer": "^0.5.1",
-        "class-validator": "^0.13.2",
+        "class-validator": "^0.14.0",
         "dotenv": "16.0.1",
         "envalid": "7.3.1",
         "got": "11.8.5",
