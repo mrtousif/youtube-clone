@@ -52,10 +52,11 @@ async function bootstrap() {
 
     if (config.isProduction) {
         app.useLogger(app.get(Logger));
-        // app.useGlobalInterceptors(new LoggerErrorInterceptor());
+        app.useGlobalInterceptors(new LoggerErrorInterceptor());
     }
 
     await app.startAllMicroservices();
     await app.listen(config.PORT);
+    console.log(`Running on port ${config.PORT}`);
 }
 bootstrap();

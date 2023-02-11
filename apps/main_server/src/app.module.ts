@@ -6,11 +6,10 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MercuriusDriver, MercuriusDriverConfig } from '@nestjs/mercurius';
 import { PrometheusModule } from '@willsoto/nestjs-prometheus';
-import { RedisModule } from '@liaoliaots/nestjs-redis';
+import { MailmanModule, MailmanOptions } from '@squareboat/nest-mailman';
 import { ClsModule } from 'nestjs-cls';
 import { PrismaModule } from 'nestjs-prisma';
 import { LoggerModule } from 'nestjs-pino';
-import { createWriteStream } from 'pino-sentry';
 
 import { PrismaConfigService } from './PrismaConfigService';
 import { AppController } from './app.controller';
@@ -33,16 +32,11 @@ import { SdkModule } from './sdk/sdk.module';
         PrometheusModule.register(),
         LoggerModule.forRootAsync({
             useFactory: async () => {
-                const stream = createWriteStream({ 
-                    dsn: config.SENTRY_DSN
-                });
-
                 return {
                     pinoHttp: {
                         level: !config.isProd ? 'debug' : 'info',
                         transport:
                             config.isDev ? { target: 'pino-pretty' } : undefined,
-                        stream,
                     },
                     exclude: [{ method: RequestMethod.ALL, path: 'check' }],
                 };
@@ -57,6 +51,16 @@ import { SdkModule } from './sdk/sdk.module';
         }),
         ConfigModule.forRoot({
             isGlobal: true,
+        }),
+        MailmanModule.registerAsync({
+            useFactory: () => ({
+                host: config.EMAIL_HOST,
+                port: 2525,
+                username: config.EMAIL_USERNAME,
+                password: config.EMAIL_PASSWORD,
+                from: config.EMAIL_SENDER_ID,
+                path: join(process.cwd(), '/resources/mails'),
+            }),
         }),
         GraphQLModule.forRoot<MercuriusDriverConfig>({
             driver: MercuriusDriver,

@@ -53,6 +53,7 @@
         "@nestjs/platform-fastify": "9.3.8",
         "@nestjs/terminus": "9.2.0",
         "@prisma/client": "4.10.1",
+        "@squareboat/nest-mailman": "^0.3.0",
         "@willsoto/nestjs-prometheus": "5.1.0",
         "amqp-connection-manager": "4.1.10",
         "amqplib": "0.10.3",
