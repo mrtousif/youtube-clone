@@ -65,7 +65,7 @@
         "jwks-rsa": "^2.1.5",
         "lodash": "4.17.21",
         "lodash-decorators": "6.0.1",
-        "mercurius": "10.1.0",
+        "mercurius": "11.5.0",
         "nestjs-cls": "2.2.0",
         "nestjs-pino": "3.1.1",
         "nestjs-prisma": "0.19.0",
