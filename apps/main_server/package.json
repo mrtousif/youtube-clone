@@ -35,6 +35,7 @@
         "@aws-sdk/s3-request-presigner": "3.267.0",
         "@fastify/cookie": "^8.3.0",
         "@fastify/secure-session": "^6.0.0",
+        "@golevelup/nestjs-common": "^1.4.4",
         "@golevelup/nestjs-discovery": "^3.0.0",
         "@golevelup/nestjs-graphql-request": "0.1.13",
         "@golevelup/nestjs-hasura": "3.0.2",
