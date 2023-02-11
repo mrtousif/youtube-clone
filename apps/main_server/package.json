@@ -37,7 +37,7 @@
         "@fastify/passport": "^2.2.0",
         "@fastify/secure-session": "^5.2.0",
         "@golevelup/nestjs-graphql-request": "0.1.13",
-        "@golevelup/nestjs-hasura": "3.0.1",
+        "@golevelup/nestjs-hasura": "3.0.2",
         "@nestjs/common": "9.0.8",
         "@nestjs/config": "2.2.0",
         "@nestjs/core": "9.0.8",
