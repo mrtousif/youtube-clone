@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from "@prisma/client";
+import { Prisma } from '@prisma/client';
 import { PrismaOptionsFactory, PrismaServiceOptions } from 'nestjs-prisma';
 import { config } from './config';
 import { createPrismaRedisCache } from "prisma-redis-middleware";
@@ -8,11 +8,11 @@ import Redis from "ioredis";
 const redis = new Redis(config.REDIS_URL);
 
 export function loggingMiddleware() {
-    return async (params: Prisma.MiddlewareParams, next)  => {
+    return async (params: Prisma.MiddlewareParams, next) => {
         const before = Date.now();
 
         const result = await next(params);
-        
+
         const after = Date.now();
 
         console.log(`Query ${params.model}.${params.action} took ${after - before}ms`);

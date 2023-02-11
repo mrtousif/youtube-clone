@@ -47,7 +47,7 @@ import { SdkModule } from './sdk/sdk.module';
                 };
             },
         }),
-        ClsModule.register({
+        ClsModule.forRoot({
             global: true,
         }),
         PrismaModule.forRootAsync({
@@ -64,33 +64,23 @@ import { SdkModule } from './sdk/sdk.module';
             allowBatchedQueries: true,
         }),
         EventEmitterModule.forRoot(),
-        HasuraModule.forRootAsync(HasuraModule, {
-            useFactory: () => {
-                const webhookSecret = config.NESTJS_EVENT_WEBHOOK_SHARED_SECRET;
-
-                return {
-                    webhookConfig: {
-                        secretFactory: webhookSecret,
-                        secretHeader: 'nestjs-event-webhook',
-                    },
-                    managedMetaDataConfig:
-                        config.isDev
-                            ? {
-                                  metadataVersion: 'v3',
-                                  dirPath: join(process.cwd(), '../hasura/metadata'),
-                                  nestEndpointEnvName: 'NESTJS_EVENT_WEBHOOK_ENDPOINT',
-                                  secretHeaderEnvName: 'NESTJS_EVENT_WEBHOOK_SHARED_SECRET',
-                                  defaultEventRetryConfig: {
-                                      numRetries: 3,
-                                      timeoutInSeconds: 100,
-                                      intervalInSeconds: 30,
-                                      toleranceSeconds: 21600,
-                                  },
-                              }
-                            : undefined,
-                };
+        HasuraModule.forRoot(HasuraModule, {
+            webhookConfig: {
+              secretFactory: 'secret',
+              secretHeader: 'secretHeader',
             },
-        }),
+            managedMetaDataConfig: {
+              dirPath: join(process.cwd(), 'hasura/metadata'),
+              secretHeaderEnvName: 'HASURA_NESTJS_WEBHOOK_SECRET_HEADER_VALUE',
+              nestEndpointEnvName: 'NESTJS_EVENT_WEBHOOK_ENDPOINT',
+              defaultEventRetryConfig: {
+                intervalInSeconds: 15,
+                numRetries: 3,
+                timeoutInSeconds: 100,
+                toleranceSeconds: 21600,
+              },
+            },
+          }),
     ],
     controllers: [AppController],
     providers: [AppService, FileStorageService],
