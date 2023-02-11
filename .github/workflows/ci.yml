@@ -19,7 +19,7 @@ jobs:
             - name: Install Task
               uses: arduino/setup-task@v1
 
-            - uses: pnpm/action-setup@v2.2.2
+            - uses: pnpm/action-setup@v2.2.4
               with:
                   version: 7
 
