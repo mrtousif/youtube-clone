@@ -73,14 +73,16 @@ jobs:
                 head: HEAD
 
             - name: Get changed files in the docs folder
-              id: changed-hasura-metadata
-              uses: tj-actions/changed-files@v35
+            - uses: dorny/paths-filter@v2
+              id: changes
               with:
-                files: apps/hasura/metadata/**.yaml
+                filters: |
+                  hasura:
+                    - 'apps/hasura/metadata/**.yaml'
 
             # - name: Detect Hasura metadata changes
             #   uses: Fieldguide/action-hasura-change-summary@v2
-            #   if: steps.changed-hasura-metadata.outputs.any_changed == 'true'
+            #   if: steps.changes.outputs.hasura == 'true'
             #   id: hasura-change-summary
             #   with:
             #     hasura_endpoint: https://my-pr-${{ github.event.number }}-app.example.com
