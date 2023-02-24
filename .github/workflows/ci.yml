@@ -73,7 +73,7 @@ jobs:
                 head: HEAD
 
             - name: Get changed files in the docs folder
-            - uses: dorny/paths-filter@v2
+              uses: dorny/paths-filter@v2
               id: changes
               with:
                 filters: |
