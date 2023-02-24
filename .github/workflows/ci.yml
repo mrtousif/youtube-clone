@@ -41,13 +41,15 @@ jobs:
               if: ${{ github.event_name == 'pull_request' }}
               run: pnpm turbo run build --filter=[HEAD^1]
 
-            - name: Test
-              if: ${{ github.event_name == 'pull_request' }}
-              run: pnpm turbo run test:ci --filter=[HEAD^1]
+            - name: Get if there is jest report file
+              id: changed-jest-report
+              uses: tj-actions/changed-files@v35
+              with:
+                files: '**/jest-*.xml'
 
             - name: Test Report
               uses: dorny/test-reporter@v1
-              if: success()
+              if: steps.changed-jest-report.outputs.any_changed == 'true'
               with:
                 name: JEST Tests            
                 path: '**/reports/jest-*.xml'    

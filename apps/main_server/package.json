@@ -79,7 +79,7 @@
         "prom-client": "14.1.1",
         "reflect-metadata": "0.1.13",
         "rimraf": "4.1.2",
-        "rxjs": "7.8.0",
+        "rxjs": "7.5.6",
         "zod": "3.20.6"
     },
     "devDependencies": {
