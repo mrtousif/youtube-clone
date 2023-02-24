@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-require('dotenv').config({path: '.env.development' });
+require('dotenv').config({path: '.env.development.local' });
 
 const {
   HASURA_GRAPHQL_API_ENDPOINT: endpoint,
