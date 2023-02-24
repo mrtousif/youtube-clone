@@ -2,6 +2,10 @@ name: Backport merged pull request
 on:
   pull_request:
     types: [closed]
+    branches:
+      - main
+      - develop
+      - staging
 permissions:
   contents: write # so it can comment
   pull-requests: write # so it can create pull requests
