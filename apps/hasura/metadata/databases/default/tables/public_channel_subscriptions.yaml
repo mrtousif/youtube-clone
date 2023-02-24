@@ -35,7 +35,6 @@ select_permissions:
 delete_permissions:
   - role: user
     permission:
-      backend_only: false
       filter:
         subscriber_id:
           _eq: X-Hasura-User-Id

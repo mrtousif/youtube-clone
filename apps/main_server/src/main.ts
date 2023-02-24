@@ -57,5 +57,6 @@ async function bootstrap() {
 
     await app.startAllMicroservices();
     await app.listen(config.PORT);
+    console.log(`Running on port ${config.PORT}`);
 }
 bootstrap();

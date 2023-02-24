@@ -82,8 +82,7 @@ services:
 
     keycloak:
         container_name: keycloak
-        build:
-            dockerfile: ./keycloak.Dockerfile
+        image: quay.io/keycloak/keycloak:20.0.3
         command: ["start-dev", "--import-realm"]
         environment:
             KEYCLOAK_ADMIN: admin
