@@ -26,7 +26,7 @@
         "@trivago/prettier-plugin-sort-imports": "3.3.1",
         "danger": "11.1.4",
         "danger-plugin-code-coverage": "1.2.0",
-        "docker-compose": "0.23.17",
+        "docker-compose": "0.23.19",
         "eslint-config-custom": "workspace:*",
         "https-localhost": "4.7.1",
         "husky": "8.0.3",
