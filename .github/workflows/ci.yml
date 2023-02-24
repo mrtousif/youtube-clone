@@ -6,7 +6,7 @@ on:
 jobs:
     ci:
         runs-on: ubuntu-latest
-
+        timeout-minutes: 10
         strategy:
             matrix:
                 node-version: [16.x]
@@ -29,10 +29,11 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: 'pnpm'
 
-            - name: Extract out parent branch
-              shell: bash
-              run: echo "##[set-output name=parent_branch;]$(git show-branch -a | grep '\*' | grep -v `git rev-parse --abbrev-ref HEAD` | head -n1 | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/[\^~].*//')"
-              id: extract_parent_branch
+            - name: Get branch names
+              id: branch-name
+              uses: tj-actions/branch-names@v6
+              with:
+                strip_tag_prefix: false
 
             - name: Install dependencies
               run: pnpm install
@@ -41,15 +42,15 @@ jobs:
               if: ${{ github.event_name == 'pull_request' }}
               run: pnpm turbo run build --filter=[HEAD^1]
 
-            - name: Get if there is jest report file
-              id: changed-jest-report
-              uses: tj-actions/changed-files@v35
+            - name: Check file existence
+              id: check_files
+              uses: andstor/file-existence-action@v2
               with:
-                files: '**/jest-*.xml'
+                files: "**/reports/jest-*.xml"
 
             - name: Test Report
               uses: dorny/test-reporter@v1
-              if: steps.changed-jest-report.outputs.any_changed == 'true'
+              if: steps.check_files.outputs.files_exists == 'true'
               with:
                 name: JEST Tests            
                 path: '**/reports/jest-*.xml'    
@@ -71,11 +72,11 @@ jobs:
                 base: ${{ github.event.repository.default_branch }}
                 head: HEAD
 
-            # - name: Get changed files in the docs folder
-            #   id: changed-hasura-metadata
-            #   uses: tj-actions/changed-files@v35
-            #   with:
-            #     files: apps/hasura/metadata/**.yaml
+            - name: Get changed files in the docs folder
+              id: changed-hasura-metadata
+              uses: tj-actions/changed-files@v35
+              with:
+                files: apps/hasura/metadata/**.yaml
 
             # - name: Detect Hasura metadata changes
             #   uses: Fieldguide/action-hasura-change-summary@v2
