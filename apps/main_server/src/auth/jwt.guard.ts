@@ -14,6 +14,8 @@ import { generators } from 'openid-client';
 import { config } from '../config/index';
 import { AuthService } from './auth.service';
 
+export type FastifyRequestType = FastifyRequest & { user?: Record<string, unknown>, accessToken?: string };
+
 @Injectable()
 export class JwtGuard implements CanActivate {
     private readonly logger = new Logger(JwtGuard.name);
@@ -24,7 +26,7 @@ export class JwtGuard implements CanActivate {
     ) {}
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
-        const request = this.getRequest<FastifyRequest & { user?: Record<string, unknown> }>(
+        const request = this.getRequest<FastifyRequestType>(
             context
         );
         const sessionKey = 'oidc';
@@ -34,6 +36,7 @@ export class JwtGuard implements CanActivate {
 
             const user = this.jwtService.verify(token);
             request.user = user;
+            request.accessToken = token;
             return true;
         } catch (e) {
             this.logger.error(e);
