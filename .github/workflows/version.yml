@@ -2,8 +2,13 @@ name: Git Version
 
 on:
   push:
+    paths:
+      - apps/**
+      - packages/**
     branches:
       - main
+      - staging
+      - develop
 
 jobs:
   lint:
@@ -14,6 +19,12 @@ jobs:
         with:
           ref: ${{ github.head_ref }}   # checkout the correct branch name
           fetch-depth: 0                # fetch the whole repo history
+
+      - name: Get changed files in the admin panel
+        id: changed-admin-panel
+        uses: tj-actions/changed-files@v35
+        with:
+          files: apps/admin-panel/**
 
       - name: Git Version
         id: version
