@@ -44,6 +44,7 @@ const viteConfig = ({ mode }) => {
             }),
         ],
         test: {
+            css: true,
             globals: true,
             environment: 'jsdom',
             coverage: {

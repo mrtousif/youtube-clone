@@ -122,3 +122,4 @@ dist
 .pnp.*
 
 .erlang.*
+.vitest-preview
