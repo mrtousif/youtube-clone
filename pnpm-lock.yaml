@@ -79,7 +79,7 @@ importers:
       recoil: 0.7.4
       tsconfig: workspace:*
       typescript: 4.9.5
-      vite: 2.9.14
+      vite: 2.9.15
       vite-plugin-checker: 0.4.9
       vite-plugin-pwa: 0.12.3
       vite-tsconfig-paths: 3.5.0
@@ -122,10 +122,10 @@ importers:
       optionator: 0.9.1
       tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
-      vite: 2.9.14
-      vite-plugin-checker: 0.4.9_vite@2.9.14
-      vite-plugin-pwa: 0.12.3_eht5mlsg2vsx2fkij25qp6ecte
-      vite-tsconfig-paths: 3.5.0_vite@2.9.14
+      vite: 2.9.15
+      vite-plugin-checker: 0.4.9_vite@2.9.15
+      vite-plugin-pwa: 0.12.3_vite@2.9.15
+      vite-tsconfig-paths: 3.5.0_vite@2.9.15
       vitest: 0.17.1_c8@7.12.0+jsdom@20.0.3
       workbox-window: 6.5.4
 
@@ -24599,6 +24599,14 @@ packages:
       estree-walker: 0.6.1
     dev: true
 
+  /rollup/2.77.3:
+    resolution: {integrity: sha512-/qxNTG7FbmefJWoeeYJFbHehJ2HNWnjkAFRKzWN/45eNBBF/r8lo992CwcJXEzyVxs5FmfId+vTSTQDb+bxA+g==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /rollup/2.78.1:
     resolution: {integrity: sha512-VeeCgtGi4P+o9hIg+xz4qQpRl6R401LWEXBmxYKOV4zlF82lyhgh2hTZnheFUbANE8l2A41F458iwj2vEYaXJg==}
     engines: {node: '>=10.0.0'}
@@ -26945,7 +26953,7 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  /vite-plugin-checker/0.4.9_vite@2.9.14:
+  /vite-plugin-checker/0.4.9_vite@2.9.15:
     resolution: {integrity: sha512-Oii9mTum8bqZovWejcR739kCqST32oG6LdB/XMdwcLVzmcjq0gf1iVDIedVzJJ7t6GLQAYgjNwvB0fuMiT3tlg==}
     hasBin: true
     peerDependencies:
@@ -26962,14 +26970,14 @@ packages:
       npm-run-path: 4.0.1
       strip-ansi: 6.0.1
       tiny-invariant: 1.3.1
-      vite: 2.9.14
+      vite: 2.9.15
       vscode-languageclient: 7.0.0
       vscode-languageserver: 7.0.0
       vscode-languageserver-textdocument: 1.0.7
       vscode-uri: 3.0.6
     dev: true
 
-  /vite-plugin-pwa/0.12.3_eht5mlsg2vsx2fkij25qp6ecte:
+  /vite-plugin-pwa/0.12.3_vite@2.9.15:
     resolution: {integrity: sha512-gmYdIVXpmBuNjzbJFPZFzxWYrX4lHqwMAlOtjmXBbxApiHjx9QPXKQPJjSpeTeosLKvVbNcKSAAhfxMda0QVNQ==}
     peerDependencies:
       vite: ^2.0.0 || ^3.0.0-0
@@ -26980,14 +26988,14 @@ packages:
       fast-glob: 3.2.12
       pretty-bytes: 6.0.0
       rollup: 2.79.1
-      vite: 2.9.14
+      vite: 2.9.15
       workbox-build: 6.5.4
       workbox-window: 6.5.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite-tsconfig-paths/3.5.0_vite@2.9.14:
+  /vite-tsconfig-paths/3.5.0_vite@2.9.15:
     resolution: {integrity: sha512-NKIubr7gXgh/3uniQaOytSg+aKWPrjquP6anAy+zCWEn6h9fB8z2/qdlfQrTgZWaXJ2pHVlllrSdRZltHn9P4g==}
     peerDependencies:
       vite: '>2.0.0-0'
@@ -26996,13 +27004,13 @@ packages:
       globrex: 0.1.2
       recrawl-sync: 2.2.3
       tsconfig-paths: 4.1.0
-      vite: 2.9.14
+      vite: 2.9.15
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/2.9.14:
-    resolution: {integrity: sha512-P/UCjSpSMcE54r4mPak55hWAZPlyfS369svib/gpmz8/01L822lMPOJ/RYW6tLCe1RPvMvOsJ17erf55bKp4Hw==}
+  /vite/2.9.15:
+    resolution: {integrity: sha512-fzMt2jK4vQ3yK56te3Kqpkaeq9DkcZfBbzHwYpobasvgYmP2SoAr6Aic05CsB4CzCZbsDv4sujX3pkEGhLabVQ==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
@@ -27020,7 +27028,7 @@ packages:
       esbuild: 0.14.54
       postcss: 8.4.18
       resolve: 1.22.1
-      rollup: 2.79.1
+      rollup: 2.77.3
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
