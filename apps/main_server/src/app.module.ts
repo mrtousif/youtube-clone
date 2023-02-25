@@ -1,15 +1,15 @@
-import { join } from 'path';
 import { HasuraModule, HasuraModuleConfig } from '@golevelup/nestjs-hasura';
 import { Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MercuriusDriver, MercuriusDriverConfig } from '@nestjs/mercurius';
-import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 import { MailmanModule, MailmanOptions } from '@squareboat/nest-mailman';
+import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 import { ClsModule } from 'nestjs-cls';
-import { PrismaModule } from 'nestjs-prisma';
 import { LoggerModule } from 'nestjs-pino';
+import { PrismaModule } from 'nestjs-prisma';
+import { join } from 'path';
 
 import { PrismaConfigService } from './PrismaConfigService';
 import { AppController } from './app.controller';
@@ -35,8 +35,7 @@ import { SdkModule } from './sdk/sdk.module';
                 return {
                     pinoHttp: {
                         level: !config.isProd ? 'debug' : 'info',
-                        transport:
-                            config.isDev ? { target: 'pino-pretty' } : undefined,
+                        transport: config.isDev ? { target: 'pino-pretty' } : undefined,
                     },
                     exclude: [{ method: RequestMethod.ALL, path: 'check' }],
                 };
@@ -78,21 +77,20 @@ import { SdkModule } from './sdk/sdk.module';
                         secretFactory: webhookSecret,
                         secretHeader: 'nestjs-event-webhook',
                     },
-                    managedMetaDataConfig:
-                        config.isDev
-                            ? {
-                                  metadataVersion: 'v3',
-                                  dirPath: join(process.cwd(), '../hasura/metadata'),
-                                  nestEndpointEnvName: 'NESTJS_EVENT_WEBHOOK_ENDPOINT',
-                                  secretHeaderEnvName: 'NESTJS_EVENT_WEBHOOK_SHARED_SECRET',
-                                  defaultEventRetryConfig: {
-                                      numRetries: 3,
-                                      timeoutInSeconds: 100,
-                                      intervalInSeconds: 30,
-                                      toleranceSeconds: 21600,
-                                  },
-                              }
-                            : undefined,
+                    managedMetaDataConfig: config.isDev
+                        ? {
+                              metadataVersion: 'v3',
+                              dirPath: join(process.cwd(), '../hasura/metadata'),
+                              nestEndpointEnvName: 'NESTJS_EVENT_WEBHOOK_ENDPOINT',
+                              secretHeaderEnvName: 'NESTJS_EVENT_WEBHOOK_SHARED_SECRET',
+                              defaultEventRetryConfig: {
+                                  numRetries: 3,
+                                  timeoutInSeconds: 100,
+                                  intervalInSeconds: 30,
+                                  toleranceSeconds: 21600,
+                              },
+                          }
+                        : undefined,
                 };
             },
         }),

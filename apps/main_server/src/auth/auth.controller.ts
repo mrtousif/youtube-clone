@@ -4,7 +4,7 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 import { Issuer, UserinfoResponse } from 'openid-client';
 
 import { AuthService } from './auth.service';
-import { JwtGuard } from './jwt.guard';
+import { FastifyRequestType, JwtGuard } from './jwt.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -18,9 +18,8 @@ export class AuthController {
 
     @UseGuards(JwtGuard)
     @Get('/user')
-    user(@Request() req) {
-        this.logger.log(req.user);
-        return this.authService.findUser(req.user.sub);
+    user(@Request() req: FastifyRequestType) {
+        return this.authService.getUserInfo(req.accessToken);
     }
 
     @UseGuards(JwtGuard)
