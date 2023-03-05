@@ -16,7 +16,7 @@ importers:
       https-localhost: 4.7.1
       husky: 8.0.3
       is-port-reachable: 3.1.0
-      lint-staged: 13.1.0
+      lint-staged: 13.1.2
       prettier: 2.7.1
       prettier-plugin-prisma: 4.2.0
       rimraf: 3.0.2
@@ -35,7 +35,7 @@ importers:
       https-localhost: 4.7.1
       husky: 8.0.3
       is-port-reachable: 3.1.0
-      lint-staged: 13.1.0
+      lint-staged: 13.1.2
       prettier: 2.7.1
       prettier-plugin-prisma: 4.2.0_prettier@2.7.1
       rimraf: 3.0.2
@@ -9474,7 +9474,7 @@ packages:
   /@types/jsonwebtoken/8.5.9:
     resolution: {integrity: sha512-272FMnFGzAVMGtu9tkr29hRL6bZj4Zs1KZNeHLnKqAvp06tAIcarTMwOh8/8bz4FmKRcMxZhZNeUAQsNLoiPhg==}
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 18.13.0
     dev: true
 
   /@types/jsonwebtoken/9.0.1:
@@ -20162,7 +20162,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 18.13.0
       merge-stream: 2.0.0
       supports-color: 7.2.0
 
@@ -20793,8 +20793,8 @@ packages:
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  /lint-staged/13.1.0:
-    resolution: {integrity: sha512-pn/sR8IrcF/T0vpWLilih8jmVouMlxqXxKuAojmbiGX5n/gDnz+abdPptlj0vYnbfE0SQNl3CY/HwtM0+yfOVQ==}
+  /lint-staged/13.1.2:
+    resolution: {integrity: sha512-K9b4FPbWkpnupvK3WXZLbgu9pchUJ6N7TtVZjbaPsoizkqFUDkUReUL25xdrCljJs7uLUF3tZ7nVPeo/6lp+6w==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
