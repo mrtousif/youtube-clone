@@ -76,11 +76,11 @@ export interface HTTPSHasuraIoJwtClaims {
 
 export const buildOpenIdClient = async () => {
     const TrustIssuer = await Issuer.discover(
-        `${process.env.OPENID_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
+        `${config.OPENID_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
     );
     return new TrustIssuer.Client({
-        client_id: process.env.OPENID_CLIENT_REGISTRATION_LOGIN_CLIENT_ID,
-        client_secret: process.env.OPENID_CLIENT_REGISTRATION_LOGIN_CLIENT_SECRET,
+        client_id: config.OPENID_CLIENT_REGISTRATION_LOGIN_CLIENT_ID,
+        client_secret: config.OPENID_CLIENT_REGISTRATION_LOGIN_CLIENT_SECRET,
     });
 };
 

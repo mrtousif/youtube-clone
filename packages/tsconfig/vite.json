@@ -1,18 +1,18 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
-    "display": "Next.js",
     "extends": "./base.json",
+    "Display": "Vite",
     "compilerOptions": {
-      "allowJs": true,
-      "declaration": false,
-      "declarationMap": false,
-      "incremental": true,
-      "jsx": "preserve",
+      "allowJs": false,
+      "esModuleInterop": false,
+      "jsx": "react",
       "lib": ["dom", "dom.iterable", "esnext"],
-      "module": "esnext",
+      "module": "ESNext",
       "noEmit": true,
       "resolveJsonModule": true,
-      "target": "es5"
+      "skipLibCheck": false,
+      "target": "ESNext",
+      "types": ["vite/client"]
     }
   }
   

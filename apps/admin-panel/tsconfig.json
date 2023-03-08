@@ -1,5 +1,5 @@
 {
-  "extends": "tsconfig/nextjs.json",
+  "extends": "tsconfig/vite.json",
   "compilerOptions": {
     "resolveJsonModule": true,
     "isolatedModules": true,

@@ -1,6 +1,7 @@
 module.exports = {
     root: true,
     extends: ['custom'],
+    plugins: ["@ts-safeql/eslint-plugin"],
     ignorePatterns: ['**/sdk.ts', '**/global-*.js'],
     env: {
         node: true,
@@ -12,8 +13,7 @@ module.exports = {
             {
                 connections: [
                     {
-                        // The URL of the database:
-                        databaseUrl: 'postgres://postgres:postgres@localhost:5432/my_database',
+                        connectionUrl: "postgres://postgres:postgres_pass@localhost:5432/my_app_db",
                         // The name of the variable that holds the connection:
                         name: 'myDb',
                         // An array of operators that wraps the raw query:
