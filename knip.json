@@ -1,0 +1,17 @@
+{
+    "$schema": "https://unpkg.com/knip@1/schema.json",
+    "workspaces": {
+      "packages/*": {
+        "entry": "{index,cli}.ts",
+        "project": "**/*.ts"
+      },
+      "apps/*": {
+        "entry": "{index,main,pages}.{ts,tsx}",
+        "project": "**/*.{ts,tsx}"
+      }
+    },
+    "ignore": ["**/*.d.ts", "**/fixtures"],
+    "github-actions": {
+      "config": [".github/workflows/*.yml", ".github/**/action.{yml,yaml}"]
+    }
+}
