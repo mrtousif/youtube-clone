@@ -34,12 +34,12 @@
 ## Try it out on your local
 
 ```bash
-npm create refine-app@latest -- --example data-provider-hasura
+npm create refine-app@latest -- --example table-mui-advanced
 ```
 
 ## Try it out on CodeSandbox
 
 <br/>
 
-[![Open data-provider-hasura example from refine](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/github/refinedev/refine/tree/master/examples/data-provider-hasura?view=preview&theme=dark&codemirror=1)
+[![Open table-mui-advanced example from refine](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/github/refinedev/refine/tree/master/examples/table-mui-advanced?view=preview&theme=dark&codemirror=1)
         

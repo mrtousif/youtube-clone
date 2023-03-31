@@ -1,12 +1,12 @@
 export interface ICategory {
-    id: string;
+    id: number;
     title: string;
 }
 
 export interface IPost {
-    id: string;
+    id: number;
     title: string;
     content: string;
-    category: ICategory;
-    category_id: string;
+    status: "published" | "draft" | "rejected";
+    category: { id: number };
 }
