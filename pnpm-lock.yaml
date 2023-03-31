@@ -147,7 +147,7 @@ importers:
       '@nestjs/schedule': 2.1.0
       '@nestjs/schematics': 9.0.1
       '@nestjs/testing': 9.0.8
-      '@supabase/realtime-js': 1.7.4
+      '@supabase/realtime-js': 1.7.5
       '@types/bull': ^3.15.9
       '@types/cron': 2.0.0
       '@types/express': 4.17.17
@@ -182,7 +182,7 @@ importers:
       '@nestjs/microservices': 9.0.8_55cy5typx6lom2zu2dvfrnouke
       '@nestjs/platform-express': 9.0.8_cw6o3dkuyuli4a5gq7b223evly
       '@nestjs/schedule': 2.1.0_bnr7ep6snzlfkhaoqb7mdwsj4q
-      '@supabase/realtime-js': 1.7.4
+      '@supabase/realtime-js': 1.7.5
       bull: 4.10.1
       envalid: 7.3.1
       nats: 2.12.1
@@ -9155,8 +9155,8 @@ packages:
       - encoding
     dev: false
 
-  /@supabase/realtime-js/1.7.4:
-    resolution: {integrity: sha512-h/Jk3PCLkIVonsNavof/LvHbvF41UD+D+mWcA3m8yHzJ2TLbV3S4XDYId+A3AkvFOAork7Ns/9O8rK0uY4F4zw==}
+  /@supabase/realtime-js/1.7.5:
+    resolution: {integrity: sha512-nXuoxt7NE1NTI+G8WBim1K2gkUC8YE3e9evBUG+t6xwd9Sq+sSOrjcE0qJ8/Y631BCnLzlhX6yhFYQFh1oQDOg==}
     dependencies:
       '@types/phoenix': 1.5.4
       websocket: 1.0.34
