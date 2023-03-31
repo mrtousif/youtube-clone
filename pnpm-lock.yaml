@@ -390,7 +390,7 @@ importers:
       '@nestjs/testing': 9.3.8
       '@prisma/client': 4.10.1
       '@squareboat/nest-mailman': ^0.3.0
-      '@ts-safeql/eslint-plugin': ^0.0.24
+      '@ts-safeql/eslint-plugin': ^0.0.25
       '@types/jest': 29.4.0
       '@types/lodash': 4.14.191
       '@types/node': 18.13.0
@@ -504,7 +504,7 @@ importers:
       '@nestjs/cli': 9.2.0
       '@nestjs/schematics': 9.0.4_n7i3t5jmyrdrkypb5pvfihcmg4
       '@nestjs/testing': 9.3.8_rjhyan5rvg7nngibs4aol3nhtq
-      '@ts-safeql/eslint-plugin': 0.0.24_5364hlveojas5jlvoxpwlth57m
+      '@ts-safeql/eslint-plugin': 0.0.25_5364hlveojas5jlvoxpwlth57m
       '@types/jest': 29.4.0
       '@types/lodash': 4.14.191
       '@types/node': 18.13.0
@@ -9400,12 +9400,12 @@ packages:
       path-browserify: 1.0.1
     dev: true
 
-  /@ts-safeql/eslint-plugin/0.0.24_5364hlveojas5jlvoxpwlth57m:
-    resolution: {integrity: sha512-TgSwLq5nPayzTVbh9+fxLkFxA4at5sTXfPT7cuIB5PoW5f9VBXXuR+uhjXAIEqMm/W5/sBGqLkXDZPqOkz6EMA==}
+  /@ts-safeql/eslint-plugin/0.0.25_5364hlveojas5jlvoxpwlth57m:
+    resolution: {integrity: sha512-z3C68Csd3Hc4L6FC4ax69G8vbICOdkr1hEKtjSdNoYfcir4NGHV89o/qT1B0+oysNmMuYd4PR7K7yfyFr1iD/A==}
     peerDependencies:
       libpg-query: '>=13.2.5'
     dependencies:
-      '@ts-safeql/generate': 0.0.9
+      '@ts-safeql/generate': 0.0.10
       '@ts-safeql/shared': 0.0.6
       '@ts-safeql/test-utils': 0.0.6
       '@typescript-eslint/utils': 5.53.0_7kw3g6rralp5ps6mg3uyzz6azm
@@ -9418,16 +9418,16 @@ packages:
       recast: 0.21.5
       synckit: 0.8.5
       ts-pattern: 4.2.1
-      zod: 3.20.6
-      zod-to-json-schema: 3.20.4_zod@3.20.6
+      zod: 3.21.4
+      zod-to-json-schema: 3.20.4_zod@3.21.4
     transitivePeerDependencies:
       - eslint
       - supports-color
       - typescript
     dev: true
 
-  /@ts-safeql/generate/0.0.9:
-    resolution: {integrity: sha512-a9nOlHK0gX6acZ7xlAnuaJ5AuVGj8SZq7XUpiX5c/3xM/1GVgNN6WXyYjyIXL8+5o7hOMvM9iOnExwtSXiQwEw==}
+  /@ts-safeql/generate/0.0.10:
+    resolution: {integrity: sha512-VE1RvK5LM7IZ8w5y0El5123L51Po3xqoyCUU51isCedb7ikVuQ0NQpMKetWdL/dOAefBUGRriDqC1Lxz70RrJQ==}
     dependencies:
       '@ts-safeql/shared': 0.0.6
       '@ts-safeql/test-utils': 0.0.6
@@ -29871,16 +29871,17 @@ packages:
     resolution: {integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==}
     dev: false
 
-  /zod-to-json-schema/3.20.4_zod@3.20.6:
+  /zod-to-json-schema/3.20.4_zod@3.21.4:
     resolution: {integrity: sha512-Un9+kInJ2Zt63n6Z7mLqBifzzPcOyX+b+Exuzf7L1+xqck9Q2EPByyTRduV3kmSPaXaRer1JCsucubpgL1fipg==}
     peerDependencies:
       zod: ^3.20.0
     dependencies:
-      zod: 3.20.6
+      zod: 3.21.4
     dev: true
 
   /zod/3.20.6:
     resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
+    dev: false
 
   /zod/3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
