@@ -3,9 +3,6 @@ version: "3"
 volumes:
     postgres_data:
         driver: local
-    rabbitmq_data:
-    rabbitmq_log:
-    zinc_data:
 
 services:
     postgres:
@@ -82,7 +79,7 @@ services:
 
     keycloak:
         container_name: keycloak
-        image: quay.io/keycloak/keycloak:20.0.3
+        image: quay.io/keycloak/keycloak:20.0.5
         command: ["start-dev", "--import-realm"]
         environment:
             KEYCLOAK_ADMIN: admin
@@ -105,7 +102,6 @@ services:
             - 8180:8080
         depends_on:
             - postgres
-            - rabbitmq
         volumes:
             - ./realm-export.json:/opt/keycloak/data/import/realm.json:ro
 
@@ -117,53 +113,24 @@ services:
         ports:
             - "6379:6379"
 
-    redis-commander:
-        container_name: redis-commander
-        hostname: redis-commander
-        image: ghcr.io/joeferner/redis-commander:latest
-        restart: unless-stopped
-        environment:
-            - REDIS_HOSTS=local:redis:6379
-        ports:
-            - "8084:8081"
-        depends_on:
-            - redis
     maildev:
         image: maildev/maildev
         ports:
             - "1080:1080"
             - "1025:1025"
 
-    rabbitmq:
-        container_name: rabbitmq
-        image: rabbitmq:3.9-management
-        hostname: rabbitmq
-        environment:
-            RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
-            RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
-            RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    nats:
+        image: nats:alpine
         ports:
-            - 5672:5672
-            - 15672:15672
-        volumes:
-            - rabbitmq_data:/var/lib/rabbitmq/
-            - rabbitmq_log:/var/log/rabbitmq/
+            - "4222:4222"
+            - "8222:8222"
+        command: [ "-js", "-m", "8222" ]
         networks:
-            - rabbitmq_net
+            - nats
 
-    # zinc:
-    #     image: public.ecr.aws/h9e2j3o7/zinc:latest
-    #     volumes:
-    #         - zinc_data:/data
-    #     ports:
-    #         - 4080:4080
-    #     environment:
-    #         DATA_PATH: "/data"
-    #         ZINC_FIRST_ADMIN_USER: admin
-    #         ZINC_FIRST_ADMIN_PASSWORD: password123
 
 networks:
-    rabbitmq_net:
+    nats:
         driver: bridge
     monorepo-network:
         driver: bridge

@@ -2,7 +2,7 @@ import { Controller, Get, Logger, Query, Request, Response, UseGuards } from '@n
 import { Ctx, MessagePattern, Payload, RmqContext } from '@nestjs/microservices';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { Issuer, UserinfoResponse } from 'openid-client';
-
+import { config } from '../config/index';
 import { AuthService } from './auth.service';
 import { FastifyRequestType, JwtGuard } from './jwt.guard';
 
@@ -35,14 +35,14 @@ export class AuthController {
         req.session.delete();
 
         const TrustIssuer = await Issuer.discover(
-            `${process.env.OPENID_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
+            `${config.OPENID_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
         );
         const end_session_endpoint = TrustIssuer.metadata.end_session_endpoint;
         if (end_session_endpoint) {
             res.redirect(
                 end_session_endpoint +
                     '?post_logout_redirect_uri=' +
-                    process.env.OPENID_CLIENT_REGISTRATION_LOGIN_POST_LOGOUT_REDIRECT_URI +
+                    config.OPENID_CLIENT_REGISTRATION_LOGIN_POST_LOGOUT_REDIRECT_URI +
                     (id_token ? '&id_token_hint=' + id_token : '')
             );
         } else {

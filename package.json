@@ -16,7 +16,8 @@
         "format": "prettier --write \"**/*.{js,ts,tsx,md,prisma}\"",
         "prepare": "husky install",
         "compose:up": "docker-compose --env-file ./.env.dev up",
-        "compose:down": "docker-compose --env-file ./.env.dev down --remove-orphans"
+        "compose:down": "docker-compose --env-file ./.env.dev down --remove-orphans",
+        "knip": "knip"
     },
     "devDependencies": {
         "@babel/plugin-transform-flow-strip-types": "7.18.9",
@@ -31,7 +32,8 @@
         "https-localhost": "4.7.1",
         "husky": "8.0.3",
         "is-port-reachable": "3.1.0",
-        "lint-staged": "13.1.0",
+        "knip": "^1.14.2",
+        "lint-staged": "13.1.2",
         "prettier": "2.7.1",
         "prettier-plugin-prisma": "4.2.0",
         "rimraf": "3.0.2",

@@ -1,22 +1,32 @@
 import { NestFactory } from '@nestjs/core';
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-
+import { MicroserviceOptions, CustomStrategy } from '@nestjs/microservices';
+import { NatsJetStreamServer } from '@nestjs-plugins/nestjs-nats-jetstream-transport';
 import { AppModule } from './app.module';
 import { config } from './config';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
-    app.connectMicroservice<MicroserviceOptions>({
-        transport: Transport.RMQ,
-        options: {
-            urls: [config.RABBIT_MQ_HOST],
-            queue: 'cronicle_queue',
-            queueOptions: {
-                durable: true,
-            },
-        },
-    });
+    const options: CustomStrategy = {
+        strategy: new NatsJetStreamServer({
+          connectionOptions: {
+            servers: 'localhost:4222',
+            name: 'myservice-listener',
+          },
+          consumerOptions: {
+            deliverGroup: 'myservice-group',
+            durable: 'myservice-durable',
+            deliverTo: 'myservice-messages',
+            manualAck: true,
+          },
+          streamConfig: {
+            name: 'mystream',
+            subjects: ['order.*'],
+          },
+        }),
+      };
+
+    app.connectMicroservice<MicroserviceOptions>(options);
 
     await app.startAllMicroservices();
     await app.listen(config.PORT);

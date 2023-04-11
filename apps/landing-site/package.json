@@ -35,11 +35,11 @@
     },
     "devDependencies": {
         "@types/node": "17.0.45",
-        "@types/react": "18.0.27",
-        "@types/react-dom": "18.0.10",
+        "@types/react": "18.0.28",
+        "@types/react-dom": "18.0.11",
         "eslint-config-custom": "workspace:*",
         "http-server": "14.1.1",
-        "locize-cli": "7.13.1",
+        "locize-cli": "7.13.2",
         "tsconfig": "workspace:*",
         "typescript": "4.9.5",
         "vitest": "0.17.1"

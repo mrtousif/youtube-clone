@@ -1,11 +1,12 @@
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { MicroserviceOptions, CustomStrategy } from '@nestjs/microservices';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import fastifyCookie from '@fastify/cookie';
 import secureSession from '@fastify/secure-session';
 import { ClsMiddleware } from 'nestjs-cls';
 import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
 import { PrismaClientExceptionFilter, PrismaService } from 'nestjs-prisma';
+import { NatsJetStreamServer } from '@nestjs-plugins/nestjs-nats-jetstream-transport';
 
 import { AppModule } from './app.module';
 import { config } from './config';
@@ -18,16 +19,27 @@ async function bootstrap() {
         }),
         { bufferLogs: true }
     );
-    app.connectMicroservice<MicroserviceOptions>({
-        transport: Transport.RMQ,
-        options: {
-            urls: [config.RABBIT_MQ_HOST],
-            queue: 'backend_queue',
-            queueOptions: {
-                durable: true,
-            },
-        },
-    });
+    const options: CustomStrategy = {
+        strategy: new NatsJetStreamServer({
+          connectionOptions: {
+            servers: 'localhost:4222',
+            name: 'myservice-listener',
+          },
+          consumerOptions: {
+            deliverGroup: 'myservice-group',
+            durable: 'myservice-durable',
+            deliverTo: 'myservice-messages',
+            manualAck: true,
+          },
+          streamConfig: {
+            name: 'mystream',
+            subjects: ['order.*'],
+          },
+        }),
+      };
+
+    app.connectMicroservice<MicroserviceOptions>(options);
+    
     await app.register(fastifyCookie, {
         secret: config.COOKIE_SECRET, // for cookies signature
       });

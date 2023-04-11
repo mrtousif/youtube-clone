@@ -38,6 +38,8 @@ vscode:
     - rangav.vscode-thunder-client
     - firsttris.vscode-jest-runner
 
+    - cweijan.vscode-redis-client
+
 github:
   prebuilds:
     # enable for the master/default branch (defaults to true)
