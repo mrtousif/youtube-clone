@@ -3,7 +3,8 @@ import handleAsync from 'await-to-js';
 import { gql } from 'graphql-request';
 import { IncomingMessage } from 'http';
 import { omit } from 'lodash';
-import { PrismaService } from 'nestjs-prisma';
+import { DB } from 'kysely-codegen';
+import { InjectKysely } from "nestjs-kysely";
 import {
     AuthorizationParameters,
     Client,
@@ -91,7 +92,7 @@ export class AuthService {
 
     constructor(
         @InjectSdk() private readonly sdk: GqlSdk,
-        private prisma: PrismaService,
+        @InjectKysely() private readonly db: DB,
         @Inject('OIDC') openIdClient: Client
     ) {
         this.openIdClient = openIdClient;
@@ -126,13 +127,13 @@ export class AuthService {
     public async createOrUpdateUser(input: CreateUserDto) {
         const userData = { ...input, channelName: input.name };
 
-        return this.prisma.users.upsert({ where: { id: userData.id }, create: userData, update: omit(userData, 'id') });
+        return this.db.selectFrom.upsert({ where: { id: userData.id }, create: userData, update: omit(userData, 'id') });
     }
 
     /**
      * findUser
      */
     public findUser(id: string) {
-        return this.prisma.users.findFirst({where: {id}})
+        return this.db.users.findFirst({where: {id}})
     }
 }

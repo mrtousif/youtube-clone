@@ -6,12 +6,13 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { MercuriusDriver, MercuriusDriverConfig } from '@nestjs/mercurius';
 import { MailmanModule, MailmanOptions } from '@squareboat/nest-mailman';
 import { PrometheusModule } from '@willsoto/nestjs-prometheus';
+import { PostgresDialect } from 'kysely';
 import { ClsModule } from 'nestjs-cls';
+import { KyselyModule } from 'nestjs-kysely';
 import { LoggerModule } from 'nestjs-pino';
-import { PrismaModule } from 'nestjs-prisma';
 import { join } from 'path';
+import { Pool } from 'pg';
 
-import { PrismaConfigService } from './PrismaConfigService';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -44,10 +45,6 @@ import { SdkModule } from './sdk/sdk.module';
         ClsModule.forRoot({
             global: true,
         }),
-        PrismaModule.forRootAsync({
-            isGlobal: true,
-            useClass: PrismaConfigService,
-        }),
         ConfigModule.forRoot({
             isGlobal: true,
         }),
@@ -68,6 +65,13 @@ import { SdkModule } from './sdk/sdk.module';
             allowBatchedQueries: true,
         }),
         EventEmitterModule.forRoot(),
+        KyselyModule.forRoot({
+            dialect: new PostgresDialect({
+                pool: new Pool({
+                    connectionString: process.env.DATABASE_URL,
+                }),
+            }),
+        }),
         HasuraModule.forRootAsync(HasuraModule, {
             useFactory: () => {
                 const webhookSecret = config.NESTJS_EVENT_WEBHOOK_SHARED_SECRET;
