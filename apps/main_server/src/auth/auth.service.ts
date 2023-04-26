@@ -2,9 +2,10 @@ import { Inject, Injectable, Logger, UnauthorizedException } from '@nestjs/commo
 import handleAsync from 'await-to-js';
 import { gql } from 'graphql-request';
 import { IncomingMessage } from 'http';
-import { omit } from 'lodash';
+import { Kysely } from 'kysely';
 import { DB } from 'kysely-codegen';
-import { InjectKysely } from "nestjs-kysely";
+import { omit } from 'lodash';
+import { InjectKysely } from 'nestjs-kysely';
 import {
     AuthorizationParameters,
     Client,
@@ -58,22 +59,21 @@ export interface HasuraJwtClaims<CustomClaims extends Record<string, string | st
 export type UserJwtClaims = HasuraJwtClaims<{ 'x-hasura-user-id': string }>;
 
 export interface IUserInfo {
-    sub:                            string;
-    email_verified:                 boolean;
-    "https://hasura.io/jwt/claims": HTTPSHasuraIoJwtClaims;
-    name:                           string;
-    preferred_username:             string;
-    given_name:                     string;
-    family_name:                    string;
-    email:                          string;
+    sub: string;
+    email_verified: boolean;
+    'https://hasura.io/jwt/claims': HTTPSHasuraIoJwtClaims;
+    name: string;
+    preferred_username: string;
+    given_name: string;
+    family_name: string;
+    email: string;
 }
 
 export interface HTTPSHasuraIoJwtClaims {
-    "x-hasura-default-role":  string;
-    "x-hasura-user-id":       string;
-    "x-hasura-allowed-roles": string[];
+    'x-hasura-default-role': string;
+    'x-hasura-user-id': string;
+    'x-hasura-allowed-roles': string[];
 }
-
 
 export const buildOpenIdClient = async () => {
     const TrustIssuer = await Issuer.discover(
@@ -92,7 +92,7 @@ export class AuthService {
 
     constructor(
         @InjectSdk() private readonly sdk: GqlSdk,
-        @InjectKysely() private readonly db: DB,
+        @InjectKysely() private readonly db: Kysely<DB>,
         @Inject('OIDC') openIdClient: Client
     ) {
         this.openIdClient = openIdClient;
@@ -126,14 +126,14 @@ export class AuthService {
      */
     public async createOrUpdateUser(input: CreateUserDto) {
         const userData = { ...input, channelName: input.name };
-
-        return this.db.selectFrom.upsert({ where: { id: userData.id }, create: userData, update: omit(userData, 'id') });
+        // upsert({ where: { id: userData.id }, create: userData, update: omit(userData, 'id') })
+        return this.db.insertInto('users').values(userData).execute();
     }
 
     /**
      * findUser
      */
     public findUser(id: string) {
-        return this.db.users.findFirst({where: {id}})
+        return this.db.selectFrom('users').selectAll().where('id', '=', id).executeTakeFirst();
     }
 }

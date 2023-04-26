@@ -6,12 +6,13 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { MercuriusDriver, MercuriusDriverConfig } from '@nestjs/mercurius';
 import { MailmanModule, MailmanOptions } from '@squareboat/nest-mailman';
 import { PrometheusModule } from '@willsoto/nestjs-prometheus';
-import { PostgresDialect } from 'kysely';
+import { CamelCasePlugin, DeduplicateJoinsPlugin, PostgresDialect } from 'kysely';
 import { ClsModule } from 'nestjs-cls';
 import { KyselyModule } from 'nestjs-kysely';
 import { LoggerModule } from 'nestjs-pino';
 import { join } from 'path';
 import { Pool } from 'pg';
+import Cursor from 'pg-cursor';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -70,7 +71,9 @@ import { SdkModule } from './sdk/sdk.module';
                 pool: new Pool({
                     connectionString: process.env.DATABASE_URL,
                 }),
+                cursor: Cursor,
             }),
+            plugins: [new CamelCasePlugin(), new DeduplicateJoinsPlugin()],
         }),
         HasuraModule.forRootAsync(HasuraModule, {
             useFactory: () => {

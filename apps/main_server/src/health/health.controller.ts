@@ -1,14 +1,15 @@
-import { Controller, Get } from "@nestjs/common";
-import { HealthCheck, HealthCheckService, MemoryHealthIndicator } from "@nestjs/terminus";
-import { PrismaHealthIndicator } from "./prisma.health";
+import { Controller, Get } from '@nestjs/common';
+import { HealthCheck, HealthCheckService, MemoryHealthIndicator } from '@nestjs/terminus';
+
+import { PostgresHealthIndicator } from './prisma.health';
 
 @Controller('healthz')
 export class HealthController {
     constructor(
         private healthCheckService: HealthCheckService,
         private memory: MemoryHealthIndicator,
-        private db: PrismaHealthIndicator
-    ){}
+        private db: PostgresHealthIndicator
+    ) {}
 
     @Get()
     @HealthCheck()
