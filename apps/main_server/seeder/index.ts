@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { randomUUID } from 'crypto';
-import { Kysely, PostgresDialect } from 'kysely';
+import { Kysely, PostgresDialect, CamelCasePlugin } from 'kysely';
 import { DB } from 'kysely-codegen';
 import { sample } from 'lodash';
 import { Pool } from 'pg';
@@ -11,6 +11,7 @@ const db = new Kysely<DB>({
             connectionString: process.env.DATABASE_URL,
         }),
     }),
+    plugins: [new CamelCasePlugin()],
 });
 
 const userIds = [...Array(10).keys()].map(() => ({
