@@ -5,7 +5,6 @@ import fastifyCookie from '@fastify/cookie';
 import secureSession from '@fastify/secure-session';
 import { ClsMiddleware } from 'nestjs-cls';
 import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
-import { PrismaClientExceptionFilter, PrismaService } from 'nestjs-prisma';
 import { NatsJetStreamServer } from '@nestjs-plugins/nestjs-nats-jetstream-transport';
 
 import { AppModule } from './app.module';
@@ -55,12 +54,7 @@ async function bootstrap() {
         }).use
     );
 
-    const prismaService: PrismaService = app.get(PrismaService);
-    prismaService.enableShutdownHooks(app);
-
     const { httpAdapter } = app.get(HttpAdapterHost);
-
-    app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
 
     if (config.isProduction) {
         app.useLogger(app.get(Logger));
