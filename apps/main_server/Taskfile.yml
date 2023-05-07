@@ -10,8 +10,8 @@ tasks:
     deps: [migrateUp]
     cmds:
       - pnpm hasura metadata apply
-      - pnpm prisma:gen
-      - pnpm prisma:seed
+      - pnpm kysely:gen
+      - pnpm kysely:seed
 
   hasura:
     cmds:
