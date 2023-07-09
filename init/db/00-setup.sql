@@ -66,6 +66,6 @@ CREATE USER hasura WITH PASSWORD 'postgres';
 CREATE DATABASE hasura_metadata;
 GRANT ALL PRIVILEGES ON DATABASE hasura_metadata TO hasura;
 
-CREATE USER keycloak WITH PASSWORD 'password';
-CREATE DATABASE keycloak_db;
-GRANT ALL PRIVILEGES ON DATABASE keycloak_db TO keycloak;
+CREATE USER fusionauth WITH PASSWORD 'password';
+CREATE DATABASE fusionauth_db;
+GRANT ALL PRIVILEGES ON DATABASE fusionauth_db TO fusionauth;

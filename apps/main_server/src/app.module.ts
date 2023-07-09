@@ -74,6 +74,7 @@ import { SdkModule } from './sdk/sdk.module';
                 cursor: Cursor,
             }),
             plugins: [new CamelCasePlugin(), new DeduplicateJoinsPlugin()],
+            log: ['error', 'query'],
         }),
         HasuraModule.forRootAsync(HasuraModule, {
             useFactory: () => {
