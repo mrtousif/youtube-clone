@@ -24,9 +24,8 @@
         "@commitlint/cli": "17.0.3",
         "@commitlint/config-conventional": "17.0.3",
         "@faker-js/faker": "7.5.0",
+        "hasura-cli": "2.28.0",
         "@trivago/prettier-plugin-sort-imports": "3.3.1",
-        "danger": "11.1.4",
-        "danger-plugin-code-coverage": "1.2.0",
         "docker-compose": "0.23.19",
         "eslint-config-custom": "workspace:*",
         "https-localhost": "4.7.1",
@@ -35,10 +34,9 @@
         "knip": "^1.14.2",
         "lint-staged": "13.1.2",
         "prettier": "2.7.1",
-        "prettier-plugin-prisma": "4.2.0",
         "rimraf": "3.0.2",
         "tsc-alias": "1.7.0",
-        "turbo": "latest"
+        "turbo": "1.10.7"
     },
     "lint-staged": {
         "src/**/*.{js,jsx,ts,tsx,json,css,scss,md,prisma}": [
@@ -56,7 +54,7 @@
     },
     "engines": {
         "npm": ">=7.0.0",
-        "node": ">=14.0.0"
+        "node": ">=16.0.0"
     },
     "packageManager": "pnpm@7.4.1"
 }

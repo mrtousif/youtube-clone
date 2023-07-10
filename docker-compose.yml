@@ -7,7 +7,7 @@ volumes:
 services:
     postgres:
         container_name: postgres
-        image: ghcr.io/mrtousif/postgres:e2dd500be80ef265138ced45caddc279c7ffd5b3
+        image: ghcr.io/mrtousif/postgres:15-bookworm
         restart: unless-stopped
         volumes:
             - postgres_data:/var/lib/postgresql/data
@@ -24,6 +24,8 @@ services:
             POSTGRES_DB: ${POSTGRES_DB}
             POSTGRES_USER: ${POSTGRES_USER}
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        networks:
+            - mynetwork
 
     hasura:
         container_name: hasura
@@ -45,7 +47,7 @@ services:
             ## enable debugging mode. It is recommended to disable this in production
             HASURA_GRAPHQL_DEV_MODE: "true"
             HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
-            # HASURA_GRAPHQL_JWT_SECRET: '{ "type": "RS256", "jwk_url": "http://keycloak:8080/realms/development_realm/protocol/openid-connect/certs" }'
+            HASURA_GRAPHQL_JWT_SECRET: '{ "type": "RS512", "jwk_url": "http://fusionauth:9011/.well-known/jwks" }'
             HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
             HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous
             HASURA_GRAPHQL_ENABLE_REMOTE_SCHEMA_PERMISSIONS: 'true'
@@ -53,6 +55,8 @@ services:
             NESTJS_EVENT_WEBHOOK_ENDPOINT: ${NESTJS_BASE_URL}/hasura/events
             NESTJS_EVENT_WEBHOOK_SHARED_SECRET: ${NESTJS_EVENT_WEBHOOK_SHARED_SECRET}
             HASURA_GRAPHQL_MIGRATIONS_SERVER_TIMEOUT: 30
+        networks:
+            - mynetwork
 
     # realtime:
     #     image: supabase/realtime:latest
@@ -80,6 +84,8 @@ services:
             - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
         depends_on:
             - postgres
+        networks:
+            - mynetwork
 
     redis:
         image: redis:7-alpine
@@ -87,6 +93,8 @@ services:
         restart: unless-stopped
         ports:
             - "6379:6379"
+        networks:
+            - mynetwork
 
     maildev:
         container_name: maildev
@@ -94,8 +102,12 @@ services:
         ports:
             - "1080:1080"
             - "1025:1025"
+        networks:
+            - mynetwork
 
 
 networks:
-    monorepo-network:
-        driver: bridge
+    mynetwork:
+        name: mynetwork
+
+# http://localhost:9011/d0b51c2f-ea46-4101-a613-48def0416abc/.well-known/openid-configuration
