@@ -48,7 +48,7 @@
         "eslint": "8.19.0",
         "eslint-config-custom": "workspace:*",
         "jsdom": "20.0.3",
-        "optionator": "0.9.1",
+        "optionator": "0.9.3",
         "tsconfig": "workspace:*",
         "typescript": "4.9.5",
         "vite": "4.3.9",
