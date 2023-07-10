@@ -7,7 +7,7 @@ volumes:
 services:
     postgres:
         container_name: postgres
-        image: postgres:15-alpine
+        image: ghcr.io/mrtousif/postgres:e2dd500be80ef265138ced45caddc279c7ffd5b3
         restart: unless-stopped
         volumes:
             - postgres_data:/var/lib/postgresql/data

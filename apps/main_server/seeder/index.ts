@@ -16,19 +16,15 @@ const db = new Kysely<DB>({
 });
 
 const userIds = [...Array(10).keys()].map(() => ({
-    id: randomUUID(),
-}));
-const videoIds = [...Array(10).keys()].map((_v, i) => ({
-    id: randomUUID(),
-    channelId: userIds[i].id,
+    authId: randomUUID(),
 }));
 
 async function main() {
     const users = await db
         .insertInto('users')
         .values(
-            userIds.map(({ id }) => ({
-                id,
+            userIds.map(({ authId }) => ({
+                authId,
                 email: faker.internet.email(),
                 name: faker.name.fullName(),
                 phone: faker.phone.number(),
@@ -36,24 +32,25 @@ async function main() {
                 description: faker.random.words(5),
             }))
         )
+        .returning('id')
         .execute();
     const videos = await db
         .insertInto('videos')
         .values(
-            videoIds.map(({ id, channelId }) => ({
-                id,
-                channelId,
+            users.map(({ id }) => ({
+                channelId: id,
                 streamUrl: faker.internet.url(),
                 thumbnail: faker.random.alphaNumeric(36),
                 title: faker.random.words(5),
             }))
         )
+        .returningAll()
         .execute();
 
     const feelings = await db
         .insertInto('feelings')
         .values(
-            videoIds.map(({ id, channelId }) => {
+            videos.map(({ id, channelId }) => {
                 const reaction = sample(['LIKE', 'DISLIKE']);
 
                 return {
