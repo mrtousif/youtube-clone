@@ -1,0 +1,50 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-server-service
+spec:
+  type: ClusterIP
+  selector:
+    app: echo-server
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: https
+      protocol: TCP
+      port: 8443
+      targetPort: 8443
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-server-deployment
+  labels:
+    app: echo-server
+    service: echo-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo-server
+  template:
+    metadata:
+      labels:
+        app: echo-server
+    spec:
+      containers:
+        - name: echo-server
+          image: mendhak/http-https-echo:30
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: '100m'
+              memory: '100Mi'
+            limits:
+              cpu: '500m'
+              memory: '500Mi'
+          ports:
+            - containerPort: 8080
+            - containerPort: 8443

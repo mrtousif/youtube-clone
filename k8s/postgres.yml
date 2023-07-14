@@ -1,4 +1,37 @@
 ---
+apiVersion: v1
+# Kind for kubernets ConfigMap
+kind: ConfigMap
+metadata:
+    # Name your ConfigMap
+    name: postgres-config
+    labels:
+        app: postgres
+data:
+    postgres-host: postgres-service:5432
+    POSTGRES_DB: postgresdb
+    POSTGRES_USER: admin
+    POSTGRES_PASSWORD: password123
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: postgres-initdb-config
+data:
+    initdb.sql: |
+        CREATE USER my_app WITH PASSWORD 'password123';
+        CREATE DATABASE my_app_db;
+        GRANT ALL PRIVILEGES ON DATABASE my_app_db TO my_app;
+
+        CREATE USER hasura WITH PASSWORD 'password123';
+        CREATE DATABASE hasura_metadata;
+        GRANT ALL PRIVILEGES ON DATABASE hasura_metadata TO hasura;
+        GRANT ALL PRIVILEGES ON DATABASE my_app_db TO hasura;
+
+        CREATE USER fusionauth WITH PASSWORD 'password123';
+        CREATE DATABASE fusionauth_db;
+        GRANT ALL PRIVILEGES ON DATABASE fusionauth_db TO fusionauth;
+---
 kind: PersistentVolume
 apiVersion: v1
 metadata:
@@ -45,7 +78,7 @@ spec:
         spec:
             containers:
                 - name: postgres
-                  image: postgres:15-alpine # Sets Image
+                  image: ghcr.io/mrtousif/postgres-15:a8692e4263a81aaf67e6b3e07be1d64ec4ba839d # Sets Image
                   imagePullPolicy: "IfNotPresent"
                   ports:
                       - containerPort: 5432 # Exposes container port
@@ -76,5 +109,6 @@ spec:
     type: NodePort # Sets service type
     ports:
         - port: 5432 # Sets port to run the postgres application
+          nodePort: 30000
     selector:
         app: postgres

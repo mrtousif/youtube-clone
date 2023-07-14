@@ -24,10 +24,10 @@
         "@commitlint/cli": "17.0.3",
         "@commitlint/config-conventional": "17.0.3",
         "@faker-js/faker": "7.5.0",
-        "hasura-cli": "2.28.0",
         "@trivago/prettier-plugin-sort-imports": "3.3.1",
         "docker-compose": "0.23.19",
         "eslint-config-custom": "workspace:*",
+        "hasura-cli": "2.28.0",
         "https-localhost": "4.7.1",
         "husky": "8.0.3",
         "is-port-reachable": "3.1.0",
@@ -56,5 +56,8 @@
         "npm": ">=7.0.0",
         "node": ">=16.0.0"
     },
-    "packageManager": "pnpm@7.4.1"
+    "packageManager": "pnpm@8.6.7",
+    "dependencies": {
+        "dotenv-cli": "^7.2.1"
+    }
 }
