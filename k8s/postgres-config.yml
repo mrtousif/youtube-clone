@@ -1,0 +1,32 @@
+apiVersion: v1
+# Kind for kubernets ConfigMap
+kind: ConfigMap
+metadata:
+    # Name your ConfigMap
+    name: postgres-config
+    labels:
+        app: postgres
+data:
+    postgres-host: postgres-service:5432
+    POSTGRES_DB: postgresdb
+    POSTGRES_USER: admin
+    POSTGRES_PASSWORD: password123
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: postgres-initdb-config
+data:
+    initdb.sql: |
+        CREATE USER my_app WITH PASSWORD 'password123';
+        CREATE DATABASE my_app_db;
+        GRANT ALL PRIVILEGES ON DATABASE my_app_db TO my_app;
+
+        CREATE USER hasura WITH PASSWORD 'password123';
+        CREATE DATABASE hasura_metadata;
+        GRANT ALL PRIVILEGES ON DATABASE hasura_metadata TO hasura;
+        GRANT ALL PRIVILEGES ON DATABASE my_app_db TO hasura;
+
+        CREATE USER fusionauth WITH PASSWORD 'password123';
+        CREATE DATABASE fusionauth_db;
+        GRANT ALL PRIVILEGES ON DATABASE fusionauth_db TO fusionauth;

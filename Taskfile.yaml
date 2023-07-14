@@ -19,15 +19,15 @@ tasks:
 
   composeUp:
     cmds:
-      - docker-compose --env-file ./.env.dev up
+      - docker compose --env-file ./.env.dev up
 
   fusionUp:
     cmds:
-      - docker-compose -f ./fusionauth/docker-compose.yml up
+      - docker compose -f ./fusionauth/docker-compose.yml up
 
   composeDown:
     cmds:
-      - docker-compose --env-file ./.env.dev down --remove-orphans
+      - docker compose --env-file ./.env.dev down --remove-orphans
 
   dockerVolume:
     cmds:
