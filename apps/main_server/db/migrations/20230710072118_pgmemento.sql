@@ -12,4 +12,4 @@ SELECT pgmemento.init(
 );
 
 -- migrate:down
-DROP EXTENSION IF EXISTS pgmemento
+DROP EXTENSION IF EXISTS pgmemento CASCADE;
