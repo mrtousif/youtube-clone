@@ -4,11 +4,10 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwksClient } from 'jwks-rsa';
 
 import { config } from '../config/index';
-import { EmailModule } from '../email/email.module';
 import { SdkModule } from '../sdk/sdk.module';
 import { AuthController } from './auth.controller';
-import { AuthEventsService } from './auth.events.service';
 import { AuthService, buildOpenIdClient } from './auth.service';
+import { AuthResolver } from './auth.resolver';
 
 const OidcFactory = {
     provide: 'OIDC',
@@ -18,8 +17,8 @@ const OidcFactory = {
 };
 
 const client = new JwksClient({
-    cache: true, // Default Value
-    cacheMaxEntries: 5, // Default value
+    cache: true,
+    cacheMaxEntries: 5,
     cacheMaxAge: 600000, // Defaults to 10m
     jwksUri: config.OPENID_CLIENT_PROVIDER_JWK_URL,
 });
@@ -27,18 +26,12 @@ const client = new JwksClient({
 @Module({
     imports: [
         SdkModule,
-        EmailModule,
         JwtModule.registerAsync({
             useFactory: async () => {
-                // const { public_key } = await got
-                //     .get(config.OPENID_CLIENT_PROVIDER_OIDC_ISSUER)
-                //     .json<{ public_key: string }>();
-
-                // const jwtSecret = `-----BEGIN PUBLIC KEY-----\n${public_key}\n-----END PUBLIC KEY-----`;
                 const keys = await client.getSigningKeys();
 
                 return {
-                    secret: keys[0].getPublicKey(),
+                    publicKey: keys[0].getPublicKey(),
                     verifyOptions: {
                         algorithms: ['RS256'],
                     },
@@ -47,7 +40,7 @@ const client = new JwksClient({
         }),
     ],
     controllers: [AuthController],
-    providers: [OidcFactory, AuthService, AuthEventsService],
+    providers: [OidcFactory, AuthService, AuthResolver],
     exports: [JwtModule],
 })
 export class AuthModule {}

@@ -15,8 +15,9 @@
         "graph": "turbo run build --graph",
         "format": "prettier --write \"**/*.{js,ts,tsx,md,prisma}\"",
         "prepare": "husky install",
-        "compose:up": "docker-compose --env-file ./.env.dev up",
-        "compose:down": "docker-compose --env-file ./.env.dev down --remove-orphans",
+        "hasura": "hasura --project ./apps/hasura --skip-update-check",
+        "hasura:console": "npm run hasura console",
+        "hasura:apply": "npm run hasura migrate apply",
         "knip": "knip"
     },
     "devDependencies": {
@@ -25,6 +26,7 @@
         "@commitlint/config-conventional": "17.0.3",
         "@faker-js/faker": "7.5.0",
         "@trivago/prettier-plugin-sort-imports": "3.3.1",
+        "concurrently": "8.2.0",
         "docker-compose": "0.23.19",
         "eslint-config-custom": "workspace:*",
         "hasura-cli": "2.28.0",

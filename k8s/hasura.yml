@@ -81,6 +81,7 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 8080
+    nodePort: 30001
   selector:
     app: hasura
-  type: LoadBalancer
+  type: NodePort
