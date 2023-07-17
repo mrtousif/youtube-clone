@@ -411,7 +411,7 @@ importers:
       '@fastify/secure-session': ^6.0.0
       '@golevelup/nestjs-common': ^1.4.4
       '@golevelup/nestjs-discovery': ^3.0.0
-      '@golevelup/nestjs-graphql-request': 0.1.14
+      '@golevelup/nestjs-graphql-request': 0.1.15
       '@golevelup/nestjs-hasura': 3.0.2
       '@golevelup/nestjs-modules': ^0.6.1
       '@graphql-codegen/cli': 3.0.0
@@ -496,7 +496,7 @@ importers:
       '@fastify/secure-session': 6.0.0
       '@golevelup/nestjs-common': 1.4.4
       '@golevelup/nestjs-discovery': 3.0.0
-      '@golevelup/nestjs-graphql-request': 0.1.14_2tem63dfergoqy2gszvbb7skza
+      '@golevelup/nestjs-graphql-request': 0.1.15_cwvx2zehoq6nw7a5ntq7sgldoe
       '@golevelup/nestjs-hasura': 3.0.2_2tem63dfergoqy2gszvbb7skza
       '@golevelup/nestjs-modules': 0.6.1_2tem63dfergoqy2gszvbb7skza
       '@liaoliaots/nestjs-redis': 9.0.5_tef2xm7v7d52bibkq5toyw4afq
@@ -5737,22 +5737,44 @@ packages:
       nanoid: 3.3.4
     dev: false
 
+  /@golevelup/nestjs-common/1.4.5_@nestjs+common@9.3.8:
+    resolution: {integrity: sha512-WqxGAP4KZjvUea/lYCEfFXB8fS3NwxEWgrQpz2H8jusbz11OSrLECv5TNU9RIRKFnUPbGevy45dvKHF2JTQfJw==}
+    peerDependencies:
+      '@nestjs/common': ^9.x
+    dependencies:
+      '@nestjs/common': 9.3.8_r72jqgu3m7fr66qxp7vl4agwte
+      lodash: 4.17.21
+      nanoid: 3.3.6
+    dev: false
+
   /@golevelup/nestjs-discovery/3.0.0:
     resolution: {integrity: sha512-ZvkXtobTKxXB1LJanP/l6Z/Fing88IMBr3uabQpU2IWjfsstjh02qYDSU2cfD6CSmNldX5ewW5Pd+SdK2lU8Sw==}
     dependencies:
       lodash: 4.17.21
     dev: false
 
-  /@golevelup/nestjs-graphql-request/0.1.14_2tem63dfergoqy2gszvbb7skza:
-    resolution: {integrity: sha512-C1MK7esm7HWy9ihzNPERxKVEaX3WH4UX0gcjoECqPVfdjCbySztkZAFWaoqPcHhOyogHFVJyJuZyc+1C0AWRoA==}
+  /@golevelup/nestjs-discovery/3.0.1_znlpu2ktzydjx7rl4llynpumdm:
+    resolution: {integrity: sha512-kK/GBYVxb8XGlwXgtCWAkPOwDVh7dXyLRaoZuk2bBYntV3DZkYGAIbLKOFTGz+MGz71vEeQ9bGLP7cHKtCee4g==}
+    peerDependencies:
+      '@nestjs/common': ^9.x
+      '@nestjs/core': ^9.x
     dependencies:
-      '@golevelup/nestjs-common': 1.4.4
-      '@golevelup/nestjs-discovery': 3.0.0
+      '@nestjs/common': 9.3.8_r72jqgu3m7fr66qxp7vl4agwte
+      '@nestjs/core': 9.3.8_xcklzyx7dnav5hequp7dyd3pj4
+      lodash: 4.17.21
+    dev: false
+
+  /@golevelup/nestjs-graphql-request/0.1.15_cwvx2zehoq6nw7a5ntq7sgldoe:
+    resolution: {integrity: sha512-ivgbLyeV06AEk96jR3Dg+fR/NRC0kuartCZXyBriMk3oRMEsRIjTtr5nGIKSOwUZ1ENtioqDHLv+H3PReSRi2g==}
+    dependencies:
+      '@golevelup/nestjs-common': 1.4.5_@nestjs+common@9.3.8
+      '@golevelup/nestjs-discovery': 3.0.1_znlpu2ktzydjx7rl4llynpumdm
       '@golevelup/nestjs-modules': 0.6.1_2tem63dfergoqy2gszvbb7skza
       graphql: 15.8.0
       graphql-request: 3.7.0_graphql@15.8.0
     transitivePeerDependencies:
       - '@nestjs/common'
+      - '@nestjs/core'
       - encoding
       - rxjs
     dev: false
@@ -6683,7 +6705,7 @@ packages:
       debug: 4.3.4
       dotenv: 16.0.3
       graphql: 16.6.0
-      graphql-request: 5.1.0_graphql@16.6.0
+      graphql-request: 5.2.0_graphql@16.6.0
       http-proxy-agent: 5.0.0
       https-proxy-agent: 5.0.1
       isomorphic-fetch: 3.0.0
@@ -18884,6 +18906,20 @@ packages:
     transitivePeerDependencies:
       - encoding
     dev: false
+
+  /graphql-request/5.2.0_graphql@16.6.0:
+    resolution: {integrity: sha512-pLhKIvnMyBERL0dtFI3medKqWOz/RhHdcgbZ+hMMIb32mEPa5MJSzS4AuXxfI4sRAu6JVVk5tvXuGfCWl9JYWQ==}
+    peerDependencies:
+      graphql: 14 - 16
+    dependencies:
+      '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
+      cross-fetch: 3.1.5
+      extract-files: 9.0.0
+      form-data: 3.0.1
+      graphql: 16.6.0
+    transitivePeerDependencies:
+      - encoding
+    dev: true
 
   /graphql-tag/2.12.6_graphql@16.5.0:
     resolution: {integrity: sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==}
