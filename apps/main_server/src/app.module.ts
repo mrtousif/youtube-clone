@@ -21,13 +21,11 @@ import { config } from './config';
 import { EmailModule } from './email/email.module';
 import { FileStorageService } from './file-storage/file-storage.service';
 import { HealthModule } from './health/health.module';
-import { ItemModule } from './item/item.module';
 import { SdkModule } from './sdk/sdk.module';
 
 @Module({
     imports: [
         SdkModule,
-        ItemModule,
         EmailModule,
         HealthModule,
         AuthModule,
@@ -74,6 +72,7 @@ import { SdkModule } from './sdk/sdk.module';
                 cursor: Cursor,
             }),
             plugins: [new CamelCasePlugin(), new DeduplicateJoinsPlugin()],
+            log: ['error', 'query'],
         }),
         HasuraModule.forRootAsync(HasuraModule, {
             useFactory: () => {

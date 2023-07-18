@@ -15,7 +15,7 @@ tasks:
 
   hasura:
     cmds:
-      - hasura --project ../hasura --skip-update-check {{.CLI_ARGS}}
+      - pnpm hasura --project ../hasura --skip-update-check {{.CLI_ARGS}}
 
   migrateUp:
     cmds:
