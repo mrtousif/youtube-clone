@@ -2431,7 +2431,7 @@ export type Ulid_Comparison_Exp = {
 /** Users table is channels table. The user_id and channel_id is synonyms. A user cannot have multiple channels */
 export type Users = {
   __typename?: 'users';
-  auth_id: Maybe<Scalars['uuid']['output']>;
+  auth_id: Scalars['uuid']['output'];
   channel_name: Scalars['String']['output'];
   created_at: Scalars['timestamptz']['output'];
   description: Maybe<Scalars['String']['output']>;

@@ -1,14 +1,12 @@
 import { FusionAuthClient } from '@fusionauth/typescript-client';
 import { FactoryProvider } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+
+import { Config, ENVALID } from '../config';
 
 export const factory: FactoryProvider<FusionAuthClient> = {
     provide: FusionAuthClient,
-    useFactory: (configService: ConfigService) => {
-        return new FusionAuthClient(
-            configService.get<string>('FUSIONAUTH_API_KEY'),
-            configService.get<string>('FUSIONAUTH_URL')
-        );
+    inject: [ENVALID],
+    useFactory: (config: Config) => {
+        return new FusionAuthClient(config.FUSIONAUTH_API_KEY, config.FUSIONAUTH_URL);
     },
-    inject: [ConfigService],
 };

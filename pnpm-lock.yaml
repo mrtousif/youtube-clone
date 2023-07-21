@@ -30,6 +30,9 @@ importers:
       concurrently:
         specifier: 8.2.0
         version: 8.2.0
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       docker-compose:
         specifier: 0.23.19
         version: 0.23.19
@@ -167,8 +170,8 @@ importers:
         specifier: 20.0.3
         version: 20.0.3
       optionator:
-        specifier: 0.9.1
-        version: 0.9.1
+        specifier: 0.9.3
+        version: 0.9.3
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -176,17 +179,17 @@ importers:
         specifier: 4.9.5
         version: 4.9.5
       vite:
-        specifier: 4.3.5
-        version: 4.3.5(@types/node@17.0.45)
+        specifier: 4.3.9
+        version: 4.3.9(@types/node@17.0.45)
       vite-plugin-checker:
         specifier: 0.4.9
-        version: 0.4.9(vite@4.3.5)
+        version: 0.4.9(vite@4.3.9)
       vite-plugin-pwa:
         specifier: 0.12.3
-        version: 0.12.3(vite@4.3.5)(workbox-build@6.5.4)(workbox-window@6.5.4)
+        version: 0.12.3(vite@4.3.9)(workbox-build@6.5.4)(workbox-window@6.5.4)
       vite-tsconfig-paths:
         specifier: 3.5.0
-        version: 3.5.0(vite@4.3.5)
+        version: 3.5.0(vite@4.3.9)
       vitest:
         specifier: 0.17.1
         version: 0.17.1(c8@7.12.0)(jsdom@20.0.3)
@@ -468,12 +471,18 @@ importers:
       nestjs-cls:
         specifier: 3.0.5
         version: 3.0.5(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)
+      nestjs-envalid:
+        specifier: ^2.2.0
+        version: 2.2.0(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(envalid@7.3.1)
       nestjs-kysely:
         specifier: ^0.1.4
         version: 0.1.4(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(kysely@0.24.2)(reflect-metadata@0.1.13)
       nestjs-pino:
         specifier: 3.1.2
         version: 3.1.2(@nestjs/common@9.3.8)(pino-http@8.3.3)
+      nestjs-s3:
+        specifier: ^2.0.1
+        version: 2.0.1(@aws-sdk/client-s3@3.267.0)(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)
       openid-client:
         specifier: ^5.4.0
         version: 5.4.0
@@ -684,6 +693,11 @@ importers:
         version: 4.9.5
 
 packages:
+
+  /@aashutoshrathi/word-wrap@1.2.6:
+    resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
+    engines: {node: '>=0.10.0'}
+    dev: true
 
   /@ampproject/remapping@2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -11684,6 +11698,14 @@ packages:
     resolution: {integrity: sha512-izfGgKyzzIyLaeb1EtZ3KbglkS6AKp9cv7LxmiyoOu+fXfol1tQDC0Cof0enVZGNtudTHW+3lfuW9ZkLQss4Wg==}
     dev: true
 
+  /cross-env@7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: true
+
   /cross-fetch@3.1.5:
     resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
     dependencies:
@@ -19117,6 +19139,19 @@ packages:
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
     dev: false
 
+  /nestjs-envalid@2.2.0(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(envalid@7.3.1):
+    resolution: {integrity: sha512-z3dG/6qJpNYGt3zaKNOZV63jB7NOflQa1H1zqBSdkMxBD/SS7WG5GQAfbWEqpRImdbgmzbjBnfQR1NLneki1lQ==}
+    engines: {node: '>=14.16'}
+    peerDependencies:
+      '@nestjs/common': <=10
+      '@nestjs/core': <=10
+      envalid: 7.x.x
+    dependencies:
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      envalid: 7.3.1
+    dev: false
+
   /nestjs-kysely@0.1.4(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(kysely@0.24.2)(reflect-metadata@0.1.13):
     resolution: {integrity: sha512-I19T8n8OHoy9f1rJa4CsU2SJblNoBfEVcp5DhlUlGAvkOVI9Z/WDPNd4KrVJ0JAheEoI7mmExtUK9gHU6py5jQ==}
     peerDependencies:
@@ -19141,6 +19176,18 @@ packages:
     dependencies:
       '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       pino-http: 8.3.3
+    dev: false
+
+  /nestjs-s3@2.0.1(@aws-sdk/client-s3@3.267.0)(@nestjs/common@9.3.8)(@nestjs/core@9.3.8):
+    resolution: {integrity: sha512-nnSzBPDXKFWH4nLR8qur5SUHFhlW2embwze7efUtNi5r+0VzAWT/rY0TiMhvMTZUiEJhBdYf+tvYU4ja2C0UTg==}
+    peerDependencies:
+      '@aws-sdk/client-s3': '>=3.328.0'
+      '@nestjs/common': '>=6.7.0'
+      '@nestjs/core': '>=6.7.0'
+    dependencies:
+      '@aws-sdk/client-s3': 3.267.0
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
     dev: false
 
   /next-i18next@11.3.0(next@12.2.4)(react-dom@18.2.0)(react@18.2.0):
@@ -19685,6 +19732,18 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
       word-wrap: 1.2.3
+
+  /optionator@0.9.3:
+    resolution: {integrity: sha512-JjCoypp+jKn1ttEFExxhetCKeJt9zhAgAve5FXHixTvFDW/5aEktX9bufBKLRRMdU7bNtpLfcGu94B3cdEJgjg==}
+    engines: {node: '>= 0.8.0'}
+    dependencies:
+      '@aashutoshrathi/word-wrap': 1.2.6
+      deep-is: 0.1.4
+      fast-levenshtein: 2.0.6
+      levn: 0.4.1
+      prelude-ls: 1.2.1
+      type-check: 0.4.0
+    dev: true
 
   /ora@5.4.1:
     resolution: {integrity: sha512-5b6Y85tPxZZ7QytO+BQzysW31HJku27cRIlkbAXaNx+BdcVi+LlRFmVXzeF6a7JCwJpyw5c4b+YSVImQIrBpuQ==}
@@ -23469,7 +23528,7 @@ packages:
       vfile-message: 2.0.4
     dev: false
 
-  /vite-plugin-checker@0.4.9(vite@4.3.5):
+  /vite-plugin-checker@0.4.9(vite@4.3.9):
     resolution: {integrity: sha512-Oii9mTum8bqZovWejcR739kCqST32oG6LdB/XMdwcLVzmcjq0gf1iVDIedVzJJ7t6GLQAYgjNwvB0fuMiT3tlg==}
     hasBin: true
     peerDependencies:
@@ -23486,14 +23545,14 @@ packages:
       npm-run-path: 4.0.1
       strip-ansi: 6.0.1
       tiny-invariant: 1.3.1
-      vite: 4.3.5(@types/node@17.0.45)
+      vite: 4.3.9(@types/node@17.0.45)
       vscode-languageclient: 7.0.0
       vscode-languageserver: 7.0.0
       vscode-languageserver-textdocument: 1.0.7
       vscode-uri: 3.0.6
     dev: true
 
-  /vite-plugin-pwa@0.12.3(vite@4.3.5)(workbox-build@6.5.4)(workbox-window@6.5.4):
+  /vite-plugin-pwa@0.12.3(vite@4.3.9)(workbox-build@6.5.4)(workbox-window@6.5.4):
     resolution: {integrity: sha512-gmYdIVXpmBuNjzbJFPZFzxWYrX4lHqwMAlOtjmXBbxApiHjx9QPXKQPJjSpeTeosLKvVbNcKSAAhfxMda0QVNQ==}
     peerDependencies:
       vite: ^2.0.0 || ^3.0.0-0
@@ -23504,14 +23563,14 @@ packages:
       fast-glob: 3.2.12
       pretty-bytes: 6.0.0
       rollup: 2.79.1
-      vite: 4.3.5(@types/node@17.0.45)
+      vite: 4.3.9(@types/node@17.0.45)
       workbox-build: 6.5.4
       workbox-window: 6.5.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite-tsconfig-paths@3.5.0(vite@4.3.5):
+  /vite-tsconfig-paths@3.5.0(vite@4.3.9):
     resolution: {integrity: sha512-NKIubr7gXgh/3uniQaOytSg+aKWPrjquP6anAy+zCWEn6h9fB8z2/qdlfQrTgZWaXJ2pHVlllrSdRZltHn9P4g==}
     peerDependencies:
       vite: '>2.0.0-0'
@@ -23520,7 +23579,7 @@ packages:
       globrex: 0.1.2
       recrawl-sync: 2.2.3
       tsconfig-paths: 4.1.0
-      vite: 4.3.5(@types/node@17.0.45)
+      vite: 4.3.9(@types/node@17.0.45)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -23585,8 +23644,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite@4.3.5(@types/node@17.0.45):
-    resolution: {integrity: sha512-0gEnL9wiRFxgz40o/i/eTBwm+NEbpUeTWhzKrZDSdKm6nplj+z4lKz8ANDgildxHm47Vg8EUia0aicKbawUVVA==}
+  /vite@4.3.9(@types/node@17.0.45):
+    resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:

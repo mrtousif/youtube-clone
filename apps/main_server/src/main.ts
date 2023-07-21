@@ -1,11 +1,10 @@
-import { HttpAdapterHost, NestFactory } from '@nestjs/core';
-import { MicroserviceOptions, CustomStrategy } from '@nestjs/microservices';
-import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import fastifyCookie from '@fastify/cookie';
 import secureSession from '@fastify/secure-session';
+import { HttpAdapterHost, NestFactory } from '@nestjs/core';
+import { CustomStrategy, MicroserviceOptions } from '@nestjs/microservices';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { ClsMiddleware } from 'nestjs-cls';
 import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
-import { NatsJetStreamServer } from '@nestjs-plugins/nestjs-nats-jetstream-transport';
 
 import { AppModule } from './app.module';
 import { config } from './config';
@@ -18,30 +17,10 @@ async function bootstrap() {
         }),
         { bufferLogs: true }
     );
-    const options: CustomStrategy = {
-        strategy: new NatsJetStreamServer({
-          connectionOptions: {
-            servers: 'localhost:4222',
-            name: 'myservice-listener',
-          },
-          consumerOptions: {
-            deliverGroup: 'myservice-group',
-            durable: 'myservice-durable',
-            deliverTo: 'myservice-messages',
-            manualAck: true,
-          },
-          streamConfig: {
-            name: 'mystream',
-            subjects: ['order.*'],
-          },
-        }),
-      };
 
-    app.connectMicroservice<MicroserviceOptions>(options);
-    
     await app.register(fastifyCookie, {
         secret: config.COOKIE_SECRET, // for cookies signature
-      });
+    });
 
     await app.register(secureSession, {
         secret: config.SESSION_SECRET,
