@@ -9,7 +9,7 @@ import {
     UserinfoResponse,
 } from 'openid-client';
 
-import { config } from '../config/index';
+import { Config, ENVALID, config } from '../config';
 import { GqlSdk, InjectSdk } from '../sdk/sdk.module';
 import { CreateUserDto } from './dto/create-user';
 
@@ -108,7 +108,11 @@ export class AuthService {
     openIdClient: Client;
     private readonly logger = new Logger(AuthService.name);
 
-    constructor(@InjectSdk() private readonly sdk: GqlSdk, @Inject('OIDC') openIdClient: Client) {
+    constructor(
+        @InjectSdk() private readonly sdk: GqlSdk,
+        @Inject('OIDC') openIdClient: Client,
+        @Inject(ENVALID) private readonly env: Config
+    ) {
         this.openIdClient = openIdClient;
     }
 
@@ -122,7 +126,7 @@ export class AuthService {
         const params = this.openIdClient.callbackParams(request);
 
         return await this.openIdClient.callback(
-            config.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI,
+            this.env.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI,
             params,
             checks
         );

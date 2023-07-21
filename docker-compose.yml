@@ -7,7 +7,7 @@ volumes:
 services:
     postgres:
         container_name: postgres
-        image: ghcr.io/mrtousif/postgres:15-bookworm
+        image: ghcr.io/mrtousif/postgres-15:a8692e4263a81aaf67e6b3e07be1d64ec4ba839d
         restart: unless-stopped
         volumes:
             - postgres_data:/var/lib/postgresql/data
@@ -74,18 +74,18 @@ services:
     #     depends_on:
     #         - postgres
 
-    pgweb:
-        container_name: pgweb
-        image: sosedoff/pgweb:latest
-        restart: unless-stopped
-        ports:
-            - "8081:8081"
-        environment:
-            - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
-        depends_on:
-            - postgres
-        networks:
-            - mynetwork
+    # pgweb:
+    #     container_name: pgweb
+    #     image: sosedoff/pgweb:latest
+    #     restart: unless-stopped
+    #     ports:
+    #         - "8081:8081"
+    #     environment:
+    #         - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
+    #     depends_on:
+    #         - postgres
+    #     networks:
+    #         - mynetwork
 
     redis:
         image: redis:7-alpine

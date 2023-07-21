@@ -1,6 +1,8 @@
-import { Controller, Get, Logger, Request, Response, UseGuards, Headers } from '@nestjs/common';
+import { Controller, Get, Headers, Logger, Request, Response, UseGuards,Inject } from '@nestjs/common';
 import type { FastifyReply } from 'fastify';
 import { Issuer, UserinfoResponse } from 'openid-client';
+
+import { Config, ENVALID } from '../config';
 import { config } from '../config/index';
 import { AuthService } from './auth.service';
 import { FastifyRequestType, JwtGuard } from './jwt.guard';
@@ -9,7 +11,10 @@ import { FastifyRequestType, JwtGuard } from './jwt.guard';
 export class AuthController {
     private readonly logger = new Logger(AuthController.name);
 
-    constructor(private readonly authService: AuthService) {}
+    constructor(
+        @Inject(ENVALID) private readonly env: Config,
+        private readonly authService: AuthService
+    ) {}
 
     @UseGuards(JwtGuard)
     @Get('/login')
@@ -45,7 +50,7 @@ export class AuthController {
             res.clearCookie('refresh_token', { path: '/auth' });
 
             const TrustIssuer = await Issuer.discover(
-                `${config.OPENID_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
+                `${this.env.OPENID_CLIENT_PROVIDER_OIDC_ISSUER}/.well-known/openid-configuration`
             );
 
             const end_session_endpoint = TrustIssuer.metadata.end_session_endpoint;
@@ -54,7 +59,7 @@ export class AuthController {
                 const uri =
                     end_session_endpoint +
                     '?post_logout_redirect_uri=' +
-                    config.OPENID_CLIENT_REGISTRATION_LOGIN_POST_LOGOUT_REDIRECT_URI +
+                    this.env.OPENID_CLIENT_REGISTRATION_LOGIN_POST_LOGOUT_REDIRECT_URI +
                     '&id_token_hint=' +
                     id_token;
                 return res.redirect(303, uri);
