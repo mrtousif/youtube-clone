@@ -51,7 +51,7 @@
         "@nestjs/platform-fastify": "9.3.8",
         "@nestjs/terminus": "9.2.0",
         "@squareboat/nest-mailman": "^0.3.0",
-        "@willsoto/nestjs-prometheus": "5.1.0",
+        "@willsoto/nestjs-prometheus": "5.2.1",
         "async-cache-dedupe": "^1.9.0",
         "await-to-js": "^3.0.0",
         "class-transformer": "^0.5.1",
