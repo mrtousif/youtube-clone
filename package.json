@@ -59,7 +59,7 @@
         "npm": ">=7.0.0",
         "node": ">=16.0.0"
     },
-    "packageManager": "pnpm@8.6.7",
+    "packageManager": "pnpm@8.6.12",
     "dependencies": {
         "dotenv-cli": "^7.2.1"
     }
