@@ -367,8 +367,8 @@ importers:
         specifier: 3.0.1
         version: 3.0.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)
       '@golevelup/nestjs-graphql-request':
-        specifier: 0.1.15
-        version: 0.1.15(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(rxjs@7.5.6)
+        specifier: 0.1.16
+        version: 0.1.16(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(rxjs@7.5.6)
       '@golevelup/nestjs-hasura':
         specifier: 3.0.3
         version: 3.0.3(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(rxjs@7.5.6)
@@ -4842,6 +4842,16 @@ packages:
       nanoid: 3.3.6
     dev: false
 
+  /@golevelup/nestjs-common@2.0.0(@nestjs/common@9.3.8):
+    resolution: {integrity: sha512-D9RLXgkqn9SDLnZ2VoMER9l/+g5CM9Z7sZXa+10+0rZs6yevMepoiWmMVsFoUXLzYG2GwfixHLExwUr3XBCHFw==}
+    peerDependencies:
+      '@nestjs/common': ^10.x
+    dependencies:
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      lodash: 4.17.21
+      nanoid: 3.3.6
+    dev: false
+
   /@golevelup/nestjs-discovery@3.0.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8):
     resolution: {integrity: sha512-kK/GBYVxb8XGlwXgtCWAkPOwDVh7dXyLRaoZuk2bBYntV3DZkYGAIbLKOFTGz+MGz71vEeQ9bGLP7cHKtCee4g==}
     peerDependencies:
@@ -4853,12 +4863,23 @@ packages:
       lodash: 4.17.21
     dev: false
 
-  /@golevelup/nestjs-graphql-request@0.1.15(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(rxjs@7.5.6):
-    resolution: {integrity: sha512-ivgbLyeV06AEk96jR3Dg+fR/NRC0kuartCZXyBriMk3oRMEsRIjTtr5nGIKSOwUZ1ENtioqDHLv+H3PReSRi2g==}
+  /@golevelup/nestjs-discovery@4.0.0(@nestjs/common@9.3.8)(@nestjs/core@9.3.8):
+    resolution: {integrity: sha512-iyZLYip9rhVMR0C93vo860xmboRrD5g5F5iEOfpeblGvYSz8ymQrL9RAST7x/Fp3n+TAXSeOLzDIASt+rak68g==}
+    peerDependencies:
+      '@nestjs/common': ^10.x
+      '@nestjs/core': ^10.x
     dependencies:
-      '@golevelup/nestjs-common': 1.4.5(@nestjs/common@9.3.8)
-      '@golevelup/nestjs-discovery': 3.0.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)
-      '@golevelup/nestjs-modules': 0.6.1(@nestjs/common@9.3.8)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      lodash: 4.17.21
+    dev: false
+
+  /@golevelup/nestjs-graphql-request@0.1.16(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(rxjs@7.5.6):
+    resolution: {integrity: sha512-1wBFjujKeTJaovi64MVeGeNFUg0Y67/MnZ0Z8ax1CYRvogEez2aRGrvujdkUu8Y0gS7LHmKCEKqKdmp8NzuMhg==}
+    dependencies:
+      '@golevelup/nestjs-common': 2.0.0(@nestjs/common@9.3.8)
+      '@golevelup/nestjs-discovery': 4.0.0(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)
+      '@golevelup/nestjs-modules': 0.7.0(@nestjs/common@9.3.8)(rxjs@7.5.6)
       graphql: 15.8.0
       graphql-request: 3.7.0(graphql@15.8.0)
     transitivePeerDependencies:
@@ -4887,6 +4908,17 @@ packages:
     resolution: {integrity: sha512-E0STg8In8fhIivnGDJAA70+XLPHzK5bMTkCnif9FbZ8waTYDQ3T/QQL0h73k+CUFeznn1hmuEW14sNaE+8cd7w==}
     peerDependencies:
       '@nestjs/common': ^9.x
+      rxjs: ^7.x
+    dependencies:
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      lodash: 4.17.21
+      rxjs: 7.5.6
+    dev: false
+
+  /@golevelup/nestjs-modules@0.7.0(@nestjs/common@9.3.8)(rxjs@7.5.6):
+    resolution: {integrity: sha512-4WxGKubYx0IJF2rxL3S4SChKdl4ZDZPwCdSj6HxmmElXRyua/LlcwLH6NYquh4RRIkQGspDd5WpcMTBw3SxR5g==}
+    peerDependencies:
+      '@nestjs/common': ^10.x
       rxjs: ^7.x
     dependencies:
       '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
@@ -11504,6 +11536,7 @@ packages:
   /clone@1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
+    requiresBuild: true
 
   /clsx@1.2.1:
     resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
@@ -12178,6 +12211,7 @@ packages:
 
   /defaults@1.0.4:
     resolution: {integrity: sha512-eFuaLoy/Rxalv2kr+lqMlUnrDWV+3j4pljOIJgLIhI058IQfWJ7vXhyEIHu+HtC738klGALYxOKDO0bQP3tg8A==}
+    requiresBuild: true
     dependencies:
       clone: 1.0.4
 
@@ -14803,6 +14837,7 @@ packages:
 
   /growly@1.3.0:
     resolution: {integrity: sha512-+xGQY0YyAWCnqy7Cd++hc2JqMYzlm0dG30Jd0beaA64sROr8C4nt8Yc9V5Ro3avlSUDTN0ulqP/VBKi1/lLygw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -22083,6 +22118,7 @@ packages:
 
   /shellwords@0.1.1:
     resolution: {integrity: sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==}
+    requiresBuild: true
     dev: true
     optional: true
 
