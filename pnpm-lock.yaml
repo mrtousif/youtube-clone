@@ -370,8 +370,8 @@ importers:
         specifier: 0.1.16
         version: 0.1.16(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(rxjs@7.5.6)
       '@golevelup/nestjs-hasura':
-        specifier: 3.0.3
-        version: 3.0.3(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(rxjs@7.5.6)
+        specifier: 3.0.4
+        version: 3.0.4(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(rxjs@7.5.6)
       '@golevelup/nestjs-modules':
         specifier: ^0.6.1
         version: 0.6.1(@nestjs/common@9.3.8)(rxjs@7.5.6)
@@ -4889,12 +4889,12 @@ packages:
       - rxjs
     dev: false
 
-  /@golevelup/nestjs-hasura@3.0.3(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(rxjs@7.5.6):
-    resolution: {integrity: sha512-4N8Kn+gUncUf1TGPQksavC1q3p/aRyAg4UWeQxYQt7N/JIhXvHQgr5FY5gKgvqNCf69HIgY1wB0XIt+WKHyq6A==}
+  /@golevelup/nestjs-hasura@3.0.4(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(rxjs@7.5.6):
+    resolution: {integrity: sha512-UXxKaY9JcMrBAssKBYld8TsvJPzzMiZWFHwWyk7yKgzMG0W78gDx/o96wdZxoK44ABQjxoOg/TFWfV6Xs0dVtQ==}
     dependencies:
-      '@golevelup/nestjs-common': 1.4.5(@nestjs/common@9.3.8)
-      '@golevelup/nestjs-discovery': 3.0.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)
-      '@golevelup/nestjs-modules': 0.6.1(@nestjs/common@9.3.8)(rxjs@7.5.6)
+      '@golevelup/nestjs-common': 2.0.0(@nestjs/common@9.3.8)
+      '@golevelup/nestjs-discovery': 4.0.0(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)
+      '@golevelup/nestjs-modules': 0.7.0(@nestjs/common@9.3.8)(rxjs@7.5.6)
       '@hasura/metadata': 1.0.2
       js-yaml: 4.1.0
       zod: 3.20.6
