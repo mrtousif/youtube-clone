@@ -106,8 +106,8 @@ importers:
         specifier: 3.1.1
         version: 3.1.1
       notistack:
-        specifier: 2.0.5
-        version: 2.0.5(@emotion/react@11.9.3)(@emotion/styled@11.9.3)(@mui/material@5.8.7)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 2.0.8
+        version: 2.0.8(@emotion/react@11.9.3)(@emotion/styled@11.9.3)(@mui/material@5.8.7)(react-dom@18.2.0)(react@18.2.0)
       ra-data-hasura:
         specifier: 0.5.3
         version: 0.5.3(ra-core@4.7.6)(react@18.2.0)
@@ -8799,7 +8799,7 @@ packages:
       dayjs: 1.11.7
       lodash: 4.17.21
       lodash-es: 4.17.21
-      notistack: 2.0.5(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/material@5.12.1)(react-dom@18.2.0)(react@18.2.0)
+      notistack: 2.0.8(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/material@5.12.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-hook-form: 7.43.1(react@18.2.0)
@@ -19700,8 +19700,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: false
 
-  /notistack@2.0.5(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/material@5.12.1)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Ig2T1Muqkc1PaSQcEDrK7diKv6cBxw02Iq6uv074ySfgq524TV5lK41diAb6OSsaiWfp3aRt+T3+0MF8m2EcJQ==}
+  /notistack@2.0.8(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/material@5.12.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-/IY14wkFp5qjPgKNvAdfL5Jp6q90+MjgKTPh4c81r/lW70KeuX6b9pE/4f8L4FG31cNudbN9siiFS5ql1aSLRw==}
     peerDependencies:
       '@emotion/react': ^11.4.1
       '@emotion/styled': ^11.3.0
@@ -19723,8 +19723,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /notistack@2.0.5(@emotion/react@11.9.3)(@emotion/styled@11.9.3)(@mui/material@5.8.7)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Ig2T1Muqkc1PaSQcEDrK7diKv6cBxw02Iq6uv074ySfgq524TV5lK41diAb6OSsaiWfp3aRt+T3+0MF8m2EcJQ==}
+  /notistack@2.0.8(@emotion/react@11.9.3)(@emotion/styled@11.9.3)(@mui/material@5.8.7)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-/IY14wkFp5qjPgKNvAdfL5Jp6q90+MjgKTPh4c81r/lW70KeuX6b9pE/4f8L4FG31cNudbN9siiFS5ql1aSLRw==}
     peerDependencies:
       '@emotion/react': ^11.4.1
       '@emotion/styled': ^11.3.0
