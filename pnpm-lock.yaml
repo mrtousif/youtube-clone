@@ -542,8 +542,8 @@ importers:
         specifier: 29.4.0
         version: 29.4.0
       '@types/lodash':
-        specifier: 4.14.197
-        version: 4.14.197
+        specifier: 4.14.198
+        version: 4.14.198
       '@types/node':
         specifier: 18.13.0
         version: 18.13.0
@@ -9443,8 +9443,8 @@ packages:
       '@types/node': 18.13.0
     dev: false
 
-  /@types/lodash@4.14.197:
-    resolution: {integrity: sha512-BMVOiWs0uNxHVlHBgzTIqJYmj+PgCo4euloGF+5m4okL3rEYzM2EEv78mw8zWSMM57dM7kVIgJ2QDvwHSoCI5g==}
+  /@types/lodash@4.14.198:
+    resolution: {integrity: sha512-trNJ/vtMZYMLhfN45uLq4ShQSw0/S7xCTLLVM+WM1rmFpba/VS42jVUgaO3w/NOLiWR/09lnYk0yMaA/atdIsg==}
     dev: true
 
   /@types/long@4.0.2:
