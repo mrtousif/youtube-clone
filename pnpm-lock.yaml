@@ -136,8 +136,8 @@ importers:
         specifier: 6.3.0
         version: 6.3.0(react-dom@18.2.0)(react@18.2.0)
       recoil:
-        specifier: 0.7.4
-        version: 0.7.4(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.7.7
+        version: 0.7.7(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@graphql-codegen/cli':
         specifier: 2.11.8
@@ -21412,8 +21412,8 @@ packages:
       resolve: 1.22.1
     dev: true
 
-  /recoil@0.7.4(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-sCXvQGMfSprkNU4ZRkJV4B0qFQSURJMgsICqY1952WRlg66NMwYqi6n67vhnhn0qw4zHU1gHXJuMvRDaiRNFZw==}
+  /recoil@0.7.7(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-8Og5KPQW9LwC577Vc7Ug2P0vQshkv1y3zG3tSSkWMqkWSwHmE+by06L8JtnGocjW6gcCvfwB3YtrJG6/tWivNQ==}
     peerDependencies:
       react: '>=16.13.1'
       react-dom: '*'
