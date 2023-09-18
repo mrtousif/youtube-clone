@@ -39,7 +39,7 @@
         "prettier": "2.7.1",
         "rimraf": "3.0.2",
         "tsc-alias": "1.7.0",
-        "turbo": "1.10.13"
+        "turbo": "1.10.14"
     },
     "lint-staged": {
         "src/**/*.{js,jsx,ts,tsx,json,css,scss,md,prisma}": [
