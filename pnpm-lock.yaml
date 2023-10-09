@@ -403,8 +403,8 @@ importers:
         specifier: '*'
         version: 1.1.0(@nestjs/common@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)
       '@nestjs/mercurius':
-        specifier: 10.2.0
-        version: 10.2.0(@nestjs/common@9.3.8)(@nestjs/graphql@10.2.0)(fastify@4.13.0)(graphql@16.6.0)(mercurius@12.0.1)
+        specifier: 10.2.1
+        version: 10.2.1(@nestjs/common@9.3.8)(@nestjs/graphql@10.2.0)(fastify@4.13.0)(graphql@16.6.0)(mercurius@12.0.1)
       '@nestjs/microservices':
         specifier: 9.3.8
         version: 9.3.8(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(ioredis@5.2.5)(nats@2.12.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
@@ -8136,8 +8136,8 @@ packages:
       reflect-metadata: 0.1.13
     dev: false
 
-  /@nestjs/mercurius@10.2.0(@nestjs/common@9.3.8)(@nestjs/graphql@10.2.0)(fastify@4.13.0)(graphql@16.6.0)(mercurius@12.0.1):
-    resolution: {integrity: sha512-rKCB8972FKlIp3+osVK+6hBo1vvAIY/m3yr63Ter51cRs/QoXCpQdVhU3KaRIS/x66lxtgoOLaif+CrRK2RHEA==}
+  /@nestjs/mercurius@10.2.1(@nestjs/common@9.3.8)(@nestjs/graphql@10.2.0)(fastify@4.13.0)(graphql@16.6.0)(mercurius@12.0.1):
+    resolution: {integrity: sha512-RGIRhbILLJaWv5+yT7vbf1h8GQstKqXb1HfXCa/sBSG7iEtmmFywvVuq/VS7xy17ArUIaebZQhhLV3mQbG8L9Q==}
     peerDependencies:
       '@apollo/subgraph': ^2.0.0
       '@nestjs/common': ^8.2.3 || ^9.0.0
