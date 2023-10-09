@@ -511,8 +511,8 @@ importers:
         specifier: 7.5.6
         version: 7.5.6
       zod:
-        specifier: 3.20.6
-        version: 3.20.6
+        specifier: 3.22.3
+        version: 3.22.3
     devDependencies:
       '@graphql-codegen/cli':
         specifier: 4.0.1
@@ -4908,7 +4908,7 @@ packages:
       '@golevelup/nestjs-modules': 0.7.0(@nestjs/common@9.3.8)(rxjs@7.5.6)
       '@hasura/metadata': 1.0.2
       js-yaml: 4.1.0
-      zod: 3.20.6
+      zod: 3.22.3
     transitivePeerDependencies:
       - '@nestjs/common'
       - '@nestjs/core'
@@ -24846,13 +24846,13 @@ packages:
     resolution: {integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==}
     dev: false
 
-  /zod@3.20.6:
-    resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
-    dev: false
-
   /zod@3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: true
+
+  /zod@3.22.3:
+    resolution: {integrity: sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==}
+    dev: false
 
   /zwitch@1.0.5:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
