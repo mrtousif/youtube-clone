@@ -548,8 +548,8 @@ importers:
         specifier: 18.13.0
         version: 18.13.0
       '@types/supertest':
-        specifier: 2.0.13
-        version: 2.0.13
+        specifier: 2.0.14
+        version: 2.0.14
       eslint:
         specifier: 8.34.0
         version: 8.34.0
@@ -649,7 +649,7 @@ importers:
         version: 8.5.0(eslint@8.34.0)
       eslint-config-turbo:
         specifier: latest
-        version: 1.10.14(eslint@8.34.0)
+        version: 1.10.15(eslint@8.34.0)
       eslint-define-config:
         specifier: ^1.5.1
         version: 1.8.0
@@ -9574,8 +9574,8 @@ packages:
       '@types/node': 18.13.0
     dev: true
 
-  /@types/supertest@2.0.13:
-    resolution: {integrity: sha512-Vc/5/pRwSC055fU7Wu8erTj4gLpID9SdG2zRMuqaHLni3GTsrJ8gyB6MbFZZGLW6vQaGPhiUWRB6uWglv87MEg==}
+  /@types/supertest@2.0.14:
+    resolution: {integrity: sha512-Q900DeeHNFF3ZYYepf/EyJfZDA2JrnWLaSQ0YNV7+2GTo8IlJzauEnDGhya+hauncpBYTYGpVHwGdssJeAQ7eA==}
     dependencies:
       '@types/superagent': 4.1.15
     dev: true
@@ -13311,13 +13311,13 @@ packages:
       eslint: 8.34.0
     dev: false
 
-  /eslint-config-turbo@1.10.14(eslint@8.34.0):
-    resolution: {integrity: sha512-ZeB+IcuFXy1OICkLuAplVa0euoYbhK+bMEQd0nH9+Lns18lgZRm33mVz/iSoH9VdUzl/1ZmFmoK+RpZc+8R80A==}
+  /eslint-config-turbo@1.10.15(eslint@8.34.0):
+    resolution: {integrity: sha512-76mpx2x818JZE26euen14utYcFDxOahZ9NaWA+6Xa4pY2ezVKVschuOxS96EQz3o3ZRSmcgBOapw/gHbN+EKxQ==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
       eslint: 8.34.0
-      eslint-plugin-turbo: 1.10.14(eslint@8.34.0)
+      eslint-plugin-turbo: 1.10.15(eslint@8.34.0)
     dev: false
 
   /eslint-define-config@1.8.0:
@@ -13493,8 +13493,8 @@ packages:
       eslint: 8.34.0
     dev: false
 
-  /eslint-plugin-turbo@1.10.14(eslint@8.34.0):
-    resolution: {integrity: sha512-sBdBDnYr9AjT1g4lR3PBkZDonTrMnR4TvuGv5W0OiF7z9az1rI68yj2UHJZvjkwwcGu5mazWA1AfB0oaagpmfg==}
+  /eslint-plugin-turbo@1.10.15(eslint@8.34.0):
+    resolution: {integrity: sha512-Tv4QSKV/U56qGcTqS/UgOvb9HcKFmWOQcVh3HEaj7of94lfaENgfrtK48E2CckQf7amhKs1i+imhCsNCKjkQyA==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
