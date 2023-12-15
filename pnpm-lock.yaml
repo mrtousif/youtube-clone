@@ -605,8 +605,8 @@ importers:
   apps/serverless:
     dependencies:
       hono:
-        specifier: ^2.3.0
-        version: 2.3.1
+        specifier: ^3.0.0
+        version: 3.0.0
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^3.14.1
@@ -649,7 +649,7 @@ importers:
         version: 8.5.0(eslint@8.34.0)
       eslint-config-turbo:
         specifier: latest
-        version: 1.10.15(eslint@8.34.0)
+        version: 1.11.2(eslint@8.34.0)
       eslint-define-config:
         specifier: ^1.5.1
         version: 1.8.0
@@ -13311,13 +13311,13 @@ packages:
       eslint: 8.34.0
     dev: false
 
-  /eslint-config-turbo@1.10.15(eslint@8.34.0):
-    resolution: {integrity: sha512-76mpx2x818JZE26euen14utYcFDxOahZ9NaWA+6Xa4pY2ezVKVschuOxS96EQz3o3ZRSmcgBOapw/gHbN+EKxQ==}
+  /eslint-config-turbo@1.11.2(eslint@8.34.0):
+    resolution: {integrity: sha512-vqbyCH6kCHFoIAWUmGL61c0BfUQNz0XAl2RzAnEkSQ+PLXvEvuV2HsvL51UOzyyElfJlzZuh9T4BvUqb5KR9Eg==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
       eslint: 8.34.0
-      eslint-plugin-turbo: 1.10.15(eslint@8.34.0)
+      eslint-plugin-turbo: 1.11.2(eslint@8.34.0)
     dev: false
 
   /eslint-define-config@1.8.0:
@@ -13493,8 +13493,8 @@ packages:
       eslint: 8.34.0
     dev: false
 
-  /eslint-plugin-turbo@1.10.15(eslint@8.34.0):
-    resolution: {integrity: sha512-Tv4QSKV/U56qGcTqS/UgOvb9HcKFmWOQcVh3HEaj7of94lfaENgfrtK48E2CckQf7amhKs1i+imhCsNCKjkQyA==}
+  /eslint-plugin-turbo@1.11.2(eslint@8.34.0):
+    resolution: {integrity: sha512-U6DX+WvgGFiwEAqtOjm4Ejd9O4jsw8jlFNkQi0ywxbMnbiTie+exF4Z0F/B1ajtjjeZkBkgRnlU+UkoraBN+bw==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
@@ -15020,8 +15020,8 @@ packages:
       react-is: 16.13.1
     dev: false
 
-  /hono@2.3.1:
-    resolution: {integrity: sha512-BEzk6Lkb1cuEoEEo/V0j8jHBIJL+s6B2E5Y5v9WX8AXFaxeaRBdLK0U3isMclAUGs5mDpEK5cmXd23LAbwUZIQ==}
+  /hono@3.0.0:
+    resolution: {integrity: sha512-OBWEvcRydCOLdOiazqOmKy8PXciR8uIyUM9HpmXot7UmwNBGOdEJvTrVRIgjV603w+go6cTXBOvFiQClSABT6Q==}
     engines: {node: '>=16.0.0'}
     dev: false
 
