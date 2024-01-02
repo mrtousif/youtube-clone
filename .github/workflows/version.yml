@@ -22,7 +22,7 @@ jobs:
 
       - name: Get changed files in the admin panel
         id: changed-admin-panel
-        uses: tj-actions/changed-files@v35
+        uses: tj-actions/changed-files@v36
         with:
           files: apps/admin-panel/**
 
