@@ -394,8 +394,8 @@ importers:
         specifier: 1.4.2
         version: 1.4.2(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(reflect-metadata@0.1.13)
       '@nestjs/graphql':
-        specifier: 10.2.0
-        version: 10.2.0(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(graphql@16.6.0)(reflect-metadata@0.1.13)
+        specifier: 10.2.1
+        version: 10.2.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(graphql@16.6.0)(reflect-metadata@0.1.13)
       '@nestjs/jwt':
         specifier: 10.0.2
         version: 10.0.2(@nestjs/common@9.3.8)
@@ -404,7 +404,7 @@ importers:
         version: 1.1.0(@nestjs/common@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)
       '@nestjs/mercurius':
         specifier: 10.2.0
-        version: 10.2.0(@nestjs/common@9.3.8)(@nestjs/graphql@10.2.0)(fastify@4.13.0)(graphql@16.6.0)(mercurius@12.0.1)
+        version: 10.2.0(@nestjs/common@9.3.8)(@nestjs/graphql@10.2.1)(fastify@4.13.0)(graphql@16.6.0)(mercurius@12.0.1)
       '@nestjs/microservices':
         specifier: 9.3.8
         version: 9.3.8(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(ioredis@5.2.5)(nats@2.12.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
@@ -5627,7 +5627,7 @@ packages:
     resolution: {integrity: sha512-OBaPR3KVkDmhJpCy+RtM8CwwV67ieRRbvWtpHqRNoMt+AnHLBiNmrTwHs3/DKjmnI1cqdGTaQ+NhKtDtkk1l/Q==}
     dependencies:
       fastify-plugin: 4.3.0
-      ws: 8.12.0
+      ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -6246,7 +6246,7 @@ packages:
       '@graphql-tools/utils': 10.0.3(graphql@16.6.0)
       '@types/ws': 8.5.3
       graphql: 16.6.0
-      graphql-ws: 5.14.0(graphql@16.6.0)
+      graphql-ws: 5.16.0(graphql@16.6.0)
       isomorphic-ws: 5.0.0(ws@8.13.0)
       tslib: 2.5.0
       ws: 8.13.0
@@ -6813,10 +6813,10 @@ packages:
       '@types/ws': 8.5.3
       '@whatwg-node/fetch': 0.7.1(@types/node@17.0.45)
       graphql: 16.5.0
-      isomorphic-ws: 5.0.0(ws@8.12.0)
+      isomorphic-ws: 5.0.0(ws@8.13.0)
       tslib: 2.5.0
       value-or-promise: 1.0.12
-      ws: 8.12.0
+      ws: 8.13.0
     transitivePeerDependencies:
       - '@types/node'
       - bufferutil
@@ -6840,10 +6840,10 @@ packages:
       '@types/ws': 8.5.3
       '@whatwg-node/fetch': 0.9.9
       graphql: 16.6.0
-      isomorphic-ws: 5.0.0(ws@8.12.0)
+      isomorphic-ws: 5.0.0(ws@8.13.0)
       tslib: 2.5.0
       value-or-promise: 1.0.12
-      ws: 8.12.0
+      ws: 8.13.0
     transitivePeerDependencies:
       - '@types/node'
       - bufferutil
@@ -6886,7 +6886,7 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
-      '@graphql-typed-document-node/core': 3.1.1(graphql@16.5.0)
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.5.0)
       graphql: 16.5.0
       tslib: 2.5.0
     dev: true
@@ -6896,7 +6896,7 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
-      '@graphql-typed-document-node/core': 3.1.1(graphql@16.6.0)
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.6.0)
       graphql: 16.6.0
       tslib: 2.5.0
 
@@ -6947,12 +6947,13 @@ packages:
     dependencies:
       graphql: 16.5.0
 
-  /@graphql-typed-document-node/core@3.1.1(graphql@16.6.0):
-    resolution: {integrity: sha512-NQ17ii0rK1b34VZonlmT2QMJFI70m0TRwbknO/ihlbatXyaktDhN/98vBiUU6kNBPljqGqyIrl2T4nY2RpFANg==}
+  /@graphql-typed-document-node/core@3.2.0(graphql@16.5.0):
+    resolution: {integrity: sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==}
     peerDependencies:
-      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
-      graphql: 16.6.0
+      graphql: 16.5.0
+    dev: true
 
   /@graphql-typed-document-node/core@3.2.0(graphql@16.6.0):
     resolution: {integrity: sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==}
@@ -7891,7 +7892,7 @@ packages:
       kleur: 4.1.5
       selfsigned: 2.1.1
       undici: 5.9.1
-      ws: 8.12.0
+      ws: 8.13.0
       youch: 2.2.2
     transitivePeerDependencies:
       - bufferutil
@@ -8005,7 +8006,7 @@ packages:
       '@miniflare/core': 2.10.0
       '@miniflare/shared': 2.10.0
       undici: 5.9.1
-      ws: 8.12.0
+      ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -8910,8 +8911,8 @@ packages:
       reflect-metadata: 0.1.13
     dev: false
 
-  /@nestjs/graphql@10.2.0(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(graphql@16.6.0)(reflect-metadata@0.1.13):
-    resolution: {integrity: sha512-N/sca0eZLJIyyvfusZh1eabGnKBYgQ4LmOCvhI7+oDMiWWK4HOhOEeT5MC11bmd0vq850frWW9qqg+3qRKpiXw==}
+  /@nestjs/graphql@10.2.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(graphql@16.6.0)(reflect-metadata@0.1.13):
+    resolution: {integrity: sha512-FBzYTymT4oopiGMpej7GTRyhz1BgJxLlXZPUueamC5J9u1WxCwJyETkzBI/zeUkUydlklF/xd5zDd/Md6//hEw==}
     peerDependencies:
       '@apollo/subgraph': ^0.1.5 || ^0.3.0 || ^0.4.0 || ^2.0.0
       '@nestjs/common': ^8.2.3 || ^9.0.0
@@ -9004,7 +9005,7 @@ packages:
       reflect-metadata: 0.1.13
     dev: false
 
-  /@nestjs/mercurius@10.2.0(@nestjs/common@9.3.8)(@nestjs/graphql@10.2.0)(fastify@4.13.0)(graphql@16.6.0)(mercurius@12.0.1):
+  /@nestjs/mercurius@10.2.0(@nestjs/common@9.3.8)(@nestjs/graphql@10.2.1)(fastify@4.13.0)(graphql@16.6.0)(mercurius@12.0.1):
     resolution: {integrity: sha512-rKCB8972FKlIp3+osVK+6hBo1vvAIY/m3yr63Ter51cRs/QoXCpQdVhU3KaRIS/x66lxtgoOLaif+CrRK2RHEA==}
     peerDependencies:
       '@apollo/subgraph': ^2.0.0
@@ -9018,7 +9019,7 @@ packages:
         optional: true
     dependencies:
       '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
-      '@nestjs/graphql': 10.2.0(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(graphql@16.6.0)(reflect-metadata@0.1.13)
+      '@nestjs/graphql': 10.2.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(graphql@16.6.0)(reflect-metadata@0.1.13)
       fastify: 4.13.0
       graphql: 16.6.0
       mercurius: 12.0.1(graphql@16.6.0)
@@ -16065,7 +16066,7 @@ packages:
     peerDependencies:
       graphql: '>=15'
     dependencies:
-      '@graphql-typed-document-node/core': 3.1.1(graphql@16.6.0)
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.6.0)
       fast-json-stringify: 1.21.0
       generate-function: 2.3.1
       graphql: 16.6.0
@@ -16093,7 +16094,7 @@ packages:
     peerDependencies:
       graphql: 14 - 16
     dependencies:
-      '@graphql-typed-document-node/core': 3.1.1(graphql@16.5.0)
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.5.0)
       cross-fetch: 3.1.5
       extract-files: 9.0.0
       form-data: 3.0.1
@@ -16107,7 +16108,7 @@ packages:
     peerDependencies:
       graphql: 14 - 16
     dependencies:
-      '@graphql-typed-document-node/core': 3.1.1(graphql@16.6.0)
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.6.0)
       cross-fetch: 3.1.5
       extract-files: 9.0.0
       form-data: 3.0.1
@@ -16164,15 +16165,6 @@ packages:
       graphql: 16.6.0
     dev: false
 
-  /graphql-ws@5.14.0(graphql@16.6.0):
-    resolution: {integrity: sha512-itrUTQZP/TgswR4GSSYuwWUzrE/w5GhbwM2GX3ic2U7aw33jgEsayfIlvaj7/GcIvZgNMzsPTrE5hqPuFUiE5g==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      graphql: '>=0.11 <=16'
-    dependencies:
-      graphql: 16.6.0
-    dev: true
-
   /graphql-ws@5.16.0(graphql@16.6.0):
     resolution: {integrity: sha512-Ju2RCU2dQMgSKtArPbEtsK5gNLnsQyTNIo/T7cZNp96niC1x0KdJNZV0TIoilceBPQwfb5itrGl8pkFeOUMl4A==}
     engines: {node: '>=10'}
@@ -16180,7 +16172,6 @@ packages:
       graphql: '>=0.11 <=16'
     dependencies:
       graphql: 16.6.0
-    dev: false
 
   /graphql@15.8.0:
     resolution: {integrity: sha512-5gghUc24tP9HRznNpV2+FIoq3xKkj5dTQqf4v0CpdPbFVwFkWoxOM+o+2OC9ZSvjEMTjfmG9QT+gcvggTwW1zw==}
@@ -26539,7 +26530,6 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
-    dev: true
 
   /xliff@6.1.0:
     resolution: {integrity: sha512-uRmGu6Xyt+/Yr0/yZXU23GfxZOF0KLt5A4MFO7Q3YxR1GlCc/dF8viqMFgpftOo0jokSnA3T9KiHgek45lRkvw==}
