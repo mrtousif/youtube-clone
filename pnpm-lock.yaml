@@ -548,8 +548,8 @@ importers:
         specifier: 18.13.0
         version: 18.13.0
       '@types/supertest':
-        specifier: 2.0.14
-        version: 2.0.14
+        specifier: 2.0.16
+        version: 2.0.16
       eslint:
         specifier: 8.34.0
         version: 8.34.0
@@ -10462,8 +10462,8 @@ packages:
       '@types/node': 18.13.0
     dev: true
 
-  /@types/supertest@2.0.14:
-    resolution: {integrity: sha512-Q900DeeHNFF3ZYYepf/EyJfZDA2JrnWLaSQ0YNV7+2GTo8IlJzauEnDGhya+hauncpBYTYGpVHwGdssJeAQ7eA==}
+  /@types/supertest@2.0.16:
+    resolution: {integrity: sha512-6c2ogktZ06tr2ENoZivgm7YnprnhYE4ZoXGMY+oA7IuAf17M8FWvujXZGmxLv8y0PTyts4x5A+erSwVUFA8XSg==}
     dependencies:
       '@types/superagent': 4.1.15
     dev: true
