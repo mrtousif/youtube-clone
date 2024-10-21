@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hasura
+    hasuraService: custom
+  name: hasura
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hasura
+  template:
+    metadata:
+      labels:
+        app: hasura
+    spec:
+      containers:
+      - image: hasura/graphql-engine:v2.29.0
+        imagePullPolicy: IfNotPresent
+        name: hasura
+        env:
+            - name: POSTGRES_DB
+              value: my_app_db
+            - name: POSTGRES_USER
+              value: hasura
+            - name: POSTGRES_PASSWORD
+              value: password123
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgres-host
+            - name: HASURA_GRAPHQL_DATABASE_URL
+              value: postgres://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@$(POSTGRES_HOST)/$(POSTGRES_DB)?sslmode=disable
+            - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
+              value: postgres://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@$(POSTGRES_HOST)/hasura_metadata
+            ## enable the console served by server
+            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+              value: "true"
+            ## enable debugging mode. It is recommended to disable this in production
+            - name: HASURA_GRAPHQL_DEV_MODE
+              value: "true"
+            - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
+              value: startup, http-log, webhook-log, websocket-log, query-log
+            - name: HASURA_GRAPHQL_ADMIN_SECRET
+              value: secret
+            - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
+              value: anonymous
+            - name: HASURA_GRAPHQL_ENABLE_REMOTE_SCHEMA_PERMISSIONS
+              value: 'true'
+            - name: HASURA_GRAPHQL_MIGRATIONS_SERVER_TIMEOUT
+              value: '30'
+            # - name: HASURA_GRAPHQL_JWT_SECRET
+            #   value: '{ "type": "RS512", "jwk_url": "http://fusionauth:9011/.well-known/jwks" }'
+
+        ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+        resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hasura
+  name: hasura
+  namespace: default
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+    nodePort: 30001
+  selector:
+    app: hasura
+  type: NodePort
