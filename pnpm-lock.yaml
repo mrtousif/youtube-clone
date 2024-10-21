@@ -356,7 +356,7 @@ importers:
         version: 8.3.0
       '@fastify/secure-session':
         specifier: ^7.0.0
-        version: 7.0.0
+        version: 7.3.0
       '@fusionauth/typescript-client':
         specifier: ^1.46.0
         version: 1.46.0
@@ -5601,17 +5601,17 @@ packages:
       fastify-plugin: 4.3.0
     dev: false
 
-  /@fastify/cookie@9.3.1:
-    resolution: {integrity: sha512-h1NAEhB266+ZbZ0e9qUE6NnNR07i7DnNXWG9VbbZ8uC6O/hxHpl+Zoe5sw1yfdZ2U6XhToUGDnzQtWJdCaPwfg==}
+  /@fastify/cookie@9.4.0:
+    resolution: {integrity: sha512-Th+pt3kEkh4MQD/Q2q1bMuJIB5NX/D5SwSpOKu3G/tjoGbwfpurIMJsWSPS0SJJ4eyjtmQ8OipDQspf8RbUOlg==}
     dependencies:
       cookie-signature: 1.2.1
-      fastify-plugin: 4.3.0
+      fastify-plugin: 4.5.1
     dev: false
 
   /@fastify/cors@8.2.0:
     resolution: {integrity: sha512-qDgwpmg6C4D0D3nh8MTMuRXWyEwPnDZDBODaJv90FP2o9ukbahJByW4FtrM5Bpod5KbTf1oIExBmpItbUTQmHg==}
     dependencies:
-      fastify-plugin: 4.3.0
+      fastify-plugin: 4.5.1
       mnemonist: 0.39.5
     dev: false
 
@@ -5630,24 +5630,24 @@ packages:
     resolution: {integrity: sha512-H3C6h1GN56/SMrZS8N2vCT2cZr7mIHzBHzOBa5OPpjfB/D6FzP9mMpE02ZzrFX0ANeh0BAJdoXKOF2e7IbV+Og==}
     dependencies:
       fast-querystring: 1.0.0
-      fastify-plugin: 4.3.0
+      fastify-plugin: 4.5.1
     dev: false
 
   /@fastify/middie@8.1.0:
     resolution: {integrity: sha512-VvUCLfKx2j6KSnh8puT8QW7d5YNzi2fD/4HcFvRQ3a7sHlCo+qtfX2fqzFvNqnMVbNft7GX1JL5if/riUiXsyg==}
     dependencies:
-      fastify-plugin: 4.3.0
+      fastify-plugin: 4.5.1
       path-to-regexp: 6.2.1
       reusify: 1.0.4
     dev: false
 
-  /@fastify/secure-session@7.0.0:
-    resolution: {integrity: sha512-iSL4E8Wq2X9isqd7iPvxLeI6nCVoMM9d+02YG7GM+UiWjqtJ2enWZsWjdN1fS3EuxzgjDy9nVwlHWjFgrs3PuA==}
+  /@fastify/secure-session@7.3.0:
+    resolution: {integrity: sha512-9d7CMZ2OrOVsrWtkCf60weyfhQcscrnboUdnETMAAhEyUXrZtO66Zu99DH/g/VfGW1mUU5tKHq7jCkm+itvDWA==}
     hasBin: true
     dependencies:
-      '@fastify/cookie': 9.3.1
-      fastify-plugin: 4.3.0
-      sodium-native: 4.0.1
+      '@fastify/cookie': 9.4.0
+      fastify-plugin: 4.5.1
+      sodium-native: 4.2.1
     dev: false
 
   /@fastify/static@6.5.0:
@@ -15307,6 +15307,10 @@ packages:
     resolution: {integrity: sha512-M3+i368lV0OYTJ5TfClIoPKEKSOF7112iiPdwgfSR0gN98BjA1Nk+c6oBHtfcVt9KiMxl+EQKHC1QNWo3ZOpYQ==}
     dev: false
 
+  /fastify-plugin@4.5.1:
+    resolution: {integrity: sha512-stRHYGeuqpEZTL1Ef0Ovr2ltazUT9g844X5z/zEBFLG8RYlpDiOCIG+ATvYEp+/zmc7sN29mcIMp8gvYplYPIQ==}
+    dev: false
+
   /fastify@4.13.0:
     resolution: {integrity: sha512-p9ibdFWH3pZ7KPgmfHPKGUy2W4EWU2TEpwlcu58w4CwGyU3ARFfh2kwq6zpZ5W2ZGVbufi4tZbqHIHAlX/9Z/A==}
     dependencies:
@@ -20761,8 +20765,8 @@ packages:
     engines: {node: '>= 6.13.0'}
     dev: true
 
-  /node-gyp-build@4.5.0:
-    resolution: {integrity: sha512-2iGbaQBV+ITgCz76ZEjmhUKAKVf7xfY1sRl4UiKQspfZMH2h06SyhNsnSVy50cwkFQDGLyif6m/6uFXHkOZ6rg==}
+  /node-gyp-build@4.8.2:
+    resolution: {integrity: sha512-IRUxE4BVsHWXkV/SFOut4qTlagw2aM8T5/vnTsmrHJvVoKueJHRc/JaFND7QDDc61kLYUJ6qlZM3sqTSyx2dTw==}
     hasBin: true
     dev: false
 
@@ -23567,11 +23571,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /sodium-native@4.0.1:
-    resolution: {integrity: sha512-OQTaxrVLtMvrnfcwZVsOTHe58MfDApJiHJNoOwcmmrhwvlYkfaUt2WuzRio8PgEMOd96R5aDHY49DCtock1zsA==}
-    requiresBuild: true
+  /sodium-native@4.2.1:
+    resolution: {integrity: sha512-48X3PfRLW+f0fgb3J7f7mkZ9eBKcGR/bD5mdXXLAx4RWwKUe3095yPQgiUUQTfh8Q29JzwhSQATitQDBIozN/w==}
     dependencies:
-      node-gyp-build: 4.5.0
+      node-gyp-build: 4.8.2
     dev: false
 
   /sonic-boom@3.2.0:
