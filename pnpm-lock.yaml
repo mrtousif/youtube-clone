@@ -113,7 +113,7 @@ importers:
         version: 0.5.3(ra-core@4.16.20)(react@18.2.0)
       ra-data-json-server:
         specifier: 4.3.0
-        version: 4.3.0(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.0)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0)
+        version: 4.3.0(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.1)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -225,10 +225,10 @@ importers:
         version: 6.4.0(@refinedev/core@4.10.0)(gql-query-builder@3.8.0)(graphql-request@5.2.0)(graphql-ws@5.16.0)
       '@refinedev/mui':
         specifier: ^4.10.3
-        version: 4.10.3(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/lab@5.0.0-alpha.127)(@mui/material@5.12.1)(@mui/x-data-grid@5.17.26)(@refinedev/core@4.10.0)(@refinedev/react-hook-form@4.1.6)(@types/react@18.0.38)(dayjs@1.11.13)(react-dom@18.2.0)(react-hook-form@7.53.0)(react@18.2.0)
+        version: 4.10.3(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/lab@5.0.0-alpha.127)(@mui/material@5.12.1)(@mui/x-data-grid@5.17.26)(@refinedev/core@4.10.0)(@refinedev/react-hook-form@4.1.6)(@types/react@18.0.38)(dayjs@1.11.13)(react-dom@18.2.0)(react-hook-form@7.53.1)(react@18.2.0)
       '@refinedev/react-hook-form':
         specifier: ^4.1.6
-        version: 4.1.6(@refinedev/core@4.10.0)(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0)(react-hook-form@7.53.0)(react@18.2.0)
+        version: 4.1.6(@refinedev/core@4.10.0)(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0)(react-hook-form@7.53.1)(react@18.2.0)
       '@refinedev/react-router-v6':
         specifier: ^4.1.0
         version: 4.1.0(@refinedev/core@4.10.0)(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0)(react-router-dom@6.10.0)(react@18.2.0)
@@ -383,7 +383,7 @@ importers:
         version: 1.3.12
       '@nestjs/common':
         specifier: 9.3.8
-        version: 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+        version: 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/config':
         specifier: 2.3.4
         version: 2.3.4(@nestjs/common@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
@@ -395,13 +395,13 @@ importers:
         version: 1.4.2(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(reflect-metadata@0.1.13)
       '@nestjs/graphql':
         specifier: 10.2.1
-        version: 10.2.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(graphql@16.6.0)(reflect-metadata@0.1.13)
+        version: 10.2.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.1)(graphql@16.6.0)(reflect-metadata@0.1.13)
       '@nestjs/jwt':
         specifier: 10.0.2
         version: 10.0.2(@nestjs/common@9.3.8)
       '@nestjs/mapped-types':
         specifier: '*'
-        version: 1.1.0(@nestjs/common@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)
+        version: 1.1.0(@nestjs/common@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)
       '@nestjs/mercurius':
         specifier: 10.2.1
         version: 10.2.1(@nestjs/common@9.3.8)(@nestjs/graphql@10.2.1)(fastify@4.13.0)(graphql@16.6.0)(mercurius@12.0.1)
@@ -431,7 +431,7 @@ importers:
         version: 0.5.1
       class-validator:
         specifier: ^0.14.0
-        version: 0.14.0
+        version: 0.14.1
       dotenv:
         specifier: 16.0.3
         version: 16.0.3
@@ -649,7 +649,7 @@ importers:
         version: 8.5.0(eslint@8.57.1)
       eslint-config-turbo:
         specifier: latest
-        version: 2.1.3(eslint@8.57.1)
+        version: 2.2.1(eslint@8.57.1)
       eslint-define-config:
         specifier: ^1.5.1
         version: 1.8.0
@@ -1920,7 +1920,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/highlight': 7.25.7
-      picocolors: 1.1.0
+      picocolors: 1.1.1
 
   /@babel/compat-data@7.25.4:
     resolution: {integrity: sha512-+LGRog6RAsCJrrrg/IO6LGmpphNe5DiK30dGjCoxxeGv49B10/3XYGxPsAwrDlMFcFEvdAUavDT8r9k/hSyQqQ==}
@@ -2568,7 +2568,7 @@ packages:
       '@babel/helper-validator-identifier': 7.25.7
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.1.0
+      picocolors: 1.1.1
 
   /@babel/parser@7.18.9:
     resolution: {integrity: sha512-9uJveS9eY9DJ0t64YbIBZICtJy8a5QrDEVdiLCG97fVLpDTpGX7t8mMSb6OWw6Lrnjqj4O8zwjELX3dhoMgiBg==}
@@ -5692,7 +5692,7 @@ packages:
     peerDependencies:
       '@nestjs/common': ^9.x
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       lodash: 4.17.21
       nanoid: 3.3.6
     dev: false
@@ -5702,7 +5702,7 @@ packages:
     peerDependencies:
       '@nestjs/common': ^10.x
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       lodash: 4.17.21
       nanoid: 3.3.7
     dev: false
@@ -5713,7 +5713,7 @@ packages:
       '@nestjs/common': ^9.x
       '@nestjs/core': ^9.x
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       lodash: 4.17.21
     dev: false
@@ -5724,7 +5724,7 @@ packages:
       '@nestjs/common': ^10.x
       '@nestjs/core': ^10.x
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       lodash: 4.17.21
     dev: false
@@ -5735,7 +5735,7 @@ packages:
       '@nestjs/common': ^10.x
       '@nestjs/core': ^10.x
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       lodash: 4.17.21
     dev: false
@@ -5776,7 +5776,7 @@ packages:
       '@nestjs/common': ^9.x
       rxjs: ^7.x
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       lodash: 4.17.21
       rxjs: 7.5.6
     dev: false
@@ -5787,7 +5787,7 @@ packages:
       '@nestjs/common': ^10.x
       rxjs: ^7.x
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       lodash: 4.17.21
       rxjs: 7.5.6
     dev: false
@@ -5798,7 +5798,7 @@ packages:
       '@nestjs/common': ^10.x
       rxjs: ^7.x
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       lodash: 4.17.21
       rxjs: 7.5.6
     dev: false
@@ -7684,7 +7684,7 @@ packages:
       '@nestjs/core': ^9.0.0
       ioredis: ^5.0.0
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       ioredis: 5.2.5
       tslib: 2.4.1
@@ -8690,7 +8690,7 @@ packages:
       - webpack-cli
     dev: true
 
-  /@nestjs/common@9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6):
+  /@nestjs/common@9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6):
     resolution: {integrity: sha512-CM2+pSDvOrEXETCYciXQPYP9iCral3zu6GHbQkP1PKyyZDtvVsRNoVJ/zVFdmEUwsqvsV75X1VvyXt5w4OA1mg==}
     peerDependencies:
       cache-manager: <=5
@@ -8707,7 +8707,7 @@ packages:
         optional: true
     dependencies:
       class-transformer: 0.5.1
-      class-validator: 0.14.0
+      class-validator: 0.14.1
       iterare: 1.2.1
       reflect-metadata: 0.1.13
       rxjs: 7.5.6
@@ -8721,7 +8721,7 @@ packages:
       reflect-metadata: ^0.1.13
       rxjs: ^6.0.0 || ^7.2.0
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       dotenv: 16.1.4
       dotenv-expand: 10.0.0
       lodash: 4.17.21
@@ -8748,7 +8748,7 @@ packages:
       '@nestjs/websockets':
         optional: true
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/microservices': 9.3.8(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(ioredis@5.2.5)(nats@2.12.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nuxtjs/opencollective': 0.3.2
       fast-safe-stringify: 2.1.1
@@ -8768,13 +8768,13 @@ packages:
       '@nestjs/core': ^7.0.0 || ^8.0.0 || ^9.0.0
       reflect-metadata: ^0.1.12
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       eventemitter2: 6.4.9
       reflect-metadata: 0.1.13
     dev: false
 
-  /@nestjs/graphql@10.2.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(graphql@16.6.0)(reflect-metadata@0.1.13):
+  /@nestjs/graphql@10.2.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.1)(graphql@16.6.0)(reflect-metadata@0.1.13):
     resolution: {integrity: sha512-FBzYTymT4oopiGMpej7GTRyhz1BgJxLlXZPUueamC5J9u1WxCwJyETkzBI/zeUkUydlklF/xd5zDd/Md6//hEw==}
     peerDependencies:
       '@apollo/subgraph': ^0.1.5 || ^0.3.0 || ^0.4.0 || ^2.0.0
@@ -8798,12 +8798,12 @@ packages:
       '@graphql-tools/merge': 8.3.18(graphql@16.6.0)
       '@graphql-tools/schema': 9.0.16(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
-      '@nestjs/mapped-types': 1.2.2(@nestjs/common@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)
+      '@nestjs/mapped-types': 1.2.2(@nestjs/common@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)
       chokidar: 3.5.3
       class-transformer: 0.5.1
-      class-validator: 0.14.0
+      class-validator: 0.14.1
       fast-glob: 3.2.12
       graphql: 16.6.0
       graphql-tag: 2.12.6(graphql@16.6.0)
@@ -8825,12 +8825,12 @@ packages:
     peerDependencies:
       '@nestjs/common': ^8.0.0 || ^9.0.0
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@types/jsonwebtoken': 9.0.1
       jsonwebtoken: 9.0.0
     dev: false
 
-  /@nestjs/mapped-types@1.1.0(@nestjs/common@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13):
+  /@nestjs/mapped-types@1.1.0(@nestjs/common@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13):
     resolution: {integrity: sha512-+2kSly4P1QI+9eGt+/uGyPdEG1hVz7nbpqPHWZVYgoqz8eOHljpXPag+UCVRw9zo2XCu4sgNUIGe8Uk0+OvUQg==}
     peerDependencies:
       '@nestjs/common': ^7.0.8 || ^8.0.0 || ^9.0.0
@@ -8843,13 +8843,13 @@ packages:
       class-validator:
         optional: true
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       class-transformer: 0.5.1
-      class-validator: 0.14.0
+      class-validator: 0.14.1
       reflect-metadata: 0.1.13
     dev: false
 
-  /@nestjs/mapped-types@1.2.2(@nestjs/common@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13):
+  /@nestjs/mapped-types@1.2.2(@nestjs/common@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13):
     resolution: {integrity: sha512-3dHxLXs3M0GPiriAcCFFJQHoDFUuzTD5w6JDhE7TyfT89YKpe6tcCCIqOZWdXmt9AZjjK30RkHRSFF+QEnWFQg==}
     peerDependencies:
       '@nestjs/common': ^7.0.8 || ^8.0.0 || ^9.0.0
@@ -8862,9 +8862,9 @@ packages:
       class-validator:
         optional: true
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       class-transformer: 0.5.1
-      class-validator: 0.14.0
+      class-validator: 0.14.1
       reflect-metadata: 0.1.13
     dev: false
 
@@ -8881,8 +8881,8 @@ packages:
       '@apollo/subgraph':
         optional: true
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
-      '@nestjs/graphql': 10.2.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.0)(graphql@16.6.0)(reflect-metadata@0.1.13)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/graphql': 10.2.1(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(class-transformer@0.5.1)(class-validator@0.14.1)(graphql@16.6.0)(reflect-metadata@0.1.13)
       fastify: 4.13.0
       graphql: 16.6.0
       mercurius: 12.0.1(graphql@16.6.0)
@@ -8925,7 +8925,7 @@ packages:
       nats:
         optional: true
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       ioredis: 5.2.5
       iterare: 1.2.1
@@ -8950,7 +8950,7 @@ packages:
       '@fastify/cors': 8.2.0
       '@fastify/formbody': 7.4.0
       '@fastify/middie': 8.1.0
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       fastify: 4.13.0
       light-my-request: 5.8.0
@@ -9035,7 +9035,7 @@ packages:
       typeorm:
         optional: true
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/microservices': 9.3.8(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(ioredis@5.2.5)(nats@2.12.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       boxen: 5.1.2
@@ -9057,7 +9057,7 @@ packages:
       '@nestjs/platform-express':
         optional: true
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/microservices': 9.3.8(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(ioredis@5.2.5)(nats@2.12.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       tslib: 2.5.0
@@ -9504,7 +9504,7 @@ packages:
       lodash-es: 4.17.21
     dev: false
 
-  /@refinedev/mui@4.10.3(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/lab@5.0.0-alpha.127)(@mui/material@5.12.1)(@mui/x-data-grid@5.17.26)(@refinedev/core@4.10.0)(@refinedev/react-hook-form@4.1.6)(@types/react@18.0.38)(dayjs@1.11.13)(react-dom@18.2.0)(react-hook-form@7.53.0)(react@18.2.0):
+  /@refinedev/mui@4.10.3(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/lab@5.0.0-alpha.127)(@mui/material@5.12.1)(@mui/x-data-grid@5.17.26)(@refinedev/core@4.10.0)(@refinedev/react-hook-form@4.1.6)(@types/react@18.0.38)(dayjs@1.11.13)(react-dom@18.2.0)(react-hook-form@7.53.1)(react@18.2.0):
     resolution: {integrity: sha512-TX4zlmLNI8Ttnydg3ar1lVkC8BWkeEcYslKN5cb/Fk/fK6exxN5knng/z+wSYYeUBz8Q0y9tp3NsMWT5NiCbrQ==}
     peerDependencies:
       '@emotion/react': ^11.8.2
@@ -9526,7 +9526,7 @@ packages:
       '@mui/material': 5.12.1(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.0.38)(react-dom@18.2.0)(react@18.2.0)
       '@mui/x-data-grid': 5.17.26(@mui/material@5.12.1)(@mui/system@5.16.7)(@types/react@18.0.38)(react-dom@18.2.0)(react@18.2.0)
       '@refinedev/core': 4.10.0(@tanstack/react-query@4.28.0)(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0)(react@18.2.0)
-      '@refinedev/react-hook-form': 4.1.6(@refinedev/core@4.10.0)(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0)(react-hook-form@7.53.0)(react@18.2.0)
+      '@refinedev/react-hook-form': 4.1.6(@refinedev/core@4.10.0)(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0)(react-hook-form@7.53.1)(react@18.2.0)
       '@refinedev/ui-types': 1.10.0(@refinedev/core@4.10.0)(react-dom@18.2.0)(react@18.2.0)
       dayjs: 1.11.13
       lodash: 4.17.21
@@ -9534,7 +9534,7 @@ packages:
       notistack: 2.0.8(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/material@5.12.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      react-hook-form: 7.53.0(react@18.2.0)
+      react-hook-form: 7.53.1(react@18.2.0)
       react-markdown: 6.0.3(@types/react@18.0.38)(react@18.2.0)
       remark-gfm: 1.0.0
       tslib: 2.5.0
@@ -9544,7 +9544,7 @@ packages:
       - supports-color
     dev: false
 
-  /@refinedev/react-hook-form@4.1.6(@refinedev/core@4.10.0)(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0)(react-hook-form@7.53.0)(react@18.2.0):
+  /@refinedev/react-hook-form@4.1.6(@refinedev/core@4.10.0)(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0)(react-hook-form@7.53.1)(react@18.2.0):
     resolution: {integrity: sha512-bVBsWxs01Rtrf0GKRb9sx0uYTT5FDlv+dp2cC7SutuD4THWAEoLb2RpXc69shAXHMgcw5ZVBTSI1yTpV5vOmjg==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -9560,7 +9560,7 @@ packages:
       '@types/react-dom': 18.0.11
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      react-hook-form: 7.53.0(react@18.2.0)
+      react-hook-form: 7.53.1(react@18.2.0)
     dev: false
 
   /@refinedev/react-router-v6@4.1.0(@refinedev/core@4.10.0)(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0)(react-router-dom@6.10.0)(react@18.2.0):
@@ -9812,7 +9812,7 @@ packages:
       '@nestjs/common': ^6.7.0 || ^7.0.0
       '@nestjs/core': ^6.7.0 || ^7.0.0
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       handlebars: 4.7.7
       helper-markdown: 1.0.0
@@ -10361,8 +10361,8 @@ packages:
     resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
     dev: true
 
-  /@types/validator@13.7.12:
-    resolution: {integrity: sha512-YVtyAPqpefU+Mm/qqnOANW6IkqKpCSrarcyV269C8MA8Ux0dbkEuQwM/4CjL47kVEM2LgBef/ETfkH+c6+moFA==}
+  /@types/validator@13.12.2:
+    resolution: {integrity: sha512-6SlHBzUW8Jhf3liqrGGXyTJSIFe4nqlJ5A5KaMZ2l/vbM3Wh3KSybots/wfWVzNLK4D1NZluDlSQIbIEPx6oyA==}
 
   /@types/ws@8.5.3:
     resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
@@ -10883,7 +10883,7 @@ packages:
       '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
       prom-client: ^13.0.0 || ^14.0.0
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       prom-client: 14.1.1
     dev: false
 
@@ -10975,12 +10975,12 @@ packages:
       acorn: 8.12.1
     dev: true
 
-  /acorn-import-attributes@1.9.5(acorn@8.12.1):
+  /acorn-import-attributes@1.9.5(acorn@8.13.0):
     resolution: {integrity: sha512-n02Vykv5uA3eHGM/Z2dQrcD56kL8TyDb2p1+0P83PClMnC/nc+anbQRhIOWnSq4Ke/KvDPrY3C9hDtC/A3eHnQ==}
     peerDependencies:
       acorn: ^8
     dependencies:
-      acorn: 8.12.1
+      acorn: 8.13.0
     dev: true
 
   /acorn-jsx@5.3.2(acorn@8.12.1):
@@ -10989,6 +10989,15 @@ packages:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
     dependencies:
       acorn: 8.12.1
+    dev: true
+
+  /acorn-jsx@5.3.2(acorn@8.13.0):
+    resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
+    peerDependencies:
+      acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
+    dependencies:
+      acorn: 8.13.0
+    dev: false
 
   /acorn-walk@7.2.0:
     resolution: {integrity: sha512-OPdCF6GsMIP+Az+aWfAAOEt2/+iVDKE7oy6lJ098aoe59oAmK76qV6Gw60SbZ8jHuG2wH058GF4pLFbYamYrVA==}
@@ -11010,6 +11019,12 @@ packages:
 
   /acorn@8.12.1:
     resolution: {integrity: sha512-tcpGyI9zbizT9JbV6oYE477V6mTlXvvi0T0G3SNIYE2apm/G5huBa1+K89VGeovbg+jycCrfhl3ADxErOuO6Jg==}
+    engines: {node: '>=0.4.0'}
+    hasBin: true
+    dev: true
+
+  /acorn@8.13.0:
+    resolution: {integrity: sha512-8zSiw54Oxrdym50NlZ9sUusyO1Z1ZchgRLWRaK6c86XJFClyCgFKetdowBg5bKxyp/u+CDBJG4Mpp0m3HLZl9w==}
     engines: {node: '>=0.4.0'}
     hasBin: true
 
@@ -11106,7 +11121,7 @@ packages:
     resolution: {integrity: sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==}
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.0.2
+      fast-uri: 3.0.3
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
     dev: true
@@ -11956,8 +11971,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001668
-      electron-to-chromium: 1.5.36
+      caniuse-lite: 1.0.30001669
+      electron-to-chromium: 1.5.41
       node-releases: 2.0.18
       update-browserslist-db: 1.1.1(browserslist@4.24.0)
 
@@ -12143,8 +12158,8 @@ packages:
   /caniuse-lite@1.0.30001660:
     resolution: {integrity: sha512-GacvNTTuATm26qC74pt+ad1fW15mlQ/zuTzzY1ZoIzECTP8HURDfF43kNxPgf7H1jmelCBQTTbBNxdSXOA7Bqg==}
 
-  /caniuse-lite@1.0.30001668:
-    resolution: {integrity: sha512-nWLrdxqCdblixUO+27JtGJJE/txpJlyUy5YN1u53wLZkP0emYCo5zgS6QYft7VUYR42LGgi/S5hdLZTrnyIddw==}
+  /caniuse-lite@1.0.30001669:
+    resolution: {integrity: sha512-DlWzFDJqstqtIVx1zeSpIMLjunf5SmwOw0N2Ck/QSQdS8PLS4+9HrLaYei4w8BIAL7IB/UEDu889d8vhCTPA0w==}
 
   /capital-case@1.0.4:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
@@ -12397,12 +12412,12 @@ packages:
       isobject: 3.0.1
       static-extend: 0.1.2
 
-  /class-validator@0.14.0:
-    resolution: {integrity: sha512-ct3ltplN8I9fOwUd8GrP8UQixwff129BkEtuWDKL5W45cQuLd19xqmTLu5ge78YDm/fdje6FMt0hGOhl0lii3A==}
+  /class-validator@0.14.1:
+    resolution: {integrity: sha512-2VEG9JICxIqTpoK1eMzZqaV+u/EiwEJkMGzTrZf6sU/fwsnOITVgYJ8yojSy6CaXtO9V0Cc6ZQZ8h8m4UBuLwQ==}
     dependencies:
-      '@types/validator': 13.7.12
-      libphonenumber-js: 1.10.14
-      validator: 13.7.0
+      '@types/validator': 13.12.2
+      libphonenumber-js: 1.11.12
+      validator: 13.12.0
 
   /clean-css@4.2.4:
     resolution: {integrity: sha512-EJUDT7nDVFDvaQgAo2G/PJvxmp1o/c6iXLbswsBbUFXi1Nr+AjA2cKmfbKDMjMvzEe75g3P6JkaDDAKk96A85A==}
@@ -13589,8 +13604,8 @@ packages:
   /electron-to-chromium@1.5.23:
     resolution: {integrity: sha512-mBhODedOXg4v5QWwl21DjM5amzjmI1zw9EPrPK/5Wx7C8jt33bpZNrC7OhHUG3pxRtbLpr3W2dXT+Ph1SsfRZA==}
 
-  /electron-to-chromium@1.5.36:
-    resolution: {integrity: sha512-HYTX8tKge/VNp6FGO+f/uVDmUkq+cEfcxYhKf15Akc4M5yxt5YmorwlAitKWjWhWQnKcDRBAQKXkhqqXMqcrjw==}
+  /electron-to-chromium@1.5.41:
+    resolution: {integrity: sha512-dfdv/2xNjX0P8Vzme4cfzHqnPm5xsZXwsolTYr0eyW18IUmNyG08vL+fttvinTfhKfIKdRoqkDIC9e9iWQCNYQ==}
 
   /emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -14482,13 +14497,13 @@ packages:
       eslint: 8.57.1
     dev: false
 
-  /eslint-config-turbo@2.1.3(eslint@8.57.1):
-    resolution: {integrity: sha512-smdkhd01V/e/I4EjJxaZA1kxZ1vdFCHpyryolxLtRBP0bZTrHDYh1H6NAyZ3Fy1jkhsQzXw+L+6m17ygROvNFw==}
+  /eslint-config-turbo@2.2.1(eslint@8.57.1):
+    resolution: {integrity: sha512-cDvPCMSlcyNe5+a3tEZoF/gsZ8WrCddAdqcN/qvBGVD7IL1XdxWerFCfgU/R2fT9JFjyqRhsJnmcbbbwyXockw==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
       eslint: 8.57.1
-      eslint-plugin-turbo: 2.1.3(eslint@8.57.1)
+      eslint-plugin-turbo: 2.2.1(eslint@8.57.1)
     dev: false
 
   /eslint-define-config@1.8.0:
@@ -14664,8 +14679,8 @@ packages:
       eslint: 8.57.1
     dev: false
 
-  /eslint-plugin-turbo@2.1.3(eslint@8.57.1):
-    resolution: {integrity: sha512-I9vPArzyOSYa6bm0iMCgD07MgdExc1VK2wGuVz21g4BUdj83w7mDKyCXR2rwOtCEW+wemFwgxanJ81imQZijNg==}
+  /eslint-plugin-turbo@2.2.1(eslint@8.57.1):
+    resolution: {integrity: sha512-ajKdYtqLC238QGA4SpAFHp6dZICcEktB5oLOnMXz84M+pS9FlGBiUmonrBkmdTEm5jakxqmSdt/cq9J2hWm6mg==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
@@ -14912,8 +14927,8 @@ packages:
     resolution: {integrity: sha512-oruZaFkjorTpF32kDSI5/75ViwGeZginGGy2NoOSg3Q9bnwlnmDm4HLnkl0RE3n+njDXR037aY1+x58Z/zFdwQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
-      acorn: 8.12.1
-      acorn-jsx: 5.3.2(acorn@8.12.1)
+      acorn: 8.13.0
+      acorn-jsx: 5.3.2(acorn@8.13.0)
       eslint-visitor-keys: 3.4.3
     dev: false
 
@@ -15271,8 +15286,8 @@ packages:
   /fast-uri@2.1.0:
     resolution: {integrity: sha512-qKRta6N7BWEFVlyonVY/V+BMLgFqktCUV0QjT259ekAIlbVrMaFnFLxJ4s/JPl4tou56S1BzPufI60bLe29fHA==}
 
-  /fast-uri@3.0.2:
-    resolution: {integrity: sha512-GR6f0hD7XXyNJa25Tb9BuIdN0tdr+0BMi6/CJPH3wJO1JjNG3n/VsSw38AwRdKZABm8lGbPfakLRkYzx2V9row==}
+  /fast-uri@3.0.3:
+    resolution: {integrity: sha512-aLrHthzCjH5He4Z2H9YZ+v6Ujb9ocRuW6ZzkJQOrTxleEijANq4v1TsaPaVG1PZcuurEzrLcWRyYBYXD5cEiaw==}
     dev: true
 
   /fast-url-parser@1.1.3:
@@ -19083,8 +19098,8 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  /libphonenumber-js@1.10.14:
-    resolution: {integrity: sha512-McGS7GV/WjJ2KjfOGhJU1oJn29RYeo7Q+RpANRbUNMQ9gj5XArpbjurSuyYPTejFwbaUojstQ4XyWCrAzGOUXw==}
+  /libphonenumber-js@1.11.12:
+    resolution: {integrity: sha512-QkJn9/D7zZ1ucvT++TQSvZuSA2xAWeUytU+DiEQwbPKLyrDpvbul2AFs1CGbRAPpSCCk47aRAb5DX5mmcayp4g==}
 
   /light-my-request@5.6.1:
     resolution: {integrity: sha512-sbJnC1UBRivi9L1kICr3CESb82pNiPNB3TvtdIrZZqW0Qh8uDXvoywMmWKZlihDcmw952CMICCzM+54LDf+E+g==}
@@ -20538,7 +20553,7 @@ packages:
       '@nestjs/common': '> 7.0.0 < 10'
       '@nestjs/core': '> 7.0.0 < 10'
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
     dev: false
 
@@ -20550,7 +20565,7 @@ packages:
       '@nestjs/core': <=10
       envalid: 7.x.x
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       envalid: 7.3.1
     dev: false
@@ -20563,7 +20578,7 @@ packages:
       kysely: 0.x
       reflect-metadata: ^0.1.13
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       kysely: 0.24.2
       reflect-metadata: 0.1.13
@@ -20577,7 +20592,7 @@ packages:
       '@nestjs/common': ^8.0.0 || ^9.0.0
       pino-http: ^6.4.0 || ^7.0.0 || ^8.0.0
     dependencies:
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       pino-http: 8.3.3
     dev: false
 
@@ -20589,7 +20604,7 @@ packages:
       '@nestjs/core': '>=6.7.0'
     dependencies:
       '@aws-sdk/client-s3': 3.267.0
-      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.5.6)
+      '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
     dev: false
 
@@ -21506,6 +21521,9 @@ packages:
   /picocolors@1.1.0:
     resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
 
+  /picocolors@1.1.1:
+    resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
+
   /picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
@@ -21974,7 +21992,7 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /ra-core@4.16.20(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.0)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0):
+  /ra-core@4.16.20(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.1)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0):
     resolution: {integrity: sha512-+xJSVBD3zTG9Zxy042SpAWsozuIKCNvN/cZeUr5lINHY3/zOcZ2bbJ+Ce7IMcKnlvxS4g3tvqq4HuTQpItFEcg==}
     peerDependencies:
       history: ^5.1.0
@@ -21995,7 +22013,7 @@ packages:
       query-string: 7.1.3
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      react-hook-form: 7.53.0(react@18.2.0)
+      react-hook-form: 7.53.1(react@18.2.0)
       react-is: 17.0.2
       react-query: 3.39.3(react-dom@18.2.0)(react@18.2.0)
       react-router: 6.27.0(react@18.2.0)
@@ -22004,7 +22022,7 @@ packages:
       - react-native
     dev: false
 
-  /ra-core@4.4.4(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.0)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0):
+  /ra-core@4.4.4(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.1)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0):
     resolution: {integrity: sha512-SdJ8TTxgfYA33VLdQEqO39ZEu0sgByHdnEdTPFfonoPVc+OQTQ4ZmQwzvyDvmCqnsxyRaXw5Y9w2QBwKFs/NHw==}
     peerDependencies:
       history: ^5.1.0
@@ -22025,7 +22043,7 @@ packages:
       query-string: 7.1.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      react-hook-form: 7.53.0(react@18.2.0)
+      react-hook-form: 7.53.1(react@18.2.0)
       react-is: 17.0.2
       react-query: 3.39.2(react-dom@18.2.0)(react@18.2.0)
       react-router: 6.27.0(react@18.2.0)
@@ -22074,7 +22092,7 @@ packages:
       graphql: 16.5.0
       lodash: 4.17.21
       pluralize: 7.0.0
-      ra-core: 4.16.20(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.0)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0)
+      ra-core: 4.16.20(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.1)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0)
     transitivePeerDependencies:
       - graphql-ws
       - react
@@ -22089,7 +22107,7 @@ packages:
       graphql: 16.5.0
       graphql-ast-types-browser: 1.0.2(graphql@16.5.0)
       lodash: 4.17.21
-      ra-core: 4.16.20(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.0)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0)
+      ra-core: 4.16.20(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.1)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0)
       ra-data-graphql: 4.4.3(graphql@16.5.0)(ra-core@4.16.20)(react@18.2.0)
     transitivePeerDependencies:
       - graphql-ws
@@ -22097,11 +22115,11 @@ packages:
       - subscriptions-transport-ws
     dev: false
 
-  /ra-data-json-server@4.3.0(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.0)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0):
+  /ra-data-json-server@4.3.0(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.1)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0):
     resolution: {integrity: sha512-q+TavIF6zwhrUtfYKK6G9GFflVvfY9K5EiQsLHc2xOLrt+tM9fkiinunTMXLepn7QWGKfPVVf8Be4Wzv27ekgw==}
     dependencies:
       query-string: 7.1.1
-      ra-core: 4.4.4(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.0)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0)
+      ra-core: 4.4.4(history@5.3.0)(react-dom@18.2.0)(react-hook-form@7.53.1)(react-router-dom@6.3.0)(react-router@6.27.0)(react@18.2.0)
     transitivePeerDependencies:
       - history
       - react
@@ -22302,8 +22320,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-hook-form@7.53.0(react@18.2.0):
-    resolution: {integrity: sha512-M1n3HhqCww6S2hxLxciEXy2oISPnAzxY7gvwVPrtlczTM/1dDadXgUxDpHMrMTblDOcm/AXtXxHwZ3jpg1mqKQ==}
+  /react-hook-form@7.53.1(react@18.2.0):
+    resolution: {integrity: sha512-6aiQeBda4zjcuaugWvim9WsGqisoUk+etmFEsSUMm451/Ic8L/UAb7sRtMj3V+Hdzm6mMjU1VhiSzYUZeBm0Vg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -23010,7 +23028,7 @@ packages:
       jest-worker: 26.6.2
       rollup: 2.79.2
       serialize-javascript: 4.0.0
-      terser: 5.34.1
+      terser: 5.36.0
     dev: true
 
   /rollup-pluginutils@2.8.2:
@@ -24187,7 +24205,7 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
-      terser: 5.34.1
+      terser: 5.36.0
       webpack: 5.95.0(esbuild@0.17.11)
     dev: true
 
@@ -24227,13 +24245,13 @@ packages:
       source-map-support: 0.5.21
     dev: true
 
-  /terser@5.34.1:
-    resolution: {integrity: sha512-FsJZ7iZLd/BXkz+4xrRTGJ26o/6VTjQytUk8b8OxkwcD2I+79VPJlz7qss1+zE7h8GNIScFqXcDyJ/KqBYZFVA==}
+  /terser@5.36.0:
+    resolution: {integrity: sha512-IYV9eNMuFAV4THUspIRXkLakHnV6XO7FEdtKjf/mDyrnqUg9LnlOn6/RwRvM9SZjR4GUq8Nk8zj67FzVARr74w==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
       '@jridgewell/source-map': 0.3.6
-      acorn: 8.12.1
+      acorn: 8.13.0
       commander: 2.20.3
       source-map-support: 0.5.21
     dev: true
@@ -25109,7 +25127,7 @@ packages:
     dependencies:
       browserslist: 4.24.0
       escalade: 3.2.0
-      picocolors: 1.1.0
+      picocolors: 1.1.1
 
   /upper-case-first@2.0.2:
     resolution: {integrity: sha512-514ppYHBaKwfJRK/pNC6c/OxfGa0obSnAl106u97Ed0I625Nin96KAjttZF6ZL3e1XLtphxnqrOi9iWgm+u+bg==}
@@ -25256,8 +25274,8 @@ packages:
       builtins: 5.0.1
     dev: true
 
-  /validator@13.7.0:
-    resolution: {integrity: sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==}
+  /validator@13.12.0:
+    resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
 
   /value-or-promise@1.0.11:
@@ -25737,8 +25755,8 @@ packages:
       '@webassemblyjs/ast': 1.12.1
       '@webassemblyjs/wasm-edit': 1.12.1
       '@webassemblyjs/wasm-parser': 1.12.1
-      acorn: 8.12.1
-      acorn-import-attributes: 1.9.5(acorn@8.12.1)
+      acorn: 8.13.0
+      acorn-import-attributes: 1.9.5(acorn@8.13.0)
       browserslist: 4.24.0
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.17.1
