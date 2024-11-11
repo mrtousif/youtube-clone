@@ -605,8 +605,8 @@ importers:
   apps/serverless:
     dependencies:
       hono:
-        specifier: ^2.3.0
-        version: 2.3.1
+        specifier: ^4.0.0
+        version: 4.0.0
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^3.14.1
@@ -16207,8 +16207,8 @@ packages:
       react-is: 16.13.1
     dev: false
 
-  /hono@2.3.1:
-    resolution: {integrity: sha512-BEzk6Lkb1cuEoEEo/V0j8jHBIJL+s6B2E5Y5v9WX8AXFaxeaRBdLK0U3isMclAUGs5mDpEK5cmXd23LAbwUZIQ==}
+  /hono@4.0.0:
+    resolution: {integrity: sha512-8dKhuBBpRZEodUttQhrSFJ6PQqHRjXHyeeegfxOf132pvgbf0tOb9qqb7q7eYwAWpOcYrsUOsWdJ0sQIIovhZg==}
     engines: {node: '>=16.0.0'}
     dev: false
 
