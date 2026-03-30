@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: redis
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: redis
+    template:
+        metadata:
+            labels:
+                app: redis
+        spec:
+            containers:
+                - name: redis
+                  image: redis:7-alpine
+                  imagePullPolicy: "IfNotPresent"
+                  ports:
+                      - containerPort: 6379
+                  volumeMounts:
+                      - name: redis-data
+                        mountPath: /data
+            volumes:
+                - name: redis-data
+                  emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: redis-service # Sets service name
+    labels:
+        app: redis # Labels and Selectors
+spec:
+    type: NodePort # Sets service type
+    ports:
+        - port: 6379 # Sets port to run the redis application
+    selector:
+        app: redis
+---
+apiVersion: v1
+# Kind for kubernetes ConfigMap
+kind: ConfigMap
+metadata:
+    # Name your ConfigMap
+    name: redis-config
+    labels:
+        app: redis
+data:
+    redis-host: redis-service
