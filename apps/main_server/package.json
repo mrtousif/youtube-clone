@@ -48,7 +48,7 @@
         "@nestjs/mapped-types": "*",
         "@nestjs/mercurius": "10.2.1",
         "@nestjs/microservices": "9.3.8",
-        "@nestjs/platform-fastify": "9.3.8",
+        "@nestjs/platform-fastify": "11.1.24",
         "@nestjs/terminus": "9.2.0",
         "@squareboat/nest-mailman": "^0.3.0",
         "@willsoto/nestjs-prometheus": "5.2.1",
