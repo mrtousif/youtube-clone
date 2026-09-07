@@ -454,8 +454,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       kysely:
-        specifier: ^0.24.2
-        version: 0.24.2
+        specifier: ^0.28.0
+        version: 0.28.0
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -476,7 +476,7 @@ importers:
         version: 2.2.0(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(envalid@7.3.1)
       nestjs-kysely:
         specifier: ^0.1.4
-        version: 0.1.7(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(kysely@0.24.2)(reflect-metadata@0.1.13)
+        version: 0.1.7(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(kysely@0.28.0)(reflect-metadata@0.1.13)
       nestjs-pino:
         specifier: 3.1.2
         version: 3.1.2(@nestjs/common@9.3.8)(pino-http@8.3.3)
@@ -573,7 +573,7 @@ importers:
         version: 15.0.0
       kysely-codegen:
         specifier: ^0.10.0
-        version: 0.10.0(kysely@0.24.2)(pg@8.10.0)
+        version: 0.10.0(kysely@0.28.0)(pg@8.10.0)
       pino-pretty:
         specifier: 9.2.0
         version: 9.2.0
@@ -19254,7 +19254,7 @@ packages:
       - supports-color
     dev: true
 
-  /kysely-codegen@0.10.0(kysely@0.24.2)(pg@8.10.0):
+  /kysely-codegen@0.10.0(kysely@0.28.0)(pg@8.10.0):
     resolution: {integrity: sha512-EV2v9yr9N9WrUPrURvFl5FPTtz39npsi1p1tLpJwEcFeOAKAPJruBpAASvnZWdqu5Pw/aaTssStE3qcI2sfxMQ==}
     hasBin: true
     peerDependencies:
@@ -19272,15 +19272,15 @@ packages:
     dependencies:
       chalk: 4.1.2
       dotenv: 16.0.3
-      kysely: 0.24.2
+      kysely: 0.28.0
       micromatch: 4.0.5
       minimist: 1.2.8
       pg: 8.10.0
     dev: true
 
-  /kysely@0.24.2:
-    resolution: {integrity: sha512-+7eaTJNUYm2yRq1x+lEOZc+78TO35dTZ9b0dh49+Z9CTt2byMSbMiOKpwPlOyCAaHD4kILkAYWYZNywFlmBwRA==}
-    engines: {node: '>=14.0.0'}
+  /kysely@0.28.0:
+    resolution: {integrity: sha512-hq8VcLy57Ww7oPTTVEOrT9ml+g8ehbbmEUkHmW4Xtubu+NHdKZi6SH6egmD4cjDhn3b/0s0h/6AjdPayOTJhNw==}
+    engines: {node: '>=18.0.0'}
 
   /language-subtag-registry@0.3.23:
     resolution: {integrity: sha512-0K65Lea881pHotoGEa5gDlMxt3pctLi2RplBb7Ezh4rRdLEOtgi7n4EwK9lamnUCkKBqaeKRVebTq6BAxSkpXQ==}
@@ -20866,7 +20866,7 @@ packages:
       envalid: 7.3.1
     dev: false
 
-  /nestjs-kysely@0.1.7(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(kysely@0.24.2)(reflect-metadata@0.1.13):
+  /nestjs-kysely@0.1.7(@nestjs/common@9.3.8)(@nestjs/core@9.3.8)(kysely@0.28.0)(reflect-metadata@0.1.13):
     resolution: {integrity: sha512-kvGoguez2vvEUslEDKS49TG/Ph/Gbmuzv+BoAIQThvBWQvxI/eqQ6xrm8fmmVERSXRb9ziGTVmatgCAGaUW/zA==}
     peerDependencies:
       '@nestjs/common': ^8.0.0 || ^9.0.0 || ^10.0.0
@@ -20876,7 +20876,7 @@ packages:
     dependencies:
       '@nestjs/common': 9.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.13)(rxjs@7.5.6)
       '@nestjs/core': 9.3.8(@nestjs/common@9.3.8)(@nestjs/microservices@9.3.8)(reflect-metadata@0.1.13)(rxjs@7.5.6)
-      kysely: 0.24.2
+      kysely: 0.28.0
       reflect-metadata: 0.1.13
     dev: false
 
