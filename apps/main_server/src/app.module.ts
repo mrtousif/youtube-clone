@@ -8,6 +8,7 @@ import { MailmanModule, MailmanOptions } from '@squareboat/nest-mailman';
 import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 import { CamelCasePlugin, DeduplicateJoinsPlugin, PostgresDialect } from 'kysely';
 import { ClsModule } from 'nestjs-cls';
+import { EnvalidModule } from 'nestjs-envalid';
 import { KyselyModule } from 'nestjs-kysely';
 import { LoggerModule } from 'nestjs-pino';
 import { join } from 'path';
@@ -17,17 +18,16 @@ import Cursor from 'pg-cursor';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { validators } from './config';
 import { config } from './config';
 import { EmailModule } from './email/email.module';
 import { FileStorageService } from './file-storage/file-storage.service';
 import { HealthModule } from './health/health.module';
-import { ItemModule } from './item/item.module';
 import { SdkModule } from './sdk/sdk.module';
 
 @Module({
     imports: [
         SdkModule,
-        ItemModule,
         EmailModule,
         HealthModule,
         AuthModule,
@@ -46,9 +46,7 @@ import { SdkModule } from './sdk/sdk.module';
         ClsModule.forRoot({
             global: true,
         }),
-        ConfigModule.forRoot({
-            isGlobal: true,
-        }),
+        EnvalidModule.forRoot({ validators }),
         MailmanModule.registerAsync({
             useFactory: () => ({
                 host: config.EMAIL_HOST,
@@ -74,6 +72,7 @@ import { SdkModule } from './sdk/sdk.module';
                 cursor: Cursor,
             }),
             plugins: [new CamelCasePlugin(), new DeduplicateJoinsPlugin()],
+            log: ['error', 'query'],
         }),
         HasuraModule.forRootAsync(HasuraModule, {
             useFactory: () => {

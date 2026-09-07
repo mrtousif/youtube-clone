@@ -1,10 +1,13 @@
-import { cleanEnv, port, str, url , email } from 'envalid';
+import { cleanEnv, email, port, str, url } from 'envalid';
+import { Static, makeValidators,  } from 'nestjs-envalid';
+export { ENVALID } from 'nestjs-envalid';
 
-export const config = cleanEnv(process.env, {
+const ENVS = {
     NODE_ENV: str({ choices: ['development', 'test', 'production', 'staging', 'qa'] }),
     REDIS_URL: str({ devDefault: '6379' }),
     NESTJS_EVENT_WEBHOOK_SHARED_SECRET: str(),
     HASURA_GRAPHQL_API_ENDPOINT: str(),
+    HASURA_GRAPHQL_ADMIN_SECRET: str(),
     SENTRY_DSN: url({ default: '' }),
     S3_REGION: str(),
     S3_ENDPOINT: url(),
@@ -21,8 +24,16 @@ export const config = cleanEnv(process.env, {
     OPENID_CLIENT_PROVIDER_JWK_URL: url(),
     COOKIE_SECRET: str(),
     SESSION_SECRET: str(),
-    EMAIL_HOST: str({ devDefault: 'localhost'}),
+    EMAIL_HOST: str({ devDefault: 'localhost' }),
     EMAIL_USERNAME: str(),
     EMAIL_PASSWORD: str(),
-    EMAIL_SENDER_ID: email({ devDefault: 'admin@localhost.com' })
-});
+    EMAIL_SENDER_ID: email({ devDefault: 'admin@localhost.com' }),
+    FUSIONAUTH_API_KEY: str(),
+    FUSIONAUTH_URL: url()
+};
+
+export const config = cleanEnv(process.env, ENVS);
+
+export const validators = makeValidators(ENVS);
+
+export type Config = Static<typeof validators>;

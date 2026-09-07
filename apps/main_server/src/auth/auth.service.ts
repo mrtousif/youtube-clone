@@ -1,11 +1,6 @@
 import { Inject, Injectable, Logger, UnauthorizedException } from '@nestjs/common';
-import handleAsync from 'await-to-js';
 import { gql } from 'graphql-request';
 import { IncomingMessage } from 'http';
-import { Kysely } from 'kysely';
-import { DB } from 'kysely-codegen';
-import { omit } from 'lodash';
-import { InjectKysely } from 'nestjs-kysely';
 import {
     AuthorizationParameters,
     Client,
@@ -14,21 +9,44 @@ import {
     UserinfoResponse,
 } from 'openid-client';
 
-import { config } from '../config/index';
+import { Config, ENVALID, config } from '../config';
 import { GqlSdk, InjectSdk } from '../sdk/sdk.module';
 import { CreateUserDto } from './dto/create-user';
 
 gql`
     mutation createUser($input: users_insert_input!) {
         insert_users_one(object: $input) {
-            id
+            email
+            name
+            phone
+            created_at
+        }
+    }
+
+    mutation updateUserById($id: ulid!, $input: users_set_input!) {
+        update_users_by_pk(pk_columns: { id: $id }, _set: $input) {
+            email
+            name
+            phone
         }
     }
 
     query findUserByEmail($email: citext!) {
         users(where: { email: { _eq: $email } }) {
             id
-            password_hash
+            name
+            phone
+            created_at
+        }
+    }
+
+    query findUserById($id: ulid!) {
+        users_by_pk(id: $id) {
+            id
+            name
+            email
+            phone
+            created_at
         }
     }
 `;
@@ -92,22 +110,23 @@ export class AuthService {
 
     constructor(
         @InjectSdk() private readonly sdk: GqlSdk,
-        @InjectKysely() private readonly db: Kysely<DB>,
-        @Inject('OIDC') openIdClient: Client
+        @Inject('OIDC') openIdClient: Client,
+        @Inject(ENVALID) private readonly env: Config
     ) {
         this.openIdClient = openIdClient;
     }
 
     async getUserInfo(accessToken: string): Promise<UserinfoResponse> {
         const userinfo: UserinfoResponse = await this.openIdClient.userinfo(accessToken);
-        this.logger.log(userinfo);
+        // this.logger.log(userinfo);
         return userinfo;
     }
 
     async callback(request: IncomingMessage, checks: OpenIDCallbackChecks) {
         const params = this.openIdClient.callbackParams(request);
+
         return await this.openIdClient.callback(
-            config.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI,
+            this.env.OPENID_CLIENT_REGISTRATION_LOGIN_REDIRECT_URI,
             params,
             checks
         );
@@ -121,19 +140,38 @@ export class AuthService {
         return this.openIdClient.refresh(refreshToekn);
     }
 
-    /**
-     * Create or update a user
-     */
     public async createOrUpdateUser(input: CreateUserDto) {
-        const userData = { ...input, channelName: input.name };
-        // upsert({ where: { id: userData.id }, create: userData, update: omit(userData, 'id') })
-        return this.db.insertInto('users').values(userData).execute();
+        let name = input.name;
+        if (name?.length < 1) {
+            name = input.email.split('@')[0];
+        }
+        try {
+            const { insert_users_one } = await this.sdk.createUser({
+                input: {
+                    auth_id: input.authId,
+                    email: input.email,
+                    name,
+                },
+            });
+            this.logger.log(insert_users_one);
+        } catch (error) {
+            if (error.message.includes('Uniqueness violation')) {
+                this.sdk.updateUserById({
+                    id: input.id,
+                    input: { ...input, name },
+                });
+            } else {
+                this.logger.error(error);
+            }
+        }
+
+        return;
     }
 
-    /**
-     * findUser
-     */
+    // /**
+    //  * findUser
+    //  */
     public findUser(id: string) {
-        return this.db.selectFrom('users').selectAll().where('id', '=', id).executeTakeFirst();
+        return this.sdk.findUserById({ id });
     }
 }
