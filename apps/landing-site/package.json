@@ -42,6 +42,6 @@
         "locize-cli": "7.13.2",
         "tsconfig": "workspace:*",
         "typescript": "4.9.5",
-        "vitest": "0.17.1"
+        "vitest": "3.2.6"
     }
 }
