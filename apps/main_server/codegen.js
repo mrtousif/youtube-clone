@@ -7,6 +7,7 @@ const {
 } = process.env;
 
 const COMMON_SCALAR_MAPPING = {
+  ulid: 'string',
   uuid: 'string',
   date: 'string',
   jsonb: 'Record<string, any>',

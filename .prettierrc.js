@@ -1,5 +1,5 @@
 module.exports = {
-    plugins: [require('@trivago/prettier-plugin-sort-imports'), require('prettier-plugin-prisma')],
+    plugins: [require('@trivago/prettier-plugin-sort-imports')],
     // max 100 characters per line
     printWidth: 100,
     // use 2 spaces for indentation
