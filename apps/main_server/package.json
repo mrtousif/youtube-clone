@@ -59,7 +59,7 @@
         "dotenv": "16.0.3",
         "envalid": "7.3.1",
         "got": "12.5.3",
-        "graphql": "16.6.0",
+        "graphql": "16.8.1",
         "graphql-request": "6.1.0",
         "ioredis": "5.2.5",
         "jwks-rsa": "^3.0.1",
