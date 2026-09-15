@@ -47,7 +47,7 @@
         "@nestjs/jwt": "10.0.2",
         "@nestjs/mapped-types": "*",
         "@nestjs/mercurius": "10.2.1",
-        "@nestjs/microservices": "9.3.8",
+        "@nestjs/microservices": "11.1.19",
         "@nestjs/platform-fastify": "9.3.8",
         "@nestjs/terminus": "9.2.0",
         "@squareboat/nest-mailman": "^0.3.0",
