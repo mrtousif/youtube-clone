@@ -511,8 +511,8 @@ importers:
         specifier: 7.5.6
         version: 7.5.6
       zod:
-        specifier: 3.20.6
-        version: 3.20.6
+        specifier: 3.22.3
+        version: 3.22.3
     devDependencies:
       '@graphql-codegen/cli':
         specifier: 4.0.1
@@ -649,7 +649,7 @@ importers:
         version: 8.5.0(eslint@8.34.0)
       eslint-config-turbo:
         specifier: latest
-        version: 2.10.12(eslint@8.34.0)(turbo@2.10.12)
+        version: 2.11.4(eslint@8.34.0)(turbo@2.10.12)
       eslint-define-config:
         specifier: ^1.5.1
         version: 1.8.0
@@ -15617,14 +15617,14 @@ packages:
       eslint: 8.34.0
     dev: false
 
-  /eslint-config-turbo@2.10.12(eslint@8.34.0)(turbo@2.10.12):
-    resolution: {integrity: sha512-XwFVvJ2zL12024P6vIn8aiI4eMKMmGTF7za5wpHuZzzbL5GAqI8Fr9usXlKzhHbdigIULOH+b5lvbwEyWiAzvw==}
+  /eslint-config-turbo@2.11.4(eslint@8.34.0)(turbo@2.10.12):
+    resolution: {integrity: sha512-LnpLrdosAtipbO8v4PS8JFAGT8wQCiJwGonS6jeMJkc9qRh5cPN4tbx3EV27UX6yFVmQpY2M+bCU+S3oe1e3/w==}
     peerDependencies:
       eslint: '>6.6.0'
       turbo: '>2.0.0'
     dependencies:
       eslint: 8.34.0
-      eslint-plugin-turbo: 2.10.12(eslint@8.34.0)(turbo@2.10.12)
+      eslint-plugin-turbo: 2.11.4(eslint@8.34.0)(turbo@2.10.12)
       turbo: 2.10.12
     dev: false
 
@@ -15810,8 +15810,8 @@ packages:
       eslint: 8.34.0
     dev: false
 
-  /eslint-plugin-turbo@2.10.12(eslint@8.34.0)(turbo@2.10.12):
-    resolution: {integrity: sha512-QZ9u3sV3ky4bl3XUpsVG8Ehk11I0omsGV2K7dCDut6sGvaVErFvWbgd46oh5tsnLt/5i+KvuOWgKJneleMqk2Q==}
+  /eslint-plugin-turbo@2.11.4(eslint@8.34.0)(turbo@2.10.12):
+    resolution: {integrity: sha512-1Aq8JjnnzatTpQbK0a4iI1teaJuwH+dBGSp8ok3aHT8HbCn0EGUbQfIVPcUHRm1RXPINEUuyQaj2HvgG5oXcXA==}
     peerDependencies:
       eslint: '>6.6.0'
       turbo: '>2.0.0'
@@ -20387,7 +20387,7 @@ packages:
       summary: 2.1.0
       ts-morph: 17.0.1
       ts-morph-helpers: 0.6.3
-      zod: 3.21.4
+      zod: 3.22.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -28570,13 +28570,8 @@ packages:
     resolution: {integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==}
     dev: false
 
-  /zod@3.20.6:
-    resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
-    dev: false
-
-  /zod@3.21.4:
-    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
-    dev: true
+  /zod@3.22.3:
+    resolution: {integrity: sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==}
 
   /zwitch@1.0.5:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
