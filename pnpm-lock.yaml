@@ -22,8 +22,8 @@ importers:
         specifier: 17.0.3
         version: 17.0.3
       '@faker-js/faker':
-        specifier: 7.5.0
-        version: 7.5.0
+        specifier: 10.5.0
+        version: 10.5.0
       '@trivago/prettier-plugin-sort-imports':
         specifier: 3.3.1
         version: 3.3.1(prettier@2.7.1)
@@ -649,7 +649,7 @@ importers:
         version: 8.5.0(eslint@8.34.0)
       eslint-config-turbo:
         specifier: latest
-        version: 2.10.12(eslint@8.34.0)(turbo@2.10.12)
+        version: 2.11.4(eslint@8.34.0)(turbo@2.10.12)
       eslint-define-config:
         specifier: ^1.5.1
         version: 1.8.0
@@ -5844,9 +5844,9 @@ packages:
         optional: true
     dev: true
 
-  /@faker-js/faker@7.5.0:
-    resolution: {integrity: sha512-8wNUCCUHvfvI0gQpDUho/3gPzABffnCn5um65F8dzQ86zz6dlt4+nmAA7PQUc8L+eH+9RgR/qzy5N/8kN0Ozdw==}
-    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
+  /@faker-js/faker@10.5.0:
+    resolution: {integrity: sha512-bsxD8WLS5lIj7aaoCx1YJkktqYj5vlBUE6HWzu2Q51ksrGJ0H737ECCKlFU7Yf8Br45z9t99frBp/J7kzbMPAg==}
+    engines: {node: ^20.19.0 || ^22.13.0 || ^23.5.0 || >=24.0.0, npm: '>=10'}
     dev: true
 
   /@fastify/accept-negotiator@1.0.0:
@@ -15617,14 +15617,14 @@ packages:
       eslint: 8.34.0
     dev: false
 
-  /eslint-config-turbo@2.10.12(eslint@8.34.0)(turbo@2.10.12):
-    resolution: {integrity: sha512-XwFVvJ2zL12024P6vIn8aiI4eMKMmGTF7za5wpHuZzzbL5GAqI8Fr9usXlKzhHbdigIULOH+b5lvbwEyWiAzvw==}
+  /eslint-config-turbo@2.11.4(eslint@8.34.0)(turbo@2.10.12):
+    resolution: {integrity: sha512-LnpLrdosAtipbO8v4PS8JFAGT8wQCiJwGonS6jeMJkc9qRh5cPN4tbx3EV27UX6yFVmQpY2M+bCU+S3oe1e3/w==}
     peerDependencies:
       eslint: '>6.6.0'
       turbo: '>2.0.0'
     dependencies:
       eslint: 8.34.0
-      eslint-plugin-turbo: 2.10.12(eslint@8.34.0)(turbo@2.10.12)
+      eslint-plugin-turbo: 2.11.4(eslint@8.34.0)(turbo@2.10.12)
       turbo: 2.10.12
     dev: false
 
@@ -15810,8 +15810,8 @@ packages:
       eslint: 8.34.0
     dev: false
 
-  /eslint-plugin-turbo@2.10.12(eslint@8.34.0)(turbo@2.10.12):
-    resolution: {integrity: sha512-QZ9u3sV3ky4bl3XUpsVG8Ehk11I0omsGV2K7dCDut6sGvaVErFvWbgd46oh5tsnLt/5i+KvuOWgKJneleMqk2Q==}
+  /eslint-plugin-turbo@2.11.4(eslint@8.34.0)(turbo@2.10.12):
+    resolution: {integrity: sha512-1Aq8JjnnzatTpQbK0a4iI1teaJuwH+dBGSp8ok3aHT8HbCn0EGUbQfIVPcUHRm1RXPINEUuyQaj2HvgG5oXcXA==}
     peerDependencies:
       eslint: '>6.6.0'
       turbo: '>2.0.0'
