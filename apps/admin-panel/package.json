@@ -23,7 +23,7 @@
         "@mui/system": "5.8.7",
         "@mui/utils": "5.8.6",
         "envsafe": "2.0.3",
-        "graphql": "16.5.0",
+        "graphql": "16.8.1",
         "is-mobile": "3.1.1",
         "notistack": "2.0.8",
         "ra-data-hasura": "0.5.3",
