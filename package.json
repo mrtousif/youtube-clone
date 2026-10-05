@@ -22,8 +22,8 @@
     },
     "devDependencies": {
         "@babel/plugin-transform-flow-strip-types": "7.18.9",
-        "@commitlint/cli": "17.0.3",
-        "@commitlint/config-conventional": "17.0.3",
+        "@commitlint/cli": "17.8.1",
+        "@commitlint/config-conventional": "17.8.1",
         "@faker-js/faker": "7.5.0",
         "@trivago/prettier-plugin-sort-imports": "3.3.1",
         "concurrently": "8.2.2",
