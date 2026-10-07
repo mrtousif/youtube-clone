@@ -28,7 +28,7 @@ jobs:
 
       - name: Git Version
         id: version
-        uses: codacy/git-version@2.7.1
+        uses: codacy/git-version@2.9.0
       
       - name: Use the version
         run: |
